@@ -3,6 +3,8 @@
 #include <string>
 #include <functional>
 
+#include "EngineDefine.h"
+
 // FVector로 통일하겠습니다.
 // FVector xy
 // FVector3D xyz
@@ -87,34 +89,34 @@ public:
 	};
 
 
-	FVector()
+	ENGINEAPI FVector()
 		: X(0.0f), Y(0.0f), Z(0.0f), W(1.0f)
 	{
 
 	}
 
-	FVector(float _X, float _Y) : X(_X), Y(_Y), Z(0.0f), W(1.0f)
+	ENGINEAPI FVector(float _X, float _Y) : X(_X), Y(_Y), Z(0.0f), W(1.0f)
 	{
 
 	}
 
-	FVector(float _X, float _Y, float _Z) : X(_X), Y(_Y), Z(_Z), W(1.0f)
+	ENGINEAPI FVector(float _X, float _Y, float _Z) : X(_X), Y(_Y), Z(_Z), W(1.0f)
 	{
 
 	}
 
-	FVector(float _X, float _Y, float _Z, float _W) : X(_X), Y(_Y), Z(_Z), W(_W)
+	ENGINEAPI FVector(float _X, float _Y, float _Z, float _W) : X(_X), Y(_Y), Z(_Z), W(_W)
 	{
 
 	}
 
 
-	FVector(int _X, int _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
+	ENGINEAPI FVector(int _X, int _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
 	{
 
 	}
 
-	FVector(long _X, long _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
+	ENGINEAPI FVector(long _X, long _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
 	{
 
 	}
@@ -379,8 +381,8 @@ public:
 		return Result;
 	}
 
-	FVector operator*(const class FMatrix& _Matrix) const;
-	FVector& operator*=(const class FMatrix& _Matrix);
+	ENGINEAPI FVector operator*(const class FMatrix& _Matrix) const;
+	ENGINEAPI FVector& operator*=(const class FMatrix& _Matrix);
 
 	FVector& operator-=(const FVector& _Other)
 	{
