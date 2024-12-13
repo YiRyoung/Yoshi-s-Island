@@ -13,8 +13,9 @@
 HINSTANCE UEngineWindow::hInstance = nullptr;
 std::map<std::string, WNDCLASSEXA> UEngineWindow::WindowClasss;
 int WindowCount = 0;
+bool UEngineWindow::LoopActive = true;
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK UEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
@@ -32,6 +33,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     break;
     case WM_DESTROY:
         --WindowCount;
+        if (0 >= WindowCount)
+        {
+            UEngineWindow::LoopActive = false;
+        }
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
@@ -77,7 +82,7 @@ int UEngineWindow::WindowMessageLoop(std::function<void()> _StartFunction, std::
         return 0;
     }
 
-    while (0 != WindowCount)
+    while (true == LoopActive)
     {
         if(0 != PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
@@ -103,6 +108,7 @@ void UEngineWindow::CreateWindowClass(const WNDCLASSEXA& _Class)
     std::map<std::string, WNDCLASSEXA>::iterator EndIter = WindowClasss.end();
     std::map<std::string, WNDCLASSEXA>::iterator FindIter = WindowClasss.find(std::string(_Class.lpszClassName));
 
+    // ckw
     if (EndIter != FindIter)
     {
         // std::string ErrorText = "같은 이름의 윈도우 클래스를 2번 등록했습니다" + std::string(_Class.lpszClassName);
@@ -157,17 +163,14 @@ void UEngineWindow::Create(std::string_view _TitleName, std::string_view _ClassN
         return;
     }
 
-    // 윈도우가 만들어지면 hdc를 여기서 얻어올 겁니다.
     HDC WindowMainDC = GetDC(WindowHandle);
 }
 
 void UEngineWindow::Open(std::string_view _TitleName /*= "Window"*/)
 {
-    // 어 window 안만들고 띄우려고 하네?
     if (0 == WindowHandle)
     {
-        // 만들어
-        Create(_TitleName);
+         Create(_TitleName);
     }
 
     if (0 == WindowHandle)
@@ -175,7 +178,6 @@ void UEngineWindow::Open(std::string_view _TitleName /*= "Window"*/)
         return;
     }
 
-	// 단순히 윈도창을 보여주는 것만이 아니라
 	ShowWindow(WindowHandle, SW_SHOW);
     UpdateWindow(WindowHandle);
 	// ShowWindow(WindowHandle, SW_HIDE);
