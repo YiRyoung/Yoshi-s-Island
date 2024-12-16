@@ -71,6 +71,7 @@ void UEngineCore::LoadContents(std::string_view _DllName)
 void UEngineCore::EngineEnd()
 {
 	Levels.clear();
+	//UEngineDebug::EndConsole();
 }
 
 std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name)
@@ -94,11 +95,11 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 	UEngineWindow::WindowMessageLoop(
 		[]()
 		{
+			//UEngineDebug::StartConsole();
 			UEngineInitData Data;
 			Core->EngineStart(Data);
 
 			MainWindow.SetWindowPosAndScale(Data.WindowPos, Data.WindowSize);
-
 			// 시작할 때 하고 싶은 것
 		},
 		[]()

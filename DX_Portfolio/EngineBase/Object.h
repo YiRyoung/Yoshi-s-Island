@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
+#include <memory>
 
 // Ό³Έν :
-class UObject
+class UObject : public std::enable_shared_from_this<UObject>
 {
 public:
 	// constrcuter destructer

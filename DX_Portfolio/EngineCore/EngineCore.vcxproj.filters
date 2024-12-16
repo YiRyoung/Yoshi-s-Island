@@ -16,6 +16,12 @@
     <ClInclude Include="Actor.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="ActorComponent.h">
+      <Filter>Object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneComponent.h">
+      <Filter>Object\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -30,6 +36,12 @@
     <ClCompile Include="Actor.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="ActorComponent.cpp">
+      <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneComponent.cpp">
+      <Filter>Object\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -43,6 +55,9 @@
     </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{0bac6a78-f5eb-48c9-8753-5947cbfb5dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component">
+      <UniqueIdentifier>{8abcabe3-6b92-4b00-a7be-30e93301bb35}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
