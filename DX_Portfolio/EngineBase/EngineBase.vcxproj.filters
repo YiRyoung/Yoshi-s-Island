@@ -22,6 +22,9 @@
     <ClCompile Include="EngineSerializer.cpp">
       <Filter>IO</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineDebug.h">
@@ -48,6 +51,9 @@
     <ClInclude Include="EngineSerializer.h">
       <Filter>IO</Filter>
     </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Debug">
@@ -64,6 +70,9 @@
     </Filter>
     <Filter Include="IO">
       <UniqueIdentifier>{7d519bf6-2138-4a9e-a2fc-abda473d2af9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{233cdc52-c2d6-45f9-abb9-b786b0cc8bca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

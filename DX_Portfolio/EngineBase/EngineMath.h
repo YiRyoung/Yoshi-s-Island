@@ -14,7 +14,7 @@
 // #include <DirectXMath.h>
 
 
-class UEngineMath
+class ENGINEAPI  UEngineMath
 {
 public:
 	// 상수 정의
@@ -105,18 +105,18 @@ public:
 
 	}
 
-	ENGINEAPI FVector(float _X, float _Y, float _Z, float _W) : X(_X), Y(_Y), Z(_Z), W(_W)
+	FVector(float _X, float _Y, float _Z, float _W) : X(_X), Y(_Y), Z(_Z), W(_W)
 	{
 
 	}
 
 
-	ENGINEAPI FVector(int _X, int _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
+	FVector(int _X, int _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
 	{
 
 	}
 
-	ENGINEAPI FVector(long _X, long _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
+	FVector(long _X, long _Y) : X(static_cast<float>(_X)), Y(static_cast<float>(_Y)), Z(0.0f), W(1.0f)
 	{
 
 	}
@@ -381,6 +381,7 @@ public:
 		return Result;
 	}
 
+	// 선언과 구현이 분리된 녀석들만 붙여줘면 된다.
 	ENGINEAPI FVector operator*(const class FMatrix& _Matrix) const;
 	ENGINEAPI FVector& operator*=(const class FMatrix& _Matrix);
 
@@ -829,17 +830,25 @@ public:
 	static bool CirCleToCirCle(const FTransform& _Left, const FTransform& _Right);
 	static bool CirCleToRect(const FTransform& _Left, const FTransform& _Right);
 
-
 	FVector Scale;
+	FVector Rotation;
 	FVector Location;
 
+	FMatrix World;
+	FMatrix View;
+	FMatrix Projection;
+	FMatrix WVP;
 
-	FVector CenterLeftTop() const
+	// FMatrix WVP;
+
+
+
+	FVector ZAxisCenterLeftTop() const
 	{
 		return Location - Scale.Half();
 	}
 
-	FVector CenterLeftBottom() const
+	FVector ZAxisCenterLeftBottom() const
 	{
 		FVector Result;
 		Result.X = Location.X - Scale.hX();
@@ -847,17 +856,17 @@ public:
 		return Result;
 	}
 
-	float CenterLeft() const
+	float ZAxisCenterLeft() const
 	{
 		return Location.X - Scale.hX();
 	}
 
-	float CenterTop() const
+	float ZAxisCenterTop() const
 	{
 		return Location.Y - Scale.hY();
 	}
 
-	FVector CenterRightTop() const
+	FVector ZAxisCenterRightTop() const
 	{
 		FVector Result;
 		Result.X = Location.X + Scale.hX();
@@ -865,17 +874,17 @@ public:
 		return Result;
 	}
 
-	FVector CenterRightBottom() const
+	FVector ZAxisCenterRightBottom() const
 	{
 		return Location + Scale.Half();
 	}
 
-	float CenterRight() const
+	float ZAxisCenterRight() const
 	{
 		return Location.X + Scale.hX();
 	}
 
-	float CenterBottom() const
+	float ZAxisCenterBottom() const
 	{
 		return Location.Y + Scale.hY();
 	}
