@@ -181,8 +181,16 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameMode.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="IContentsCore.h" />
     <ClInclude Include="Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Pawn.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -205,7 +213,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Pawn.cpp">
       <SubType>
       </SubType>
     </ClCompile>
