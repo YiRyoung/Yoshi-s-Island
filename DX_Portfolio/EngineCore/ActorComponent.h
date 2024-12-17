@@ -4,6 +4,8 @@
 // Ό³Έν :
 class UActorComponent : public UObject
 {
+	friend AActor;
+
 public:
 	// constrcuter destructer
 	UActorComponent();
@@ -15,11 +17,14 @@ public:
 	UActorComponent& operator=(const UActorComponent& _Other) = delete;
 	UActorComponent& operator=(UActorComponent&& _Other) noexcept = delete;
 
-	std::shared_ptr<class AActor> GetActor();
+	class AActor* GetActor();
+	ENGINEAPI virtual void InitializeComponent() {}
+	ENGINEAPI virtual void BeginPlay() {}
 
 protected:
 
 private:
+
 	class AActor* Actor;
 };
 

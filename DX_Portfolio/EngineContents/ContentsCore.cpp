@@ -15,8 +15,8 @@ UContentsCore::~UContentsCore()
 
 void UContentsCore::EngineStart(UEngineInitData& _Data)
 {
-	_Data.WindowPos = { 100, 100 };
-	_Data.WindowSize = { 256, 220 };
+	_Data.WindowPos = { 400, 60 };
+	_Data.WindowSize = { 256 * 4, 220 * 4 };
 
 	UEngineCore::CreateLevel<ATitleGameMode, APawn>("Title");
 	UEngineCore::OpenLevel("Title");
