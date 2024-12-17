@@ -9,8 +9,9 @@ public:
 	// constrcuter destructer
 	ENGINEAPI UObject();
 
-	// 혹여나 자식들의 소멸자가 호출 안되는 경우를 막기위에서
+	// 혹여나 자식들의 소멸자가 호출 안되는 경우를 막기위해서
 	// 가상함수 테이블을 만들 것이므로 왠만하면 자식쪽의 소멸자가 호출안되는 경우는 없을 것이다.
+
 	ENGINEAPI virtual ~UObject();
 
 	// delete Function

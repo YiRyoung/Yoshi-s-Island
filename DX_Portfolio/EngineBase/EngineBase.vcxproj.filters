@@ -37,7 +37,7 @@
       <Filter>PreCompile</Filter>
     </ClInclude>
     <ClInclude Include="EngineDefine.h">
-      <Filter>Define</Filter>
+      <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="EngineDirectory.h">
       <Filter>IO</Filter>
@@ -65,14 +65,14 @@
     <Filter Include="PreCompile">
       <UniqueIdentifier>{46c82b94-965d-49d8-ac12-06da3085b5ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Define">
-      <UniqueIdentifier>{c82aab41-aa50-4740-9ab6-7f3f5e2d0727}</UniqueIdentifier>
-    </Filter>
     <Filter Include="IO">
       <UniqueIdentifier>{7d519bf6-2138-4a9e-a2fc-abda473d2af9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{233cdc52-c2d6-45f9-abb9-b786b0cc8bca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{c82aab41-aa50-4740-9ab6-7f3f5e2d0727}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
