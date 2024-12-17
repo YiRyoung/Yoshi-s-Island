@@ -5,6 +5,7 @@
 #include "IContentsCore.h"
 #include "Level.h"
 
+UEngineGraphicDevice UEngineCore::Device;
 UEngineWindow UEngineCore::MainWindow;
 HMODULE UEngineCore::ContentsDLL = nullptr;
 std::shared_ptr<IContentsCore> UEngineCore::Core;
@@ -128,12 +129,15 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 	UEngineWindow::WindowMessageLoop(
 		[]()
 		{
+			// 시작할 때 하고 싶은 것
 			//UEngineDebug::StartConsole();
 			UEngineInitData Data;
+			Device.CreateDeviceAndContext();
 			Core->EngineStart(Data);
-
 			MainWindow.SetWindowPosAndScale(Data.WindowPos, Data.WindowSize);
-			// 시작할 때 하고 싶은 것
+			Device.CreateBackBuffer(MainWindow);
+
+			// 여기서부터 리소스 로드가 가능해짐
 		},
 		[]()
 		{

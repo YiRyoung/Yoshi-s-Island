@@ -23,7 +23,7 @@ public:
 	template<typename ChildPtrType>
 	std::shared_ptr<ChildPtrType> GetThis()
 	{
-		return std::dynamic_pointer_cast<ChildPtrType>(shared_from_this());
+		return std::static_pointer_cast<ChildPtrType>(shared_from_this());
 	}
 
 
