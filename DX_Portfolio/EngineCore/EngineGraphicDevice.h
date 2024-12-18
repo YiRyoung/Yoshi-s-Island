@@ -33,10 +33,20 @@ public:
 
 	void Release();
 
+	void ReleaseStart();
+
+	void ReleaseEnd();
+
 protected:
 
 private:
 	ID3D11Device* Device = nullptr;
 	ID3D11DeviceContext* Context = nullptr;
+	IDXGISwapChain* SwapChain = nullptr;
+
+	IDXGIAdapter* MainAdapter = nullptr;
+
+	ID3D11Texture2D* DXBackBufferTexture = nullptr;
+	ID3D11RenderTargetView* RTV = nullptr;
 };
 

@@ -104,8 +104,9 @@ void UEngineCore::EngineFrame()
 
 void UEngineCore::EngineEnd()
 {
+	Device.Release();
 	LevelMap.clear();
-	//UEngineDebug::EndConsole();
+	UEngineDebug::EndConsole();
 }
 
 std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name)
