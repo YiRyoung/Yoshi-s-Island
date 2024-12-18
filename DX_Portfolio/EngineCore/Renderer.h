@@ -24,5 +24,11 @@ protected:
 
 private:
 	virtual void Render(float _DeltaTime);
+
+public:
+	ID3D11Buffer* VertexBuffer = nullptr;
+	ID3D11Buffer* IndexBuffer = nullptr;
+	void InputAssembler1Init();
+	void InputAssembler1Setting();
 };
 

@@ -25,9 +25,20 @@ void URenderer::SetOrder(int _Order)
 ENGINEAPI void URenderer::BeginPlay()
 {
 	SetOrder(0);
+
+	InputAssembler1Init();
 }
 
 void URenderer::Render(float _DeltaTime)
+{
+	InputAssembler1Setting();
+}
+
+void URenderer::InputAssembler1Init()
+{
+}
+
+void URenderer::InputAssembler1Setting()
 {
 }
 
