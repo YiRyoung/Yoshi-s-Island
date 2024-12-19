@@ -4,8 +4,8 @@
 struct EngineVertex
 {
 public:
-	FVector Pos;
-	FVector Color;
+	FVector COLOR;
+	FVector POSITION;
 };
 
 // Ό³Έν :
@@ -34,8 +34,11 @@ private:
 
 public:
 	ID3D11Buffer* VertexBuffer = nullptr;
-	ID3D11Buffer* IndexBuffer = nullptr;
 	void InputAssembler1Init();
 	void InputAssembler1Setting();
+	
+	ID3D11VertexShader* VertexShader = nullptr;
+	void VertexShaderInit();
+	void VertexShaderSetting();
 };
 

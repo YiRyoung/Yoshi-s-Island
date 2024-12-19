@@ -71,5 +71,8 @@ void URenderer::InputAssembler1Init()
 
 void URenderer::InputAssembler1Setting()
 {
+	UINT VertexSize = sizeof(EngineVertex);
+	UINT Offset = 0;
+	UEngineCore::Device.GetContext()->IASetVertexBuffers(0, 1, &VertexBuffer, &VertexSize, &Offset);
 }
 
