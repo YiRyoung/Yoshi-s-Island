@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Renderer.h"
+#include <EngineBase/EngineString.h>
 
 URenderer::URenderer()
 {
@@ -8,6 +9,8 @@ URenderer::URenderer()
 URenderer::~URenderer()
 {
 	VertexBuffer->Release();
+	ShaderCodeBlob->Release();
+	ErrorCodeBlob->Release();
 }
 
 void URenderer::SetOrder(int _Order)
@@ -28,11 +31,13 @@ ENGINEAPI void URenderer::BeginPlay()
 	SetOrder(0);
 
 	InputAssembler1Init();
+	VertexShaderInit();
 }
 
 void URenderer::Render(float _DeltaTime)
 {
 	InputAssembler1Setting();
+	VertexShaderSetting();
 }
 
 void URenderer::InputAssembler1Init()
@@ -50,7 +55,7 @@ void URenderer::InputAssembler1Init()
 
 	D3D11_BUFFER_DESC BufferInfo = { 0 };
 
-	BufferInfo.ByteWidth = sizeof(EngineVertex) * Vertexs.size();
+	BufferInfo.ByteWidth = sizeof(EngineVertex) * static_cast<int>(Vertexs.size());
 
 	BufferInfo.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 
@@ -74,5 +79,64 @@ void URenderer::InputAssembler1Setting()
 	UINT VertexSize = sizeof(EngineVertex);
 	UINT Offset = 0;
 	UEngineCore::Device.GetContext()->IASetVertexBuffers(0, 1, &VertexBuffer, &VertexSize, &Offset);
+}
+
+void URenderer::VertexShaderInit()
+{
+	UEngineDirectory CurDir;
+	CurDir.MoveParentToDirectory("EngineShader");
+	UEngineFile File = CurDir.GetFile("EngineSpriteShader.fx");
+
+	std::string Path = File.GetPathToString();
+
+	std::wstring WPath = UEngineString::AnsiToUnicode(Path);
+
+	std::string version = "vs_5_0";
+
+	int Flag0 = 0;
+	int Flag1 = 0;
+
+#ifdef _DEBUG
+	Flag0 = D3D10_SHADER_DEBUG;
+#endif
+
+	Flag0 |= D3DCOMPILE_PACK_MATRIX_ROW_MAJOR;
+
+	D3DCompileFromFile(
+		WPath.c_str(),
+		nullptr,
+		nullptr,
+		"VertexToWorld",
+		version.c_str(),
+		Flag0,
+		Flag1,
+		&ShaderCodeBlob,
+		&ErrorCodeBlob
+	);
+
+	if (nullptr == ShaderCodeBlob)
+	{
+		std::string ErrString = reinterpret_cast<char*>(ErrorCodeBlob->GetBufferPointer());
+		MSGASSERT("쉐이더 코드 중간빌드에서 실패했습니다\n" + ErrString);
+		return;
+	}
+
+	HRESULT Result = UEngineCore::Device.GetDevice()->CreateVertexShader(
+		ShaderCodeBlob->GetBufferPointer(),
+		ShaderCodeBlob->GetBufferSize(),
+		nullptr,
+		&VertexShader
+	);
+
+	if (S_OK != Result)
+	{
+		MSGASSERT("버텍스 쉐이더 생성에 실패했습니다.");
+	}
+
+}
+
+void URenderer::VertexShaderSetting()
+{
+	UEngineCore::Device.GetContext()->VSSetShader(VertexShader, nullptr, 0);
 }
 

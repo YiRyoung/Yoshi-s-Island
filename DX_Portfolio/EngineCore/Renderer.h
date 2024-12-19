@@ -37,6 +37,9 @@ public:
 	void InputAssembler1Init();
 	void InputAssembler1Setting();
 	
+	ID3DBlob* ShaderCodeBlob = nullptr;
+	ID3DBlob* ErrorCodeBlob = nullptr;
+
 	ID3D11VertexShader* VertexShader = nullptr;
 	void VertexShaderInit();
 	void VertexShaderSetting();

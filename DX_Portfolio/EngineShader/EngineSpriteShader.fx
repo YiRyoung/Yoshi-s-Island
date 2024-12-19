@@ -1,3 +1,8 @@
+//#define TEST
+//#ifdef TEST
+//#else
+//#endif
+
 struct EngineVertex
 {
     float4 COLOR : COLOR;
