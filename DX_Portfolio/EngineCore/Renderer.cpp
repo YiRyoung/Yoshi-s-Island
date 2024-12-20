@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Renderer.h"
 #include <EngineBase/EngineString.h>
+#include <EngineCore/EngineCamera.h>
 
 URenderer::URenderer()
 {
@@ -33,19 +34,28 @@ ENGINEAPI void URenderer::BeginPlay()
 	InputAssembler2Init();
 	RasterizerInit();
 	PixelShaderInit();
+
 }
 
 void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
+	FTransform& CameraTrans = _Camera->GetTransformRef();
+
+	FTransform& RendererTrans = GetTransformRef();
+
+	RendererTrans.View = CameraTrans.View;
+	RendererTrans.Projection = CameraTrans.Projection;
+
+	RendererTrans.WVP = RendererTrans.World * RendererTrans.View * RendererTrans.Projection;
+
+
 	InputAssembler1Setting();
 	VertexShaderSetting();
 	InputAssembler2Setting();
 	RasterizerSetting();
 	PixelShaderSetting();
 	OutPutMergeSetting();
-
 	UEngineCore::Device.GetContext()->DrawIndexed(6, 0, 0);
-
 }
 
 void URenderer::InputAssembler1Init()
@@ -63,6 +73,7 @@ void URenderer::InputAssembler1Init()
 	BufferInfo.ByteWidth = sizeof(EngineVertex) * static_cast<int>(Vertexs.size());
 	BufferInfo.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	BufferInfo.CPUAccessFlags = 0;
+
 	BufferInfo.Usage = D3D11_USAGE_DEFAULT;
 
 	D3D11_SUBRESOURCE_DATA Data;
@@ -73,12 +84,12 @@ void URenderer::InputAssembler1Init()
 		MSGASSERT("버텍스 버퍼 생성에 실패했습니다.");
 		return;
 	}
+
 }
 
 void URenderer::InputAssembler1Setting()
 {
 	UINT VertexSize = sizeof(EngineVertex);
-
 	UINT Offset = 0;
 
 	ID3D11Buffer* ArrBuffer[1];
@@ -91,6 +102,7 @@ void URenderer::InputAssembler1Setting()
 void URenderer::InputAssembler1LayOut()
 {
 	std::vector<D3D11_INPUT_ELEMENT_DESC> InputLayOutData;
+
 
 	{
 		D3D11_INPUT_ELEMENT_DESC Desc;
@@ -255,6 +267,10 @@ void URenderer::InputAssembler2Setting()
 	UEngineCore::Device.GetContext()->IASetPrimitiveTopology(Topology);
 }
 
+
+
+
+
 void URenderer::PixelShaderInit()
 {
 	UEngineDirectory CurDir;
@@ -316,6 +332,7 @@ void URenderer::PixelShaderSetting()
 
 void URenderer::OutPutMergeSetting()
 {
+
 	ID3D11RenderTargetView* RTV = UEngineCore::Device.GetRTV();
 
 	ID3D11RenderTargetView* ArrRtv[16] = { 0 };

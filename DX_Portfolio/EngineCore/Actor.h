@@ -1,11 +1,10 @@
 #pragma once
 #include "SceneComponent.h"
 
-// Ό³Έν :
 class AActor : public UObject
 {
 	friend class ULevel;
-	
+
 public:
 	// constrcuter destructer
 	ENGINEAPI AActor();
@@ -40,7 +39,8 @@ public:
 		ComPtr->Actor = this;
 
 		ComponentType* NewPtr = reinterpret_cast<ComponentType*>(ComMemory);
-		std::shared_ptr<ComponentType> NewCom(NewPtr = new(ComMemory) ComponentType());
+
+		std::shared_ptr<ComponentType> NewCom(new(ComMemory) ComponentType());
 
 		if (std::is_base_of_v<USceneComponent, ComponentType>)
 		{
@@ -66,6 +66,16 @@ public:
 	ULevel* GetWorld()
 	{
 		return World;
+	}
+
+	void SetActorLocation(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			return;
+		}
+
+		RootComponent->SetLocation(_Value);
 	}
 
 	void SetActorRelativeScale3D(const FVector& _Scale)

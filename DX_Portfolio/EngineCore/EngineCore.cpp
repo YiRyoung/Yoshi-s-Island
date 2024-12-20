@@ -9,11 +9,17 @@ UEngineGraphicDevice UEngineCore::Device;
 UEngineWindow UEngineCore::MainWindow;
 HMODULE UEngineCore::ContentsDLL = nullptr;
 std::shared_ptr<IContentsCore> UEngineCore::Core;
+UEngineInitData UEngineCore::Data;
 
 std::shared_ptr<class ULevel> UEngineCore::NextLevel;
 std::shared_ptr<class ULevel> UEngineCore::CurLevel = nullptr;
 
 std::map<std::string, std::shared_ptr<class ULevel>> UEngineCore::LevelMap;
+
+FVector UEngineCore::GetScreenScale()
+{
+	return Data.WindowSize;
+}
 
 UEngineCore::UEngineCore()
 {
@@ -21,17 +27,6 @@ UEngineCore::UEngineCore()
 
 UEngineCore::~UEngineCore()
 {
-}
-
-ENGINEAPI void UEngineCore::OpenLevel(std::string_view _Name)
-{
-	if (false == LevelMap.contains(_Name.data()))
-	{
-		MSGASSERT("만들지 않은 레벨로 변경하려고 했습니다." + std::string(_Name));
-		return;
-	}
-
-	NextLevel = LevelMap[_Name.data()];
 }
 
 void UEngineCore::WindowInit(HINSTANCE _Instance)
@@ -47,7 +42,6 @@ void UEngineCore::LoadContents(std::string_view _DllName)
 	Dir.MoveParentToDirectory("Build");
 	Dir.Move("bin/x64");
 
-	// 빌드 상황에 따라서 경로 변경
 #ifdef _DEBUG
 	Dir.Move("Debug");
 #else
@@ -57,7 +51,6 @@ void UEngineCore::LoadContents(std::string_view _DllName)
 	UEngineFile File = Dir.GetFile(_DllName);
 
 	std::string FullPath = File.GetPathToString();
-
 	ContentsDLL = LoadLibraryA(FullPath.c_str());
 
 	if (nullptr == ContentsDLL)
@@ -81,6 +74,56 @@ void UEngineCore::LoadContents(std::string_view _DllName)
 		MSGASSERT("컨텐츠 코어 생성에 실패했습니다.");
 		return;
 	}
+}
+
+void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
+{
+	UEngineDebug::LeakCheck();
+
+	WindowInit(_Instance);
+
+	LoadContents(_DllName);
+
+	UEngineWindow::WindowMessageLoop(
+		[]()
+		{
+			Device.CreateDeviceAndContext();
+			Core->EngineStart(Data);
+			MainWindow.SetWindowPosAndScale(Data.WindowPos, Data.WindowSize);
+			Device.CreateBackBuffer(MainWindow);
+		},
+		[]()
+		{
+			EngineFrame();
+		},
+		[]()
+		{
+			EngineEnd();
+		});
+}
+
+std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name)
+{
+	std::shared_ptr<ULevel> Ptr = std::make_shared<ULevel>();
+	Ptr->SetName(_Name);
+
+	LevelMap.insert({ _Name.data(), Ptr});
+
+	std::cout << "NewLevelCreate" << std::endl;
+
+	return Ptr;
+}
+
+void UEngineCore::OpenLevel(std::string_view _Name)
+{
+	if (false == LevelMap.contains(_Name.data()))
+	{
+		MSGASSERT("만들지 않은 레벨로 변경하려고 했습니다." + std::string(_Name));
+		return;
+	}
+	
+
+	NextLevel = LevelMap[_Name.data()];
 }
 
 void UEngineCore::EngineFrame()
@@ -108,50 +151,7 @@ void UEngineCore::EngineEnd()
 
 	CurLevel = nullptr;
 	NextLevel = nullptr;
-
 	LevelMap.clear();
+
 	UEngineDebug::EndConsole();
-}
-
-std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name)
-{
-	std::shared_ptr<ULevel> Ptr = std::make_shared<ULevel>();
-	Ptr->SetName(_Name);
-
-	LevelMap.insert({ _Name.data(), Ptr });
-
-	return Ptr;
-}
-
-void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
-{
-	UEngineDebug::LeakCheck();
-
-	WindowInit(_Instance);
-
-	LoadContents(_DllName);
-
-	UEngineWindow::WindowMessageLoop(
-		[]()
-		{
-			// 시작할 때 하고 싶은 것
-			//UEngineDebug::StartConsole();
-			UEngineInitData Data;
-			Device.CreateDeviceAndContext();
-			Core->EngineStart(Data);
-			MainWindow.SetWindowPosAndScale(Data.WindowPos, Data.WindowSize);
-			Device.CreateBackBuffer(MainWindow);
-
-			// 여기서부터 리소스 로드가 가능해짐
-		},
-		[]()
-		{
-			// 엔진이 돌아갈 때 하고 싶은 것
-			EngineFrame();
-		},
-		[]()
-		{
-			// 엔진이 끝났을 때 하고 싶은 것
-			EngineEnd();
-		});	
 }

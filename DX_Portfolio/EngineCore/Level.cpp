@@ -15,6 +15,8 @@ std::shared_ptr<class ACameraActor> ULevel::SpawnCamera(int _Order)
 		MSGASSERT("이미 존재하는 카메라를 또 만들려고 했습니다.");
 	}
 
+	Camera->BeginPlay();
+
 	Cameras.insert({ _Order , Camera });
 	return Camera;
 }
@@ -42,7 +44,7 @@ void ULevel::Tick(float _DeltaTime)
 {
 	std::list<std::shared_ptr<class AActor>>::iterator StartIter = BeginPlayList.begin();
 	std::list<std::shared_ptr<class AActor>>::iterator EndIter = BeginPlayList.end();
-	for (; StartIter != EndIter; )
+	for ( ; StartIter != EndIter; )
 	{
 		std::shared_ptr<AActor> CurActor = *StartIter;
 
@@ -90,3 +92,7 @@ void ULevel::ChangeRenderGroup(int _CameraOrder, int _PrevGroupOrder, std::share
 
 	Camera->CameraComponent->ChangeRenderGroup(_PrevGroupOrder, _Renderer);
 }
+
+
+
+
