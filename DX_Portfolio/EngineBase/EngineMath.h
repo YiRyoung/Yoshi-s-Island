@@ -492,6 +492,8 @@ public:
 
 };
 
+using float4 = FVector;
+
 // 행렬 은 보통 매트릭스 라고 합니다.
 class FMatrix
 {
@@ -693,7 +695,7 @@ public:
 
 };
 
-
+using float4x4 = FMatrix;
 
 enum class ECollisionType
 {
@@ -713,17 +715,23 @@ struct FTransform
 	// transformupdate는 
 	// 아래의 값들을 다 적용해서
 	// WVP를 만들어내는 함수이다.
-	FVector Scale = { 1.0f, 1.0f, 1.0f };
-	FVector Rotation;
-	FVector Location;
+	float4 Scale;
+	float4 Rotation;
+	float4 Location;
 
-	FMatrix ScaleMat;
-	FMatrix RotationMat;
-	FMatrix LocationMat;
-	FMatrix World;
-	FMatrix View;
-	FMatrix Projection;
-	FMatrix WVP;
+	float4x4 ScaleMat;
+	float4x4 RotationMat;
+	float4x4 LocationMat;
+	float4x4 World;
+	float4x4 View;
+	float4x4 Projection;
+	float4x4 WVP;
+
+	FTransform()
+		: Scale({ 1.0f, 1.0f, 1.0f, 1.0f })
+	{
+
+	}
 
 public:
 	ENGINEAPI void TransformUpdate();
@@ -883,5 +891,3 @@ public:
 
 	}
 };
-
-using float4 = FVector;
