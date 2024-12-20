@@ -21,7 +21,7 @@ void URenderer::SetOrder(int _Order)
 	ULevel* Level = GetActor()->GetWorld();
 
 	std::shared_ptr<URenderer> RendererPtr = GetThis<URenderer>();
-	Level->ChangeRenderGroup(PrevOrder, RendererPtr);
+	Level->ChangeRenderGroup(0, PrevOrder, RendererPtr);
 }
 
 ENGINEAPI void URenderer::BeginPlay()
@@ -35,7 +35,7 @@ ENGINEAPI void URenderer::BeginPlay()
 	PixelShaderInit();
 }
 
-void URenderer::Render(float _DeltaTime)
+void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
 	InputAssembler1Setting();
 	VertexShaderSetting();

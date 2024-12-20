@@ -1,8 +1,13 @@
 #pragma once
+#include <map>
+#include <list>
+#include "SceneComponent.h"
 
 // Ό³Έν :
-class UEngineCamera
+class UEngineCamera : public USceneComponent
 {
+	friend class ULevel;
+
 public:
 	// constrcuter destructer
 	UEngineCamera();
@@ -14,9 +19,15 @@ public:
 	UEngineCamera& operator=(const UEngineCamera& _Other) = delete;
 	UEngineCamera& operator=(UEngineCamera&& _Other) noexcept = delete;
 
+	void Render(float _DetlaTime);
+
+	void Tick(float _DetlaTime);
+
 protected:
 
 private:
+	std::map<int, std::list<std::shared_ptr<class URenderer>>> Renderers;
 
+	void ChangeRenderGroup(int _PrevGroupOrder, std::shared_ptr<URenderer> _Renderer);
 };
 

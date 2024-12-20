@@ -37,6 +37,9 @@
     <ClInclude Include="EngineCamera.h">
       <Filter>Object\Render</Filter>
     </ClInclude>
+    <ClInclude Include="CameraActor.h">
+      <Filter>Object\Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -70,6 +73,9 @@
       <Filter>Graphic</Filter>
     </ClCompile>
     <ClCompile Include="EngineCamera.cpp">
+      <Filter>Object\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraActor.cpp">
       <Filter>Object\Render</Filter>
     </ClCompile>
   </ItemGroup>
