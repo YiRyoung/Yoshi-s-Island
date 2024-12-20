@@ -4,8 +4,8 @@
 struct EngineVertex
 {
 public:
-	FVector COLOR;
 	FVector POSITION;
+	FVector COLOR;
 };
 
 // Ό³Έν :
@@ -33,15 +33,23 @@ private:
 	virtual void Render(float _DeltaTime);
 
 public:
-	ID3D11Buffer* VertexBuffer = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> VertexBuffer = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11InputLayout> InputLayOut = nullptr;
 	void InputAssembler1Init();
 	void InputAssembler1Setting();
-	
-	ID3DBlob* ShaderCodeBlob = nullptr;
-	ID3DBlob* ErrorCodeBlob = nullptr;
+	void InputAssembler1LayOut();
 
-	ID3D11VertexShader* VertexShader = nullptr;
+	Microsoft::WRL::ComPtr<ID3DBlob> ShaderCodeBlob = nullptr;
+	Microsoft::WRL::ComPtr<ID3DBlob> ErrorCodeBlob = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11VertexShader> VertexShader = nullptr;
 	void VertexShaderInit();
 	void VertexShaderSetting();
+
+
+	Microsoft::WRL::ComPtr<ID3D11Buffer> IndexBuffer = nullptr;
+	D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
+	void InputAssembler2Init();
+	void InputAssembler2Setting();
+
 };
 

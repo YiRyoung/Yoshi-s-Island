@@ -8,9 +8,9 @@ URenderer::URenderer()
 
 URenderer::~URenderer()
 {
-	VertexBuffer->Release();
-	ShaderCodeBlob->Release();
-	ErrorCodeBlob->Release();
+	VertexBuffer = nullptr;
+	ShaderCodeBlob = nullptr;
+	ErrorCodeBlob = nullptr;
 }
 
 void URenderer::SetOrder(int _Order)
@@ -79,6 +79,52 @@ void URenderer::InputAssembler1Setting()
 	UINT VertexSize = sizeof(EngineVertex);
 	UINT Offset = 0;
 	UEngineCore::Device.GetContext()->IASetVertexBuffers(0, 1, &VertexBuffer, &VertexSize, &Offset);
+	UEngineCore::Device.GetContext()->IASetInputLayout(InputLayOut.Get());
+}
+
+void URenderer::InputAssembler1LayOut()
+{
+	std::vector<D3D11_INPUT_ELEMENT_DESC> InputLayOutData;
+
+
+	{
+		D3D11_INPUT_ELEMENT_DESC Desc;
+		Desc.SemanticName = "POSITION";
+		Desc.InputSlot = 0;
+		Desc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		Desc.AlignedByteOffset = 0;
+		Desc.InputSlotClass = D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA;
+
+		Desc.SemanticIndex = 0;
+		Desc.InstanceDataStepRate = 0;
+		InputLayOutData.push_back(Desc);
+	}
+
+	{
+		D3D11_INPUT_ELEMENT_DESC Desc;
+		Desc.SemanticName = "COLOR";
+		Desc.InputSlot = 0;
+		Desc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		Desc.AlignedByteOffset = 16;
+		Desc.InputSlotClass = D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA;
+
+		Desc.SemanticIndex = 0;
+		Desc.InstanceDataStepRate = 0;
+		InputLayOutData.push_back(Desc);
+	}
+
+	HRESULT Result = UEngineCore::Device.GetDevice()->CreateInputLayout(
+		&InputLayOutData[0],
+		InputLayOutData.size(),
+		ShaderCodeBlob->GetBufferPointer(),
+		ShaderCodeBlob->GetBufferSize(),
+		&InputLayOut);
+
+	if (S_OK != Result)
+	{
+		MSGASSERT("인풋 레이아웃 생성에 실패했습니다");
+	}
+
 }
 
 void URenderer::VertexShaderInit()
@@ -133,10 +179,19 @@ void URenderer::VertexShaderInit()
 		MSGASSERT("버텍스 쉐이더 생성에 실패했습니다.");
 	}
 
+	InputAssembler1LayOut();
 }
 
 void URenderer::VertexShaderSetting()
 {
-	UEngineCore::Device.GetContext()->VSSetShader(VertexShader, nullptr, 0);
+	UEngineCore::Device.GetContext()->VSSetShader(VertexShader.Get(), nullptr, 0);
+}
+
+void URenderer::InputAssembler2Init()
+{
+}
+
+void URenderer::InputAssembler2Setting()
+{
 }
 
