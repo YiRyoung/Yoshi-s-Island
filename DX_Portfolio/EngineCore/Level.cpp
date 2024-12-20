@@ -48,7 +48,7 @@ void ULevel::Tick(float _DeltaTime)
 
 void ULevel::Render(float _DeltaTime)
 {
-	UEngineCore::Device.ReleaseStart();
+	UEngineCore::Device.RenderStart();
 
 	for (std::pair<const int, std::list<std::shared_ptr<URenderer>>>& RenderGroup : Renderers)
 	{
@@ -60,7 +60,7 @@ void ULevel::Render(float _DeltaTime)
 		}
 	}
 
-	UEngineCore::Device.ReleaseEnd();
+	UEngineCore::Device.RenderEnd();
 }
 
 void ULevel::ChangeRenderGroup(int _PrevGroupOrder, std::shared_ptr<class URenderer> _Renderer)

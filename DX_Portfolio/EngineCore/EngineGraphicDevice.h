@@ -34,9 +34,9 @@ public:
 
 	void Release();
 
-	void ReleaseStart();
+	void RenderStart();
 
-	void ReleaseEnd();
+	void RenderEnd();
 
 	ENGINEAPI ID3D11Device* GetDevice()
 	{
@@ -46,6 +46,11 @@ public:
 	ENGINEAPI ID3D11DeviceContext* GetContext()
 	{
 		return Context.Get();
+	}
+
+	ENGINEAPI ID3D11RenderTargetView* GetRTV()
+	{
+		return RTV.Get();
 	}
 
 protected:

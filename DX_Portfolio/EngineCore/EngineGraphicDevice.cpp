@@ -34,6 +34,8 @@ IDXGIAdapter* UEngineGraphicDevice::GetHighPerFormanceAdapter()
         return nullptr;
     }
 
+
+
     for (int Index = 0;; ++Index)
     {
         IDXGIAdapter* CurAdapter = nullptr;
@@ -84,7 +86,6 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
     int iFlag = 0;
 
 #ifdef _DEBUG
-    // 디버그 모드일때만
     iFlag = D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
@@ -99,7 +100,7 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
         0,
         D3D11_SDK_VERSION,
         &Device,
-        &ResultLevel,
+        &ResultLevel, 
         &Context);
 
     if (nullptr == Device)
@@ -120,7 +121,7 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
         return;
     }
 
-    if (ResultLevel != D3D_FEATURE_LEVEL_11_0
+    if (ResultLevel != D3D_FEATURE_LEVEL_11_0 
         && ResultLevel != D3D_FEATURE_LEVEL_11_1)
     {
         MSGASSERT("다이렉트 11버전을 지원하지 않는 그래픽카드 입니다.");
@@ -134,21 +135,19 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
         MSGASSERT("쓰레드 안정성 적용에 문제가 생겼습니다.");
         return;
     }
-
-    //MainAdapter->Release();
 }
 
 void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 {
     FVector Size = _Window.GetWindowSize();
 
-    DXGI_SWAP_CHAIN_DESC ScInfo = { 0 };
+    DXGI_SWAP_CHAIN_DESC ScInfo = {0};
 
     ScInfo.BufferCount = 2;
     ScInfo.BufferDesc.Width = Size.iX();
     ScInfo.BufferDesc.Height = Size.iY();
     ScInfo.OutputWindow = _Window.GetWindowHandle();
-  
+
     ScInfo.Windowed = true;
 
     ScInfo.BufferDesc.RefreshRate.Denominator = 1;
@@ -161,8 +160,8 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 
     ScInfo.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT | DXGI_USAGE_SHADER_INPUT;
 
-    // 샘플링
     ScInfo.SampleDesc.Quality = 0;
+
     ScInfo.SampleDesc.Count = 1;
 
     ScInfo.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
@@ -170,15 +169,9 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 
     IDXGIFactory* pF = nullptr;
 
-    // 날 만든 팩토리를 얻어올수 있다.
     MainAdapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&pF));
 
-    // IUnknown* pDevice,
-    // DXGI_SWAP_CHAIN_DESC* pDesc,
-    // IDXGISwapChain** ppSwapChain
-
     pF->CreateSwapChain(Device.Get(), &ScInfo, &SwapChain);
-
     pF->Release();
     MainAdapter->Release();
 
@@ -186,8 +179,6 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
     {
         MSGASSERT("스왑체인 제작에 실패했습니다.");
     }
-
-    ID3D11Texture2D* TexPtr = nullptr;
 
     if (S_OK != SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(DXBackBufferTexture.GetAddressOf())))
     {
@@ -201,17 +192,18 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 
 }
 
-void UEngineGraphicDevice::ReleaseStart()
+
+void UEngineGraphicDevice::RenderStart()
 {
     FVector ClearColor;
 
     ClearColor = FVector(0.0f, 0.0f, 1.0f, 1.0f);
-
     Context->ClearRenderTargetView(RTV.Get(), ClearColor.Arr1D);
 }
 
-void UEngineGraphicDevice::ReleaseEnd()
+void UEngineGraphicDevice::RenderEnd()
 {
+
     HRESULT Result = SwapChain->Present(0, 0);
 
     if (Result == DXGI_ERROR_DEVICE_REMOVED || Result == DXGI_ERROR_DEVICE_RESET)
