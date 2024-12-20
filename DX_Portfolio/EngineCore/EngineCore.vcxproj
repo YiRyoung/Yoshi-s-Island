@@ -177,6 +177,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EngineCamera.h" />
     <ClInclude Include="EngineCore.h">
       <SubType>
       </SubType>
@@ -217,6 +218,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EngineCamera.cpp" />
     <ClCompile Include="EngineCore.cpp">
       <SubType>
       </SubType>

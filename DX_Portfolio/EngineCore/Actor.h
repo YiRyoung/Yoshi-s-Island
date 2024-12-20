@@ -68,6 +68,16 @@ public:
 		return World;
 	}
 
+	void SetActorRelativeScale3D(const FVector& _Scale)
+	{
+		if (nullptr == RootComponent)
+		{
+			return;
+		}
+
+		RootComponent->SetRelativeScale3D(_Scale);
+	}
+
 protected:
 
 private:

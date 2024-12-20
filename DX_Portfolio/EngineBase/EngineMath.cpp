@@ -19,10 +19,14 @@ const FVector FVector::DOWN = { 0.0f, -1.0f };
 const FVector FVector::FORWARD = { 0.0f, 0.0f, 1.0f };
 const FVector FVector::BACK = { 0.0f, 0.0f , -1.0f };
 
+// const FVector FVector::BLUE = {0.0f, 0.0f, 1.0f, 1.0f};
+
+
 const FIntPoint FIntPoint::LEFT = { -1, 0 };
 const FIntPoint FIntPoint::RIGHT = { 1, 0 };
 const FIntPoint FIntPoint::UP = { 0, -1 };
 const FIntPoint FIntPoint::DOWN = { 0, 1 };
+
 
 
 const UColor UColor::WHITE = { 255, 255, 255, 0 };
@@ -241,4 +245,13 @@ FMatrix FMatrix::operator*(const FMatrix& _Matrix)
 
 	return Result;
 
+}
+
+void FTransform::TransformUpdate()
+{
+	ScaleMat.Scale(Scale);
+	RotationMat.RotationDeg(Rotation);
+	LocationMat.Position(Location);
+
+	World = ScaleMat * RotationMat * LocationMat;
 }
