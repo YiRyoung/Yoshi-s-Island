@@ -26,6 +26,8 @@ public:
 
 	void SetOrder(int _Order) override;
 
+	void SetTexture(std::string_view _Value);
+
 protected:
 	ENGINEAPI void BeginPlay() override;
 
@@ -33,8 +35,7 @@ private:
 	virtual void Render(UEngineCamera* _Camera, float _DeltaTime);
 
 public:
-	Microsoft::WRL::ComPtr<ID3D11Texture2D> Texture2D = nullptr;
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> SRV = nullptr;
+	std::shared_ptr<class UEngineTexture> Texture = nullptr;
 
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> SamplerState = nullptr;
 

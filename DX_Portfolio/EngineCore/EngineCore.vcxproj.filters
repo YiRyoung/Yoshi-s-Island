@@ -29,7 +29,7 @@
       <Filter>Object\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Object\Component\Contents</Filter>
+      <Filter>Object\Component\Render</Filter>
     </ClInclude>
     <ClInclude Include="EngineGraphicDevice.h">
       <Filter>Graphic</Filter>
@@ -39,6 +39,15 @@
     </ClInclude>
     <ClInclude Include="CameraActor.h">
       <Filter>Object\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>Object\Component\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTexture.h">
+      <Filter>Object\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineResources.h">
+      <Filter>Object\Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +76,7 @@
       <Filter>Object\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Object\Component\Contents</Filter>
+      <Filter>Object\Component\Render</Filter>
     </ClCompile>
     <ClCompile Include="EngineGraphicDevice.cpp">
       <Filter>Graphic</Filter>
@@ -77,6 +86,15 @@
     </ClCompile>
     <ClCompile Include="CameraActor.cpp">
       <Filter>Object\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Object\Component\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTexture.cpp">
+      <Filter>Object\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineResources.cpp">
+      <Filter>Object\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +116,6 @@
     <Filter Include="Object\Actor">
       <UniqueIdentifier>{15414ff2-78d4-42f0-9927-a29b0c527bd0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Component\Contents">
-      <UniqueIdentifier>{1ebb4957-5c5c-4379-8d0e-79707d704886}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphic">
       <UniqueIdentifier>{9e1bb385-006d-4a41-9039-d54636145021}</UniqueIdentifier>
     </Filter>
@@ -119,6 +134,15 @@
     <Filter Include="ThirdParty\DirectxTex\Debug">
       <UniqueIdentifier>{4c8b2e57-7e29-493f-aa64-85a1e0672daf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Component\Render">
+      <UniqueIdentifier>{1ebb4957-5c5c-4379-8d0e-79707d704886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\Contents">
+      <UniqueIdentifier>{49555c9f-5028-462a-a6cc-794a6bd346ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Resources">
+      <UniqueIdentifier>{9e8ff694-93a7-4784-8b61-2c0c8f009176}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="ThirdParty\DirectxTex\Inc\DirectXTex.h">
@@ -127,8 +151,10 @@
     <CopyFileToFolders Include="ThirdParty\DirectxTex\Inc\DirectXTex.inl">
       <Filter>ThirdParty\DirectxTex\Inc</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="ThirdParty\DirectxTex\Debug\DirectXTex.lib">
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ThirdParty\DirectxTex\Debug\DirectXTex_Debug.lib">
       <Filter>ThirdParty\DirectxTex\Debug</Filter>
-    </CopyFileToFolders>
+    </Library>
   </ItemGroup>
 </Project>
