@@ -51,16 +51,32 @@ ENGINEAPI void URenderer::BeginPlay()
 
 void URenderer::ShaderResInit()
 {
-	D3D11_BUFFER_DESC BufferInfo = { 0 };
-	BufferInfo.ByteWidth = sizeof(FTransform);
-	BufferInfo.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	BufferInfo.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-	BufferInfo.Usage = D3D11_USAGE_DYNAMIC;
-
-	if (S_OK != UEngineCore::Device.GetDevice()->CreateBuffer(&BufferInfo, nullptr, &TransformConstBuffer))
 	{
-		MSGASSERT("상수버퍼 생성에 실패했습니다..");
-		return;
+		D3D11_BUFFER_DESC BufferInfo = { 0 };
+		BufferInfo.ByteWidth = sizeof(FTransform);
+		BufferInfo.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		BufferInfo.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
+		BufferInfo.Usage = D3D11_USAGE_DYNAMIC;
+
+		if (S_OK != UEngineCore::Device.GetDevice()->CreateBuffer(&BufferInfo, nullptr, TransformConstBuffer.GetAddressOf()))
+		{
+			MSGASSERT("상수버퍼 생성에 실패했습니다..");
+			return;
+		}
+	}
+
+	{
+		D3D11_BUFFER_DESC BufferInfo = { 0 };
+		BufferInfo.ByteWidth = sizeof(FSpriteData);
+		BufferInfo.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		BufferInfo.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
+		BufferInfo.Usage = D3D11_USAGE_DYNAMIC;
+
+		if (S_OK != UEngineCore::Device.GetDevice()->CreateBuffer(&BufferInfo, nullptr, SpriteConstBuffer.GetAddressOf()))
+		{
+			MSGASSERT("상수버퍼 생성에 실패했습니다..");
+			return;
+		}
 	}
 
 	D3D11_SAMPLER_DESC SampInfo = { D3D11_FILTER::D3D11_FILTER_MIN_MAG_MIP_POINT };
@@ -79,25 +95,46 @@ void URenderer::ShaderResInit()
 
 void URenderer::ShaderResSetting()
 {
-	FTransform& RendererTrans = GetTransformRef();
-
-	D3D11_MAPPED_SUBRESOURCE Data = {};
-
-	UEngineCore::Device.GetContext()->Map(TransformConstBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &Data);
-
-	if (nullptr == Data.pData)
 	{
-		MSGASSERT("그래픽카드가 수정을 거부했습니다.");
+		FTransform& RendererTrans = GetTransformRef();
+
+		D3D11_MAPPED_SUBRESOURCE Data = {};
+
+		UEngineCore::Device.GetContext()->Map(TransformConstBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &Data);
+
+		if (nullptr == Data.pData)
+		{
+			MSGASSERT("그래픽카드가 수정을 거부했습니다.");
+		}
+
+		memcpy_s(Data.pData, sizeof(FTransform), &RendererTrans, sizeof(FTransform));
+
+
+		UEngineCore::Device.GetContext()->Unmap(TransformConstBuffer.Get(), 0);
+
+		ID3D11Buffer* ArrPtr[16] = { TransformConstBuffer.Get() };
+
+		UEngineCore::Device.GetContext()->VSSetConstantBuffers(0, 1, ArrPtr);
 	}
 
-	memcpy_s(Data.pData, sizeof(FTransform), &RendererTrans, sizeof(FTransform));
+	{
+		D3D11_MAPPED_SUBRESOURCE Data = {};
+		// 이 데이터를 사용하는 랜더링 랜더링 잠깐 정지
+		// 잠깐 그래픽카드야 멈 그래픽카드에 있는 상수버퍼 수정해야 해.
+		UEngineCore::Device.GetContext()->Map(SpriteConstBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &Data);
 
+		// Data.pData 그래픽카드와 연결된 주소값.
+		if (nullptr == Data.pData)
+		{
+			MSGASSERT("그래픽카드가 수정을 거부했습니다.");
+		}
+		memcpy_s(Data.pData, sizeof(FSpriteData), &SpriteData, sizeof(FSpriteData));
+		UEngineCore::Device.GetContext()->Unmap(SpriteConstBuffer.Get(), 0);
 
-	UEngineCore::Device.GetContext()->Unmap(TransformConstBuffer.Get(), 0);
-
-	ID3D11Buffer* ArrPtr[16] = { TransformConstBuffer.Get() };
-
-	UEngineCore::Device.GetContext()->VSSetConstantBuffers(0, 1, ArrPtr);
+		// 같은 상수버퍼를 
+		ID3D11Buffer* ArrPtr[16] = { SpriteConstBuffer.Get() };
+		UEngineCore::Device.GetContext()->VSSetConstantBuffers(1, 1, ArrPtr);
+	}
 
 	ID3D11ShaderResourceView* ArrSRV[16] = { Texture->GetSRV() };
 	UEngineCore::Device.GetContext()->PSSetShaderResources(0, 1, ArrSRV);

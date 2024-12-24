@@ -7,8 +7,12 @@ class UEngineResources : public UObject
 {
 public:
 	// constrcuter destructer
-	UEngineResources() { }
-	~UEngineResources() { }
+	UEngineResources() {
+
+	}
+	~UEngineResources() {
+
+	}
 
 	// delete Function
 	UEngineResources(const UEngineResources& _Other) = delete;

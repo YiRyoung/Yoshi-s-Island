@@ -4,10 +4,10 @@
 
 ATitleLogo::ATitleLogo()
 {
-	LogoRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	LogoRenderer->SetSprite("Title0.png");
+	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	BackgroundRenderer->SetSprite("Title0.png");
 
-	SetActorRelativeScale3D({ 256 * 3.2f, 220 * 3.2f, 1.0f });
+	SetActorRelativeScale3D({ 600.0f, 600.0f, 1.0f });
 }
 
 ATitleLogo::~ATitleLogo()
