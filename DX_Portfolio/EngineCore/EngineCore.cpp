@@ -11,6 +11,7 @@ UEngineWindow UEngineCore::MainWindow;
 HMODULE UEngineCore::ContentsDLL = nullptr;
 std::shared_ptr<IContentsCore> UEngineCore::Core;
 UEngineInitData UEngineCore::Data;
+UEngineTimer UEngineCore::Timer;
 
 std::shared_ptr<class ULevel> UEngineCore::NextLevel;
 std::shared_ptr<class ULevel> UEngineCore::CurLevel = nullptr;
@@ -140,10 +141,13 @@ void UEngineCore::EngineFrame()
 
 		CurLevel->LevelChangeStart();
 		NextLevel = nullptr;
+		Timer.TimeStart();
 	}
+	Timer.TimeCheck();
+	float DeltaTime = Timer.GetDeltaTime();
 
-	CurLevel->Tick(0.0f);
-	CurLevel->Render(0.0f);
+	CurLevel->Tick(DeltaTime);
+	CurLevel->Render(DeltaTime);
 }
 
 void UEngineCore::EngineEnd()

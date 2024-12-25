@@ -181,6 +181,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EngineTimer.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PreCompile.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -201,6 +202,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EngineTimer.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PreCompile.h" />
   </ItemGroup>

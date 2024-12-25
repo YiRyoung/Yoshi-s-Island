@@ -1,0 +1,6323 @@
+fileFormatVersion: 2
+guid: 32796ab481017ab43b8e148c703a5230
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: YoshiAndMario_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 724
+        width: 25
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c000e9f40476d64b92dff0a2837d4e9
+      internalID: -1773722642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 724
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0baafcce0a687d64289956000110eebd
+      internalID: -189151622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7af8c6be58c10e9479afcb8a83994617
+      internalID: 946660997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d608e32c682f6fb4f88626aac627b3ac
+      internalID: -1652094032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_4
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15cbb4df521c6e54a8fd1540f06d34c7
+      internalID: 49725861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_5
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baa46db7eda35994a995f6387729febe
+      internalID: -2060076788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_6
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2223e72e8fff33f46b7f7a579829904a
+      internalID: 746779509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_7
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 724
+        width: 30
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9901984874c0d4c90a43f21cde360a
+      internalID: -1642463706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_8
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4760f61f9410104d93b24aed004a7b9
+      internalID: 588029476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_9
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef36dbfd381d94146adce49b5f81c075
+      internalID: -210385362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_10
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 724
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044a51da314eea54c8dc6ac5b34056a4
+      internalID: -2054616764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_11
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 724
+        width: 31
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2815e4bb83370041ad17d8f390e777c
+      internalID: -982314270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_12
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 724
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da8a4a350f21f7444a358774e9cf208e
+      internalID: -432772269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_13
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 724
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4e9101bf0ab61489f5a480be83726c
+      internalID: -1842817122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_14
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 724
+        width: 32
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc3fab3beab80cb44967545a925ef4d7
+      internalID: -225841908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_15
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 724
+        width: 30
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e1a32bf7630c964fb21263bbf09a4e6
+      internalID: 1883531660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_16
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 724
+        width: 30
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2ff6eac92676e4287cdd7e85103ce2
+      internalID: 242821797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_17
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 724
+        width: 30
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a1dc2dbb65b9fa4995cd4f4fa2539a3
+      internalID: -496628265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_18
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 679
+        width: 25
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ef6f11f6ab5874eb26af9322c3b4c3
+      internalID: -1331892725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_19
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 679
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd87d0ee761dc9c4e91f1ef3a7e99fbb
+      internalID: -1761268172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_20
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 679
+        width: 33
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b07f119c1b7f145bdc54bbe802ec39
+      internalID: 1373039003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_21
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 679
+        width: 33
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82977d5c6c2a35f41891900d3b6bcc54
+      internalID: 1017423544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_22
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 679
+        width: 33
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2842ad07a7331044f98835d056d748f7
+      internalID: -1261630186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_23
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 679
+        width: 32
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21334481ea26f254da447a09c13143f5
+      internalID: -1694041447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_24
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 679
+        width: 33
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e921135e3b06964479d128a9b493b043
+      internalID: 649044389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 679
+        width: 33
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae33e2e237c458479c413c2277023be
+      internalID: -716850517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_26
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 679
+        width: 33
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a5bf77c7caa64e4f8c71ee9242b8a42
+      internalID: -987007953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_27
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 679
+        width: 33
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bfcd57ae76e49c4ea416d9a52777c41
+      internalID: -1369837081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_28
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 679
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 339a94d137e96f14897fa0db4e287565
+      internalID: -1702114824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_29
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 679
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d5dede8b03429f47be9ac4a85f23ddc
+      internalID: 132783417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_30
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 679
+        width: 29
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b073b3348d2b65743ac11848b490af37
+      internalID: 815079523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_31
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 679
+        width: 33
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fef7a7a4299c0b4d98ef2aa6b1b0e51
+      internalID: -1312826891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_32
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 679
+        width: 31
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf74e5c206a1b6468b23c769d280929
+      internalID: 997023107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_33
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 679
+        width: 30
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a428c574b1e30194996b23c3f246022b
+      internalID: 213762883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_34
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 679
+        width: 30
+        height: 41
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b10a17418d094d041b2412d12dfc70be
+      internalID: 346899120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_36
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 679
+        width: 31
+        height: 41
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efab38dcbcd2ba5418d4678ee0ead0a8
+      internalID: 1426172838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_37
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 679
+        width: 29
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed93c272f86639841bd326591d5b729c
+      internalID: 1644937445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_38
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 679
+        width: 34
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 519e0aed6d2f96f428d56c2cb879fc2d
+      internalID: 658433742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_39
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 679
+        width: 30
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ee713de18b723740a5af87e8cbec40b
+      internalID: 1604911588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_40
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 679
+        width: 30
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54650976e405ef45af7d32b6ce3d24b
+      internalID: -1540519417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_41
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 635
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7554db0463f813449b0b7304681098c4
+      internalID: -654067834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_42
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 635
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1140f0bfaa68809429f9b2fb599617e9
+      internalID: -917787440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_43
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 635
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa24fa7253c9a14c8c1a7d32802316f
+      internalID: -528087873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_44
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 635
+        width: 32
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699bced26c072374ca9ad43369c42e3d
+      internalID: -1392837550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_45
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 635
+        width: 32
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4a129ba5a52084db750a0c4ea23c47
+      internalID: -1325794216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_46
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 635
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc577203b1be3340af374597468b9cc
+      internalID: -141195846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_47
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 635
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb88186ddffbce24799c8a78587a2947
+      internalID: 1125575784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_48
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 635
+        width: 32
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea922bbf7d744bb4ab16f72e226dffb3
+      internalID: -1160123799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_49
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 635
+        width: 32
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3223c3de7cad05049bdbe9b55086ccd0
+      internalID: 1330401632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_50
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 635
+        width: 32
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0130c5a5f7b195643840e0f226bdc50b
+      internalID: -412103422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_51
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 635
+        width: 32
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbce2ee3aacfbe84c81ce1aeb086ad72
+      internalID: 1496474930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_52
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 635
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6e4b9ea475da14aba0ccac63c0fd8b
+      internalID: 1084421986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_53
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 635
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b967940e333e6a4f9abd51c113e750a
+      internalID: -1222408380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_54
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 635
+        width: 36
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d9a607e6bb6c24b9c3ff33fc61591d
+      internalID: -506917374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_55
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 635
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2caf081926581749bba44c0eae56a7f
+      internalID: -93796756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_56
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 635
+        width: 36
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1a2460b493919439a7e4a63490cae7
+      internalID: 500269629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_57
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 635
+        width: 36
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d75f556ac41a74e8a12378895b4268
+      internalID: -1183501047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_58
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 635
+        width: 36
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ef19082d736394d86bdd0388b556c5
+      internalID: 1362596714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_59
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 635
+        width: 27
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c51f9ec237d094fb7a3979d2d9712f
+      internalID: 609653240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_60
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 593
+        width: 34
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deeb6736ced94cd4dac9de708ca6fc9d
+      internalID: -1752555436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_61
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 593
+        width: 34
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d764b097c882d4c9f1887108f13748
+      internalID: -657402553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_62
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 593
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1450d0ca867b175469e1e2eedf94bc42
+      internalID: 1462307446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_63
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 593
+        width: 34
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb549e3d7d211542ae0be5a08dc035f
+      internalID: -859358830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_64
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 593
+        width: 34
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29735a3672480624e8bde9a69a15e2f5
+      internalID: -108724078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_65
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 593
+        width: 34
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b82ae8d38cb464aa5d85fca8ba7a4f
+      internalID: 1366686096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_66
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 593
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d7ba7acf04fb440862d5bfd264f321
+      internalID: -1821650754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_67
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 593
+        width: 34
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca3e0e729e95bf447ad282b6d09d5d5d
+      internalID: -1323704845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_68
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 593
+        width: 34
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef1df8a0d8cb0e46a529abff150a745
+      internalID: -504914270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_69
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 593
+        width: 34
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a4cca1b1c63807499de58d62058e28f
+      internalID: 872230503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_70
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 593
+        width: 37
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11116e5a4b530840bd672e16a929cca
+      internalID: -190917536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_71
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 593
+        width: 37
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb77f982aef771b47a2d00ff668055ec
+      internalID: 894053337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_72
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 593
+        width: 37
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40194a3c84bfee845a0ac13b35515a97
+      internalID: 1537078278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_73
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 593
+        width: 37
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9d4944be0f9fbd47a5c06d9bdb9ee4d
+      internalID: -1727679404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_74
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 593
+        width: 37
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbcdd3b9bfb84404daf2ac72ba6d53ec
+      internalID: -1662404795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_75
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 593
+        width: 28
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba833ddd48cc68e49935632d0366b369
+      internalID: -356892402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_76
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 549
+        width: 30
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6eb1386653849546b8191847b400542
+      internalID: 1726497280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_77
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 549
+        width: 30
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e20ebc5dc22a70d409b055b128669f3c
+      internalID: -1869411656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_78
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 549
+        width: 29
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98aaec3e4e6bcf441b339304a0bc3570
+      internalID: -2123475594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_79
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 549
+        width: 29
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfc00e98a8383ae4aafd90be90cab166
+      internalID: -1112217123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_80
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 549
+        width: 29
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bac0aff4c6147b41859fdf60c2578ee
+      internalID: 216889044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_81
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 549
+        width: 31
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f431bc2ed4fe0459ed680c662e0cf2
+      internalID: -1910441381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_82
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 551
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd63feb06d53b449bb0c775d583d4b8
+      internalID: 1900302085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_83
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 549
+        width: 29
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5861e991d6940b42b49ba083dbb30fb
+      internalID: -887285797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_84
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 552
+        width: 29
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5324557ecfda64b86150b63fbfb18c
+      internalID: -1851664632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_85
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 549
+        width: 32
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3afb4dd613945da45b03b3eddeb1142d
+      internalID: -1047756254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_86
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 549
+        width: 30
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d388b4af1818484e95fa92a11cbbaa4
+      internalID: -1189441752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_87
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 549
+        width: 30
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f78ab5ac1077d42b11b169731492c8
+      internalID: -746453486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_88
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 549
+        width: 31
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acff773e9b9add44fb47d7bf5ccb8014
+      internalID: 537193541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_89
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 549
+        width: 31
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a8852d21cbcd745aeac90bf9ebf1da
+      internalID: -1013657577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_90
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 549
+        width: 31
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2f4e5b71ab6f3043915c6254f2eaad4
+      internalID: 938878540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_91
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 549
+        width: 30
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4125e23f110244fb5683cedb31f893
+      internalID: 628014525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_92
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 551
+        width: 30
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0638a3b8d566da45ab35f711744182d
+      internalID: 1717311802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_93
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 549
+        width: 28
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6467659861951c94fbfac4960b91d891
+      internalID: 1644776043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_94
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 552
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67054777b8cd974eb83e87e5f382ef2
+      internalID: 1016469755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_95
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 507
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4315c7c1a348849a910e323de37d58
+      internalID: 1860245854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_96
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 507
+        width: 81
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5cd16eb7af1284e803a9fefee0c234
+      internalID: -1626347442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_97
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 507
+        width: 73
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4c234632995a3438bdb61fad34cc01
+      internalID: 738072860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_98
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 507
+        width: 73
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fbccc2623c8a4b4788d6d19e905900a
+      internalID: 193152641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_99
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 507
+        width: 73
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb274d0bac447c4e84c909d93975d0a
+      internalID: 1426840573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_100
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 507
+        width: 73
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62c12b73019f3845aea0ccb8b96eb11
+      internalID: 1859689628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_101
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 507
+        width: 73
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c1b23adcbd43fe4d94016680e597aa3
+      internalID: 2137450196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_102
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 507
+        width: 73
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4525dbc22912e947b56920d14bad30e
+      internalID: 1722580953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_103
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 507
+        width: 73
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20560994af58366468b3822aca5bd20e
+      internalID: -607891966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_104
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 428
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76637298288fc974daf8eb6526d2ffb6
+      internalID: 1341086026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_105
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 428
+        width: 26
+        height: 75
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69004aa423d4d64e958003cab565c0b
+      internalID: 1260010023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_106
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 428
+        width: 29
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eebe68ead5694544b2be6be8b50beec
+      internalID: -3970249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_107
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 428
+        width: 26
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8908da9bc6063b541886fce428927ad2
+      internalID: -1171835005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_108
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 428
+        width: 26
+        height: 67
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4af9263896a3f443843f4ba143337aa
+      internalID: -2093232281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_109
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 428
+        width: 30
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf9fed2e50ee0d4989bfb22d57a542e
+      internalID: 1337480967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_110
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 428
+        width: 29
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b99d1661c017be346bb736c44a10f8cf
+      internalID: 2112488745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_111
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 428
+        width: 29
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5bf9b6b1218a347bbe91ccbb35005b
+      internalID: -491535844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_112
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 428
+        width: 31
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71ad16b0314f6541ae8e8c5cb41e36c
+      internalID: -457686824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_113
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 428
+        width: 31
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0bac122de88b14e975d7a4eba4db4c
+      internalID: 832426681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_114
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 428
+        width: 30
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df029386952766429e7ba682646a929
+      internalID: -1527587440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_115
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 428
+        width: 29
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850b7268caefdba418a7955f72f08f9a
+      internalID: 1328212006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_116
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 428
+        width: 28
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af6982af1b7b80b4cbc5db949e812aaa
+      internalID: 715593526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_117
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 428
+        width: 28
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d976d695cf9223f4ab0761a1c06a2e74
+      internalID: 1994665011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_118
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 428
+        width: 30
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09281fed87f312547a92c62dfaacdc8e
+      internalID: -1754268980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_119
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 428
+        width: 30
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e58abf7256c72954d80c5438cef59ad9
+      internalID: -635440082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_120
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 383
+        width: 26
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd261f5eb1af0444b0315a8a9b6d40d
+      internalID: -1996404807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_121
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 383
+        width: 29
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9718f52e1374ab04e947f6a9fe6f7f62
+      internalID: -501308739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_122
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 383
+        width: 27
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a884eba8abf3fb64f897db5323ac40ed
+      internalID: 2139393625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_123
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 383
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6166b168ad887245a920350d4b24471
+      internalID: -1225512586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_124
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 383
+        width: 26
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f95aa29f9d6f294ebf80bf13332207f
+      internalID: -1214527889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_125
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 383
+        width: 27
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e740515d7ada847a131e710eb4da11
+      internalID: 771268766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_126
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 383
+        width: 31
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd2e89e74cb64a74e8cb1406658da009
+      internalID: 318317451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_127
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 386
+        width: 33
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa5c14a423ad7642ad29e0a90026317
+      internalID: 467771227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_128
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 383
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fe349b86c9af7c409510ce82d90faf9
+      internalID: 2003819404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_129
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 387
+        width: 30
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f166431fa07264ab45e093e722c0b5
+      internalID: -1339198283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_130
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 383
+        width: 29
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780975465340cd64783a5ea949b98124
+      internalID: -853788215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_131
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 383
+        width: 30
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26038b8c54c58348840844de49940c3
+      internalID: 490081996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_132
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 383
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c631738534e85442b9c6ba1d1216f5c
+      internalID: 1563921652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_133
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 383
+        width: 28
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e15beccd87b0934b99f7c9faae9164e
+      internalID: -1756985350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_134
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 383
+        width: 31
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98459990dbf04f4a9f6a49303191971
+      internalID: -1873678871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_135
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 383
+        width: 33
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d8204da835a8c469e7af314de65440
+      internalID: 1717715005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_136
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 390
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb5790d3fb1d864a837add558a3b6ba
+      internalID: -2032646715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_137
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 390
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91d87c5ba7fa6142be381b03e99bce2
+      internalID: -1247350399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_138
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 383
+        width: 25
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2040d83044a550f46ac95e6218f58286
+      internalID: -302531231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_139
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 383
+        width: 31
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 407a6f7c5891fe742b96fd2bdcf91ba8
+      internalID: -116451378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_140
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 383
+        width: 21
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e6b3a2e7e8604d488735bf5758e7efe
+      internalID: 1526759885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_141
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 383
+        width: 26
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b97c2a73688f64d85e0e4bfacb245a
+      internalID: 2107037318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_142
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 383
+        width: 28
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df8aaa23c28b8b46ac4b728b680c0ae
+      internalID: 1393873074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_143
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 383
+        width: 31
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a758294bdb4c64182c7ab7c35af00e
+      internalID: 1246606914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_144
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 383
+        width: 33
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b4c2f831196b54099aacd355065da1
+      internalID: 488200353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_145
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 334
+        width: 26
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74807d24cb96b9a4aaaa523153389a65
+      internalID: 962499496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_146
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 334
+        width: 29
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aafc321fe89d8ea40a83e57accaff5da
+      internalID: -1877663200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_147
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 334
+        width: 27
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e65f153e0d131943899cb5e9828d412
+      internalID: -954107884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_148
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 334
+        width: 27
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 223a8d6f9d2c2f04b8033e4563055128
+      internalID: -1739204438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_149
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 334
+        width: 26
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e0df900b808fd841a09057c0b3a8df6
+      internalID: 949362733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_150
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 334
+        width: 27
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 572d43aebab5dfb4a87d10e30c2b7f00
+      internalID: -673039752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_151
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 334
+        width: 29
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9711cd9a6d543a841957c5fb81473b3d
+      internalID: 1371360534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_152
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 334
+        width: 31
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd0e788ccea98744a9456c9b39ae78a
+      internalID: -2095148870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_153
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 337
+        width: 33
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b553b6cacc63fe45894033f53e19112
+      internalID: 1183943111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_154
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 334
+        width: 30
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087a8521753cb5a40ad8d4b7b92de2dd
+      internalID: 787467860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_155
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 334
+        width: 30
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c42c031784732f42a95e885fb58daec
+      internalID: 18027866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_156
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 334
+        width: 22
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a0c97e6ef2d1c44bfbfe10d3b06cda
+      internalID: 29156969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_157
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 334
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c2e74a22aed3949a8c634d3e441e71
+      internalID: -303228683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_158
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 334
+        width: 32
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fddc94328a8051d4a997a62d1f9d74c1
+      internalID: -1010595952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_159
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 334
+        width: 34
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcef9fbcab6b96342b58a753f2469f85
+      internalID: -641437714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_160
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 280
+        width: 30
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cfa58fa5b660ce4d9cb5fd0a0489fd0
+      internalID: 1638177014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_161
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 280
+        width: 27
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d7f888102280a49bbddbe7d562ff03
+      internalID: -94757984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_162
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 280
+        width: 22
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba02d1ddfc7fc494a84666e48b129dd6
+      internalID: -894612902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_163
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 283
+        width: 23
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebff60a3ca509ff4d9d01f44cc3d6cbe
+      internalID: -789283361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_164
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 286
+        width: 26
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef6e200af9991ad47b71bf0fbc495054
+      internalID: 176848161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_165
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 280
+        width: 30
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc037fadecd2619468f134e7820eb95a
+      internalID: -1677060057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_166
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 280
+        width: 31
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d5cd1920a31dcc4a89f89ccc32620e0
+      internalID: 1024572279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_167
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 280
+        width: 26
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82c8d2133a359724c9548119d95bb483
+      internalID: 1855955210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_168
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 280
+        width: 29
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec1de07a622ab054cb4e94d72d716282
+      internalID: 1166135150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_169
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 280
+        width: 30
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b89123a2f7c6846b6f2055a9763441
+      internalID: 2081284827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_170
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 280
+        width: 34
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb30f42cba2864f40bcdb856c8e1426f
+      internalID: -1614148541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_171
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 280
+        width: 35
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3949e5bdb4fd2c74aa49e88728d31b99
+      internalID: -506077076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_172
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 280
+        width: 36
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3d0be190a1d6941a17e6c31ffbe677
+      internalID: 278212231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_173
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 280
+        width: 26
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcece2551f2c84940a431d298eb275af
+      internalID: 390757926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_174
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 280
+        width: 26
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b759b9d0654b944a201eba64781877
+      internalID: -1866748509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_175
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 280
+        width: 26
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d6613868c232644b635f97584412f9
+      internalID: 1515792701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_176
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 280
+        width: 20
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f5d30bbb3bbd64abcc61be5208cf63
+      internalID: -683941328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_177
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 232
+        width: 32
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f8fb03699e883a41a366ba3a27591d1
+      internalID: 1646078222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_178
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 232
+        width: 31
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca3a892901772f4e83f8c8d154839cd
+      internalID: 750570857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_179
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 232
+        width: 31
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfc91124321d23478a8e7dc8fec8eae
+      internalID: 1255660908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_180
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 232
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 737a43766e1a23c48a4a701ba0f70cab
+      internalID: -1226171673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_181
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 232
+        width: 30
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b83eefd23549f4c84b3badc6708d43
+      internalID: 1133311577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_182
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 232
+        width: 32
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78cf1013c548e194e9f638bca57fb603
+      internalID: 919370843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_183
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 232
+        width: 31
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136901604cf1b5442b28aaee602fc37e
+      internalID: 853893997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_184
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 232
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60072a31fdefccb4dbf4310013e0637a
+      internalID: 972797649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_185
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 232
+        width: 31
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad390cee2d6d5c94689ef9e7d4a65101
+      internalID: -1002874941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_186
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 232
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1386f3d98bdc24b41bcc32665a1b9570
+      internalID: -287713195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_189
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 182
+        width: 26
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fe7cce0a0836f42aec48a463cea7c9
+      internalID: -598700700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_190
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 182
+        width: 26
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069a448e3f2d44d4b90538446d022463
+      internalID: 2111285546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_191
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 182
+        width: 26
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5dffebfe446a604e9d6697caa0d8905
+      internalID: -1008561135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_192
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 182
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c43bcbe705c41b4980a97030ab8f7f7
+      internalID: 1333999239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_193
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 182
+        width: 26
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13bf5b6538b4b744eaaee5264cec757a
+      internalID: 1292117740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_194
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 182
+        width: 32
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b578fd3a295f754db2786f42b2982a3
+      internalID: -657407043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_195
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 182
+        width: 32
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5356df59fb8b79a4e8314d46eefcff9e
+      internalID: -1196868938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_196
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 182
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bffbfac35323aa4f87d2a6544cef0f1
+      internalID: -248031804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_197
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 182
+        width: 30
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad8a9c768f614214583f72d40130707e
+      internalID: -480128085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_198
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 182
+        width: 27
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda901325e9c3df4585aa413741a75d9
+      internalID: -83286830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_199
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 182
+        width: 28
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64330bfb77c9e13418f06d4de50c7e6d
+      internalID: 858787850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_200
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 182
+        width: 24
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8b56f0e97fde444aaa1c7af0f5a54d
+      internalID: 1675240420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_201
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 182
+        width: 25
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe331bd527a58043acf8a3655a39197
+      internalID: -460093735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_202
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 176
+        width: 26
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f863d5743164894089406b103966492
+      internalID: 1818754068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_203
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 176
+        width: 26
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228982593bf7d6942aed88894e100535
+      internalID: 1797036303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_204
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 186
+        width: 31
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb2cadf038c3d841a1520be1deb3f39
+      internalID: 2121394482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_205
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 186
+        width: 31
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3775a9195c7d0a429d3db4f4effd7cd
+      internalID: -1530969432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_206
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 185
+        width: 34
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be97fa59529ad1246993b0af2c2fa0a3
+      internalID: -1466389626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_207
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 186
+        width: 35
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f23ef39b7377c2429e61bda8573c0db
+      internalID: 2005752955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_208
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 189
+        width: 36
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff91ebf82e826849a0c1bbaa0d27493
+      internalID: -1338653928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_209
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 186
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333ccb1a1a8907f408f13968c8214a18
+      internalID: -1915331798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_210
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 185
+        width: 35
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0595b673e4ad7f489c3fedca68472d4
+      internalID: 75867269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_211
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 186
+        width: 34
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5542da7b1e73011468e2dc4020ad9423
+      internalID: -713856132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_212
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 189
+        width: 35
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac64cfd545617a44f87bb49376ff1ad6
+      internalID: -1799276614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_213
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61578f8bcdb2bb94b9f82d394cf67779
+      internalID: 628104201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_214
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c268b497fad3243a6af7efb893e7d4
+      internalID: 2114495028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_215
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e38f95406e37f49bba03a38267b818
+      internalID: 1365413752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_216
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba45451a8bee4b24cb5301b75f507e53
+      internalID: 816225246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_217
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670c876c82cd57147b556ba94f8d9201
+      internalID: -1474878943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_218
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ca1841c10de23d40b68dd285d0f7ee3
+      internalID: 1776523188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_219
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1234ba41f62f404ca38523c8fa2e6c8
+      internalID: 1815283786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_220
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 136
+        width: 34
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b87eeeba9bab11249903f4ebf4289ef6
+      internalID: -259643084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_221
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 136
+        width: 36
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05cf7113b83b9e64680497d3eb8bbe8e
+      internalID: 1001573179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_222
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 136
+        width: 38
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b063cbc13c1fe45a1d7037b3189471
+      internalID: 2002811971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_223
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 136
+        width: 42
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ad803056ae441341a8fca94d604d4e0
+      internalID: 1398826500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_224
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 136
+        width: 46
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61d3f176e04a334490d5ff565f969ff
+      internalID: -677856778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_225
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 136
+        width: 50
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb9c56b9b7eb16d46b5fbec1394e1cfa
+      internalID: 1182274697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_226
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 136
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d76d8fb558445c5448853c34b8f4ae3a
+      internalID: 652599427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_227
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 136
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65c7c702ca0a5ab49b760940e0b1d122
+      internalID: -486230823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_228
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 136
+        width: 20
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea8bc0a150540a4d9266ea0e6b41c4d
+      internalID: 192804246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_229
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 136
+        width: 20
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd48d377f00aed4ca49ed93c715f41c
+      internalID: -1808605776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_230
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 136
+        width: 20
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794705b7e32b49a428dd1d46dbf803ed
+      internalID: 1705973194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_231
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 136
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f23ad0a2d82e9e4cad3b19fb6070c42
+      internalID: -255153995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_232
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 136
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f65aa001a010ae45b4b63b574601196
+      internalID: -1033494008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_233
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 96
+        width: 22
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca333f5dbfcf1542b4a6105a9c1049d
+      internalID: -2114779967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_234
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 96
+        width: 23
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68c5eae9f8fb804d980c0ae6ebbe1d8
+      internalID: 1181819567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_235
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 96
+        width: 23
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd0d12f482e9ee4c9a8eb1c5ce6d153
+      internalID: -1788284616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_236
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 96
+        width: 23
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03aeef1f177640d4f80192352cdbb3b9
+      internalID: 1592065752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_237
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 96
+        width: 23
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12c6f20a932e3b419beaf239af0eb5f
+      internalID: -1389560566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_238
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 96
+        width: 23
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e18f486f65c5004da392b16dc10500b
+      internalID: -1798535507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_239
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 96
+        width: 23
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33be9fb3932bab04181f626aada4a3f5
+      internalID: 123895217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_240
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 96
+        width: 27
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6eb85e520ef454780c04e94e2ce54a
+      internalID: -1890743450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_241
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 96
+        width: 29
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfcfb277c63cc534cb7da5235fefee49
+      internalID: -1828498182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_242
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 96
+        width: 25
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eea003bceca484449dd41d4bd91045e
+      internalID: -985035725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_243
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 96
+        width: 25
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a44c5a590f99d41bbfe05694b50ead
+      internalID: -1964981285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_244
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 96
+        width: 30
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1f9c22f32b725a4da99d4e6060e0e7c
+      internalID: -207314634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_245
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 96
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e19cfa5501bb5a488d61e4ae42f7221
+      internalID: 1959796721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_246
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 96
+        width: 23
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c325c6bae311a14eacb83dc95dd81d1
+      internalID: 1936426667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_247
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 96
+        width: 25
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84499154601434740a92762123210f66
+      internalID: -1048981812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_248
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 96
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9fe995f1fe7dc48927ae2cdd4a312e
+      internalID: 612244164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_249
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 96
+        width: 26
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc00f85189747c54db6b023b4f6a354d
+      internalID: 904061070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_250
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 96
+        width: 27
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2ea7fd738f3374e9faf040fda8a481
+      internalID: -2141872210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_252
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 96
+        width: 30
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a8356afa7be94438e0919c59ab840f
+      internalID: 1299644796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_254
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 96
+        width: 27
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96a75b3d5ce6fd64bb87a70fcf71a5ee
+      internalID: 1525217299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_255
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 96
+        width: 27
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8fd6ac4ce2b0184cbf56fa6500baba9
+      internalID: 1391534458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_256
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 96
+        width: 27
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6551f5863598e42bd7ef1fbfce2739
+      internalID: -1853661673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_257
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 96
+        width: 27
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b35035548df5ff64eb696705f2985940
+      internalID: 731830062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_258
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 48
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b57ac767dc9a845acddfc433e4584b
+      internalID: -2119103205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_259
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 48
+        width: 30
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9187e6af3e71244bec137ddf9cf81e
+      internalID: -1537050516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_260
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 48
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f3bc6e60c1f684392967ef103ffa09
+      internalID: 1472718677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_261
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 48
+        width: 30
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d04940b7b2fca1418dcf74bf0cc8dcb
+      internalID: -888368568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_262
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 48
+        width: 30
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002061de657a49145a165373182d300a
+      internalID: 495987390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_263
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 48
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6ff2b06407ba448bcd37f777ea701c
+      internalID: -941149413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_264
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 48
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff58c662bee68694e8ffb05f4d63c086
+      internalID: -1946791062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_265
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 48
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d7d6cf232282849bbc48425c262d47
+      internalID: -1987778962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_266
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 48
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a31d21b46cee64eb657bc1b673e4c3
+      internalID: -1698616843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_267
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 48
+        width: 35
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84deea8fc2373864aa8bb3d6229eae39
+      internalID: 1391713444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_268
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 48
+        width: 35
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df03bc2e87b85874182278b57673ea5e
+      internalID: -1703828005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_269
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 48
+        width: 35
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a06608d77a7bb744922c38e1ffd40a7
+      internalID: -1478188685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_270
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 48
+        width: 35
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 901878e806bafcb41a68e35f88dfe6dd
+      internalID: -919439496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_271
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 48
+        width: 35
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4adf5c32b3d9874caf267012057d943
+      internalID: 13332218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_272
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 27
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e5ec6fbf2306049894041af96e2737
+      internalID: 786726289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_273
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 27
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a59f810c6d60c4fbb5fd2373f50198
+      internalID: 159138676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_274
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 0
+        width: 27
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c55958e32a23304b852d406d5f370e6
+      internalID: 43201287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_275
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 0
+        width: 27
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ad5a3eee3f38147978103157aa3c68
+      internalID: 634009631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_276
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 0
+        width: 27
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e89200a30dda1924991643b752ffdb4a
+      internalID: -1054020242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_277
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 0
+        width: 31
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc79f47d01e70a94e9ce617f59af7d53
+      internalID: -607927812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_278
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 0
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766a64a690f24d0489b8f6804530bb0e
+      internalID: -406659010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_279
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 29
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9955c2e9bcb4997418d98f709fb57298
+      internalID: -637177806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_280
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 0
+        width: 29
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6f11185a134864684e1cd8d23a5d92
+      internalID: -1373138155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_281
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 0
+        width: 30
+        height: 41
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c43d15aaa5b398f4e979c48b15e475fa
+      internalID: -1551119551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_282
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 0
+        width: 28
+        height: 41
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b714d95ebcb979499f64283cbc102ed
+      internalID: -1368170843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_283
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 26
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58522b52053db9d498ce3f2e10477570
+      internalID: 602259141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_284
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 5
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6c035a13e29c0d4c83071a72d71e2af
+      internalID: -2033144437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_285
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 4
+        width: 24
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc74446554f1df34d8099ea4e5e38966
+      internalID: -714732554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YoshiAndMario_286
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 2
+        width: 25
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0151d78e5c7c4844bb7938d057f61514
+      internalID: 794952023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: eb36bb855a61ff34e83951b16788539a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      YoshiAndMario_0: -1773722642
+      YoshiAndMario_1: -189151622
+      YoshiAndMario_10: -2054616764
+      YoshiAndMario_100: 1859689628
+      YoshiAndMario_101: 2137450196
+      YoshiAndMario_102: 1722580953
+      YoshiAndMario_103: -607891966
+      YoshiAndMario_104: 1341086026
+      YoshiAndMario_105: 1260010023
+      YoshiAndMario_106: -3970249
+      YoshiAndMario_107: -1171835005
+      YoshiAndMario_108: -2093232281
+      YoshiAndMario_109: 1337480967
+      YoshiAndMario_11: -982314270
+      YoshiAndMario_110: 2112488745
+      YoshiAndMario_111: -491535844
+      YoshiAndMario_112: -457686824
+      YoshiAndMario_113: 832426681
+      YoshiAndMario_114: -1527587440
+      YoshiAndMario_115: 1328212006
+      YoshiAndMario_116: 715593526
+      YoshiAndMario_117: 1994665011
+      YoshiAndMario_118: -1754268980
+      YoshiAndMario_119: -635440082
+      YoshiAndMario_12: -432772269
+      YoshiAndMario_120: -1996404807
+      YoshiAndMario_121: -501308739
+      YoshiAndMario_122: 2139393625
+      YoshiAndMario_123: -1225512586
+      YoshiAndMario_124: -1214527889
+      YoshiAndMario_125: 771268766
+      YoshiAndMario_126: 318317451
+      YoshiAndMario_127: 467771227
+      YoshiAndMario_128: 2003819404
+      YoshiAndMario_129: -1339198283
+      YoshiAndMario_13: -1842817122
+      YoshiAndMario_130: -853788215
+      YoshiAndMario_131: 490081996
+      YoshiAndMario_132: 1563921652
+      YoshiAndMario_133: -1756985350
+      YoshiAndMario_134: -1873678871
+      YoshiAndMario_135: 1717715005
+      YoshiAndMario_136: -2032646715
+      YoshiAndMario_137: -1247350399
+      YoshiAndMario_138: -302531231
+      YoshiAndMario_139: -116451378
+      YoshiAndMario_14: -225841908
+      YoshiAndMario_140: 1526759885
+      YoshiAndMario_141: 2107037318
+      YoshiAndMario_142: 1393873074
+      YoshiAndMario_143: 1246606914
+      YoshiAndMario_144: 488200353
+      YoshiAndMario_145: 962499496
+      YoshiAndMario_146: -1877663200
+      YoshiAndMario_147: -954107884
+      YoshiAndMario_148: -1739204438
+      YoshiAndMario_149: 949362733
+      YoshiAndMario_15: 1883531660
+      YoshiAndMario_150: -673039752
+      YoshiAndMario_151: 1371360534
+      YoshiAndMario_152: -2095148870
+      YoshiAndMario_153: 1183943111
+      YoshiAndMario_154: 787467860
+      YoshiAndMario_155: 18027866
+      YoshiAndMario_156: 29156969
+      YoshiAndMario_157: -303228683
+      YoshiAndMario_158: -1010595952
+      YoshiAndMario_159: -641437714
+      YoshiAndMario_16: 242821797
+      YoshiAndMario_160: 1638177014
+      YoshiAndMario_161: -94757984
+      YoshiAndMario_162: -894612902
+      YoshiAndMario_163: -789283361
+      YoshiAndMario_164: 176848161
+      YoshiAndMario_165: -1677060057
+      YoshiAndMario_166: 1024572279
+      YoshiAndMario_167: 1855955210
+      YoshiAndMario_168: 1166135150
+      YoshiAndMario_169: 2081284827
+      YoshiAndMario_17: -496628265
+      YoshiAndMario_170: -1614148541
+      YoshiAndMario_171: -506077076
+      YoshiAndMario_172: 278212231
+      YoshiAndMario_173: 390757926
+      YoshiAndMario_174: -1866748509
+      YoshiAndMario_175: 1515792701
+      YoshiAndMario_176: -683941328
+      YoshiAndMario_177: 1646078222
+      YoshiAndMario_178: 750570857
+      YoshiAndMario_179: 1255660908
+      YoshiAndMario_18: -1331892725
+      YoshiAndMario_180: -1226171673
+      YoshiAndMario_181: 1133311577
+      YoshiAndMario_182: 919370843
+      YoshiAndMario_183: 853893997
+      YoshiAndMario_184: 972797649
+      YoshiAndMario_185: -1002874941
+      YoshiAndMario_186: -287713195
+      YoshiAndMario_187: 1110768012
+      YoshiAndMario_188: -1903867041
+      YoshiAndMario_189: -598700700
+      YoshiAndMario_19: -1761268172
+      YoshiAndMario_190: 2111285546
+      YoshiAndMario_191: -1008561135
+      YoshiAndMario_192: 1333999239
+      YoshiAndMario_193: 1292117740
+      YoshiAndMario_194: -657407043
+      YoshiAndMario_195: -1196868938
+      YoshiAndMario_196: -248031804
+      YoshiAndMario_197: -480128085
+      YoshiAndMario_198: -83286830
+      YoshiAndMario_199: 858787850
+      YoshiAndMario_2: 946660997
+      YoshiAndMario_20: 1373039003
+      YoshiAndMario_200: 1675240420
+      YoshiAndMario_201: -460093735
+      YoshiAndMario_202: 1818754068
+      YoshiAndMario_203: 1797036303
+      YoshiAndMario_204: 2121394482
+      YoshiAndMario_205: -1530969432
+      YoshiAndMario_206: -1466389626
+      YoshiAndMario_207: 2005752955
+      YoshiAndMario_208: -1338653928
+      YoshiAndMario_209: -1915331798
+      YoshiAndMario_21: 1017423544
+      YoshiAndMario_210: 75867269
+      YoshiAndMario_211: -713856132
+      YoshiAndMario_212: -1799276614
+      YoshiAndMario_213: 628104201
+      YoshiAndMario_214: 2114495028
+      YoshiAndMario_215: 1365413752
+      YoshiAndMario_216: 816225246
+      YoshiAndMario_217: -1474878943
+      YoshiAndMario_218: 1776523188
+      YoshiAndMario_219: 1815283786
+      YoshiAndMario_22: -1261630186
+      YoshiAndMario_220: -259643084
+      YoshiAndMario_221: 1001573179
+      YoshiAndMario_222: 2002811971
+      YoshiAndMario_223: 1398826500
+      YoshiAndMario_224: -677856778
+      YoshiAndMario_225: 1182274697
+      YoshiAndMario_226: 652599427
+      YoshiAndMario_227: -486230823
+      YoshiAndMario_228: 192804246
+      YoshiAndMario_229: -1808605776
+      YoshiAndMario_23: -1694041447
+      YoshiAndMario_230: 1705973194
+      YoshiAndMario_231: -255153995
+      YoshiAndMario_232: -1033494008
+      YoshiAndMario_233: -2114779967
+      YoshiAndMario_234: 1181819567
+      YoshiAndMario_235: -1788284616
+      YoshiAndMario_236: 1592065752
+      YoshiAndMario_237: -1389560566
+      YoshiAndMario_238: -1798535507
+      YoshiAndMario_239: 123895217
+      YoshiAndMario_24: 649044389
+      YoshiAndMario_240: -1890743450
+      YoshiAndMario_241: -1828498182
+      YoshiAndMario_242: -985035725
+      YoshiAndMario_243: -1964981285
+      YoshiAndMario_244: -207314634
+      YoshiAndMario_245: 1959796721
+      YoshiAndMario_246: 1936426667
+      YoshiAndMario_247: -1048981812
+      YoshiAndMario_248: 612244164
+      YoshiAndMario_249: 904061070
+      YoshiAndMario_25: -716850517
+      YoshiAndMario_250: -2141872210
+      YoshiAndMario_251: -1247667388
+      YoshiAndMario_252: 1299644796
+      YoshiAndMario_253: -853374213
+      YoshiAndMario_254: 1525217299
+      YoshiAndMario_255: 1391534458
+      YoshiAndMario_256: -1853661673
+      YoshiAndMario_257: 731830062
+      YoshiAndMario_258: -2119103205
+      YoshiAndMario_259: -1537050516
+      YoshiAndMario_26: -987007953
+      YoshiAndMario_260: 1472718677
+      YoshiAndMario_261: -888368568
+      YoshiAndMario_262: 495987390
+      YoshiAndMario_263: -941149413
+      YoshiAndMario_264: -1946791062
+      YoshiAndMario_265: -1987778962
+      YoshiAndMario_266: -1698616843
+      YoshiAndMario_267: 1391713444
+      YoshiAndMario_268: -1703828005
+      YoshiAndMario_269: -1478188685
+      YoshiAndMario_27: -1369837081
+      YoshiAndMario_270: -919439496
+      YoshiAndMario_271: 13332218
+      YoshiAndMario_272: 786726289
+      YoshiAndMario_273: 159138676
+      YoshiAndMario_274: 43201287
+      YoshiAndMario_275: 634009631
+      YoshiAndMario_276: -1054020242
+      YoshiAndMario_277: -607927812
+      YoshiAndMario_278: -406659010
+      YoshiAndMario_279: -637177806
+      YoshiAndMario_28: -1702114824
+      YoshiAndMario_280: -1373138155
+      YoshiAndMario_281: -1551119551
+      YoshiAndMario_282: -1368170843
+      YoshiAndMario_283: 602259141
+      YoshiAndMario_284: -2033144437
+      YoshiAndMario_285: -714732554
+      YoshiAndMario_286: 794952023
+      YoshiAndMario_29: 132783417
+      YoshiAndMario_3: -1652094032
+      YoshiAndMario_30: 815079523
+      YoshiAndMario_31: -1312826891
+      YoshiAndMario_32: 997023107
+      YoshiAndMario_33: 213762883
+      YoshiAndMario_34: 346899120
+      YoshiAndMario_35: 324328351
+      YoshiAndMario_36: 1426172838
+      YoshiAndMario_37: 1644937445
+      YoshiAndMario_38: 658433742
+      YoshiAndMario_39: 1604911588
+      YoshiAndMario_4: 49725861
+      YoshiAndMario_40: -1540519417
+      YoshiAndMario_41: -654067834
+      YoshiAndMario_42: -917787440
+      YoshiAndMario_43: -528087873
+      YoshiAndMario_44: -1392837550
+      YoshiAndMario_45: -1325794216
+      YoshiAndMario_46: -141195846
+      YoshiAndMario_47: 1125575784
+      YoshiAndMario_48: -1160123799
+      YoshiAndMario_49: 1330401632
+      YoshiAndMario_5: -2060076788
+      YoshiAndMario_50: -412103422
+      YoshiAndMario_51: 1496474930
+      YoshiAndMario_52: 1084421986
+      YoshiAndMario_53: -1222408380
+      YoshiAndMario_54: -506917374
+      YoshiAndMario_55: -93796756
+      YoshiAndMario_56: 500269629
+      YoshiAndMario_57: -1183501047
+      YoshiAndMario_58: 1362596714
+      YoshiAndMario_59: 609653240
+      YoshiAndMario_6: 746779509
+      YoshiAndMario_60: -1752555436
+      YoshiAndMario_61: -657402553
+      YoshiAndMario_62: 1462307446
+      YoshiAndMario_63: -859358830
+      YoshiAndMario_64: -108724078
+      YoshiAndMario_65: 1366686096
+      YoshiAndMario_66: -1821650754
+      YoshiAndMario_67: -1323704845
+      YoshiAndMario_68: -504914270
+      YoshiAndMario_69: 872230503
+      YoshiAndMario_7: -1642463706
+      YoshiAndMario_70: -190917536
+      YoshiAndMario_71: 894053337
+      YoshiAndMario_72: 1537078278
+      YoshiAndMario_73: -1727679404
+      YoshiAndMario_74: -1662404795
+      YoshiAndMario_75: -356892402
+      YoshiAndMario_76: 1726497280
+      YoshiAndMario_77: -1869411656
+      YoshiAndMario_78: -2123475594
+      YoshiAndMario_79: -1112217123
+      YoshiAndMario_8: 588029476
+      YoshiAndMario_80: 216889044
+      YoshiAndMario_81: -1910441381
+      YoshiAndMario_82: 1900302085
+      YoshiAndMario_83: -887285797
+      YoshiAndMario_84: -1851664632
+      YoshiAndMario_85: -1047756254
+      YoshiAndMario_86: -1189441752
+      YoshiAndMario_87: -746453486
+      YoshiAndMario_88: 537193541
+      YoshiAndMario_89: -1013657577
+      YoshiAndMario_9: -210385362
+      YoshiAndMario_90: 938878540
+      YoshiAndMario_91: 628014525
+      YoshiAndMario_92: 1717311802
+      YoshiAndMario_93: 1644776043
+      YoshiAndMario_94: 1016469755
+      YoshiAndMario_95: 1860245854
+      YoshiAndMario_96: -1626347442
+      YoshiAndMario_97: 738072860
+      YoshiAndMario_98: 193152641
+      YoshiAndMario_99: 1426840573
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

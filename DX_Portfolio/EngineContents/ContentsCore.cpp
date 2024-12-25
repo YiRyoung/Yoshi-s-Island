@@ -36,7 +36,7 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 		}
 	}
 
-	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png");
+	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
 
 	UEngineCore::CreateLevel<ATitleGameMode, APawn>("Title");
 	UEngineCore::OpenLevel("Title");

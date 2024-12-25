@@ -21,5 +21,18 @@ ATitleGameMode::~ATitleGameMode()
 void ATitleGameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	static float Time = 1.0f;
+	static int Index = 0;
+
+	Logo->GetRenderer()->SetSpriteData(Index);
+
+	Time -= _DeltaTime;
+
+	if (0.0f >= Time)
+	{
+		++Index;
+		Time = 1.0f;
+	}
 }
 
