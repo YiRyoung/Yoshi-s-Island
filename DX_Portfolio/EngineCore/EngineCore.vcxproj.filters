@@ -49,6 +49,9 @@
     <ClInclude Include="EngineResources.h">
       <Filter>Object\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="EngineSprite.h">
+      <Filter>Object\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -94,6 +97,9 @@
       <Filter>Object\Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineResources.cpp">
+      <Filter>Object\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSprite.cpp">
       <Filter>Object\Resources</Filter>
     </ClCompile>
   </ItemGroup>

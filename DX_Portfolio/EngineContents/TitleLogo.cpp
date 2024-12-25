@@ -5,7 +5,7 @@
 ATitleLogo::ATitleLogo()
 {
 	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	BackgroundRenderer->SetSprite("Title0.png");
+	BackgroundRenderer->SetSprite("YoshiAndMario.png", 0);
 
 	SetActorRelativeScale3D({ 600.0f, 600.0f, 1.0f });
 }

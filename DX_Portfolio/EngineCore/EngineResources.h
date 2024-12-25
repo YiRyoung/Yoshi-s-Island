@@ -53,6 +53,11 @@ public:
 
 	ENGINEAPI static void PushRes(std::shared_ptr<UEngineResources> _Res, const std::string_view _Info, std::string_view _Name, std::string_view _Path);
 
+	ENGINEAPI UEnginePath GetPath()
+	{
+		return Path;
+	}
+
 protected:
 	UEnginePath Path;
 
