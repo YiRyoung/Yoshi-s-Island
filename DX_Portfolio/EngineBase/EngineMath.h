@@ -373,6 +373,7 @@ public:
 		FVector Result;
 		Result.X = X * _Value;
 		Result.Y = Y * _Value;
+		Result.Z = Z * _Value;
 		return Result;
 	}
 
@@ -722,6 +723,8 @@ struct FTransform
 	float4x4 ScaleMat;
 	float4x4 RotationMat;
 	float4x4 LocationMat;
+	float4x4 RevolveMat;
+	float4x4 ParentMat;
 	float4x4 World;
 	float4x4 View;
 	float4x4 Projection;
