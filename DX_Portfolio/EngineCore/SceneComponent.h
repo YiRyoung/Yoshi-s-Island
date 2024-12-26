@@ -38,6 +38,8 @@ public:
 		return Transform;
 	}
 
+	void SetupAttachment(USceneComponent* _Parent);
+
 protected:
 	FTransform Transform;
 
