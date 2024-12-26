@@ -12,10 +12,24 @@
 
 HINSTANCE UEngineWindow::hInstance = nullptr;
 std::map<std::string, WNDCLASSEXA> UEngineWindow::WindowClasss;
+std::function<bool(HWND, UINT, WPARAM, LPARAM)> UEngineWindow::CustomProc = nullptr;
 int WindowCount = 0;
+
+void UEngineWindow::SetCustomProc(std::function<bool(HWND, UINT, WPARAM, LPARAM)> _CustomProc)
+{
+    CustomProc = _CustomProc;
+}
 
 LRESULT CALLBACK UEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    if (nullptr != CustomProc)
+    {
+        if (true == CustomProc(hWnd, message, wParam, lParam))
+        {
+            //return true;
+        }
+    }
+
     switch (message)
     {
     case WM_CREATE:

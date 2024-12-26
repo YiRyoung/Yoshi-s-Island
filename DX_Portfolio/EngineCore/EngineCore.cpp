@@ -4,6 +4,7 @@
 #include <EnginePlatform/EngineWindow.h>
 #include "IContentsCore.h"
 #include "EngineResources.h"
+#include "EngineGUI.h"
 #include "Level.h"
 
 UEngineGraphicDevice UEngineCore::Device;
@@ -93,6 +94,8 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 			Core->EngineStart(Data);
 			MainWindow.SetWindowPosAndScale(Data.WindowPos, Data.WindowSize);
 			Device.CreateBackBuffer(MainWindow);
+
+			UEngineGUI::Init();
 		},
 		[]()
 		{
@@ -152,6 +155,8 @@ void UEngineCore::EngineFrame()
 
 void UEngineCore::EngineEnd()
 {
+	UEngineGUI::Release();
+
 	Device.Release();
 	UEngineResources::Release();
 

@@ -4,6 +4,22 @@
 #include <EngineCore/CameraActor.h>
 #include <EngineCore/SpriteRenderer.h>
 
+#include <EngineCore/EngineGUIWindow.h>
+#include <EngineCore/EngineGUI.h>
+#include <EngineCore/imgui.h>
+
+class TestWindow : public UEngineGUIWindow
+{
+public:
+	void OnGUI() override
+	{
+		ImGui::Button("WindowButton");
+		ImGui::SameLine(); // ÇÑ°£ ¶ç±â
+		ImGui::Text("test");
+
+	}
+};
+
 ATitleGameMode::ATitleGameMode()
 {
 	Logo = GetWorld()->SpawnActor<ATitleLogo>();
@@ -12,6 +28,8 @@ ATitleGameMode::ATitleGameMode()
 
 	std::shared_ptr<ACameraActor> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation({ 0.0f, 0.0f, -1000.0f, 1.0f });
+
+	UEngineGUI::CreateGUIWindow<TestWindow>("TestWindow");
 }
 
 ATitleGameMode::~ATitleGameMode()
@@ -21,18 +39,5 @@ ATitleGameMode::~ATitleGameMode()
 void ATitleGameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
-
-	static float Time = 1.0f;
-	static int Index = 0;
-
-	Logo->GetRenderer()->SetSpriteData(Index);
-
-	Time -= _DeltaTime;
-
-	if (0.0f >= Time)
-	{
-		++Index;
-		Time = 1.0f;
-	}
 }
 
