@@ -20,12 +20,24 @@ void USpriteRenderer::BeginPlay()
 	URenderer::BeginPlay();
 }
 
+USpriteRenderer::FrameAnimation* USpriteRenderer::FindAnimation(std::string_view _AnimationName)
+{
+	std::string UpperString = UEngineString::ToUpper(_AnimationName);
+
+	if (false == FrameAnimations.contains(UpperString))
+	{
+		return nullptr;
+	}
+
+	return &FrameAnimations[UpperString];
+}
+
 void USpriteRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
 	if (nullptr != CurAnimation)
 	{
 		URenderer::SetSprite(CurAnimation->Sprite);
-		URenderer::SetSpriteData(CurAnimation->CurIndex);
+		URenderer::SetSpriteData(CurIndex);
 	}
 
 	URenderer::Render(_Camera, _DeltaTime);
@@ -88,22 +100,19 @@ void USpriteRenderer::ComponentTick(float _DeltaTime)
 
 		}
 
+
 		CurIndex = Indexs[CurAnimation->CurIndex];
+
+		if (true == CurAnimation->IsAutoScale)
+		{
+			FVector Scale = CurAnimation->Sprite->GetSpriteScaleToReal(CurIndex);
+			Scale.Z = 1.0f;
+			SetRelativeScale3D(Scale * CurAnimation->AutoScaleRatio);
+		}
 	}
 
+
 }
-
-FVector USpriteRenderer::SetSpriteScale(float _Ratio /*= 1.0f*/, int _CurIndex /*= 0*/)
-{
-	if (nullptr == Sprite)
-	{
-		MSGASSERT("스프라이트를 세팅하지 않고 스프라이트 크기로 랜더러 크기를 조정할수 없습니다.");
-		return float4(0.0f, 0.0f, 0.0f, 0.0f);
-	}
-
-	return { 0.0f, 0.0f, 0.0f };
-}
-
 
 void USpriteRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float Time /*= 0.1f*/, bool _Loop /*= true*/)
 {

@@ -61,6 +61,7 @@ public:
 	void SetRelativeScale3D(const FVector& _Value)
 	{
 		Transform.Scale = _Value;
+		Transform.Scale.W = 0.0f;
 		TransformUpdate();
 	}
 

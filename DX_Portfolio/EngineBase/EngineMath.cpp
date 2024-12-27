@@ -244,10 +244,10 @@ ENGINEAPI void FTransform::Decompose()
 
 	LocalWorld.Decompose(RelativeScale, RelativeQuat, RelativeLocation);
 
-	Scale = RelativeScale;
-	Quat = RelativeQuat;
-	Rotation = RelativeQuat.QuaternionToEulerDeg();
-	Location = RelativeLocation;
+	//Scale = RelativeScale;
+	//Quat = RelativeQuat;
+	//Rotation = RelativeQuat.QuaternionToEulerDeg();
+	//Location = RelativeLocation;
 }
 
 void FTransform::TransformUpdate(bool _IsAbsolut /*= false*/)

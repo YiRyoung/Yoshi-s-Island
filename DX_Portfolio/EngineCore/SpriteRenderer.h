@@ -19,6 +19,8 @@ public:
 		float CurTime = 0.0f;
 		bool Loop = true;
 		bool IsEnd = false;
+		bool IsAutoScale = true;
+		float AutoScaleRatio = 1.0f;
 
 		void Reset()
 		{
@@ -39,8 +41,6 @@ public:
 	USpriteRenderer& operator=(const USpriteRenderer& _Other) = delete;
 	USpriteRenderer& operator=(USpriteRenderer&& _Other) noexcept = delete;
 
-
-
 	int GetCurIndex()
 	{
 		return CurIndex;
@@ -51,9 +51,6 @@ public:
 		return CurAnimation->CurIndex;
 	}
 
-	FVector SetSpriteScale(float _Ratio = 1.0f, int _CurIndex = 0);
-
-
 	ENGINEAPI void CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float Time = 0.1f, bool _Loop = true);
 
 	ENGINEAPI void CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<int> _Indexs, std::vector<float> _Frame, bool _Loop = true);
@@ -63,6 +60,8 @@ public:
 	ENGINEAPI void ChangeAnimation(std::string_view _AnimationName, bool _Force = false);
 
 	ENGINEAPI void SetAnimationEvent(std::string_view _AnimationName, int _Frame, std::function<void()> _Function);
+
+	ENGINEAPI FrameAnimation* FindAnimation(std::string_view _AnimationName);
 
 	ENGINEAPI std::string GetCurSpriteName()
 	{
@@ -87,7 +86,7 @@ public:
 	}
 
 protected:
-	ENGINEAPI void Render(UEngineCamera* _Camera, float _DeltaTime) override;
+	ENGINEAPI void Render(class UEngineCamera* _Camera, float _DeltaTime) override;
 	void BeginPlay() override;
 	void ComponentTick(float _DeltaTime) override;
 

@@ -105,8 +105,22 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_vie
 
 }
 
-
 ID3D11ShaderResourceView* UEngineSprite::GetSRV()
 {
 	return Texture->GetSRV();
+}
+
+FVector UEngineSprite::GetSpriteScaleToReal(size_t _Index)
+{
+	if (SpriteDatas.size() <= _Index)
+	{
+		MSGASSERT("스프라이트의 인덱스를 초과하여 사용하려고 했습니다.");
+	}
+
+	FVector Result;
+
+	Result.X = SpriteDatas[_Index].CuttingSize.X * Texture->GetTextureSize().X;
+	Result.Y = SpriteDatas[_Index].CuttingSize.Y * Texture->GetTextureSize().Y;
+
+	return Result;
 }
