@@ -16,6 +16,7 @@ cbuffer FTransform : register(b0)
 {
     float4 Scale;
     float4 Rotation;
+    float4 Qut;
     float4 Location;
 
     float4 RelativeScale;

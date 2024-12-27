@@ -65,7 +65,7 @@ void ATitleLogo::Tick(float _DeltaTime)
 
 	if (UEngineInput::IsPress('R'))
 	{
-		Child->SetLocation(FVector{ 100.0f, 0.0f , 0.0f });
+		Child->SetWorldLocation(FVector{ 100.0f, 0.0f , 0.0f });
 	}
 
 }

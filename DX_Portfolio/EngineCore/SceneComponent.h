@@ -25,7 +25,7 @@ public:
 		TransformUpdate();
 	}
 
-	void SetLocation(const FVector& _Value)
+	void SetWorldLocation(const FVector& _Value)
 	{
 		IsAbsolute = true;
 		Transform.Location = _Value;
