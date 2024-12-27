@@ -240,11 +240,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="RenderUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SceneComponent.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="SpriteRenderer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -324,11 +332,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="RenderUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SceneComponent.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="SpriteRenderer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
       <SubType>
       </SubType>
     </ClCompile>

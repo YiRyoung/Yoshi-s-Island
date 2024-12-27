@@ -10,7 +10,8 @@ ATitleLogo::ATitleLogo()
 	RootComponent = Default;
 
 	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	BackgroundRenderer->SetSprite("YoshiAndMario.png", 0);
+	BackgroundRenderer->CreateAnimation("Idle", "YoshiAndMario.png", 0, 10, 0.1f);
+	BackgroundRenderer->ChangeAnimation("Idle");
 	BackgroundRenderer->SetRelativeScale3D({ 50, 50, 1.0f });
 	BackgroundRenderer->SetupAttachment(RootComponent);
 

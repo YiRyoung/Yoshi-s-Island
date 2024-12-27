@@ -15,12 +15,21 @@ URenderer::~URenderer()
 	VSErrorCodeBlob = nullptr;
 
 }
+void URenderer::SetSprite(UEngineSprite* _Sprite)
+{
+	Sprite = _Sprite;
 
-void URenderer::SetTexture(std::string_view _Value)
+	if (nullptr == Sprite)
+	{
+		MSGASSERT("존재하지 않는 스프라이트를 사용하려고 했습니다.");
+	}
+}
+
+void URenderer::SetSprite(std::string_view _Value)
 {
 	std::string UpperName = UEngineString::ToUpper(_Value);
 
-	Sprite = UEngineSprite::Find<UEngineSprite>(UpperName);
+	Sprite = UEngineSprite::Find<UEngineSprite>(UpperName).get();
 
 	if (nullptr == Sprite)
 	{
@@ -37,7 +46,6 @@ void URenderer::SetOrder(int _Order)
 	std::shared_ptr<URenderer> RendererPtr = GetThis<URenderer>();
 	Level->ChangeRenderGroup(0, PrevOrder, RendererPtr);
 }
-
 
 ENGINEAPI void URenderer::BeginPlay()
 {
