@@ -19,3 +19,4 @@ void USpriteRenderer::BeginPlay()
 {
 	URenderer::BeginPlay();
 }
+

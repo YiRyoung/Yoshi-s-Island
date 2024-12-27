@@ -9,6 +9,8 @@ struct EngineVertex
 	float4 COLOR;
 };
 
+
+
 // Ό³Έν :
 class URenderer : public USceneComponent
 {
@@ -54,9 +56,9 @@ public:
 	void InputAssembler1Setting();
 	void InputAssembler1LayOut();
 
+
 	Microsoft::WRL::ComPtr<ID3DBlob> VSShaderCodeBlob = nullptr;
-	Microsoft::WRL::ComPtr<ID3DBlob> VSErrorCodeBlob = nullptr;
-	Microsoft::WRL::ComPtr<ID3D11VertexShader> VertexShader = nullptr;
+	Microsoft::WRL::ComPtr<ID3DBlob> VSErrorCodeBlob = nullptr; 	Microsoft::WRL::ComPtr<ID3D11VertexShader> VertexShader = nullptr;
 	void VertexShaderInit();
 	void VertexShaderSetting();
 
@@ -72,12 +74,10 @@ public:
 	void RasterizerSetting();
 
 	Microsoft::WRL::ComPtr<ID3DBlob> PSShaderCodeBlob = nullptr;
-	Microsoft::WRL::ComPtr<ID3DBlob> PSErrorCodeBlob = nullptr;
-	Microsoft::WRL::ComPtr<ID3D11PixelShader> PixelShader = nullptr;
+	Microsoft::WRL::ComPtr<ID3DBlob> PSErrorCodeBlob = nullptr; 	Microsoft::WRL::ComPtr<ID3D11PixelShader> PixelShader = nullptr;
 	void PixelShaderInit();
 	void PixelShaderSetting();
 
 	void OutPutMergeSetting();
-
 };
 

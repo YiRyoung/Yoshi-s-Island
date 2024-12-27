@@ -83,11 +83,12 @@ void ULevel::Render(float _DeltaTime)
 		Camera.second->CameraComponent->Render(_DeltaTime);
 	}
 
-
 	if (true == UEngineWindow::IsApplicationOn())
 	{
 		UEngineGUI::GUIRender();
 	}
+	
+
 
 	UEngineCore::Device.RenderEnd();
 }

@@ -7,6 +7,7 @@
 UEngineDirectory::UEngineDirectory()
 	: UEnginePath()
 {
+
 }
 
 UEngineDirectory::UEngineDirectory(std::string_view _Path)
@@ -78,7 +79,7 @@ std::vector<class UEngineFile> UEngineDirectory::GetAllFile(bool _IsRecursive, s
 		Result.push_back(UEngineFile(FilePath));
 		++Diriter;
 	}
-
+	
 	return Result;
 }
 

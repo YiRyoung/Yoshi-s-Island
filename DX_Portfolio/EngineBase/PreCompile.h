@@ -10,8 +10,7 @@
 #include <string>
 #include <iostream>
 #include <functional>
-
-// Shard Ptr을 사용하기 위한 헤더
+// 쉐어드 Ptr을 사용하기 위한 헤더
 #include <memory>
 
 #include "EngineMath.h"

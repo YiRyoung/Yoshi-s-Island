@@ -15,6 +15,7 @@ std::shared_ptr<IContentsCore> UEngineCore::Core;
 UEngineInitData UEngineCore::Data;
 UEngineTimer UEngineCore::Timer;
 
+
 std::shared_ptr<class ULevel> UEngineCore::NextLevel;
 std::shared_ptr<class ULevel> UEngineCore::CurLevel = nullptr;
 
@@ -106,14 +107,20 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 		{
 			EngineEnd();
 		});
+
+
+
+
+
 }
 
 std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name)
 {
+
 	std::shared_ptr<ULevel> Ptr = std::make_shared<ULevel>();
 	Ptr->SetName(_Name);
 
-	LevelMap.insert({ _Name.data(), Ptr});
+	LevelMap.insert({ _Name.data(), Ptr });
 
 	std::cout << "NewLevelCreate" << std::endl;
 
@@ -127,7 +134,7 @@ void UEngineCore::OpenLevel(std::string_view _Name)
 		MSGASSERT("만들지 않은 레벨로 변경하려고 했습니다." + std::string(_Name));
 		return;
 	}
-	
+
 
 	NextLevel = LevelMap[_Name.data()];
 }
@@ -147,19 +154,23 @@ void UEngineCore::EngineFrame()
 		NextLevel = nullptr;
 		Timer.TimeStart();
 	}
+
 	Timer.TimeCheck();
 	float DeltaTime = Timer.GetDeltaTime();
 	UEngineInput::KeyCheck(DeltaTime);
 
 	CurLevel->Tick(DeltaTime);
 	CurLevel->Render(DeltaTime);
+
 }
 
 void UEngineCore::EngineEnd()
 {
+
 	UEngineGUI::Release();
 
 	Device.Release();
+
 	UEngineResources::Release();
 
 	CurLevel = nullptr;
@@ -167,4 +178,5 @@ void UEngineCore::EngineEnd()
 	LevelMap.clear();
 
 	UEngineDebug::EndConsole();
+
 }

@@ -25,7 +25,7 @@ std::shared_ptr<UEngineTexture> UEngineTexture::Load(std::string_view _Name, std
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineTexture> NewRes = std::make_shared<UEngineTexture>();
+	std::shared_ptr<UEngineTexture> NewRes =  std::make_shared<UEngineTexture>();
 	PushRes<UEngineTexture>(NewRes, _Name, _Path);
 	NewRes->ResLoad();
 
@@ -40,6 +40,7 @@ void UEngineTexture::ResLoad()
 	std::string Ext = File.GetExtension();
 	std::wstring wLoadPath = UEngineString::AnsiToUnicode(Str.c_str());
 	std::string UpperExt = UEngineString::ToUpper(Ext.c_str());
+
 
 	if (UpperExt == ".DDS")
 	{

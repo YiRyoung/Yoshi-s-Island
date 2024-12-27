@@ -17,7 +17,6 @@ public:
 	UEngineSerializer& operator=(const UEngineSerializer& _Other) = delete;
 	UEngineSerializer& operator=(UEngineSerializer&& _Other) noexcept = delete;
 
-	// 데이터의 크기
 	void Write(void* _Data, unsigned int _Size);
 
 	void operator<<(int& _Data)
@@ -90,6 +89,7 @@ public:
 	{
 		int Size;
 		operator>>(Size);
+
 		_Data.resize(Size);
 
 		Read(&_Data[0], static_cast<int>(_Data.size()));
@@ -134,6 +134,7 @@ protected:
 
 private:
 	int WriteOffset = 0;
+
 	int ReadOffset = 0;
 
 	std::vector<char> Data;
@@ -142,20 +143,7 @@ private:
 class ISerializObject
 {
 public:
-	// 데이터를 직렬화(압축)
 	virtual void Serialize(UEngineSerializer& _Ser) = 0;
-	// 데이터를 복구(할때)
+
 	virtual void DeSerialize(UEngineSerializer& _Ser) = 0;
 };
-
-//class Test
-//{
-//	// 정한다고 하면
-//	// Data 5 바이트 할당
-//	//             [C][V][V][V][V]
-//	// 직렬화의 첫번째 의미
-//	// 데이터의 최적화
-//
-//	bool Check; // [C][ ][ ][ ][v][v][v][v]
-//	int Value;  // 
-//};

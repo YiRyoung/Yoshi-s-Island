@@ -2,16 +2,15 @@
 #include <string>
 #include <memory>
 
-// 설명 :
+// 설명 : std::enable_shared_from_this<UObject>
 class UObject : public std::enable_shared_from_this<UObject>
 {
 public:
 	// constrcuter destructer
 	ENGINEAPI UObject();
 
-	// 혹여나 자식들의 소멸자가 호출 안되는 경우를 막기위해서
+	// 혹여나 자식들의 소멸자가 호출 안되는 경우를 막기위에서
 	// 가상함수 테이블을 만들 것이므로 왠만하면 자식쪽의 소멸자가 호출안되는 경우는 없을 것이다.
-
 	ENGINEAPI virtual ~UObject();
 
 	// delete Function
@@ -25,7 +24,6 @@ public:
 	{
 		return std::static_pointer_cast<ChildPtrType>(shared_from_this());
 	}
-
 
 	std::string GetName() const
 	{

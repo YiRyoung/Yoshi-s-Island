@@ -11,7 +11,7 @@ class UEngineFile : public UEnginePath
 {
 public:
 	ENGINEAPI UEngineFile();
-
+	// 생성체인
 	ENGINEAPI UEngineFile(const std::string& _Path);
 	ENGINEAPI UEngineFile(std::string_view _Path);
 	ENGINEAPI UEngineFile(std::filesystem::path _Path);
@@ -32,10 +32,7 @@ public:
 
 	ENGINEAPI std::string GetAllFileText();
 
-// 기능 클래스 랩핑
 private:
-	// 상수
-	// _MAX_DIR 윈도우에 의존적인 프로그램
 	FILE* File = nullptr;
 };
 

@@ -22,6 +22,7 @@ public:
 	virtual void LevelChangeStart() {}
 	virtual void LevelChangeEnd() {}
 
+
 	template<typename ComponentType>
 	inline std::shared_ptr<ComponentType> CreateDefaultSubObject()
 	{
@@ -31,7 +32,6 @@ public:
 		{
 			MSGASSERT("액터 컴포넌트를 상속받지 않은 클래스를 CreateDefaultSubObject하려고 했습니다.");
 			return nullptr;
-			// static_assert
 		}
 
 		char* ComMemory = new char[sizeof(ComponentType)];
@@ -40,7 +40,6 @@ public:
 		ComPtr->Actor = this;
 
 		ComponentType* NewPtr = reinterpret_cast<ComponentType*>(ComMemory);
-
 		std::shared_ptr<ComponentType> NewCom(new(ComMemory) ComponentType());
 
 		if (std::is_base_of_v<UActorComponent, ComponentType>)
@@ -80,14 +79,14 @@ public:
 		RootComponent->SetRelativeScale3D(_Scale);
 	}
 
-	void AddActorLocation(const FVector& _Value)
+	void AddRelativeLocation(const FVector& _Value)
 	{
 		if (nullptr == RootComponent)
 		{
 			return;
 		}
 
-		RootComponent->AddLocation(_Value);
+		RootComponent->AddRelativeLocation(_Value);
 	}
 
 	void SetActorRotation(const FVector& _Value)

@@ -1,6 +1,8 @@
 #pragma once
 #include "ActorComponent.h"
 
+// #include "PreCompile.h"
+
 // Ό³Έν :
 class USceneComponent : public UActorComponent
 {
@@ -17,11 +19,25 @@ public:
 	USceneComponent& operator=(const USceneComponent& _Other) = delete;
 	USceneComponent& operator=(USceneComponent&& _Other) noexcept = delete;
 
-	void AddLocation(const FVector& _Value)
+	void AddRelativeLocation(const FVector& _Value)
 	{
 		Transform.Location += _Value;
 		TransformUpdate();
 	}
+
+	void SetLocation(const FVector& _Value)
+	{
+		IsAbsolute = true;
+		Transform.Location = _Value;
+		TransformUpdate();
+	}
+
+	void SetRelativeLocation(const FVector& _Value)
+	{
+		Transform.Location = _Value;
+		TransformUpdate();
+	}
+
 
 	void AddRotation(const FVector& _Value)
 	{
@@ -37,6 +53,7 @@ public:
 
 	void SetScale3D(const FVector& _Value)
 	{
+		IsAbsolute = true;
 		Transform.Scale = _Value;
 		TransformUpdate();
 	}
@@ -47,11 +64,6 @@ public:
 		TransformUpdate();
 	}
 
-	void SetLocation(const FVector& _Value)
-	{
-		Transform.Location = _Value;
-		TransformUpdate();
-	}
 
 	FTransform& GetTransformRef()
 	{
@@ -65,6 +77,8 @@ public:
 	ENGINEAPI void TransformUpdate();
 
 protected:
+	bool IsAbsolute = false;
+
 	FTransform Transform;
 
 	ENGINEAPI void BeginPlay() override;

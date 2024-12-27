@@ -38,6 +38,7 @@ namespace UEngineDebug
 		{
 			fclose(pErr);
 		}
+
 	}
 
 	ENGINEAPI void EndConsole()

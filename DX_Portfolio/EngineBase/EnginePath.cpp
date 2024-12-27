@@ -84,7 +84,7 @@ bool UEnginePath::Move(std::string_view _Path)
 
 	if (false == IsExists())
 	{
-		MSGASSERT("존재하지 않는 경로로 이동하려고 했습니다."); 
+		MSGASSERT("존재하지 않는 경로로 이동하려고 했습니다.");
 		return false;
 	}
 
@@ -98,6 +98,8 @@ void UEnginePath::Append(std::string_view _AppendName)
 
 bool UEnginePath::MoveParentToDirectory(std::string_view _Path)
 {
+	// 이런 경우에는 더미를 만드는게 좋다.
+
 	// Path = L"D:\\Project\\GM2\\API\\App\\AAA.png"
 	UEnginePath DummyPath = UEnginePath(Path);
 
@@ -107,6 +109,7 @@ bool UEnginePath::MoveParentToDirectory(std::string_view _Path)
 		return false;
 	}
 
+	// 이게 무한 루프 걸리는 코드 입니다.
 	bool Result = false;
 	std::filesystem::path CurPath = DummyPath.Path;
 

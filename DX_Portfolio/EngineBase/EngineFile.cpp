@@ -42,15 +42,10 @@ void UEngineFile::FileOpen(const char* _Mode)
 {
 	fopen_s(&File, GetPathToString().c_str(), _Mode);
 
-	// 방어코드
-	// 파일을 열지 못했다.
 	if (nullptr == File)
 	{
-		// char [] Arr0
-		// char [] Arr1
-		// Arr0 + Arr1
 
-		MSGASSERT(GetPathToString() + + "파일 오픈에 실패했습니다");
+		MSGASSERT(GetPathToString() + +"파일 오픈에 실패했습니다");
 	}
 }
 
@@ -71,17 +66,8 @@ int UEngineFile::GetFileSize()
 	return static_cast<int>(std::filesystem::file_size(Path));
 }
 
-ENGINEAPI std::string UEngineFile::GetAllFileText()
-{
-	UEngineSerializer Ser;
-	Read(Ser);
-
-	return reinterpret_cast<const char*>(Ser.GetDataPtr());
-}
-
 void UEngineFile::Read(class UEngineSerializer& _Ser)
 {
-	// 파일 크기를 다 읽어서 
 
 	int FileSize = GetFileSize();
 
@@ -102,7 +88,6 @@ void UEngineFile::Write(const void* _Ptr, size_t _Size)
 		MSGASSERT("존재하지 않는 메모리를 사용하려고 했습니다.");
 	}
 
-	// w일 경우에 대한 예외처리
 	if (nullptr == File)
 	{
 		MSGASSERT("열지 않은 파일에 내용을 쓰려고 했습니다");
@@ -133,9 +118,10 @@ void UEngineFile::Read(void* _Ptr, size_t _Size)
 	fread(_Ptr, _Size, 1, File);
 }
 
+
+
 void UEngineFile::Close()
 {
-	// 방어코드
 	if (nullptr != File)
 	{
 		fclose(File);
@@ -143,3 +129,11 @@ void UEngineFile::Close()
 	}
 }
 
+
+std::string UEngineFile::GetAllFileText()
+{
+	UEngineSerializer Ser;
+	Read(Ser);
+
+	return reinterpret_cast<const char*>(Ser.GetDataPtr());
+}

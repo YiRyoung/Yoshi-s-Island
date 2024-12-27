@@ -11,7 +11,6 @@
 #include <EngineBase/EngineMath.h>
 
 
-// 정신 잘 붙
 
 // 설명 :
 class UEngineWindow
@@ -20,6 +19,7 @@ public:
 	ENGINEAPI static void EngineWindowInit(HINSTANCE _Instance);
 	ENGINEAPI static void CreateWindowClass(const WNDCLASSEXA& _Class);
 	ENGINEAPI static int WindowMessageLoop(std::function<void()> _StartFunction, std::function<void()> _FrameFunction, std::function<void()> _EndFunction = nullptr);
+
 
 	// constrcuter destructer
 	ENGINEAPI UEngineWindow();
@@ -58,6 +58,7 @@ public:
 		return LoopActive;
 	}
 
+
 	ENGINEAPI HWND GetWindowHandle() const
 	{
 		return WindowHandle;
@@ -65,13 +66,17 @@ public:
 
 	ENGINEAPI static  void SetCustomProc(std::function<bool(HWND, UINT, WPARAM, LPARAM)> _CustomProc);
 
+
+
 protected:
 
 private:
 	ENGINEAPI static std::function<bool(HWND, UINT, WPARAM, LPARAM)> CustomProc;
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
+
 	ENGINEAPI static HINSTANCE hInstance;
+
 	inline static bool LoopActive = true;
 
 	ENGINEAPI static std::map<std::string, WNDCLASSEXA> WindowClasss;

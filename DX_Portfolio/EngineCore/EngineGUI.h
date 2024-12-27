@@ -43,4 +43,6 @@ protected:
 
 private:
 	static inline std::map<std::string, std::shared_ptr<class UEngineGUIWindow>> Windows;
+
 };
+

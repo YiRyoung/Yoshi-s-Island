@@ -1,7 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
-// Ό³Έν :
 class ATitleLogo : public AActor
 {
 public:
@@ -26,5 +25,6 @@ protected:
 
 private:
 	std::shared_ptr<class USpriteRenderer> BackgroundRenderer;
+	std::shared_ptr<class USpriteRenderer> Child;
 };
 

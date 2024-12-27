@@ -1,16 +1,17 @@
 #pragma once
-
 #include <wrl.h>
-#include <d3d11_4.h>			// directx 11 ver.4
-#include <d3dcompiler.h>		// 쉐이더 컴파일러용 인터페이스
-
+#include <d3d11_4.h> // directx 11 버전4용 헤더
+#include <d3dcompiler.h> // 쉐이더 컴파일러용 인터페이스
 #include <EnginePlatform/EngineWindow.h>
 
 #pragma comment(lib, "d3d11")
 #pragma comment(lib, "d3dcompiler") 
 #pragma comment(lib, "dxguid")
 
-#pragma comment(lib, "DXGI")	// 모니터 정보 또는 그래픽카드 정보를 얻어오는 함수를 가지고 있는 라이브러리
+#pragma comment(lib, "DXGI") 
+
+
+
 
 // 설명 :
 class UEngineGraphicDevice
@@ -56,6 +57,9 @@ public:
 protected:
 
 private:
+
+
+
 	Microsoft::WRL::ComPtr<ID3D11Device> Device = nullptr;
 
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> Context = nullptr;
@@ -66,5 +70,7 @@ private:
 
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> DXBackBufferTexture = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> RTV = nullptr;
+
+
 };
 
