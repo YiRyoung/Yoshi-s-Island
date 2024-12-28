@@ -57,20 +57,16 @@ public:
 protected:
 
 private:
-
-
-
 	Microsoft::WRL::ComPtr<ID3D11Device> Device = nullptr;
-
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> Context = nullptr;
-
 	Microsoft::WRL::ComPtr<IDXGISwapChain> SwapChain = nullptr;
-
 	Microsoft::WRL::ComPtr<IDXGIAdapter> MainAdapter = nullptr;
 
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> DXBackBufferTexture = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> RTV = nullptr;
 
+	ENGINEAPI void DefaultResourcesInit();
 
+	ENGINEAPI void MeshInit();
 };
 

@@ -26,10 +26,6 @@ IDXGIAdapter* UEngineGraphicDevice::GetHighPerFormanceAdapter()
 	unsigned __int64 MaxVideoMemory = 0;
 	IDXGIAdapter* ResultAdapter = nullptr;
 
-
-
-
-
 	HRESULT HR = CreateDXGIFactory(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&Factory));
 
 	if (nullptr == Factory)
@@ -37,8 +33,6 @@ IDXGIAdapter* UEngineGraphicDevice::GetHighPerFormanceAdapter()
 		MSGASSERT("그래픽카드 조사용 팩토리 생성에 실패했습니다.");
 		return nullptr;
 	}
-
-
 
 	for (int Index = 0;; ++Index)
 	{
@@ -86,8 +80,6 @@ IDXGIAdapter* UEngineGraphicDevice::GetHighPerFormanceAdapter()
 
 void UEngineGraphicDevice::CreateDeviceAndContext()
 {
-
-
 	MainAdapter = GetHighPerFormanceAdapter();
 
 	int iFlag = 0;
@@ -104,7 +96,6 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
 	//	D3D11_CREATE_DEVICE_VIDEO_SUPPORT = 0x800
 	iFlag = D3D11_CREATE_DEVICE_DEBUG;
 #endif
-
 
 	//D3D_DRIVER_TYPE DriverType,
 	// D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN 
@@ -172,6 +163,8 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
 		MSGASSERT("쓰레드 안정성 적용에 문제가 생겼습니다.");
 		return;
 	}
+
+	DefaultResourcesInit();
 }
 
 void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
@@ -203,11 +196,9 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 	ScInfo.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 	ScInfo.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
-
 	IDXGIFactory* pF = nullptr;
 
 	MainAdapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&pF));
-
 
 	pF->CreateSwapChain(Device.Get(), &ScInfo, &SwapChain);
 	pF->Release();
@@ -218,22 +209,16 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 		MSGASSERT("스왑체인 제작에 실패했습니다.");
 	}
 
-
-
 	if (S_OK != SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(DXBackBufferTexture.GetAddressOf())))
 	{
 		MSGASSERT("백버퍼 텍스처를 얻어오는데 실패했습니다.");
 	};
 
-
-
 	if (S_OK != Device->CreateRenderTargetView(DXBackBufferTexture.Get(), nullptr, &RTV))
 	{
 		MSGASSERT("텍스처 수정권한 획득에 실패했습니다");
 	}
-
 }
-
 
 void UEngineGraphicDevice::RenderStart()
 {

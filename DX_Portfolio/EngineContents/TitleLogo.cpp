@@ -11,7 +11,7 @@ ATitleLogo::ATitleLogo()
 
 	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
 
-	BackgroundRenderer->CreateAnimation("Idle", "YoshiAndMario.png", 0, 6, 0.7f);
+	BackgroundRenderer->CreateAnimation("Idle", "YoshiAndMario.png", 0, 0, 0.7f);
 	USpriteRenderer::FrameAnimation* Animation = BackgroundRenderer->FindAnimation("Idle");
 	Animation->IsAutoScale = true;
 	Animation->AutoScaleRatio = 4.0f;
@@ -23,16 +23,9 @@ ATitleLogo::ATitleLogo()
 		Animation->AutoScaleRatio = 4.0f;
 	}
 
-
 	BackgroundRenderer->ChangeAnimation("Idle");
 	BackgroundRenderer->SetRelativeScale3D({ 50, 50, 1.0f });
 	BackgroundRenderer->SetupAttachment(RootComponent);
-
-	//Child = CreateDefaultSubObject<USpriteRenderer>();
-	//Child->SetSprite("YoshiAndMario.png", 2);
-	//Child->SetRelativeLocation({ 100.0f, 0.0f, 0.0f });
-	//Child->SetScale3D({ 50.0f, 50.0f, 1.0f });
-	//Child->SetupAttachment(RootComponent);
 }
 
 ATitleLogo::~ATitleLogo()
@@ -76,10 +69,4 @@ void ATitleLogo::Tick(float _DeltaTime)
 	{
 		BackgroundRenderer->ChangeAnimation("Move");
 	}
-
-	if (UEngineInput::IsPress('R'))
-	{
-		//Child->SetWorldLocation(FVector{ 100.0f, 0.0f , 0.0f });
-	}
-
 }

@@ -3,15 +3,6 @@
 #include "EngineSprite.h"
 #include "RenderUnit.h"
 
-struct EngineVertex
-{
-	float4 POSITION;
-	float4 TEXCOORD;
-	float4 COLOR;
-};
-
-
-
 // Ό³Έν :
 class URenderer : public USceneComponent
 {

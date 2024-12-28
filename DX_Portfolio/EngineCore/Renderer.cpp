@@ -3,6 +3,7 @@
 #include <EngineBase/EngineString.h>
 #include <EngineCore/EngineCamera.h>
 #include <EngineCore/EngineTexture.h>
+#include "EngineVertex.h"
 
 URenderer::URenderer()
 {
@@ -160,9 +161,6 @@ void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 	RendererTrans.Projection = CameraTrans.Projection;
 
 	RendererTrans.WVP = RendererTrans.World * RendererTrans.View * RendererTrans.Projection;
-
-
-
 
 	ShaderResSetting();
 	InputAssembler1Setting();
@@ -382,7 +380,7 @@ void URenderer::InputAssembler2Init()
 	Data.pSysMem = &Indexs[0];
 	if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateBuffer(&BufferInfo, &Data, &IndexBuffer))
 	{
-		MSGASSERT("버텍스 버퍼 생성에 실패했습니다.");
+		MSGASSERT("인덱스 버퍼 생성에 실패했습니다.");
 		return;
 	}
 }
