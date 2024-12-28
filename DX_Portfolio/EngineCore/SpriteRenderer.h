@@ -90,7 +90,6 @@ protected:
 	void BeginPlay() override;
 	void ComponentTick(float _DeltaTime) override;
 
-
 private:
 	int CurIndex = 0;
 	float CurAnimationSpeed = 1.0f;

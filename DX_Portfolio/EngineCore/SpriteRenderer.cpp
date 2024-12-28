@@ -100,7 +100,6 @@ void USpriteRenderer::ComponentTick(float _DeltaTime)
 
 		}
 
-
 		CurIndex = Indexs[CurAnimation->CurIndex];
 
 		if (true == CurAnimation->IsAutoScale)
@@ -110,8 +109,6 @@ void USpriteRenderer::ComponentTick(float _DeltaTime)
 			SetRelativeScale3D(Scale * CurAnimation->AutoScaleRatio);
 		}
 	}
-
-
 }
 
 void USpriteRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float Time /*= 0.1f*/, bool _Loop /*= true*/)

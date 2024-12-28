@@ -45,6 +45,7 @@ cbuffer FSpriteData : register(b1)
 {
     float4 CuttingPos;
     float4 CuttingSize;
+    float4 Pivot;
 };
 
 VertexShaderOutPut VertexToWorld(EngineVertex _Vertex)
@@ -52,9 +53,10 @@ VertexShaderOutPut VertexToWorld(EngineVertex _Vertex)
 				
 		
     VertexShaderOutPut OutPut;
-    OutPut.SVPOSITION = mul(_Vertex.POSITION, WVP);
+    _Vertex.POSITION.x += (1.0f - Pivot.x) - 0.5f;
+    _Vertex.POSITION.y += (1.0f - Pivot.y) - 0.5f;
 	
-			
+    OutPut.SVPOSITION = mul(_Vertex.POSITION, WVP);			
 			
     OutPut.UV.x = (_Vertex.UV.x * CuttingSize.x) + CuttingPos.x;
     OutPut.UV.y = (_Vertex.UV.y * CuttingSize.y) + CuttingPos.y;
