@@ -10,9 +10,6 @@
 
 #pragma comment(lib, "DXGI") 
 
-
-
-
 // Ό³Έν :
 class UEngineGraphicDevice
 {
@@ -68,5 +65,6 @@ private:
 	ENGINEAPI void DefaultResourcesInit();
 
 	ENGINEAPI void MeshInit();
+	ENGINEAPI void BlendInit();
 };
 

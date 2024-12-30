@@ -100,6 +100,9 @@
     <ClInclude Include="Mesh.h">
       <Filter>Object\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="EngineBlend.h">
+      <Filter>Object\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -191,6 +194,9 @@
     </ClCompile>
     <ClCompile Include="EngineGraphicDevice_Resources.cpp">
       <Filter>Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineBlend.cpp">
+      <Filter>Object\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

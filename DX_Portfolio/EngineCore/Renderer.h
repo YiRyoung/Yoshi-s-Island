@@ -28,6 +28,8 @@ public:
 
 	ENGINEAPI void SetMesh(std::string_view _Name);
 
+	ENGINEAPI void SetBlend(std::string_view _Name);
+
 protected:
 	ENGINEAPI void BeginPlay() override;
 	ENGINEAPI virtual void Render(UEngineCamera* _Camera, float _DeltaTime);
@@ -36,6 +38,7 @@ private:
 
 public:
 	class UMesh* Mesh = nullptr;
+	class UEngineBlend* Blend = nullptr;
 
 	FSpriteData SpriteData;
 

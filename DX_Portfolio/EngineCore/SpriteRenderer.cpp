@@ -20,6 +20,7 @@ void USpriteRenderer::BeginPlay()
 	URenderer::BeginPlay();
 
 	SetMesh("Rect");
+	SetBlend("AlphaBlend");
 }
 
 USpriteRenderer::FrameAnimation* USpriteRenderer::FindAnimation(std::string_view _AnimationName)
