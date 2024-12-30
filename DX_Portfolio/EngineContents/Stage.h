@@ -15,10 +15,12 @@ public:
 	AStage& operator=(const AStage& _Other) = delete;
 	AStage& operator=(AStage&& _Other) noexcept = delete;
 
-	std::shared_ptr<class USpriteRenderer> GetRenderer()
+	std::shared_ptr<class USpriteRenderer> GetBackgroundRenderer() const
 	{
 		return BackgroundRenderer;
 	}
+
+	void SetBackground(int _Index, FVector _Scale, FVector _Pos);
 
 protected:
 	void BeginPlay() override;
@@ -26,7 +28,5 @@ protected:
 
 private:
 	std::shared_ptr<class USpriteRenderer> BackgroundRenderer;
-	std::shared_ptr<class USpriteRenderer> ColBackgroundRenderer;
-	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
 };
 

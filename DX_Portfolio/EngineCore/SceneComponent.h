@@ -32,6 +32,11 @@ public:
 		TransformUpdate();
 	}
 
+	FVector GetRelativeLocation() const
+	{
+		return Transform.Location;
+	}
+
 	void SetRelativeLocation(const FVector& _Value)
 	{
 		Transform.Location = _Value;

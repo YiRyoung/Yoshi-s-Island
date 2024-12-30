@@ -65,7 +65,7 @@ void UEngineCore::LoadContents(std::string_view _DllName)
 
 	if (nullptr == ContentsDLL)
 	{
-		MSGASSERT("컨텐츠 기능을 로드할수가 없습니다.");
+		MSGASSERT("컨텐츠 기능을 로드할 수가 없습니다.");
 		return;
 	}
 

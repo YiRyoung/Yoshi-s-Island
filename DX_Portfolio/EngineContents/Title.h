@@ -14,7 +14,7 @@ public:
 	ATitle& operator=(const ATitle& _Other) = delete;
 	ATitle& operator=(ATitle&& _Other) noexcept = delete;
 
-	std::shared_ptr<class USpriteRenderer> GetBackgroundRenderer()
+	std::shared_ptr<class USpriteRenderer> GetBackgroundRenderer() const
 	{
 		return BackgroundRenderer;
 	}

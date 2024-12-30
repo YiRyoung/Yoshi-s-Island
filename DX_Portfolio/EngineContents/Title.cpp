@@ -1,8 +1,5 @@
 #include "PreCompile.h"
 #include "Title.h"
-#include <EngineBase/EnginePath.h>
-#include <EngineBase/EngineFile.h>
-#include <EngineBase/EngineDirectory.h>
 #include <EngineBase/EngineDebug.h>
 
 #include <EnginePlatform/EngineInput.h>
@@ -60,7 +57,6 @@ void ATitle::BeginPlay()
 void ATitle::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
-
-	UEngineDebug::OutPutString("EndAnimIndex : " + std::to_string(EndAnimIndex));
 	UEngineDebug::OutPutString("CurIndex : " + std::to_string(BackgroundRenderer->GetCurIndex()));
+	UEngineDebug::OutPutString("EndIndex : " + std::to_string(EndAnimIndex));
 }

@@ -2,8 +2,11 @@
 #include "TitleGameMode.h"
 #include "Title.h"
 
+#include <EngineBase/EngineDebug.h>
+
 #include <EnginePlatform/EngineInput.h>
 
+#include <EngineCore/Level.h>
 #include <EngineCore/CameraActor.h>
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/EngineGUIWindow.h>
@@ -55,5 +58,10 @@ void ATitleGameMode::LevelChangeStart()
 void ATitleGameMode::LevelChangeEnd()
 {
 	AActor::LevelChangeEnd();
+
+	//if (true == Title->GetBackgroundRenderer()->IsCurAnimationEnd())
+	//{
+		UEngineCore::OpenLevel("Stage101");
+	//}
 }
 
