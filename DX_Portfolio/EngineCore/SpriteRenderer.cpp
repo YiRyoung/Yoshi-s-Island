@@ -70,7 +70,6 @@ void USpriteRenderer::ComponentTick(float _DeltaTime)
 
 		if (CurAnimation->CurTime > CurFrameTime)
 		{
-
 			CurAnimation->CurTime -= CurFrameTime;
 			++CurAnimation->CurIndex;
 
@@ -135,19 +134,17 @@ void USpriteRenderer::CreateAnimation(std::string_view _AnimationName, std::stri
 			Times.push_back(Time);
 			++_Start;
 		}
-
 	}
 	else
 	{
 		Inter = (_Start - _End) + 1;
 		for (size_t i = 0; i < Inter; i++)
 		{
-			Indexs.push_back(_End);
+			Indexs.push_back(_Start);
 			Times.push_back(Time);
-			++_End;
+			--_Start;
 		}
 	}
-
 
 	CreateAnimation(_AnimationName, _SpriteName, Indexs, Times, _Loop);
 }
@@ -223,6 +220,13 @@ void USpriteRenderer::ChangeAnimation(std::string_view _AnimationName, bool _For
 	if (CurAnimation->Events.contains(CurAnimation->CurIndex))
 	{
 		CurAnimation->Events[CurAnimation->CurIndex]();
+	}
+
+	if (true == CurAnimation->IsAutoScale)
+	{
+		FVector Scale = CurAnimation->Sprite->GetSpriteScaleToReal(CurIndex);
+		Scale.Z = 1.0f;
+		SetRelativeScale3D(Scale * CurAnimation->AutoScaleRatio);
 	}
 }
 

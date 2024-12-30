@@ -17,7 +17,6 @@ public:
 	{
 		ImGui::Button("WindowButton");
 		ImGui::SameLine();
-		ImGui::Text("test");
 	}
 };
 
@@ -41,6 +40,9 @@ void ATitleGameMode::Tick(float _DeltaTime)
 
 	if (true == UEngineInput::IsPress(VK_SPACE))
 	{
+		int Index = Title->GetBackgroundRenderer()->GetCurIndex();
+		Title->SetEndAnimIndex(Index);
+		Title->EndAnimation();
 		LevelChangeEnd();
 	}
 }
@@ -53,6 +55,5 @@ void ATitleGameMode::LevelChangeStart()
 void ATitleGameMode::LevelChangeEnd()
 {
 	AActor::LevelChangeEnd();
-	int a = 0;
 }
 

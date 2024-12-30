@@ -1,7 +1,12 @@
 #include "PreCompile.h"
 #include "Title.h"
 #include <EngineBase/EnginePath.h>
+#include <EngineBase/EngineFile.h>
+#include <EngineBase/EngineDirectory.h>
+#include <EngineBase/EngineDebug.h>
+
 #include <EnginePlatform/EngineInput.h>
+
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/EngineSprite.h>
 #include <EngineCore/DefaultSceneComponent.h>
@@ -37,7 +42,7 @@ ATitle::~ATitle()
 
 void ATitle::EndAnimation()
 {
-	BackgroundRenderer->CreateAnimation("End", "Title", EndAnimIndex, 0, 1.0f, false);
+	BackgroundRenderer->CreateAnimation("End", "Title", EndAnimIndex, 0, 0.12f, false);
 	{
 		USpriteRenderer::FrameAnimation* Animation = BackgroundRenderer->FindAnimation("End");
 		Animation->IsAutoScale = true;
@@ -55,4 +60,7 @@ void ATitle::BeginPlay()
 void ATitle::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	UEngineDebug::OutPutString("EndAnimIndex : " + std::to_string(EndAnimIndex));
+	UEngineDebug::OutPutString("CurIndex : " + std::to_string(BackgroundRenderer->GetCurIndex()));
 }
