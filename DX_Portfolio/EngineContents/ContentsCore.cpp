@@ -18,7 +18,7 @@ UContentsCore::~UContentsCore()
 void UContentsCore::EngineStart(UEngineInitData& _Data)
 {
 	_Data.WindowPos = { 100, 100 };
-	_Data.WindowSize = { 1280, 720 };
+	_Data.WindowSize = { 768, 660 };
 
 	{
 		UEngineDirectory Dir;
@@ -36,10 +36,22 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 		}
 	}
 
-	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
+	{
+		UEngineDirectory Dir;
+		if (false == Dir.MoveParentToDirectory("ContentsResources"))
+		{
+			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
+			return;
+		}
+		Dir.Append("Image/Title");
 
-	UEngineCore::CreateLevel<ATitleGameMode, APawn>("Title");
+		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
+	}
+
+	UEngineCore::CreateLevel<ATitleGameMode, AGameMode>("Title");
+	//UEngineCore::CreateLevel<AState101GameMode, APawn>("Stage101");
 	UEngineCore::OpenLevel("Title");
+
 }
 
 void UContentsCore::EngineTick(float _DeltaTime)

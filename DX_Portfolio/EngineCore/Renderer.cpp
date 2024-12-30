@@ -15,26 +15,9 @@ URenderer::~URenderer()
 {
 }
 
-void URenderer::SetSprite(UEngineSprite* _Sprite)
+void URenderer::SetTexture(UEngineTexture* _Texture)
 {
-	Sprite = _Sprite;
-
-	if (nullptr == Sprite)
-	{
-		MSGASSERT("존재하지 않는 스프라이트를 사용하려고 했습니다.");
-	}
-}
-
-void URenderer::SetSprite(std::string_view _Value)
-{
-	std::string UpperName = UEngineString::ToUpper(_Value);
-
-	Sprite = UEngineSprite::Find<UEngineSprite>(UpperName).get();
-
-	if (nullptr == Sprite)
-	{
-		MSGASSERT("존재하지 않는 스프라이트를 사용하려고 했습니다.");
-	}
+	Texture = _Texture;
 }
 
 void URenderer::SetOrder(int _Order)
@@ -142,7 +125,7 @@ void URenderer::ShaderResSetting()
 
 
 
-	ID3D11ShaderResourceView* ArrSRV[16] = { Sprite->GetSRV() };
+	ID3D11ShaderResourceView* ArrSRV[16] = { Texture->GetSRV() };
 	UEngineCore::GetDevice().GetContext()->PSSetShaderResources(0, 1, ArrSRV);
 
 	ID3D11SamplerState* ArrSMP[16] = { SamplerState.Get() };
@@ -177,32 +160,6 @@ void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 	UEngineCore::GetDevice().GetContext()->DrawIndexed(6, 0, 0);
 
 }
-
-//void URenderer::InputAssembler1Init()
-//{
-//	std::vector<EngineVertex> Vertexs;
-//	Vertexs.resize(4);
-//
-//	Vertexs[0] = EngineVertex{ FVector(-0.5f, 0.5f, -0.0f), {0.0f , 0.0f }, {1.0f, 0.0f, 0.0f, 1.0f} };
-//	Vertexs[1] = EngineVertex{ FVector(0.5f, 0.5f, -0.0f), {1.0f , 0.0f } , {0.0f, 1.0f, 0.0f, 1.0f} };
-//	Vertexs[2] = EngineVertex{ FVector(-0.5f, -0.5f, -0.0f), {0.0f , 1.0f } , {0.0f, 0.0f, 1.0f, 1.0f} };
-//	Vertexs[3] = EngineVertex{ FVector(0.5f, -0.5f, -0.0f), {1.0f , 1.0f } , {1.0f, 1.0f, 1.0f, 1.0f} };
-//
-//	D3D11_BUFFER_DESC BufferInfo = { 0 };
-//
-//	BufferInfo.ByteWidth = sizeof(EngineVertex) * static_cast<int>(Vertexs.size());
-//	BufferInfo.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-//	BufferInfo.CPUAccessFlags = 0;
-//	BufferInfo.Usage = D3D11_USAGE_DEFAULT;
-//
-//	D3D11_SUBRESOURCE_DATA Data; 	Data.pSysMem = &Vertexs[0];
-//
-//	if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateBuffer(&BufferInfo, &Data, VertexBuffer.GetAddressOf()))
-//	{
-//		MSGASSERT("버텍스 버퍼 생성에 실패했습니다.");
-//		return;
-//	}
-//}
 
 void URenderer::InputAssembler1Setting()
 {
@@ -331,8 +288,8 @@ void URenderer::RasterizerInit()
 	Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
 	UEngineCore::GetDevice().GetDevice()->CreateRasterizerState(&Desc, &RasterizerState);
 
-	ViewPortInfo.Width = 1280.0f;
-	ViewPortInfo.Height = 720.0f;
+	ViewPortInfo.Width = 768.0f;
+	ViewPortInfo.Height = 660.0f;
 	ViewPortInfo.TopLeftX = 0.0f;
 	ViewPortInfo.TopLeftY = 0.0f;
 	ViewPortInfo.MinDepth = 0.0f;
@@ -346,40 +303,10 @@ void URenderer::RasterizerSetting()
 	UEngineCore::GetDevice().GetContext()->RSSetState(RasterizerState.Get());
 }
 
-//void URenderer::InputAssembler2Init()
-//{
-//	std::vector<unsigned int> Indexs;
-//
-//	Indexs.push_back(0);
-//	Indexs.push_back(1);
-//	Indexs.push_back(2);
-//
-//	Indexs.push_back(1);
-//	Indexs.push_back(3);
-//	Indexs.push_back(2);
-//
-//
-//	D3D11_BUFFER_DESC BufferInfo = { 0 };
-//	BufferInfo.ByteWidth = sizeof(unsigned int) * static_cast<int>(Indexs.size());
-//	BufferInfo.BindFlags = D3D11_BIND_INDEX_BUFFER;
-//	BufferInfo.CPUAccessFlags = 0;
-//	BufferInfo.Usage = D3D11_USAGE_DEFAULT;
-//	D3D11_SUBRESOURCE_DATA Data;
-//	Data.pSysMem = &Indexs[0];
-//	if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateBuffer(&BufferInfo, &Data, &IndexBuffer))
-//	{
-//		MSGASSERT("인덱스 버퍼 생성에 실패했습니다.");
-//		return;
-//	}
-//}
 
 void URenderer::InputAssembler2Setting()
 {
 	Mesh->GetIndexBuffer()->Setting();
-
-	/*int Offset = 0;
-
-	UEngineCore::GetDevice().GetContext()->IASetIndexBuffer(IndexBuffer.Get(), DXGI_FORMAT_R32_UINT, Offset);*/
 
 	UEngineCore::GetDevice().GetContext()->IASetPrimitiveTopology(Topology);
 }
@@ -453,9 +380,9 @@ void URenderer::OutPutMergeSetting()
 	UEngineCore::GetDevice().GetContext()->OMSetRenderTargets(1, &ArrRtv[0], nullptr);
 }
 
-void URenderer::SetSpriteData(size_t _Index)
+void URenderer::SetSpriteData(UEngineSprite* _Sprite, size_t _Index)
 {
-	SpriteData = Sprite->GetSpriteData(_Index);
+	SpriteData = _Sprite->GetSpriteData(_Index);
 }
 
 void URenderer::SetMesh(std::string_view _Name)

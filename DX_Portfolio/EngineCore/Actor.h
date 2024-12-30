@@ -19,8 +19,8 @@ public:
 	ENGINEAPI virtual void BeginPlay();
 	ENGINEAPI virtual void Tick(float _DeltaTime);
 
-	virtual void LevelChangeStart() {}
-	virtual void LevelChangeEnd() {}
+	ENGINEAPI virtual void LevelChangeStart() {}
+	ENGINEAPI virtual void LevelChangeEnd() {}
 
 
 	template<typename ComponentType>

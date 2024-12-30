@@ -11,8 +11,11 @@
     <ClInclude Include="TitleGameMode.h">
       <Filter>GameMode</Filter>
     </ClInclude>
-    <ClInclude Include="TitleLogo.h">
+    <ClInclude Include="Title.h">
       <Filter>Level\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Level\Stage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -26,8 +29,11 @@
     <ClCompile Include="TitleGameMode.cpp">
       <Filter>GameMode</Filter>
     </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
+    <ClCompile Include="Title.cpp">
       <Filter>Level\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Level\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +51,9 @@
     </Filter>
     <Filter Include="Level\Title">
       <UniqueIdentifier>{0c62a773-82ed-44d6-a453-71c80bc823b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Stage">
+      <UniqueIdentifier>{2b6a8cc6-9892-4ec8-b1bf-84fa26797464}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #pragma once
 #include <EngineCore/Actor.h>
 // Ό³Έν :
-class ATitleGameMode : public AActor
+class ATitleGameMode : public AGameMode
 {
 public:
 	// constrcuter destructer
@@ -14,11 +14,13 @@ public:
 	ATitleGameMode& operator=(const ATitleGameMode& _Other) = delete;
 	ATitleGameMode& operator=(ATitleGameMode&& _Other) noexcept = delete;
 
-	void Tick(float _DeltaTime);
 
 protected:
+	void Tick(float _DeltaTime);
+	void LevelChangeStart();
+	void LevelChangeEnd();
 
 private:
-	std::shared_ptr<class ATitleLogo> Logo;
+	std::shared_ptr<class ATitle> Title;
 };
 
