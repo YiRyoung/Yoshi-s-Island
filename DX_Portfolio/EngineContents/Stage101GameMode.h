@@ -2,7 +2,7 @@
 #include <EngineCore/Actor.h>
 
 // Ό³Έν :
-class AStage101GameMode : public AActor
+class AStage101GameMode : public AGameMode
 {
 public:
 	// constrcuter destructer
@@ -18,8 +18,8 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-	void LevelChangeStart();
-	void LevelChangeEnd();
+	void LevelChangeStart() override;
+	void LevelChangeEnd() override;
 
 private:
 	std::shared_ptr<class AStage> Stage;

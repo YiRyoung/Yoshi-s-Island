@@ -41,9 +41,6 @@ void USpriteRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
 	if (nullptr != CurAnimation)
 	{
-		UEngineSprite* Sprite = CurAnimation->Sprite;
-		size_t CurIndex = CurAnimation->CurIndex;
-
 		URenderer::SetTexture(Sprite->GetTexture(CurIndex));
 		URenderer::SetSpriteData(Sprite, CurIndex);
 	}

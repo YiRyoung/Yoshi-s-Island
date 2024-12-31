@@ -46,7 +46,11 @@ void ATitleGameMode::Tick(float _DeltaTime)
 		int Index = Title->GetBackgroundRenderer()->GetCurIndex();
 		Title->SetEndAnimIndex(Index);
 		Title->EndAnimation();
-		LevelChangeEnd();
+	}
+
+	if (true == Title->GetBackgroundRenderer()->IsCurAnimationEnd())
+	{
+		UEngineCore::OpenLevel("Stage101");
 	}
 }
 
@@ -59,9 +63,6 @@ void ATitleGameMode::LevelChangeEnd()
 {
 	AActor::LevelChangeEnd();
 
-	//if (true == Title->GetBackgroundRenderer()->IsCurAnimationEnd())
-	//{
-		UEngineCore::OpenLevel("Stage101");
-	//}
+	
 }
 
