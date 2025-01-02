@@ -3,6 +3,11 @@
 #include "EngineSprite.h"
 #include "RenderUnit.h"
 
+struct FUVValue
+{
+	float4 PlusUVValue;
+};
+
 // Ό³Έν :
 class URenderer : public USceneComponent
 {
@@ -21,15 +26,18 @@ public:
 
 	void SetOrder(int _Order) override;
 
+	ENGINEAPI void SetTexture(std::string_view _Value);
+
 	ENGINEAPI void SetTexture(UEngineTexture* _Value);
 
 	ENGINEAPI void SetSpriteData(UEngineSprite* _Sprite, size_t _Index);
+
+	ENGINEAPI void AddUVPlusValue(float4 _Value);
 
 	ENGINEAPI void SetMesh(std::string_view _Name);
 
 	ENGINEAPI void SetBlend(std::string_view _Name);
 
-protected:
 	ENGINEAPI void BeginPlay() override;
 	ENGINEAPI virtual void Render(UEngineCamera* _Camera, float _DeltaTime);
 
@@ -40,11 +48,13 @@ public:
 	class UEngineBlend* Blend = nullptr;
 
 	FSpriteData SpriteData;
+	FUVValue UVValueData;
 	UEngineTexture* Texture = nullptr;
 
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> SamplerState = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11Buffer> TransformConstBuffer = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11Buffer> SpriteConstBuffer = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> UVValue = nullptr;
 	void ShaderResInit();
 	void ShaderResSetting();
 

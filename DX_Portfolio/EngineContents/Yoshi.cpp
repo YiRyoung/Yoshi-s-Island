@@ -23,7 +23,7 @@ AYoshi::AYoshi()
 		Animation->AutoScaleRatio = 3.0f;
 	}
 
-	YoshiRenderer->CreateAnimation("Move", "YoshiAndMario.png", 40, 50, 0.1f);
+	YoshiRenderer->CreateAnimation("Move", "YoshiAndMario.png", 40, 50, 0.08f);
 	{
 		USpriteRenderer::FrameAnimation* Animation = YoshiRenderer->FindAnimation("Move");
 		Animation->IsAutoScale = true;
@@ -46,12 +46,21 @@ void AYoshi::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	if (true == UEngineInput::IsPress('D'))
+	if (true == UEngineInput::IsPress(VK_RIGHT))
 	{
 		YoshiRenderer->AddRelativeLocation({ 3.0f, 0.0f, 0.0f });
+		YoshiRenderer->SetRotation({ 0.0f, 0.0f, 0.0f });
 		YoshiRenderer->ChangeAnimation("Move");
 	}
-	if (false == UEngineInput::IsPress('D'))
+
+	if (true == UEngineInput::IsPress(VK_LEFT))
+	{
+		YoshiRenderer->AddRelativeLocation({ -3.0f, 0.0f, 0.0f });
+		YoshiRenderer->SetRotation({ 0.0f, 180.0f, 0.0f });
+		YoshiRenderer->ChangeAnimation("Move");
+	}
+
+	if (false == UEngineInput::IsPress(VK_LEFT) && false == UEngineInput::IsPress(VK_RIGHT))
 	{
 		YoshiRenderer->ChangeAnimation("Idle");
 	}

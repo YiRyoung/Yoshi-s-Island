@@ -39,7 +39,7 @@ ATitle::~ATitle()
 
 void ATitle::EndAnimation()
 {
-	BackgroundRenderer->CreateAnimation("End", "Title", EndAnimIndex, 0, 0.12f, false);
+	BackgroundRenderer->CreateAnimation("End", "Title", EndAnimIndex, 0, 0.03f, false);
 	{
 		USpriteRenderer::FrameAnimation* Animation = BackgroundRenderer->FindAnimation("End");
 		Animation->IsAutoScale = true;

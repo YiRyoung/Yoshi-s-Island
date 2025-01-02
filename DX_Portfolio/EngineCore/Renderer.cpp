@@ -15,6 +15,16 @@ URenderer::~URenderer()
 {
 }
 
+void URenderer::SetTexture(std::string_view _Value)
+{
+	Texture = UEngineTexture::Find<UEngineTexture>(_Value).get();
+
+	if (nullptr == Texture)
+	{
+		MSGASSERT("존재하지 않는 텍스처를 세팅하려고 했습니다.");
+	}
+}
+
 void URenderer::SetTexture(UEngineTexture* _Texture)
 {
 	Texture = _Texture;
@@ -22,6 +32,11 @@ void URenderer::SetTexture(UEngineTexture* _Texture)
 
 void URenderer::SetOrder(int _Order)
 {
+	if (0 != GetOrder() && _Order == GetOrder())
+	{
+		return;
+	}
+
 	int PrevOrder = GetOrder();
 	UObject::SetOrder(_Order);
 	ULevel* Level = GetActor()->GetWorld();
@@ -34,8 +49,7 @@ void URenderer::SetOrder(int _Order)
 ENGINEAPI void URenderer::BeginPlay()
 {
 	USceneComponent::BeginPlay();
-	SetOrder(0);
-
+	SetOrder(GetOrder());
 
 	//InputAssembler1Init();
 	VertexShaderInit();
@@ -64,6 +78,20 @@ void URenderer::ShaderResInit()
 
 	{
 		D3D11_BUFFER_DESC BufferInfo = { 0 };
+		BufferInfo.ByteWidth = sizeof(FUVValue);
+		BufferInfo.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		BufferInfo.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
+		BufferInfo.Usage = D3D11_USAGE_DYNAMIC;
+
+		if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateBuffer(&BufferInfo, nullptr, &UVValue))
+		{
+			MSGASSERT("상수버퍼 생성에 실패했습니다..");
+			return;
+		}
+	}
+
+	{
+		D3D11_BUFFER_DESC BufferInfo = { 0 };
 		BufferInfo.ByteWidth = sizeof(FSpriteData);
 		BufferInfo.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 		BufferInfo.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
@@ -77,8 +105,8 @@ void URenderer::ShaderResInit()
 	}
 
 	D3D11_SAMPLER_DESC SampInfo = { D3D11_FILTER::D3D11_FILTER_MIN_MAG_MIP_POINT };
-	SampInfo.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_BORDER;
-	SampInfo.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_BORDER;
+	SampInfo.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
+	SampInfo.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
 	SampInfo.AddressW = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_CLAMP;
 	SampInfo.BorderColor[0] = 0.0f;
 	SampInfo.BorderColor[1] = 0.0f;
@@ -109,6 +137,21 @@ void URenderer::ShaderResSetting()
 
 	{
 		D3D11_MAPPED_SUBRESOURCE Data = {};
+		UEngineCore::GetDevice().GetContext()->Map(UVValue.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &Data);
+
+		if (nullptr == Data.pData)
+		{
+			MSGASSERT("그래픽카드가 수정을 거부했습니다.");
+		}
+		memcpy_s(Data.pData, sizeof(FUVValue), &UVValueData, sizeof(FUVValue));
+		UEngineCore::GetDevice().GetContext()->Unmap(UVValue.Get(), 0);
+
+		ID3D11Buffer* ArrPtr[16] = { UVValue.Get() };
+		UEngineCore::GetDevice().GetContext()->VSSetConstantBuffers(2, 1, ArrPtr);
+	}
+
+	{
+		D3D11_MAPPED_SUBRESOURCE Data = {};
 		UEngineCore::GetDevice().GetContext()->Map(SpriteConstBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &Data);
 
 		if (nullptr == Data.pData)
@@ -121,9 +164,6 @@ void URenderer::ShaderResSetting()
 		ID3D11Buffer* ArrPtr[16] = { SpriteConstBuffer.Get() };
 		UEngineCore::GetDevice().GetContext()->VSSetConstantBuffers(1, 1, ArrPtr);
 	}
-
-
-
 
 	ID3D11ShaderResourceView* ArrSRV[16] = { Texture->GetSRV() };
 	UEngineCore::GetDevice().GetContext()->PSSetShaderResources(0, 1, ArrSRV);
@@ -288,8 +328,8 @@ void URenderer::RasterizerInit()
 	Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
 	UEngineCore::GetDevice().GetDevice()->CreateRasterizerState(&Desc, &RasterizerState);
 
-	ViewPortInfo.Width = 768.0f;
-	ViewPortInfo.Height = 660.0f;
+	ViewPortInfo.Width = UEngineCore::GetScreenScale().X;
+	ViewPortInfo.Height = UEngineCore::GetScreenScale().Y;
 	ViewPortInfo.TopLeftX = 0.0f;
 	ViewPortInfo.TopLeftY = 0.0f;
 	ViewPortInfo.MinDepth = 0.0f;
