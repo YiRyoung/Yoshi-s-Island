@@ -66,8 +66,6 @@ public:
 
 	ENGINEAPI static  void SetCustomProc(std::function<bool(HWND, UINT, WPARAM, LPARAM)> _CustomProc);
 
-
-
 protected:
 
 private:

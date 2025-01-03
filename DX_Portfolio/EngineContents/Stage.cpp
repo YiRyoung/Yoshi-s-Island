@@ -17,6 +17,11 @@ AStage::~AStage()
 {
 }
 
+float4 AStage::GetBackgroundScale() const
+{
+	return BackgroundRenderer->GetTransformRef().Scale;
+}
+
 void AStage::SetBackground(int _Index, FVector _Scale, FVector _Pos)
 {
 	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();

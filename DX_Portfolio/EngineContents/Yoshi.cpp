@@ -64,5 +64,16 @@ void AYoshi::Tick(float _DeltaTime)
 	{
 		YoshiRenderer->ChangeAnimation("Idle");
 	}
+
+	if (true == UEngineInput::IsPress(VK_UP))
+	{
+		YoshiRenderer->AddRelativeLocation({ 0.0f, 3.0f, 0.0f });
+	}
+
+	if (true == UEngineInput::IsPress(VK_DOWN))
+	{
+		YoshiRenderer->AddRelativeLocation({ 0.0f, -3.0f, 0.0f });
+	}
+
 }
 

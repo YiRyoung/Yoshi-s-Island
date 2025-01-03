@@ -25,5 +25,7 @@ private:
 	std::shared_ptr<class AStage> Stage;
 	std::shared_ptr<class AYoshi> Yoshi;
 	std::shared_ptr<class ACameraActor> Camera;
+
+	void SetCameraBoundary();
 };
 

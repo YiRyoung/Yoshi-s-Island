@@ -10,6 +10,7 @@
 #include <EngineCore/Level.h>
 #include <EngineCore/CameraActor.h>
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/EngineCore.h>
 
 AStage101GameMode::AStage101GameMode()
 {
@@ -34,7 +35,10 @@ void AStage101GameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	Camera->SetActorLocation( Yoshi->GetYoshiRenderer()->GetRelativeLocation());
+	Camera->SetActorLocation(Yoshi->GetYoshiRenderer()->GetRelativeLocation());
+	SetCameraBoundary();
+	UEngineDebug::OutPutString("CameraPos : {" + std::to_string(Camera->GetActorTransform().RelativeLocation.X) + ", "
+		+ std::to_string(Camera->GetActorTransform().RelativeLocation.Y) + "}");
 }
 
 void AStage101GameMode::LevelChangeStart()
@@ -45,4 +49,9 @@ void AStage101GameMode::LevelChangeStart()
 void AStage101GameMode::LevelChangeEnd()
 {
 	AActor::LevelChangeEnd();
+}
+
+void AStage101GameMode::SetCameraBoundary()
+{
+	
 }

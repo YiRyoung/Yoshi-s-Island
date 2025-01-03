@@ -103,6 +103,9 @@
     <ClInclude Include="EngineBlend.h">
       <Filter>Object\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="EngineEnums.h">
+      <Filter>Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -259,6 +262,9 @@
     </Filter>
     <Filter Include="ThirdParty\DirectxTex\Release">
       <UniqueIdentifier>{7c07841c-3f41-438d-b0af-9eb32eed7168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{9069cbea-f968-4c5e-9bf3-c02787551736}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,8 @@ public:
 		return BackgroundRenderer;
 	}
 
+	float4 GetBackgroundScale() const;
+
 	void SetBackground(int _Index, FVector _Scale, FVector _Pos);
 
 protected:
