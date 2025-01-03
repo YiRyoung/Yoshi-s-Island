@@ -1,13 +1,28 @@
 #include "PreCompile.h"
 #include "EngineGraphicDevice.h"
 #include "EngineVertex.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
+#include "EngineVertexBuffer.h"
+#include "EngineIndexBuffer.h"
 #include "Mesh.h"
 #include "EngineBlend.h"
+#include "EngineShader.h"
+
+void UEngineGraphicDevice::ShaderInit()
+{
+	UEngineDirectory CurDir;
+	CurDir.MoveParentToDirectory("EngineShader");
+
+	std::vector<UEngineFile> ShaderFiles = CurDir.GetAllFile(true, { ".fx", ".hlsl" });
+
+	for (size_t i = 0; i < ShaderFiles.size(); i++)
+	{
+		UEngineShader::ReflectionCompile(ShaderFiles[i]);
+	}
+}
 
 void UEngineGraphicDevice::DefaultResourcesInit()
 {
+	ShaderInit();
 	MeshInit();
 	BlendInit();
 }
@@ -24,7 +39,7 @@ void UEngineGraphicDevice::MeshInit()
 		Vertexs[2] = EngineVertex{ FVector(-0.5f, -0.5f, 0.0f), {0.0f , 1.0f } , {0.0f, 0.0f, 1.0f, 1.0f} };
 		Vertexs[3] = EngineVertex{ FVector(0.5f, -0.5f, 0.0f), {1.0f , 1.0f } , {1.0f, 1.0f, 1.0f, 1.0f} };
 
-		UVertexBuffer::Create("Rect", Vertexs);
+		UEngineVertexBuffer::Create("Rect", Vertexs);
 	}
 
 	{
@@ -38,7 +53,7 @@ void UEngineGraphicDevice::MeshInit()
 		Indexs.push_back(3);
 		Indexs.push_back(2);
 
-		UIndexBuffer::Create("Rect", Indexs);
+		UEngineIndexBuffer::Create("Rect", Indexs);
 	}
 
 	{

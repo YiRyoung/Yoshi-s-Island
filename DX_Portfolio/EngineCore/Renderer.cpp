@@ -327,19 +327,11 @@ void URenderer::RasterizerInit()
 	Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
 	Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
 	UEngineCore::GetDevice().GetDevice()->CreateRasterizerState(&Desc, &RasterizerState);
-
-	ViewPortInfo.Width = UEngineCore::GetScreenScale().X;
-	ViewPortInfo.Height = UEngineCore::GetScreenScale().Y;
-	ViewPortInfo.TopLeftX = 0.0f;
-	ViewPortInfo.TopLeftY = 0.0f;
-	ViewPortInfo.MinDepth = 0.0f;
-	ViewPortInfo.MaxDepth = 1.0f;
 }
 
 
 void URenderer::RasterizerSetting()
 {
-	UEngineCore::GetDevice().GetContext()->RSSetViewports(1, &ViewPortInfo);
 	UEngineCore::GetDevice().GetContext()->RSSetState(RasterizerState.Get());
 }
 
@@ -423,6 +415,11 @@ void URenderer::OutPutMergeSetting()
 void URenderer::SetSpriteData(UEngineSprite* _Sprite, size_t _Index)
 {
 	SpriteData = _Sprite->GetSpriteData(_Index);
+}
+
+void URenderer::AddUVPlusValue(float4 _Value)
+{
+	UVValueData.PlusUVValue += _Value;
 }
 
 void URenderer::SetMesh(std::string_view _Name)

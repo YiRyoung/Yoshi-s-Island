@@ -28,7 +28,7 @@ ATitleGameMode::ATitleGameMode()
 	Title = GetWorld()->SpawnActor<ATitle>();
 
 	std::shared_ptr<ACameraActor> Camera = GetWorld()->GetMainCamera();
-	Camera->SetActorLocation({ 0.0f, 0.0f, -1000.0f, 1.0f });
+	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
 
 	UEngineGUI::CreateGUIWindow<TestWindow>("TestWindow");
 }

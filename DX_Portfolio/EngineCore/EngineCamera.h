@@ -58,7 +58,7 @@ private:
 
 	float FOV = 60.0f;
 
-	EProjectionType Type = EProjectionType::Orthographic;
+	EProjectionType Type = EProjectionType::Perspective;
 
 	FVector ProjectionScale = {0.0f, 0.0f};
 

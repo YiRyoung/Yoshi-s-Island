@@ -29,7 +29,7 @@ ATitle::ATitle()
 	LogoRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	LogoRenderer->SetSprite("TitleLogo.png", 0);
 	LogoRenderer->SetRelativeScale3D({ 540.0f, 216.0f, 1.0f });
-	LogoRenderer->SetRelativeLocation({ -260.0f, 50.0f, 0 });
+	LogoRenderer->SetRelativeLocation({ -260.0f, 50.0f, 0.0f });
 	LogoRenderer->SetupAttachment(RootComponent);
 }
 
