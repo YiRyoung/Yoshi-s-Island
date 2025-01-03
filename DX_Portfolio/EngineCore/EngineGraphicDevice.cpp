@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "EngineGraphicDevice.h"
+#include "EngineTexture.h"
 
 UEngineGraphicDevice::UEngineGraphicDevice()
 {
@@ -74,7 +75,6 @@ IDXGIAdapter* UEngineGraphicDevice::GetHighPerFormanceAdapter()
 		return nullptr;
 	}
 
-
 	return ResultAdapter;
 }
 
@@ -85,49 +85,16 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
 	int iFlag = 0;
 
 #ifdef _DEBUG
-	//  D3D11_CREATE_DEVICE_SINGLETHREADED = 0x1,
-	//	D3D11_CREATE_DEVICE_DEBUG = 0x2,
-	//	D3D11_CREATE_DEVICE_SWITCH_TO_REF = 0x4,
-	//	D3D11_CREATE_DEVICE_PREVENT_INTERNAL_THREADING_OPTIMIZATIONS = 0x8,
-	//	D3D11_CREATE_DEVICE_BGRA_SUPPORT = 0x20,
-	//	D3D11_CREATE_DEVICE_DEBUGGABLE = 0x40,
-	//	D3D11_CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY = 0x80,
-	//	D3D11_CREATE_DEVICE_DISABLE_GPU_TIMEOUT = 0x100,
-	//	D3D11_CREATE_DEVICE_VIDEO_SUPPORT = 0x800
 	iFlag = D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
-	//D3D_DRIVER_TYPE DriverType,
-	// D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN 
-	// D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_HARDWARE
-	// D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_SOFTWARE
-
-	//HMODULE Software,
-
-	//UINT Flags,
-
-	//_In_reads_opt_(FeatureLevels) CONST D3D_FEATURE_LEVEL* pFeatureLevels,
-	//UINT FeatureLevels,
-	//UINT SDKVersion,
-	//_COM_Outptr_opt_ ID3D11Device** ppDevice,
-	//_Out_opt_ D3D_FEATURE_LEVEL* pFeatureLevel,
-	// D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN
-
 	D3D_FEATURE_LEVEL ResultLevel;
-
-	// _COM_Outptr_opt_ ID3D11Device** ppDevice,
-	// _Out_opt_ D3D_FEATURE_LEVEL* pFeatureLevel,
-	// _COM_Outptr_opt_ ID3D11DeviceContext** ppImmediateContext
 
 	HRESULT Result = D3D11CreateDevice(
 		MainAdapter.Get(),
 		D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN,
-		nullptr,
-		iFlag,
-		nullptr,
-		0,
-		D3D11_SDK_VERSION,
-		&Device,
+		nullptr, iFlag,
+		nullptr, 0, D3D11_SDK_VERSION, &Device,
 		&ResultLevel,
 		&Context);
 
@@ -169,8 +136,24 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
 
 void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 {
-
 	FVector Size = _Window.GetWindowSize();
+
+	D3D11_TEXTURE2D_DESC Desc = { 0 };
+	Desc.ArraySize = 1;
+	Desc.Width = Size.iX();
+	Desc.Height = Size.iY();
+	Desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+
+	Desc.SampleDesc.Count = 1;
+	Desc.SampleDesc.Quality = 0;
+
+	Desc.MipLevels = 1;
+	Desc.Usage = D3D11_USAGE_DEFAULT;
+	Desc.CPUAccessFlags = 0;
+	Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL;
+
+	DepthTex = std::make_shared<UEngineTexture>();
+	DepthTex->ResCreate(Desc);
 
 	DXGI_SWAP_CHAIN_DESC ScInfo = { 0 };
 
@@ -212,6 +195,7 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 	if (S_OK != SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &DXBackBufferTexture))
 	{
 		MSGASSERT("백버퍼 텍스처를 얻어오는데 실패했습니다.");
+
 	};
 
 	if (S_OK != Device->CreateRenderTargetView(DXBackBufferTexture.Get(), nullptr, &RTV))

@@ -35,7 +35,8 @@ void AStage101GameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	Camera->SetActorLocation({Yoshi->GetYoshiRenderer()->GetRelativeLocation().X, Yoshi->GetYoshiRenderer()->GetRelativeLocation().Y, -560.0f});
+	Camera->SetActorLocation({ Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.X, Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.Y, -560.0f});
+	
 	SetCameraBoundary();
 }
 
@@ -54,5 +55,5 @@ void AStage101GameMode::SetCameraBoundary()
 	FVector Size = UEngineCore::GetScreenScale();
 	FVector BackgroundSize = Stage->GetBackgroundScale();
 
-	FVector CameraPos = Camera->GetActorRelativeLocation();
+	FVector CameraPos = Camera->GetActorTransform().RelativeLocation;
 }

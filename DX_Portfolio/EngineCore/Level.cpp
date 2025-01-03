@@ -26,16 +26,6 @@ ULevel::ULevel()
 {
 	SpawnCamera(0);
 
-	D3D11_VIEWPORT ViewPortInfo;
-
-	ViewPortInfo.Width = UEngineCore::GetScreenScale().X;
-	ViewPortInfo.Height = UEngineCore::GetScreenScale().Y;
-	ViewPortInfo.TopLeftX = 0.0f;
-	ViewPortInfo.TopLeftY = 0.0f;
-	ViewPortInfo.MinDepth = 0.0f;
-	ViewPortInfo.MaxDepth = 1.0f;
-
-	UEngineCore::GetDevice().GetContext()->RSSetViewports(1, &ViewPortInfo);
 }
 
 ULevel::~ULevel()
@@ -49,14 +39,11 @@ ULevel::~ULevel()
 
 void ULevel::LevelChangeStart()
 {
-
 }
 
 void ULevel::LevelChangeEnd()
 {
-
 }
-
 
 void ULevel::Tick(float _DeltaTime)
 {
@@ -99,12 +86,8 @@ void ULevel::Render(float _DeltaTime)
 		UEngineGUI::GUIRender();
 	}
 	
-
-
 	UEngineCore::GetDevice().RenderEnd();
 }
-
-
 
 void ULevel::ChangeRenderGroup(int _CameraOrder, int _PrevGroupOrder, std::shared_ptr<URenderer> _Renderer)
 {
@@ -116,7 +99,3 @@ void ULevel::ChangeRenderGroup(int _CameraOrder, int _PrevGroupOrder, std::share
 
 	Camera->GetCameraComponent()->ChangeRenderGroup(_PrevGroupOrder, _Renderer);
 }
-
-
-
-

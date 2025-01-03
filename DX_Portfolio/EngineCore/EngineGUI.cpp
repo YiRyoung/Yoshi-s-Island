@@ -17,7 +17,6 @@ UEngineGUI::~UEngineGUI()
 
 void UEngineGUI::Init()
 {
-
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -93,7 +92,6 @@ void UEngineGUI::GUIRenderStart()
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
-
 }
 
 void UEngineGUI::GUIRenderEnd()
@@ -108,13 +106,11 @@ void UEngineGUI::GUIRenderEnd()
         ImGui::UpdatePlatformWindows();
         ImGui::RenderPlatformWindowsDefault();
     }
-
 }
 
 void UEngineGUI::PushGUIWindow(std::shared_ptr<class UEngineGUIWindow> _Window)
 {
     _Window->BeginPlay();
-
     Windows.insert({ _Window->GetName(), _Window });
 }
 

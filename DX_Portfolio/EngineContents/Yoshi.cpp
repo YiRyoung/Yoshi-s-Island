@@ -14,23 +14,13 @@ AYoshi::AYoshi()
 
 	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
 	YoshiRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	YoshiRenderer->SetupAttachment(RootComponent);
+	YoshiRenderer->SetAutoScaleRatio(3.0f);
 	YoshiRenderer->SetRelativeLocation({ 0, 0, 0 });
 
 	YoshiRenderer->CreateAnimation("Idle", "YoshiAndMario.png", { 7, 8, 9, 10, 11, 10, 9, 8, 7, 8, 9, 10, 11, 10, 9, 8, 7, 8, 9, 10, 11, 10, 9, 8, 7, 8, 9, 10, 11, 10, 9, 8 }, 0.15f);
-	{
-		USpriteRenderer::FrameAnimation* Animation = YoshiRenderer->FindAnimation("Idle");
-		Animation->IsAutoScale = true;
-		Animation->AutoScaleRatio = 3.0f;
-	}
-
 	YoshiRenderer->CreateAnimation("Move", "YoshiAndMario.png", 40, 50, 0.08f);
-	{
-		USpriteRenderer::FrameAnimation* Animation = YoshiRenderer->FindAnimation("Move");
-		Animation->IsAutoScale = true;
-		Animation->AutoScaleRatio = 3.0f;
-	}
 	YoshiRenderer->ChangeAnimation("Idle");
-	YoshiRenderer->SetupAttachment(RootComponent);
 }
 
 AYoshi::~AYoshi()

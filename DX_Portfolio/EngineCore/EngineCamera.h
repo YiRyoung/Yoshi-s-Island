@@ -59,6 +59,8 @@ private:
 	float FOV = 60.0f;
 
 	EProjectionType Type = EProjectionType::Perspective;
+	
+	D3D11_VIEWPORT ViewPortInfo;
 
 	FVector ProjectionScale = {0.0f, 0.0f};
 

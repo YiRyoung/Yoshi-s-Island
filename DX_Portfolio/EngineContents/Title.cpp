@@ -14,23 +14,17 @@ ATitle::ATitle()
 	RootComponent = Default;
 
 	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	BackgroundRenderer->CreateAnimation("Start", "Title", 0, 127, 0.14f);
-	{
-		USpriteRenderer::FrameAnimation* Animation = BackgroundRenderer->FindAnimation("Start");
-		Animation->IsAutoScale = true;
-		Animation->AutoScaleRatio = 3.0f;
-	}
-
-	BackgroundRenderer->ChangeAnimation("Start");
-	BackgroundRenderer->SetRelativeLocation({ 0.0f, 660.0 * -0.5f, 0.0f });
 	BackgroundRenderer->SetupAttachment(RootComponent);
+	BackgroundRenderer->SetAutoScaleRatio(3.0f);
+	BackgroundRenderer->SetRelativeLocation({ 0.0f, 660.0 * -0.5f, 0.0f });
+	BackgroundRenderer->CreateAnimation("Start", "Title", 0, 127, 0.14f);
+	BackgroundRenderer->ChangeAnimation("Start");
 
 	UEngineSprite::CreateSpriteToMeta("TitleLogo.png", ".sdata");
 	LogoRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	LogoRenderer->SetSprite("TitleLogo.png", 0);
-	LogoRenderer->SetRelativeScale3D({ 540.0f, 216.0f, 1.0f });
-	LogoRenderer->SetRelativeLocation({ -260.0f, 50.0f, 0.0f });
 	LogoRenderer->SetupAttachment(RootComponent);
+	LogoRenderer->SetRelativeLocation({ -260.0f, 50.0f, 0.0f });
+	LogoRenderer->SetSprite("TitleLogo.png", 0);
 }
 
 ATitle::~ATitle()
@@ -40,12 +34,6 @@ ATitle::~ATitle()
 void ATitle::EndAnimation()
 {
 	BackgroundRenderer->CreateAnimation("End", "Title", EndAnimIndex, 0, 0.03f, false);
-	{
-		USpriteRenderer::FrameAnimation* Animation = BackgroundRenderer->FindAnimation("End");
-		Animation->IsAutoScale = true;
-		Animation->AutoScaleRatio = 3.0f;
-	}
-
 	BackgroundRenderer->ChangeAnimation("End");
 }
 

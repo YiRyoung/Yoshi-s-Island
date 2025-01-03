@@ -22,7 +22,6 @@ void AActor::BeginPlay()
 	{
 		ActorComponent->BeginPlay();
 	}
-	
 }
 
 void AActor::Tick(float _DeltaTime)

@@ -9,7 +9,8 @@ UEngineVertexBuffer::~UEngineVertexBuffer()
 {
 }
 
-std::shared_ptr<UEngineVertexBuffer> UEngineVertexBuffer::Create(std::string_view _Name, const void* _InitData, size_t _VertexSize, size_t _VertexCount)
+std::shared_ptr<UEngineVertexBuffer> UEngineVertexBuffer::Create(std::string_view _Name, const void* _InitData, size_t _VertexSize, size_t _VertexCount,
+	UEngineInputLayOutInfo* _InfoPtr)
 {
 	std::string UpperName = ToUpperName(_Name);
 
@@ -22,6 +23,8 @@ std::shared_ptr<UEngineVertexBuffer> UEngineVertexBuffer::Create(std::string_vie
 	std::shared_ptr<UEngineVertexBuffer> NewRes = std::make_shared<UEngineVertexBuffer>();
 	PushRes<UEngineVertexBuffer>(NewRes, _Name, "");
 	NewRes->ResCreate(_InitData, _VertexSize, _VertexCount);
+	NewRes->InfoPtr = _InfoPtr;
+	
 
 	return NewRes;
 }
@@ -51,5 +54,4 @@ void UEngineVertexBuffer::Setting()
 	ID3D11Buffer* ArrBuffer[1];
 	ArrBuffer[0] = Buffer.Get();
 	UEngineCore::GetDevice().GetContext()->IASetVertexBuffers(0, 1, ArrBuffer, &VertexSize, &Offset);
-
 }

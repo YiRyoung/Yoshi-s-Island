@@ -59,11 +59,6 @@ public:
 		return World;
 	}
 
-	FVector GetActorRelativeLocation() const
-	{
-		return RootComponent->GetRelativeLocation();
-	}
-
 	void SetActorLocation(const FVector& _Value)
 	{
 		if (nullptr == RootComponent)

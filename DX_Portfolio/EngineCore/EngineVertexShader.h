@@ -1,5 +1,6 @@
 #pragma once
 #include "EngineResources.h"
+#include <Windows.h>
 #include "EngineShader.h"
 
 // Ό³Έν :
@@ -27,7 +28,10 @@ public:
 
 	ENGINEAPI static std::shared_ptr<UEngineVertexShader> Load(std::string_view _Name, std::string_view _Path, const std::string_view& _EntryPoint, UINT _VersionHigh = 5, UINT _VersionLow = 0);
 
+	void Setting();
+
 protected:
+
 
 private:
 	ENGINEAPI void ResLoad();

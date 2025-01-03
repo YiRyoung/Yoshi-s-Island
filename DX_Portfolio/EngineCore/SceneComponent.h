@@ -1,9 +1,6 @@
 #pragma once
 #include "ActorComponent.h"
 
-// #include "PreCompile.h"
-
-// Ό³Έν :
 class USceneComponent : public UActorComponent
 {
 	friend class AActor;
@@ -19,6 +16,8 @@ public:
 	USceneComponent& operator=(const USceneComponent& _Other) = delete;
 	USceneComponent& operator=(USceneComponent&& _Other) noexcept = delete;
 
+	ENGINEAPI void ComponentTick(float _DeltaTime) override;
+
 	void AddRelativeLocation(const FVector& _Value)
 	{
 		Transform.Location += _Value;
@@ -30,11 +29,6 @@ public:
 		IsAbsolute = true;
 		Transform.Location = _Value;
 		TransformUpdate();
-	}
-
-	FVector GetRelativeLocation() const
-	{
-		return Transform.Location;
 	}
 
 	void SetRelativeLocation(const FVector& _Value)
@@ -69,6 +63,7 @@ public:
 		Transform.Scale.W = 0.0f;
 		TransformUpdate();
 	}
+
 
 	FTransform& GetTransformRef()
 	{

@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "EngineShader.h"
 #include "EngineVertexShader.h"
+#include "EnginePixelShader.h"
 #include "EngineConstantBuffer.h"
 
 UEngineShader::UEngineShader()
@@ -28,7 +29,6 @@ void UEngineShader::ReflectionCompile(UEngineFile& _File)
 				EntryName += "_VS";
 
 				UEngineVertexShader::Load(_File.GetPathToString(), EntryName);
-
 			}
 		}
 	}
@@ -44,8 +44,7 @@ void UEngineShader::ReflectionCompile(UEngineFile& _File)
 				std::string EntryName = ShaderCode.substr(FirstIndex + 1, EntryIndex - FirstIndex - 1);
 				EntryName += "_PS";
 
-				int a = 0;
-
+				UEnginePixelShader::Load(_File.GetPathToString(), EntryName);
 			}
 		}
 	}
@@ -60,6 +59,7 @@ void UEngineShader::ShaderResCheck()
 	}
 
 	Microsoft::WRL::ComPtr<ID3D11ShaderReflection> CompileInfo = nullptr;
+
 
 	if (S_OK != D3DReflect(ShaderCodeBlob->GetBufferPointer(), ShaderCodeBlob->GetBufferSize(), IID_ID3D11ShaderReflection, &CompileInfo))
 	{
@@ -91,36 +91,57 @@ void UEngineShader::ShaderResCheck()
 
 			std::shared_ptr<UEngineConstantBuffer> Buffer = UEngineConstantBuffer::CreateOrFind(BufferInfo.Size, UpperName);
 
+			UEngineConstantBufferRes NewRes;
+			NewRes.ShaderType = ShaderType;
+			NewRes.Name = UpperName;
+			NewRes.BindIndex = ResDesc.BindPoint;
+			NewRes.Res = Buffer;
+			NewRes.BufferSize = BufferInfo.Size;
+
+			ShaderResources.CreateConstantBufferRes(UpperName, NewRes);
 			break;
 		}
 		case D3D_SIT_TEXTURE:
 		{
-			int a = 0;
+			std::shared_ptr<UEngineTexture> Res = UEngineTexture::Find<UEngineTexture>("NSBase.png");
+
+			UEngineTextureRes NewRes;
+			NewRes.ShaderType = ShaderType;
+			NewRes.Name = UpperName;
+			NewRes.BindIndex = ResDesc.BindPoint;
+			NewRes.Res = Res;
+
+			ShaderResources.CreateTextureRes(UpperName, NewRes);
 
 			break;
 		}
 		case D3D_SIT_SAMPLER:
 		{
-			int a = 0;
+			std::shared_ptr<UEngineSampler> Res = UEngineSampler::Find<UEngineSampler>("WRapSampler");
+
+			UEngineSamplerRes NewRes;
+			NewRes.ShaderType = ShaderType;
+			NewRes.Name = UpperName;
+			NewRes.BindIndex = ResDesc.BindPoint;
+			NewRes.Res = Res;
+
+			ShaderResources.CreateSamplerRes(UpperName, NewRes);
 
 			break;
 		}
 		case D3D_SIT_STRUCTURED:
 		{
-			int a = 0;
-
 			break;
 		}
-		case D3D_SIT_UAV_RWSTRUCTURED:
+		case D3D_SIT_UAV_RWSTRUCTURED: 
 		{
-			int a = 0;
-
 			break;
 		}
 		default:
 			break;
 		}
-
-		int a = 0;
 	}
+
+	EntryName;
+	ShaderResources;
 }
