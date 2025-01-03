@@ -57,6 +57,6 @@ void ATitle::BeginPlay()
 void ATitle::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
-	/*UEngineDebug::OutPutString("CurIndex : " + std::to_string(BackgroundRenderer->GetCurIndex()));
-	UEngineDebug::OutPutString("EndIndex : " + std::to_string(EndAnimIndex));*/
+	UEngineDebug::OutPutString("CurIndex : " + std::to_string(BackgroundRenderer->GetCurIndex()));
+	UEngineDebug::OutPutString("EndIndex : " + std::to_string(EndAnimIndex));
 }

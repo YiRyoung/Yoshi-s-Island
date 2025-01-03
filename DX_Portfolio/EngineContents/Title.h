@@ -19,6 +19,11 @@ public:
 		return BackgroundRenderer;
 	}
 
+	bool IsEnd() const
+	{
+		return (EndAnimIndex != -1) ? true : false;
+	}
+
 	void SetEndAnimIndex(int _StartIndex)
 	{
 		EndAnimIndex = _StartIndex;
@@ -34,6 +39,6 @@ private:
 	std::shared_ptr<class USpriteRenderer> BackgroundRenderer;
 	std::shared_ptr<class USpriteRenderer> LogoRenderer;
 
-	int EndAnimIndex = 0;
+	int EndAnimIndex = -1;
 };
 
