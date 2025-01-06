@@ -6,7 +6,7 @@
 
 #include "Yoshi.h"
 #include "TitleGameMode.h"
-#include "Stage101GameMode.h"
+#include "Stage100GameMode.h"
 
 CreateContentsCoreDefine(UContentsCore);
 
@@ -26,7 +26,7 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 	LoadSprites();
 
 	UEngineCore::CreateLevel<ATitleGameMode, AGameMode>("Title");
-	UEngineCore::CreateLevel<AStage101GameMode, AYoshi>("Stage101");
+	UEngineCore::CreateLevel<AStage100GameMode, AYoshi>("Stage101");
 	UEngineCore::OpenLevel("Stage101");
 
 }
@@ -57,27 +57,5 @@ void UContentsCore::LoadSprites()
 			std::string FilePath = ImageFiles[i].GetPathToString();
 			UEngineTexture::Load(FilePath);
 		}
-	}
-	{
-		UEngineDirectory Dir;
-		if (false == Dir.MoveParentToDirectory("ContentsResources"))
-		{
-			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
-			return;
-		}
-		Dir.Append("Image/Title");
-
-		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
-	}
-	{
-		UEngineDirectory Dir;
-		if (false == Dir.MoveParentToDirectory("ContentsResources"))
-		{
-			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
-			return;
-		}
-		Dir.Append("Image/Stage");
-
-		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
 	}
 }

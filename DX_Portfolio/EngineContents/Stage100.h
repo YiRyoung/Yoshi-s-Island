@@ -2,20 +2,20 @@
 #include <EngineCore/Actor.h>
 
 // Ό³Έν :
-class AStage : public AActor
+class AStage100 : public AActor
 {
 public:
 	// constrcuter destructer
-	AStage();
-	~AStage();
+	AStage100();
+	~AStage100();
 
 	// delete Function
-	AStage(const AStage& _Other) = delete;
-	AStage(AStage&& _Other) noexcept = delete;
-	AStage& operator=(const AStage& _Other) = delete;
-	AStage& operator=(AStage&& _Other) noexcept = delete;
+	AStage100(const AStage100& _Other) = delete;
+	AStage100(AStage100&& _Other) noexcept = delete;
+	AStage100& operator=(const AStage100& _Other) = delete;
+	AStage100& operator=(AStage100&& _Other) noexcept = delete;
 
-	void SetBackground(std::string_view _BackgroundName, FVector _Pos);
+	void SetBackground();
 
 protected:
 	void BeginPlay() override;

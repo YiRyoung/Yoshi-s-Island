@@ -26,5 +26,7 @@ protected:
 
 private:
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
+
+	float Speed = 10.0f;
 };
 

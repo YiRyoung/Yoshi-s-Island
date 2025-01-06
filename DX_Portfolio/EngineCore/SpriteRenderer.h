@@ -103,6 +103,11 @@ public:
 		IsAutoScale = _Value;
 	}
 
+	float GetAutoScaleRatio() const
+	{
+		return AutoScaleRatio;
+	}
+
 	void SetAutoScaleRatio(float _Scale)
 	{
 		AutoScaleRatio = _Scale;

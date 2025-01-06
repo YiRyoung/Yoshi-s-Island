@@ -13,10 +13,10 @@
     <ClInclude Include="Title.h">
       <Filter>Level\Title</Filter>
     </ClInclude>
-    <ClInclude Include="Stage.h">
+    <ClInclude Include="Stage100.h">
       <Filter>Level\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Stage101GameMode.h">
+    <ClInclude Include="Stage100GameMode.h">
       <Filter>GameMode</Filter>
     </ClInclude>
     <ClInclude Include="Yoshi.h">
@@ -36,10 +36,10 @@
     <ClCompile Include="Title.cpp">
       <Filter>Level\Title</Filter>
     </ClCompile>
-    <ClCompile Include="Stage.cpp">
+    <ClCompile Include="Stage100.cpp">
       <Filter>Level\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="Stage101GameMode.cpp">
+    <ClCompile Include="Stage100GameMode.cpp">
       <Filter>GameMode</Filter>
     </ClCompile>
     <ClCompile Include="Yoshi.cpp">

@@ -26,6 +26,18 @@ public:
 
 ATitleGameMode::ATitleGameMode()
 {
+	{
+		UEngineDirectory Dir;
+		if (false == Dir.MoveParentToDirectory("ContentsResources"))
+		{
+			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
+			return;
+		}
+		Dir.Append("Image/Title");
+
+		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
+	}
+
 	std::shared_ptr<ACameraActor> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
 	Camera->GetCameraComponent()->SetZSort(0, true);
