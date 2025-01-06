@@ -20,8 +20,7 @@ AStage101GameMode::AStage101GameMode()
 	Camera->GetCameraComponent()->SetZSort(0, true);
 
 	Stage = GetWorld()->SpawnActor<AStage>();
-	Stage->SetBackground(0, FVector({ 4608.0f, 2232.0f, 1.0f }), FVector({ 0.0f, 2232 * -0.3f, 0.0f }));
-
+	Stage->SetBackground("Stage100(Layer0).png", FVector{0.0f, 0.0f, 5.0f});
 	Yoshi = GetWorld()->SpawnActor<AYoshi>();
 }
 
@@ -56,7 +55,7 @@ void AStage101GameMode::LevelChangeEnd()
 void AStage101GameMode::SetCameraBoundary()
 {
 	FVector Size = UEngineCore::GetScreenScale();
-	FVector BackgroundSize = Stage->GetBackgroundScale();
+	//FVector BackgroundSize = Stage->GetBackgroundScale();
 
 	FVector CameraPos = Camera->GetActorTransform().RelativeLocation;
 }
