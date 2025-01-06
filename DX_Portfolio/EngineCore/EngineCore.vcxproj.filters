@@ -139,6 +139,9 @@
     <ClInclude Include="EngineDepthStencilState.h">
       <Filter>Object\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="TimeEventComponent.h">
+      <Filter>Object\Component\Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -269,6 +272,9 @@
     </ClCompile>
     <ClCompile Include="EngineDepthStencilState.cpp">
       <Filter>Object\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeEventComponent.cpp">
+      <Filter>Object\Component\Contents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
