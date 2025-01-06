@@ -11,15 +11,18 @@
 #include <EngineCore/CameraActor.h>
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/EngineCore.h>
+#include <EngineCore/EngineCamera.h>
 
 AStage101GameMode::AStage101GameMode()
 {
+	Camera = GetWorld()->GetMainCamera();
+	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
+	Camera->GetCameraComponent()->SetZSort(0, true);
+
 	Stage = GetWorld()->SpawnActor<AStage>();
 	Stage->SetBackground(0, FVector({ 4608.0f, 2232.0f, 1.0f }), FVector({ 0.0f, 2232 * -0.3f, 0.0f }));
 
 	Yoshi = GetWorld()->SpawnActor<AYoshi>();
-
-	Camera = GetWorld()->GetMainCamera();
 }
 
 AStage101GameMode::~AStage101GameMode()

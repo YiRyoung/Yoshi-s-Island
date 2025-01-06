@@ -12,6 +12,7 @@
 #include <EngineCore/EngineGUIWindow.h>
 #include <EngineCore/EngineGUI.h>
 #include <EngineCore/imgui.h>
+#include <EngineCore/EngineCamera.h>
 
 class TestWindow : public UEngineGUIWindow
 {
@@ -25,10 +26,11 @@ public:
 
 ATitleGameMode::ATitleGameMode()
 {
-	Title = GetWorld()->SpawnActor<ATitle>();
-
 	std::shared_ptr<ACameraActor> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
+	Camera->GetCameraComponent()->SetZSort(0, true);
+
+	Title = GetWorld()->SpawnActor<ATitle>();
 
 	UEngineGUI::CreateGUIWindow<TestWindow>("TestWindow");
 }
