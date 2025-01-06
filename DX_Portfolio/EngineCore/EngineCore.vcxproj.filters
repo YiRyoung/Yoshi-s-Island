@@ -136,6 +136,9 @@
     <ClInclude Include="EngineMaterial.h">
       <Filter>Object\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="EngineDepthStencilState.h">
+      <Filter>Object\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -262,6 +265,9 @@
       <Filter>Object\Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="EngineMaterial.cpp">
+      <Filter>Object\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDepthStencilState.cpp">
       <Filter>Object\Resources</Filter>
     </ClCompile>
   </ItemGroup>

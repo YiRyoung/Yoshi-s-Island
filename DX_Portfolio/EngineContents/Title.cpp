@@ -23,7 +23,7 @@ ATitle::ATitle()
 	UEngineSprite::CreateSpriteToMeta("TitleLogo.png", ".sdata");
 	LogoRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	LogoRenderer->SetupAttachment(RootComponent);
-	LogoRenderer->SetRelativeLocation({ -260.0f, 50.0f, 0.0f });
+	LogoRenderer->SetRelativeLocation({ -260.0f, 50.0f, -1.0f });
 	LogoRenderer->SetSprite("TitleLogo.png", 0);
 }
 
