@@ -26,14 +26,14 @@ void AStage100::SetBackground()
 	BackgroundRenderer->SetAutoScaleRatio(3.0f);
 	FVector BackgroundScale = (BackgroundRenderer->GetSprite()->GetTexture()->GetTextureSize()) * BackgroundRenderer->GetAutoScaleRatio();
 	FVector ResultScale = { (BackgroundScale.X * 0.5f), (BackgroundScale.Y * -1.0f), 5.0f };
-	BackgroundRenderer->SetRelativeLocation({(BackgroundScale.X * 0.5f), (BackgroundScale.Y * -1.0f), 5.0f }); /* Window 화면의 절반만큼 더해주기 */
+	BackgroundRenderer->SetRelativeLocation({(BackgroundScale.X * 0.5f), (BackgroundScale.Y * -1.0f), 20.0f }); /* Window 화면의 절반만큼 더해주기 */
 	BackgroundRenderer->SetupAttachment(RootComponent);
 
 	ForeBackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	ForeBackgroundRenderer->SetSprite("Stage100", 1);
 	ForeBackgroundRenderer->SetAutoScaleRatio(3.0f);
 	FVector ForeBackgroundScale = (ForeBackgroundRenderer->GetSprite()->GetTexture()->GetTextureSize()) * ForeBackgroundRenderer->GetAutoScaleRatio();
-	ForeBackgroundRenderer->SetRelativeLocation({ (ForeBackgroundScale.X * 0.167f), (ForeBackgroundScale.Y * -1.0f), 4.0f });
+	ForeBackgroundRenderer->SetRelativeLocation({ (ForeBackgroundScale.X * 0.5f), (ForeBackgroundScale.Y * -1.0f), 4.0f });
 	ForeBackgroundRenderer->SetupAttachment(RootComponent);
 
 	StageRenderer = CreateDefaultSubObject<USpriteRenderer>();
@@ -47,7 +47,7 @@ void AStage100::SetBackground()
 	FrontBackgroundRenderer->SetSprite("Stage100(Layer3)", 0);
 	FrontBackgroundRenderer->SetAutoScaleRatio(3.0f);
 	FVector FrontBackgroundScale = (FrontBackgroundRenderer->GetSprite()->GetTexture()->GetTextureSize()) * FrontBackgroundRenderer->GetAutoScaleRatio();
-	FrontBackgroundRenderer->SetRelativeLocation({ (FrontBackgroundScale.X * 0.5f), -3015.0f, -1.0f });
+	FrontBackgroundRenderer->SetRelativeLocation({ (FrontBackgroundScale.X * 0.5f), -3015.0f, -20.0f });
 	FrontBackgroundRenderer->CreateAnimation("Start", "Stage100(Layer3)", { 0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 4, 3, 2, 1, 1 }, 0.3f);
 	FrontBackgroundRenderer->ChangeAnimation("Start");
 	FrontBackgroundRenderer->SetupAttachment(RootComponent);
