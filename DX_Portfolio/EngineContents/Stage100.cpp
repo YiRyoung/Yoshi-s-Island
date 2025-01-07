@@ -26,7 +26,8 @@ void AStage100::SetBackground()
 	BackgroundRenderer->SetAutoScaleRatio(3.0f);
 	FVector BackgroundScale = (BackgroundRenderer->GetSprite()->GetTexture()->GetTextureSize()) * BackgroundRenderer->GetAutoScaleRatio();
 	FVector ResultScale = { (BackgroundScale.X * 0.5f), (BackgroundScale.Y * -1.0f), 5.0f };
-	BackgroundRenderer->SetRelativeLocation({(BackgroundScale.X * 0.5f), (BackgroundScale.Y * -1.0f), 20.0f }); /* Window 화면의 절반만큼 더해주기 */
+	MapScale = BackgroundScale;
+	BackgroundRenderer->SetRelativeLocation({(BackgroundScale.X * 0.5f), (BackgroundScale.Y * -1.0f), 5.0f }); /* Window 화면의 절반만큼 더해주기 */
 	BackgroundRenderer->SetupAttachment(RootComponent);
 
 	ForeBackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();

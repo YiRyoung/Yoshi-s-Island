@@ -118,11 +118,6 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 		{
 			EngineEnd();
 		});
-
-
-
-
-
 }
 
 std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name)
@@ -145,7 +140,6 @@ void UEngineCore::OpenLevel(std::string_view _Name)
 		MSGASSERT("만들지 않은 레벨로 변경하려고 했습니다." + std::string(_Name));
 		return;
 	}
-
 
 	NextLevel = LevelMap[_Name.data()];
 }
@@ -172,7 +166,7 @@ void UEngineCore::EngineFrame()
 
 	CurLevel->Tick(DeltaTime);
 	CurLevel->Render(DeltaTime);
-
+	CurLevel->Release(DeltaTime);
 }
 
 void UEngineCore::EngineEnd()

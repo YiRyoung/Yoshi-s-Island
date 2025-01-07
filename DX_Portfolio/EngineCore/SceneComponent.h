@@ -64,6 +64,10 @@ public:
 		TransformUpdate();
 	}
 
+	FVector GetWorldScale3D()
+	{
+		return Transform.WorldScale;
+	}
 
 	FTransform& GetTransformRef()
 	{

@@ -83,7 +83,6 @@ public:
 	static const TVector FORWARD;
 	static const TVector BACK;
 
-
 public:
 	union
 	{
@@ -97,13 +96,19 @@ public:
 
 		ValueType Arr2D[1][4];
 		ValueType Arr1D[4];
+		DirectX::XMFLOAT3 DirectFloat3;
+		DirectX::XMFLOAT4 DirectFloat4;
 		// 다이렉트 simd 연산 전용 벡터.
 		DirectX::XMVECTOR DirectVector;
 	};
 
-
 	ENGINEAPI TVector()
 		: X(0.0f), Y(0.0f), Z(0.0f), W(1.0f)
+	{
+
+	}
+
+	ENGINEAPI TVector(DirectX::XMVECTOR _DirectVector) : DirectVector(_DirectVector)
 	{
 
 	}
@@ -186,12 +191,6 @@ public:
 	// 360도 개념으로 넣어줘라.
 	static TVector AngleToVectorDeg(float _Angle)
 	{
-		// 360분법을 => 라디안으로 바꾸는 값을 만들어야 한다.
-		// 360 => 6.28
-
-		// 라디안 각도체계를 기반으로 sinf(_Angle) cosf
-
-		// 근본함수는 라디안 개념으로 만들고
 		return AngleToVectorRad(_Angle * UEngineMath::D2R);
 	}
 
@@ -205,30 +204,15 @@ public:
 		return Result;
 	}
 
-	//          Rad 라디안을 넣어주면 
-	// 여기에서 나온 결과값이 리턴해줄수 있는건
-	// 길이가 1인 벡터이다.
-	// static입니까?
 	static TVector AngleToVectorRad(float _Angle)
 	{
-		// 특정 각도를 가리키는 벡터를 만들수 있다고 해죠?
-		// 벡터 길이와 방향을 생각해라.
-		// 방향은 정해졌는데 길이는 1인 벡터를 만들어내는 겁니다.
-
-		// 0도일때의 밑변      0도일대의 높이
-
-		// cosf(_Angle) = 밑변
 		return { cosf(_Angle), sinf(_Angle) };
 	}
 
-	// 일반적으로 벡터와 행렬이 곱해지는 것을 트랜스폼이라고 부릅니다.
-	// 혹은 트랜슬레이션이라는 함수들이 있다.
 	static TVector Transform(const TVector& _Vector, const class FMatrix& _Matrix);
 
-	// 이동 적용할께
 	static TVector TransformCoord(const TVector& _Vector, const class FMatrix& _Matrix);
 
-	// 이동 적용하지 않을께.
 	static TVector TransformNormal(const TVector& _Vector, const class FMatrix& _Matrix);
 
 	int iX() const
@@ -251,7 +235,6 @@ public:
 		return Y * 0.5f;
 	}
 
-	// X든 Y든 0이있으면 터트리는 함수.
 	bool IsZeroed() const
 	{
 		return X == 0.0f || Y == 0.0f;
@@ -262,7 +245,6 @@ public:
 		return { X * 0.5f, Y * 0.5f };
 	}
 
-	// 빗변의 길이입니다.
 	float Length() const
 	{
 		return UEngineMath::Sqrt(X * X + Y * Y + Z * Z);
@@ -320,8 +302,6 @@ public:
 		return Result;
 	}
 
-
-	// 
 	void RotationYDeg(float _Angle)
 	{
 		RotationYRad(_Angle * UEngineMath::D2R);
@@ -347,7 +327,11 @@ public:
 		return Result;
 	}
 
-	// 
+	TVector ABSVectorReturn()
+	{
+		return DirectX::XMVectorAbs(DirectVector);
+	}
+
 	void RotationZDeg(float _Angle)
 	{
 		RotationZRad(_Angle * UEngineMath::D2R);
@@ -546,6 +530,7 @@ public:
 		float Arr2D[1][4];
 		float Arr1D[4];
 		// 다이렉트 simd 연산 전용 벡터.
+		DirectX::XMFLOAT4 DirectFloat4;
 		DirectX::XMVECTOR DirectVector;
 
 	};
@@ -797,11 +782,27 @@ enum class ECollisionType
 {
 	Point,
 	Rect,
-	CirCle, // 타원이 아닌 정방원 
+	CirCle,
+	OBB2D,
+	Sphere,
+	AABB,
+	OBB,
 	Max
+};
 
-	//AABB,
-	//OBB,
+struct FCollisionData
+{
+	union
+	{
+		DirectX::BoundingSphere Sphere;
+		DirectX::BoundingBox AABB;
+		DirectX::BoundingOrientedBox OBB;
+	};
+
+	FCollisionData()
+	{
+
+	}
 };
 
 // 대부분 오브젝트에서 크기와 위치는 한쌍입니다.
@@ -841,7 +842,7 @@ struct FTransform
 	float4x4 WVP;
 
 	FTransform()
-		: Scale({ 1.0f, 1.0f, 1.0f, 1.0f })
+		: Scale(FVector(1.0f, 1.0f, 1.0f, 1.0f))
 	{
 
 	}
@@ -860,7 +861,7 @@ private:
 	static std::function<bool(const FTransform&, const FTransform&)> AllCollisionFunction[static_cast<int>(ECollisionType::Max)][static_cast<int>(ECollisionType::Max)];
 
 public:
-	static bool Collision(ECollisionType _LeftType, const FTransform& _Left, ECollisionType _RightType, const FTransform& _Right);
+	ENGINEAPI static bool Collision(ECollisionType _LeftType, const FTransform& _Left, ECollisionType _RightType, const FTransform& _Right);
 
 	// 완전히 같은 형의 함수죠?
 	static bool PointToCirCle(const FTransform& _Left, const FTransform& _Right);
@@ -871,6 +872,20 @@ public:
 
 	static bool CirCleToCirCle(const FTransform& _Left, const FTransform& _Right);
 	static bool CirCleToRect(const FTransform& _Left, const FTransform& _Right);
+
+	static bool OBB2DToOBB2D(const FTransform& _Left, const FTransform& _Right);
+	static bool OBB2DToRect(const FTransform& _Left, const FTransform& _Right);
+	static bool OBB2DToSphere(const FTransform& _Left, const FTransform& _Right);
+	static bool OBB2DToPoint(const FTransform& _Left, const FTransform& _Right);
+
+	FCollisionData GetCollisionData() const
+	{
+		FCollisionData Result;
+		Result.OBB.Center = WorldLocation.DirectFloat3;
+		Result.OBB.Extents = (WorldScale * 0.5f).ABSVectorReturn().DirectFloat3;
+		Result.OBB.Orientation = WorldQuat.DirectFloat4;
+		return Result;
+	}
 
 	FVector ZAxisCenterLeftTop() const
 	{
@@ -968,10 +983,7 @@ public:
 		Y += _Other.Y;
 		return *this;
 	}
-
-
 };
-
 
 class UColor
 {

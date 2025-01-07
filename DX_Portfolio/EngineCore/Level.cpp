@@ -2,6 +2,7 @@
 #include "Level.h"
 #include "Actor.h"
 #include "Renderer.h"
+#include "Collision.h"
 #include "EngineCore.h"
 #include "EngineCamera.h"
 #include "CameraActor.h"
@@ -49,7 +50,7 @@ void ULevel::Tick(float _DeltaTime)
 {
 	std::list<std::shared_ptr<class AActor>>::iterator StartIter = BeginPlayList.begin();
 	std::list<std::shared_ptr<class AActor>>::iterator EndIter = BeginPlayList.end();
-	for ( ; StartIter != EndIter; )
+	for (; StartIter != EndIter; )
 	{
 		std::shared_ptr<AActor> CurActor = *StartIter;
 
@@ -67,6 +68,11 @@ void ULevel::Tick(float _DeltaTime)
 
 	for (std::shared_ptr<AActor> CurActor : AllActorList)
 	{
+		if (false == CurActor->IsActive())
+		{
+			continue;
+		}
+
 		CurActor->Tick(_DeltaTime);
 	}
 }
@@ -94,8 +100,81 @@ void ULevel::ChangeRenderGroup(int _CameraOrder, int _PrevGroupOrder, std::share
 	if (false == Cameras.contains(_CameraOrder))
 	{
 		MSGASSERT("존재하지 않는 카메라에 랜더러를 집어넣으려고 했습니다.");
+		return;
 	}
+
 	std::shared_ptr<ACameraActor> Camera = Cameras[_CameraOrder];
 
 	Camera->GetCameraComponent()->ChangeRenderGroup(_PrevGroupOrder, _Renderer);
+}
+
+void ULevel::CreateCollisionProfile(std::string_view _ProfileName)
+{
+	Collisions[_ProfileName];
+}
+
+void ULevel::ChangeCollisionProfileName(std::string_view _ProfileName, std::string_view _PrevProfileName, std::shared_ptr<UCollision> _Collision)
+{
+	if (false == Collisions.contains(_ProfileName))
+	{
+		MSGASSERT("존재하지 않는 콜리전 그룹에 랜더러를 집어넣으려고 했습니다.");
+		return;
+	}
+
+	if (_PrevProfileName != "")
+	{
+		std::list<std::shared_ptr<UCollision>>& PrevCollisionGroup = Collisions[_PrevProfileName];
+		PrevCollisionGroup.remove(_Collision);
+	}
+
+	std::list<std::shared_ptr<UCollision>>& CollisionGroup = Collisions[_ProfileName];
+	CollisionGroup.push_back(_Collision);
+}
+
+
+void ULevel::Release(float _DeltaTime)
+{
+	for (std::pair<const int, std::shared_ptr<ACameraActor>>& Camera : Cameras)
+	{
+		Camera.second->GetCameraComponent()->Release(_DeltaTime);
+	}
+
+	{
+		for (std::pair<const std::string_view, std::list<std::shared_ptr<UCollision>>>& Group : Collisions)
+		{
+			std::list<std::shared_ptr<UCollision>>& List = Group.second;
+
+			std::list<std::shared_ptr<UCollision>>::iterator StartIter = List.begin();
+			std::list<std::shared_ptr<UCollision>>::iterator EndIter = List.end();
+
+			for (; StartIter != EndIter; )
+			{
+				if (false == (*StartIter)->IsDestroy())
+				{
+					++StartIter;
+					continue;
+				}
+
+				StartIter = List.erase(StartIter);
+			}
+		}
+	}
+
+	{
+		std::list<std::shared_ptr<AActor>>& List = AllActorList;
+
+		std::list<std::shared_ptr<AActor>>::iterator StartIter = List.begin();
+		std::list<std::shared_ptr<AActor>>::iterator EndIter = List.end();
+
+		for (; StartIter != EndIter; )
+		{
+			if (false == (*StartIter)->IsDestroy())
+			{
+				++StartIter;
+				continue;
+			}
+
+			StartIter = List.erase(StartIter);
+		}
+	}
 }

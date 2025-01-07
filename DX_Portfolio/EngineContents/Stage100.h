@@ -15,6 +15,11 @@ public:
 	AStage100& operator=(const AStage100& _Other) = delete;
 	AStage100& operator=(AStage100&& _Other) noexcept = delete;
 
+	FVector GetMapScale() const
+	{
+		return MapScale;
+	}
+
 	void SetBackground();
 
 protected:
@@ -26,5 +31,7 @@ private:
 	std::shared_ptr<class USpriteRenderer> ForeBackgroundRenderer;
 	std::shared_ptr<class USpriteRenderer> StageRenderer;
 	std::shared_ptr<class USpriteRenderer> FrontBackgroundRenderer;
+
+	FVector MapScale = { 0.0f, 0.0f, 0.0f };
 };
 

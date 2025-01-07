@@ -47,6 +47,7 @@ AStage100GameMode::AStage100GameMode()
 	Stage->SetBackground();
 
 	Yoshi = GetWorld()->SpawnActor<AYoshi>();
+	Yoshi->GetYoshiRenderer()->SetRelativeLocation({ 220.0f, -2690.0f, 0.0f });
 }
 
 AStage100GameMode::~AStage100GameMode()
@@ -62,8 +63,9 @@ void AStage100GameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	Camera->SetActorLocation({ Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.X, Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.Y, -520.0f});
-	
+	Camera->SetActorLocation({ Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.X, Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.Y, -520.0f });
+	/*UEngineDebug::OutPutString("CameraPos : {" + std::to_string(Camera->GetActorTransform().RelativeLocation.X) + ", "
+		+ std::to_string(Camera->GetActorTransform().RelativeLocation.Y) + "}");*/
 	SetCameraBoundary();
 }
 
@@ -79,8 +81,35 @@ void AStage100GameMode::LevelChangeEnd()
 
 void AStage100GameMode::SetCameraBoundary()
 {
-	FVector Size = UEngineCore::GetScreenScale();
-	//FVector BackgroundSize = Stage->GetBackgroundScale();
-
+	FVector ResultCameraPos = { 0.0f, 0.0f, 0.0f };
+	FVector ScrrenSize = UEngineCore::GetScreenScale();
+	FVector MapSize = Stage->GetMapScale();
 	FVector CameraPos = Camera->GetActorTransform().RelativeLocation;
+
+	if ((ScrrenSize.X * 0.5f) >= CameraPos.X)
+	{
+		ResultCameraPos.X = ScrrenSize.X * 0.5f;
+	}
+	else if ((MapSize.X - (ScrrenSize.X * 0.5f)) <= CameraPos.X)
+	{
+		ResultCameraPos.X = MapSize.X - (ScrrenSize.X * 0.5f);
+	}
+	else
+	{
+		ResultCameraPos.X = Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.X;
+	}
+
+	if ((ScrrenSize.Y * -0.5f) <= CameraPos.Y)
+	{
+		ResultCameraPos.Y = (ScrrenSize.Y * -0.5f);
+	}
+	else if ((-MapSize.Y + (ScrrenSize.Y * 0.5f)) >= CameraPos.Y)
+	{
+		ResultCameraPos.Y = (-MapSize.Y + (ScrrenSize.Y * 0.5f));
+	}
+	else
+	{
+		ResultCameraPos.Y = Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.Y;
+	}
+	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y, -560.0f });
 }
