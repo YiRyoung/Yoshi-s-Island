@@ -64,8 +64,6 @@ void AStage100GameMode::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	Camera->SetActorLocation({ Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.X, Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.Y, -520.0f });
-	/*UEngineDebug::OutPutString("CameraPos : {" + std::to_string(Camera->GetActorTransform().RelativeLocation.X) + ", "
-		+ std::to_string(Camera->GetActorTransform().RelativeLocation.Y) + "}");*/
 	SetCameraBoundary();
 }
 

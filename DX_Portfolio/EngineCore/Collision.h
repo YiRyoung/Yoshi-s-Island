@@ -2,6 +2,7 @@
 #include "SceneComponent.h"
 #include "EngineSprite.h"
 #include "RenderUnit.h"
+#include <set>
 
 class UCollision : public USceneComponent
 {
@@ -33,11 +34,28 @@ public:
 		CollisionType = _Type;
 	}
 
-private:
+	void CollisionEventCheck(std::shared_ptr<UCollision> _Other);
 
-public:
+	ENGINEAPI void SetCollisionEnter(std::function<void(UCollision*, UCollision*)> _Function);
+	ENGINEAPI void SetCollisionStay(std::function<void(UCollision*, UCollision*)> _Function);
+	ENGINEAPI void SetCollisionEnd(std::function<void(UCollision*, UCollision*)> _Function);
+
+	bool IsEvent()
+	{
+		return Enter != nullptr || Stay != nullptr || End != nullptr;
+	}
+
+private:
 	ECollisionType CollisionType = ECollisionType::OBB2D;
 
-	std::string ProfileName;
+	std::set<UCollision*> CollisionCheckSet;
+
+	std::string ProfileName = "NONE";
+
+	std::function<void(UCollision*, UCollision*)> Enter;
+
+	std::function<void(UCollision*, UCollision*)> Stay;
+
+	std::function<void(UCollision*, UCollision*)> End;
 };
 
