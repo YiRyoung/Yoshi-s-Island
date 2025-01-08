@@ -19,9 +19,8 @@ public:
 	ENGINEAPI virtual void BeginPlay();
 	ENGINEAPI virtual void Tick(float _DeltaTime);
 
-	ENGINEAPI virtual void LevelChangeStart() {}
-	ENGINEAPI virtual void LevelChangeEnd() {}
-
+	virtual void LevelChangeStart() {}
+	virtual void LevelChangeEnd() {}
 
 	template<typename ComponentType>
 	inline std::shared_ptr<ComponentType> CreateDefaultSubObject()
@@ -40,13 +39,17 @@ public:
 		ComPtr->Actor = this;
 
 		ComponentType* NewPtr = reinterpret_cast<ComponentType*>(ComMemory);
+
 		std::shared_ptr<ComponentType> NewCom(new(ComMemory) ComponentType());
 
-		if (std::is_base_of_v<UActorComponent, ComponentType>)
+
+		if (std::is_base_of_v<UActorComponent, ComponentType>
+			&& !std::is_base_of_v<USceneComponent, ComponentType>)
 		{
 			ActorComponentList.push_back(NewCom);
 		}
-		else
+		else if (!std::is_base_of_v<UActorComponent, ComponentType>
+			&& !std::is_base_of_v<USceneComponent, ComponentType>)
 		{
 			MSGASSERT("¸»µµ ¾ÈµÊ");
 		}
@@ -67,6 +70,16 @@ public:
 		}
 
 		RootComponent->SetWorldLocation(_Value);
+	}
+
+	void AddActorLocation(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			return;
+		}
+
+		RootComponent->AddWorldLocation(_Value);
 	}
 
 	void SetActorRelativeScale3D(const FVector& _Scale)
@@ -106,7 +119,7 @@ public:
 			return;
 		}
 
-		RootComponent->AddRotation(_Value);
+		RootComponent->AddWorldRotation(_Value);
 	}
 
 	void AttachToActor(AActor* _Parent);
@@ -125,6 +138,19 @@ public:
 
 		return RootComponent->GetTransformRef();
 	}
+
+	void SetActorTransform(const FTransform& _Transform)
+	{
+		if (nullptr == RootComponent)
+		{
+			return;
+		}
+
+		RootComponent->Transform = _Transform;
+
+		return;
+	}
+
 
 	ENGINEAPI FVector GetActorUpVector();
 	ENGINEAPI FVector GetActorRightVector();
