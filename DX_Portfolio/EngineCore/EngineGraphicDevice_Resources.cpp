@@ -23,14 +23,27 @@ void UEngineGraphicDevice::DefaultResourcesInit()
 
 void UEngineGraphicDevice::DepthStencilInit()
 {
-	D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
-	Desc.DepthEnable = true;
-	Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-	Desc.DepthFunc = D3D11_COMPARISON_LESS;
-	Desc.StencilEnable = false;
+	{
+		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
+		Desc.DepthEnable = true;
+		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		Desc.DepthFunc = D3D11_COMPARISON_LESS;
+		Desc.StencilEnable = false;
 
-	UEngineDepthStencilState::Create("BaseDepth", Desc);
+		UEngineDepthStencilState::Create("BaseDepth", Desc);
+	}
+
+	{
+		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
+		Desc.DepthEnable = true;
+		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		Desc.DepthFunc = D3D11_COMPARISON_ALWAYS;
+		Desc.StencilEnable = false;
+
+		UEngineDepthStencilState::Create("CollisionDebugDepth", Desc);
+	}
 }
+
 
 void UEngineGraphicDevice::TextureInit()
 {

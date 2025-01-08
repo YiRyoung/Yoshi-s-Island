@@ -111,6 +111,11 @@ public:
 
 	void AttachToActor(AActor* _Parent);
 
+	FVector GetActorLocation()
+	{
+		return RootComponent->Transform.WorldLocation;
+	}
+
 	FTransform GetActorTransform()
 	{
 		if (nullptr == RootComponent)
