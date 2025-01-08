@@ -85,7 +85,7 @@ void ACameraActor::Tick(float _DeltaTime)
 
 		if (UEngineInput::IsPress(VK_RBUTTON))
 		{
-			AddActorRotation({ -ScreenDir.Y, -ScreenDir.X });
+			AddActorRotation({ -ScreenDir.Y * RotSpeed * _DeltaTime, -ScreenDir.X * RotSpeed * _DeltaTime });
 		}
 	}
 
@@ -142,6 +142,7 @@ void ACameraActor::FreeCameraCheck()
 	{
 		PrevTrans = GetActorTransform();
 		PrevProjectionType = GetCameraComponent()->ProjectionType;
+		GetCameraComponent()->ProjectionType = EProjectionType::Perspective;
 	}
 	else
 	{

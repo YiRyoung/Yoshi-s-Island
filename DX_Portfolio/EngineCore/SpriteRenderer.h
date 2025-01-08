@@ -113,11 +113,15 @@ public:
 		AutoScaleRatio = _Scale;
 	}
 
-	UEngineSprite* GetSprite() const
+	void BillboardOn()
 	{
-		return Sprite;
+		IsBillboard = true;
 	}
 
+	void BillboardOff()
+	{
+		IsBillboard = false;
+	}
 	void SetSprite(UEngineSprite* _Sprite);
 
 	ResultColor ColorData;
@@ -128,9 +132,11 @@ protected:
 	ENGINEAPI void Render(class UEngineCamera* _Camera, float _DeltaTime) override;
 	void BeginPlay() override;
 	void ComponentTick(float _DeltaTime) override;
-
+	ENGINEAPI void RenderTransUpdate(UEngineCamera* _Camera) override;
 
 private:
+	bool IsBillboard = false;
+
 	URenderUnit* MainUnit;
 
 	int CurIndex = 0;

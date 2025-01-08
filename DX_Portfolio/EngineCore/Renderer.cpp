@@ -53,21 +53,25 @@ void URenderer::SetMaterial(std::string_view _Name, UINT _Index /*= 0*/)
 	Unit.SetMaterial(_Name);
 }
 
-void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
+void URenderer::RenderTransUpdate(UEngineCamera* _Camera)
 {
 	FTransform& CameraTrans = _Camera->GetTransformRef();
 	FTransform& RendererTrans = GetTransformRef();
-
 	RendererTrans.View = CameraTrans.View;
 	RendererTrans.Projection = CameraTrans.Projection;
 	RendererTrans.WVP = RendererTrans.World * RendererTrans.View * RendererTrans.Projection;
+}
 
+void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
+{
+	this->RenderTransUpdate(_Camera);
 
 	for (size_t i = 0; i < Units.size(); i++)
 	{
 		Units[i].Render(_Camera, _DeltaTime);
 	}
 }
+
 
 URenderUnit& URenderer::CreateRenderUnit()
 {

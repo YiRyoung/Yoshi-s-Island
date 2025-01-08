@@ -62,5 +62,6 @@ private:
 
 	FVector ScreenPos;
 	FVector PrevScreenPos;
+	float RotSpeed = 360.0f;
 };
 

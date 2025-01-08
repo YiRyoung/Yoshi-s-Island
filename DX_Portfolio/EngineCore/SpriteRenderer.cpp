@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "SpriteRenderer.h"
+#include "EngineCamera.h"
 
 USpriteRenderer::USpriteRenderer()
 {
@@ -68,7 +69,6 @@ USpriteRenderer::FrameAnimation* USpriteRenderer::FindAnimation(std::string_view
 
 	return &FrameAnimations[UpperString];
 }
-
 void USpriteRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
 	if (nullptr != CurAnimation)
@@ -87,14 +87,44 @@ void USpriteRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 	}
 
 	URenderer::Render(_Camera, _DeltaTime);
+
+	if (true == IsBillboard)
+	{
+		Transform.WVP;
+	}
 }
 
+void USpriteRenderer::RenderTransUpdate(UEngineCamera* _Camera)
+{
+	FTransform& CameraTrans = _Camera->GetTransformRef();
+	FTransform& RendererTrans = GetTransformRef();
+
+
+	RendererTrans.View = CameraTrans.View;
+
+	FMatrix CurWorld = RendererTrans.World;
+
+	if (true == IsBillboard)
+	{
+		RendererTrans.View.ArrVector[0] = { 1.0f, 0.0f, 0.0f, 0.0f };
+		RendererTrans.View.ArrVector[1] = { 0.0f, 1.0f, 0.0f, 0.0f };
+		RendererTrans.View.ArrVector[2] = { 0.0f, 0.0f, 1.0f, 0.0f };
+
+		
+	}
+
+	RendererTrans.Projection = CameraTrans.Projection;
+	RendererTrans.WVP = CurWorld * RendererTrans.View * RendererTrans.Projection;
+}
 void USpriteRenderer::ComponentTick(float _DeltaTime)
 {
 	URenderer::ComponentTick(_DeltaTime);
 
 	if (nullptr != CurAnimation)
 	{
+		FrameAnimation* EventAnimation = nullptr;
+		int EventFrame = -1;
+
 		CurAnimation->IsEnd = false;
 		std::vector<int>& Indexs = CurAnimation->FrameIndex;
 		std::vector<float>& Times = CurAnimation->FrameTime;
