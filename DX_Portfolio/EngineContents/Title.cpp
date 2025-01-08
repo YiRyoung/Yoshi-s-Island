@@ -20,11 +20,11 @@ ATitle::ATitle()
 	BackgroundRenderer->CreateAnimation("Start", "Title", 0, 127, 0.14f);
 	BackgroundRenderer->ChangeAnimation("Start");
 
-	UEngineSprite::CreateSpriteToMeta("TitleLogo.png", ".sdata");
 	LogoRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	LogoRenderer->SetTexture("TitleLogo.png");
+	LogoRenderer->SetScale3D({ 540, 216, 1 });
+	LogoRenderer->SetRelativeLocation({ 0.0f, 150.0f, -1.0f });
 	LogoRenderer->SetupAttachment(RootComponent);
-	LogoRenderer->SetRelativeLocation({ -260.0f, 50.0f, -1.0f });
-	LogoRenderer->SetSprite("TitleLogo.png", 0);
 }
 
 ATitle::~ATitle()

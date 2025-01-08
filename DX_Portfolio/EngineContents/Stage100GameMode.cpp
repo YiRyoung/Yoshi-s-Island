@@ -6,6 +6,7 @@
 #include <EngineBase/EngineDebug.h>
 
 #include <EnginePlatform/EngineInput.h>
+#include <EnginePlatform/EngineWinImage.h>
 
 #include <EngineCore/Level.h>
 #include <EngineCore/CameraActor.h>
@@ -15,39 +16,16 @@
 
 AStage100GameMode::AStage100GameMode()
 {
-	{
-		UEngineDirectory Dir;
-		if (false == Dir.MoveParentToDirectory("ContentsResources"))
-		{
-			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
-			return;
-		}
-		Dir.Append("Image/Stage100");
-
-		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
-	}
-
-	{
-		UEngineDirectory Dir;
-		if (false == Dir.MoveParentToDirectory("ContentsResources"))
-		{
-			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
-			return;
-		}
-		Dir.Append("Image/Stage100/Stage100(Layer3)");
-
-		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
-	}
-
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
 	Camera->GetCameraComponent()->SetZSort(0, true);
 
 	Stage = GetWorld()->SpawnActor<AStage100>();
 	Stage->SetBackground();
+	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
 
 	Yoshi = GetWorld()->SpawnActor<AYoshi>();
-	Yoshi->GetYoshiRenderer()->SetRelativeLocation({ 220.0f, -2690.0f, 0.0f });
+	Yoshi->SetActorLocation({ 100, -1000 });
 }
 
 AStage100GameMode::~AStage100GameMode()
@@ -63,8 +41,9 @@ void AStage100GameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	Camera->SetActorLocation({ Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.X, Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.Y, -520.0f });
-	SetCameraBoundary();
+	Camera->SetActorLocation({ Yoshi->GetActorLocation().X, Yoshi->GetActorLocation().Y, -520.0f});
+	// Yoshi에서 검사할 위치를 가져와서 Stage에서 충돌 색상을 확인하고 확인한 색을 다시 Yoshi에게 전달
+	Yoshi->SetColor(Stage->GetPixelColor(Yoshi->GetCheckPos()));
 }
 
 void AStage100GameMode::LevelChangeStart()
@@ -75,39 +54,4 @@ void AStage100GameMode::LevelChangeStart()
 void AStage100GameMode::LevelChangeEnd()
 {
 	AActor::LevelChangeEnd();
-}
-
-void AStage100GameMode::SetCameraBoundary()
-{
-	FVector ResultCameraPos = { 0.0f, 0.0f, 0.0f };
-	FVector ScrrenSize = UEngineCore::GetScreenScale();
-	FVector MapSize = Stage->GetMapScale();
-	FVector CameraPos = Camera->GetActorTransform().RelativeLocation;
-
-	if ((ScrrenSize.X * 0.5f) >= CameraPos.X)
-	{
-		ResultCameraPos.X = ScrrenSize.X * 0.5f;
-	}
-	else if ((MapSize.X - (ScrrenSize.X * 0.5f)) <= CameraPos.X)
-	{
-		ResultCameraPos.X = MapSize.X - (ScrrenSize.X * 0.5f);
-	}
-	else
-	{
-		ResultCameraPos.X = Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.X;
-	}
-
-	if ((ScrrenSize.Y * -0.5f) <= CameraPos.Y)
-	{
-		ResultCameraPos.Y = (ScrrenSize.Y * -0.5f);
-	}
-	else if ((-MapSize.Y + (ScrrenSize.Y * 0.5f)) >= CameraPos.Y)
-	{
-		ResultCameraPos.Y = (-MapSize.Y + (ScrrenSize.Y * 0.5f));
-	}
-	else
-	{
-		ResultCameraPos.Y = Yoshi->GetYoshiRenderer()->GetTransformRef().RelativeLocation.Y;
-	}
-	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y, -560.0f });
 }

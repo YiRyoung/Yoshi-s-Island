@@ -22,6 +22,9 @@
     <ClInclude Include="Yoshi.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsEnum.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -43,6 +46,9 @@
       <Filter>GameMode</Filter>
     </ClCompile>
     <ClCompile Include="Yoshi.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsEnum.cpp">
       <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
