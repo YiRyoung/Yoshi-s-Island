@@ -17,6 +17,7 @@ UEngineGUI::~UEngineGUI()
 
 void UEngineGUI::Init()
 {
+
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -46,6 +47,8 @@ void UEngineGUI::Init()
     }
 
     // Setup Platform/Renderer backends
+
+
 
     ImGui_ImplWin32_Init(UEngineCore::GetMainWindow().GetWindowHandle());
     ImGui_ImplDX11_Init(UEngineCore::GetDevice().GetDevice(), UEngineCore::GetDevice().GetContext());
@@ -92,6 +95,7 @@ void UEngineGUI::GUIRenderStart()
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
+
 }
 
 void UEngineGUI::GUIRenderEnd()
@@ -106,12 +110,42 @@ void UEngineGUI::GUIRenderEnd()
         ImGui::UpdatePlatformWindows();
         ImGui::RenderPlatformWindowsDefault();
     }
+
 }
 
 void UEngineGUI::PushGUIWindow(std::shared_ptr<class UEngineGUIWindow> _Window)
 {
     _Window->BeginPlay();
+
     Windows.insert({ _Window->GetName(), _Window });
+}
+
+std::shared_ptr<UEngineGUIWindow> UEngineGUI::FindGUIWindow(std::string_view _Text)
+{
+    std::string UpperName = UEngineString::ToUpper(_Text);
+
+    if (false == Windows.contains(UpperName))
+    {
+        return nullptr;
+    }
+
+    return Windows[UpperName];
+}
+
+void UEngineGUI::AllWindowOn()
+{
+    for (std::pair<const std::string, std::shared_ptr<UEngineGUIWindow>>& Window : Windows)
+    {
+        Window.second->SetActive(true);
+    }
+}
+
+void UEngineGUI::AllWindowOff()
+{
+    for (std::pair<const std::string, std::shared_ptr<UEngineGUIWindow>>& Window : Windows)
+    {
+        Window.second->SetActive(false);
+    }
 }
 
 void UEngineGUI::GUIRender(ULevel* _Level)
@@ -119,7 +153,14 @@ void UEngineGUI::GUIRender(ULevel* _Level)
     UEngineGUI::GUIRenderStart();
     for (std::pair<const std::string, std::shared_ptr<UEngineGUIWindow>>& Window : Windows)
     {
-        ImGui::Begin(Window.first.c_str());
+        if (false == Window.second->IsActive())
+        {
+            continue;
+        }
+
+        bool* ActivePtr = &Window.second->GetIsActiveValueRef();
+        ImGui::Begin(Window.first.c_str(), ActivePtr);
+
         Window.second->World = _Level;
         Window.second->OnGUI();
         ImGui::End();
