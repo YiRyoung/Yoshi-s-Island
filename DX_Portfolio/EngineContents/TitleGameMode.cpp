@@ -14,21 +14,6 @@
 #include <EngineCore/imgui.h>
 #include <EngineCore/EngineCamera.h>
 
-class TestWindow : public UEngineGUIWindow
-{
-public:
-	void OnGUI() override
-	{
-		if (true == ImGui::Button("FreeCameraOn"))
-		{
-			GetWorld()->GetMainCamera()->FreeCameraSwitch();
-		}
-
-		ImGui::Button("WindowButton");
-		ImGui::SameLine();
-	}
-};
-
 ATitleGameMode::ATitleGameMode()
 {
 	{
@@ -48,8 +33,6 @@ ATitleGameMode::ATitleGameMode()
 	Camera->GetCameraComponent()->SetZSort(0, true);
 
 	Title = GetWorld()->SpawnActor<ATitle>();
-
-	UEngineGUI::CreateGUIWindow<TestWindow>("TestWindow");
 }
 
 ATitleGameMode::~ATitleGameMode()

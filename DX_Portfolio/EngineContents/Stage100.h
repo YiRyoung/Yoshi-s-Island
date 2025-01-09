@@ -1,6 +1,7 @@
 #pragma once
 #include <EnginePlatform/EngineWinImage.h>
 
+#include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/GameMode.h>
 
 // Ό³Έν :
@@ -24,6 +25,16 @@ public:
 
 	UColor GetPixelColor(FVector _Pos);
 	void SetBackground();
+
+	bool GetColStageOn() const
+	{
+		return ColStageRenderer->IsActive();
+	}
+
+	void SwitchColStage(bool _IsOn)
+	{
+		ColStageRenderer->SetActive(_IsOn);
+	}
 
 protected:
 	void BeginPlay() override;

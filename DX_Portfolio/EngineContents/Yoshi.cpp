@@ -43,7 +43,7 @@ void AYoshi::Tick(float _DeltaTime)
 	PlayerFSM(_DeltaTime);
 
 	//UEngineDebug::OutPutString(std::to_string(Color.R) + "," + std::to_string(Color.G) + "," + std::to_string(Color.B));
-	UEngineDebug::OutPutString("Pos : " + std::to_string(GetActorLocation().X) + "," + std::to_string(GetActorLocation().Y) + "," + std::to_string(GetActorLocation().Z));
+	//UEngineDebug::OutPutString("Pos : " + std::to_string(GetActorLocation().X) + "," + std::to_string(GetActorLocation().Y) + "," + std::to_string(GetActorLocation().Z));
 }
 
 void AYoshi::SetCheckPos()
