@@ -8,10 +8,6 @@
 #include "CameraActor.h"
 #include "EngineGUI.h"
 
-
-
-
-
 std::shared_ptr<class ACameraActor> ULevel::SpawnCamera(int _Order)
 {
 	std::shared_ptr<ACameraActor> Camera = std::make_shared<ACameraActor>();
@@ -44,12 +40,29 @@ ULevel::~ULevel()
 
 void ULevel::LevelChangeStart()
 {
+	for (std::shared_ptr<class AActor> Actor : BeginPlayList)
+	{
+		Actor->LevelChangeStart();
+	}
 
+
+	for (std::shared_ptr<class AActor> Actor : AllActorList)
+	{
+		Actor->LevelChangeStart();
+	}
 }
 
 void ULevel::LevelChangeEnd()
 {
+	for (std::shared_ptr<class AActor> Actor : BeginPlayList)
+	{
+		Actor->LevelChangeEnd();
+	}
 
+	for (std::shared_ptr<class AActor> Actor : AllActorList)
+	{
+		Actor->LevelChangeEnd();
+	}
 }
 
 

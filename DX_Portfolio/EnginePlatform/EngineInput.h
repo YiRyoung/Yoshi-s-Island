@@ -58,7 +58,15 @@ private:
 		std::vector<std::function<void()>> UpEvents;
 		std::vector<std::function<void()>> FreeEvents;
 
-
+		void Reset()
+		{
+			IsDown = false;
+			IsPress = false;
+			IsUp = false;
+			IsFree = true;
+			PressTime = 0.0f;
+			FreeTime = 0.0f;
+		}
 
 		UEngineKey()
 		{
@@ -80,6 +88,8 @@ private:
 
 public:
 	ENGINEAPI static void KeyCheck(float _DeltaTime);
+
+	ENGINEAPI static void KeyReset();
 
 	static bool IsDoubleClick(int _KeyIndex, float _Time)
 	{

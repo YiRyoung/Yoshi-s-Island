@@ -10,8 +10,6 @@
 // user header
 #include <EngineBase/EngineMath.h>
 
-
-
 // Ό³Έν :
 class UEngineWindow
 {
@@ -66,12 +64,19 @@ public:
 
 	ENGINEAPI static  void SetCustomProc(std::function<bool(HWND, UINT, WPARAM, LPARAM)> _CustomProc);
 
+	ENGINEAPI bool IsFocus()
+	{
+		return IsFocusValue;
+	}
+
+
+
+
 protected:
 
 private:
 	ENGINEAPI static std::function<bool(HWND, UINT, WPARAM, LPARAM)> CustomProc;
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
 
 	ENGINEAPI static HINSTANCE hInstance;
 
@@ -79,8 +84,10 @@ private:
 
 	ENGINEAPI static std::map<std::string, WNDCLASSEXA> WindowClasss;
 
+	ENGINEAPI static std::map<HWND, UEngineWindow*> AllWindows;
+
+	bool IsFocusValue = false;
+
 	FVector WindowSize;
 	HWND WindowHandle = nullptr;
 };
-
-
