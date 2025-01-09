@@ -33,7 +33,7 @@ AStage100GameMode::~AStage100GameMode()
 void AStage100GameMode::BeginPlay()
 {
 	AActor::BeginPlay();
-	GetWorld()->GetMainPawn()->SetActorLocation({ 200.0f, -2690.0f, 0.0f });
+	GetWorld()->GetMainPawn()->SetActorLocation({ 200.0f, -2687.0f, 0.0f });
 	Stage->SwitchColStage(false);
 }
 

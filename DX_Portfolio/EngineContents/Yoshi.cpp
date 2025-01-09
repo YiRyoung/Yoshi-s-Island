@@ -41,9 +41,8 @@ void AYoshi::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	PlayerFSM(_DeltaTime);
-
-	//UEngineDebug::OutPutString(std::to_string(Color.R) + "," + std::to_string(Color.G) + "," + std::to_string(Color.B));
-	//UEngineDebug::OutPutString("Pos : " + std::to_string(GetActorLocation().X) + "," + std::to_string(GetActorLocation().Y) + "," + std::to_string(GetActorLocation().Z));
+	UEngineDebug::OutPutString(std::to_string(Color.R) + "," + std::to_string(Color.G) + "," + std::to_string(Color.B));
+	UEngineDebug::OutPutString("Pos : " + std::to_string(GetActorLocation().X) + "," + std::to_string(GetActorLocation().Y) + "," + std::to_string(GetActorLocation().Z));
 }
 
 void AYoshi::SetCheckPos()
@@ -60,13 +59,16 @@ void AYoshi::SetCheckPos()
 		CheckPos.X += Speed;
 		CheckPos.Y = -CheckPos.Y;
 		break;
-	case EDirection::UP:
-		CheckPos.Y += Speed;
+	case EDirection::DOWN:
+		CheckPos.Y += -( Speed + 1.0f);
 		CheckPos.Y = -CheckPos.Y;
 		break;
-	case EDirection::DOWN:
-		CheckPos.Y -= Speed;
+	case EDirection::UP:
+		CheckPos.Y += (Speed + 1.0f + (YoshiRenderer->GetWorldScale3D().Y));
 		CheckPos.Y = -CheckPos.Y;
+		break;
+	case EDirection::MAX:
+		CheckPos = GetActorLocation();
 		break;
 	}
 }
@@ -80,8 +82,6 @@ void AYoshi::PlayerFSM(float _DeltaTime)
 		break;
 	case EPlayerState::MOVE:
 		MoveStart(_DeltaTime);
-		break;
-	case EPlayerState::MAX:
 		break;
 	}
 }
@@ -140,7 +140,7 @@ void AYoshi::Move(float _DeltaTime)
 		SetCheckPos();
 		if (false == Color.operator==(UColor{ 255, 0, 255, 255 }))
 		{
-			AddActorLocation({ 0, -Speed, 0 });
+			AddActorLocation({ 0.0f, -Speed, 0.0f });
 		}
 	}
 
@@ -150,13 +150,15 @@ void AYoshi::Move(float _DeltaTime)
 		SetCheckPos();
 		if (false == Color.operator==(UColor{ 255, 0, 255, 255 }))
 		{
-			AddActorLocation({ 0, Speed, 0 });
+			AddActorLocation({ 0.0f, Speed, 0.0f });
 		}
 	}
 
 	if (false == UEngineInput::IsPress(VK_LEFT) && false == UEngineInput::IsPress(VK_RIGHT)
 		&& false == UEngineInput::IsPress(VK_UP) && false == UEngineInput::IsPress(VK_DOWN))
 	{
+		Dir = EDirection::MAX;
+		SetCheckPos();
 		State = EPlayerState::IDLE;
 		return;
 	}
