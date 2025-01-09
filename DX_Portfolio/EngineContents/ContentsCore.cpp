@@ -25,8 +25,8 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 
 	LoadSprites();
 
-	UEngineCore::CreateLevel<ATitleGameMode, AGameMode>("Title");
-	UEngineCore::CreateLevel<AStage100GameMode, AGameMode>("Stage101");
+	UEngineCore::CreateLevel<ATitleGameMode, APawn>("Title");
+	UEngineCore::CreateLevel<AStage100GameMode, AYoshi>("Stage101");
 	UEngineCore::OpenLevel("Stage101");
 
 }

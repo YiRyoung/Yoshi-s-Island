@@ -8,6 +8,10 @@
 #include "CameraActor.h"
 #include "EngineGUI.h"
 
+
+
+
+
 std::shared_ptr<class ACameraActor> ULevel::SpawnCamera(int _Order)
 {
 	std::shared_ptr<ACameraActor> Camera = std::make_shared<ACameraActor>();
@@ -26,6 +30,7 @@ std::shared_ptr<class ACameraActor> ULevel::SpawnCamera(int _Order)
 ULevel::ULevel()
 {
 	SpawnCamera(0);
+
 }
 
 ULevel::~ULevel()
@@ -70,6 +75,12 @@ void ULevel::Tick(float _DeltaTime)
 		StartIter = BeginPlayList.erase(StartIter);
 
 		CurActor->BeginPlay();
+
+		if (nullptr != CurActor->Parent)
+		{
+			continue;
+		}
+
 		AllActorList.push_back(CurActor);
 	}
 
@@ -181,6 +192,7 @@ void ULevel::ChangeCollisionProfileName(std::string_view _ProfileName, std::stri
 
 void ULevel::Collision(float _DeltaTime)
 {
+
 	for (std::pair<const std::string, std::list<std::string>>& Links : CollisionLinks)
 	{
 		const std::string& LeftProfile = Links.first;
@@ -239,6 +251,12 @@ void ULevel::Release(float _DeltaTime)
 
 		for (; StartIter != EndIter; )
 		{
+			if (nullptr != (*StartIter)->Parent)
+			{
+				StartIter = List.erase(StartIter);
+				continue;
+			}
+
 			if (false == (*StartIter)->IsDestroy())
 			{
 				++StartIter;
@@ -248,4 +266,11 @@ void ULevel::Release(float _DeltaTime)
 			StartIter = List.erase(StartIter);
 		}
 	}
+}
+
+void ULevel::InitLevel(AGameMode* _GameMode, APawn* _Pawn)
+{
+	GameMode = _GameMode;
+
+	MainPawn = _Pawn;
 }

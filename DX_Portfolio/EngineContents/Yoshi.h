@@ -6,7 +6,7 @@
 #include "ContentsEnum.h"
 
 // Ό³Έν :
-class AYoshi : public AActor
+class AYoshi : public APawn
 {
 public:
 	// constrcuter destructer
