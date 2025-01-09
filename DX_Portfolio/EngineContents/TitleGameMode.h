@@ -1,5 +1,5 @@
 #pragma once
-#include <EngineCore/Actor.h>
+#include <EngineCore/GameMode.h>
 // Ό³Έν :
 class ATitleGameMode : public AGameMode
 {

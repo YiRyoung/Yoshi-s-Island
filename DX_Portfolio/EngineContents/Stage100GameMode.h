@@ -1,5 +1,5 @@
 #pragma once
-#include <EngineCore/Actor.h>
+#include <EngineCore/GameMode.h>
 
 // Ό³Έν :
 class AStage100GameMode : public AGameMode
@@ -23,7 +23,6 @@ protected:
 
 private:
 	std::shared_ptr<class AStage100> Stage;
-	std::shared_ptr<class AYoshi> Yoshi;
 	std::shared_ptr<class ACameraActor> Camera;
 
 	class UEngineWinImage* ColImage = nullptr;

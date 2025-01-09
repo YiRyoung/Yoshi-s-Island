@@ -1,10 +1,10 @@
 #pragma once
 #include <EnginePlatform/EngineWinImage.h>
 
-#include <EngineCore/Actor.h>
+#include <EngineCore/GameMode.h>
 
 // Ό³Έν :
-class AStage100 : public AActor
+class AStage100 : public AGameMode
 {
 public:
 	// constrcuter destructer

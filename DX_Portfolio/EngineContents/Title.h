@@ -1,7 +1,7 @@
 #pragma once
-#include <EngineCore/Actor.h>
+#include <EngineCore/GameMode.h>
 
-class ATitle : public AActor
+class ATitle : public AGameMode
 {
 public:
 	// constrcuter destructer

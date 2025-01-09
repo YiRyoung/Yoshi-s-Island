@@ -16,6 +16,7 @@
 
 AStage100GameMode::AStage100GameMode()
 {
+	
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
 	Camera->GetCameraComponent()->SetZSort(0, true);
@@ -23,9 +24,6 @@ AStage100GameMode::AStage100GameMode()
 	Stage = GetWorld()->SpawnActor<AStage100>();
 	Stage->SetBackground();
 	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
-
-	Yoshi = GetWorld()->SpawnActor<AYoshi>();
-	Yoshi->SetActorLocation({ 100, -1000 });
 }
 
 AStage100GameMode::~AStage100GameMode()
@@ -35,15 +33,18 @@ AStage100GameMode::~AStage100GameMode()
 void AStage100GameMode::BeginPlay()
 {
 	AActor::BeginPlay();
+	GetWorld()->GetMainPawn()->SetActorLocation({ 200.0f, -2690.0f, 0.0f });
 }
 
 void AStage100GameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	Camera->SetActorLocation({ Yoshi->GetActorLocation().X, Yoshi->GetActorLocation().Y, -520.0f});
-	// Yoshi에서 검사할 위치를 가져와서 Stage에서 충돌 색상을 확인하고 확인한 색을 다시 Yoshi에게 전달
-	Yoshi->SetColor(Stage->GetPixelColor(Yoshi->GetCheckPos()));
+	Camera->SetActorLocation({ GetWorld()->GetMainPawn()->GetActorLocation().X, GetWorld()->GetMainPawn()->GetActorLocation().Y, -520.0f});
+	dynamic_cast<AYoshi*>(GetWorld()->GetMainPawn())->SetColor(Stage->GetPixelColor(dynamic_cast<AYoshi*>(GetWorld()->GetMainPawn())->GetCheckPos()));
+
+	UEngineDebug::OutPutString("Pos : " + std::to_string(GetWorld()->GetMainPawn()->GetActorLocation().X) + ","
+		+ std::to_string(GetWorld()->GetMainPawn()->GetActorLocation().Y));
 }
 
 void AStage100GameMode::LevelChangeStart()

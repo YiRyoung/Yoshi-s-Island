@@ -113,6 +113,11 @@ public:
 		AutoScaleRatio = _Scale;
 	}
 
+	UEngineSprite* GetSprite() const
+	{
+		return Sprite;
+	}
+
 	void BillboardOn()
 	{
 		IsBillboard = true;
