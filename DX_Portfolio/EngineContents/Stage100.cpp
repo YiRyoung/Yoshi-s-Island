@@ -89,7 +89,7 @@ void AStage100::SetBackground()
 	FrontBackgroundRenderer->SetAutoScaleRatio(3.0f);
 	FVector FrontBackgroundScale = (FrontBackgroundRenderer->GetSprite()->GetTexture()->GetTextureSize()) * FrontBackgroundRenderer->GetAutoScaleRatio();
 	FrontBackgroundRenderer->SetRelativeLocation({ FrontBackgroundScale.X * 0.312f, -1500, -20.0f });
-	FrontBackgroundRenderer->CreateAnimation("Start", "Stage100(Layer3)", { 0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 4, 3, 2, 1, 1 }, 0.3f);
+	FrontBackgroundRenderer->CreateAnimation("Start", "Stage100(Layer3)", { 0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 4, 3, 2, 1, 1 }, 0.2f);
 	FrontBackgroundRenderer->ChangeAnimation("Start");
 	FrontBackgroundRenderer->SetupAttachment(RootComponent);
 

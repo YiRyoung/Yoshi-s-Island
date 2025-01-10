@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Yoshi.h"
 
+#include <EngineBase/EngineRandom.h>
+
 #include <EnginePlatform/EngineInput.h>
 
 #include <EngineCore/SpriteRenderer.h>
@@ -18,18 +20,19 @@ AYoshi::AYoshi()
 	YoshiRenderer->SetAutoScaleRatio(3.0f);
 	YoshiRenderer->SetRelativeLocation({ 0, 0, -10 });
 
-	YoshiRenderer->CreateAnimation("Idle", "YoshiAndMario.png", { 7, 8, 9, 10, 11, 10, 9, 8, 7, 8, 9, 10, 11, 10, 9, 8, 7, 8, 9, 10, 11, 10, 9, 8, 7, 8, 9, 10, 11, 10, 9, 8 }, 0.15f);
-	YoshiRenderer->CreateAnimation("Move", "YoshiAndMario.png", 40, 50, 0.08f);
-	YoshiRenderer->ChangeAnimation("Idle");
+	SetAnimations();
 
 	State = EPlayerState::IDLE;
+
+	int AnimNum = CurIdleAnim();
+
+	YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
+
 }
 
 AYoshi::~AYoshi()
 {
 }
-
-
 
 void AYoshi::BeginPlay()
 {
@@ -40,35 +43,67 @@ void AYoshi::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
+	SetDirection();
 	PlayerFSM(_DeltaTime);
-	UEngineDebug::OutPutString(std::to_string(Color.R) + "," + std::to_string(Color.G) + "," + std::to_string(Color.B));
-	UEngineDebug::OutPutString("Pos : " + std::to_string(GetActorLocation().X) + "," + std::to_string(GetActorLocation().Y) + "," + std::to_string(GetActorLocation().Z));
+	SetNextPos(_DeltaTime);
+
+	UEngineDebug::OutPutString(std::to_string(YoshiRenderer->GetCurIndex()));
 }
 
-void AYoshi::SetCheckPos()
+void AYoshi::SetAnimations()
 {
-	CheckPos = GetActorLocation();
+	YoshiRenderer->CreateAnimation("Idle0", "YoshiAndMario.png", {7, 8, 9, 10, 11, 10, 9, 8}, 0.15f);
+	YoshiRenderer->CreateAnimation("Idle1", "YoshiAndMario.png", { 3, 4, 5, 4, 5}, 0.2f);
+	YoshiRenderer->CreateAnimation("Idle2", "YoshiAndMario.png", {2, 1, 0, 0, 0, 1, 2}, 0.15f);
+	
+	YoshiRenderer->CreateAnimation("Move", "YoshiAndMario.png", 40, 50, 0.08f);
+
+	YoshiRenderer->CreateAnimation("LookUpStart", "YoshiAndMario.png", 12, 13, 0.3f, false);
+	YoshiRenderer->CreateAnimation("LookUpEnd", "YoshiAndMario.png", 13, 12, 0.1f, false);
+	
+	YoshiRenderer->CreateAnimation("BendStart", "YoshiAndMario.png", 14, 17, 0.05f, false);
+	YoshiRenderer->CreateAnimation("BendEnd", "YoshiAndMario.png", 17, 14, 0.04f, false);
+
+	YoshiRenderer->CreateAnimation("JumpStart", "YoshiAndMario.png", 75, 76, 0.1f, false);
+}
+
+void AYoshi::SetDirection()
+{
+	if (UEngineInput::IsDown(VK_LEFT))
+	{
+		YoshiRenderer->SetRotation({ 0.0f, 180.0f, 0.0f });
+	}
+	else if (UEngineInput::IsDown(VK_RIGHT))
+	{
+		YoshiRenderer->SetRotation({ 0.0f, 0.0f, 0.0f });
+	}
+}
+
+void AYoshi::SetNextPos(float _DeltaTime)
+{
+	NextPos = GetActorLocation();
+	float NewSpeed = Speed * _DeltaTime;
 
 	switch (Dir)
 	{
 	case EDirection::LEFT:
-		CheckPos.X += -Speed;
-		CheckPos.Y = -CheckPos.Y;
+		NextPos.X += -NewSpeed;
+		NextPos.Y = -NextPos.Y;
 		break;
 	case EDirection::RIGHT:
-		CheckPos.X += Speed;
-		CheckPos.Y = -CheckPos.Y;
+		NextPos.X += NewSpeed;
+		NextPos.Y = -NextPos.Y;
 		break;
 	case EDirection::DOWN:
-		CheckPos.Y += -( Speed + 1.0f);
-		CheckPos.Y = -CheckPos.Y;
+		NextPos.Y += -(NewSpeed + 1.0f);
+		NextPos.Y = -NextPos.Y;
 		break;
 	case EDirection::UP:
-		CheckPos.Y += (Speed + 1.0f + (YoshiRenderer->GetWorldScale3D().Y));
-		CheckPos.Y = -CheckPos.Y;
+		NextPos.Y += (NewSpeed + 1.0f + (YoshiRenderer->GetWorldScale3D().Y));
+		NextPos.Y = -NextPos.Y;
 		break;
 	case EDirection::MAX:
-		CheckPos = GetActorLocation();
+		NextPos = GetActorLocation();
 		break;
 	}
 }
@@ -80,26 +115,116 @@ void AYoshi::PlayerFSM(float _DeltaTime)
 	case EPlayerState::IDLE:
 		IdleStart(_DeltaTime);
 		break;
+	case EPlayerState::LOOKUPSTART:
+		LookUpStart(_DeltaTime);
+		break;
+	case EPlayerState::LOOKUPEND:
+		LookUpEnd(_DeltaTime);
+		break;
+	case EPlayerState::BENDSTART:
+		BendStart(_DeltaTime);
+		break;
+	case EPlayerState::BENDEND:
+		BendEnd(_DeltaTime);
+		break;
 	case EPlayerState::MOVE:
 		MoveStart(_DeltaTime);
 		break;
+	case EPlayerState::JUMP:
+		JumpStart(_DeltaTime);
+		break;
 	}
+}
+
+void AYoshi::Gravity(float _DeltaTime)
+{
+	Dir = EDirection::DOWN;
+
+}
+
+int AYoshi::CurIdleAnim()
+{
+	UEngineRandom Random;
+	int RandomValue = Random.RandomInt(0, 9);
+
+	if (RandomValue == 0) { return 2; }
+	else if (RandomValue == 1) { return 1; }
+	else { return 0; }
 }
 
 void AYoshi::IdleStart(float _DeltaTime)
 {
 	Dir = EDirection::MAX;
-	YoshiRenderer->ChangeAnimation("Idle");
+	
+	int AnimNum = CurIdleAnim();
 
+	if (true == YoshiRenderer->IsCurAnimationEnd())
+	{
+		YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
+
+	}
 	Idle(_DeltaTime);
 }
 
+
 void AYoshi::Idle(float _DeltaTime)
 {
-	if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT)
-		|| true == UEngineInput::IsPress(VK_UP) || true == UEngineInput::IsPress(VK_DOWN))
+	if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
 	{
 		State = EPlayerState::MOVE;
+		return;
+	}
+	if (true == UEngineInput::IsPress(VK_UP))
+	{
+		State = EPlayerState::LOOKUPSTART;
+		return;
+	}
+	if (true == UEngineInput::IsPress(VK_DOWN))
+	{
+		State = EPlayerState::BENDSTART;
+		return;
+	}
+}
+
+void AYoshi::LookUpStart(float _DeltaTime)
+{
+	YoshiRenderer->ChangeAnimation("LookUpStart");
+
+	if (false == UEngineInput::IsPress(VK_UP))
+	{
+		State = EPlayerState::LOOKUPEND;
+		return;
+	}
+}
+
+void AYoshi::LookUpEnd(float _DeltaTime)
+{
+	YoshiRenderer->ChangeAnimation("LookUpEnd");
+
+	if (true == YoshiRenderer->IsCurAnimationEnd())
+	{
+		State = EPlayerState::IDLE;
+		return;
+	}
+}
+
+void AYoshi::BendStart(float _DeltaTime)
+{
+	YoshiRenderer->ChangeAnimation("BendStart");
+	if (false == UEngineInput::IsPress(VK_DOWN))
+	{
+		State = EPlayerState::BENDEND;
+		return;
+	}
+}
+
+void AYoshi::BendEnd(float _DeltaTime)
+{
+	YoshiRenderer->ChangeAnimation("BendEnd");
+
+	if (true == YoshiRenderer->IsCurAnimationEnd())
+	{
+		State = EPlayerState::IDLE;
 		return;
 	}
 }
@@ -115,52 +240,36 @@ void AYoshi::Move(float _DeltaTime)
 	if (true == UEngineInput::IsPress(VK_RIGHT))
 	{
 		Dir = EDirection::RIGHT;
-		SetCheckPos();
-		if (false == Color.operator==(UColor{ 255, 0, 255, 255 }))
+		if (false == Color.operator==(UColor {255, 0, 255, 255}))
 		{
-			AddActorLocation({ Speed, 0.0f, 0.0f });
-			YoshiRenderer->SetRotation({ 0.0f, 0.0f, 0.0f });
+			AddActorLocation({ (Speed * _DeltaTime), 0.0f, 0.0f });
 		}
 	}
 
 	if (true == UEngineInput::IsPress(VK_LEFT))
 	{
 		Dir = EDirection::LEFT;
-		SetCheckPos();
 		if (false == Color.operator==(UColor{ 255, 0, 255, 255 }))
 		{
-			AddActorLocation({ -Speed, 0.0f, 0.0f });
-			YoshiRenderer->SetRotation({ 0.0f, 0.0f, 0.0f });
+			AddActorLocation({ ( -Speed * _DeltaTime), 0.0f, 0.0f});
 		}
 	}
 
-	if (true == UEngineInput::IsPress(VK_DOWN))
-	{
-		Dir = EDirection::DOWN;
-		SetCheckPos();
-		if (false == Color.operator==(UColor{ 255, 0, 255, 255 }))
-		{
-			AddActorLocation({ 0.0f, -Speed, 0.0f });
-		}
-	}
-
-	if (true == UEngineInput::IsPress(VK_UP))
-	{
-		Dir = EDirection::UP;
-		SetCheckPos();
-		if (false == Color.operator==(UColor{ 255, 0, 255, 255 }))
-		{
-			AddActorLocation({ 0.0f, Speed, 0.0f });
-		}
-	}
-
-	if (false == UEngineInput::IsPress(VK_LEFT) && false == UEngineInput::IsPress(VK_RIGHT)
-		&& false == UEngineInput::IsPress(VK_UP) && false == UEngineInput::IsPress(VK_DOWN))
+	if (false == UEngineInput::IsPress(VK_LEFT) && false == UEngineInput::IsPress(VK_RIGHT))
 	{
 		Dir = EDirection::MAX;
-		SetCheckPos();
 		State = EPlayerState::IDLE;
 		return;
 	}
+}
+
+void AYoshi::JumpStart(float _DeltaTime)
+{
+	YoshiRenderer->ChangeAnimation("JumpStart");
+	Jump(_DeltaTime);
+}
+
+void AYoshi::Jump(float _DeltaTime)
+{
 }
 

@@ -12,6 +12,11 @@ enum class EDirection
 enum class EPlayerState
 {
 	IDLE,
+	LOOKUPSTART,
+	LOOKUPEND,
+	BENDSTART,
+	BENDEND,
 	MOVE,
+	JUMP,
 	MAX
 };

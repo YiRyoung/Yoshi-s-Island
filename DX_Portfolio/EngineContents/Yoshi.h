@@ -26,7 +26,7 @@ public:
 
 	FVector GetCheckPos() const
 	{
-		return CheckPos;
+		return NextPos;
 	}
 
 	void SetColor(UColor _Color)
@@ -43,17 +43,28 @@ private:
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
 	EDirection Dir = EDirection::MAX;
 	EPlayerState State = EPlayerState::MAX;
-	FVector CheckPos = { 0, 0, 0 };
+	FVector NextPos = { 0, 0, 0 };
 	UColor Color = { 255, 255, 255, 255 };
-	float Speed = 10.0f;
+	float Speed = 300.0f;
+
+	void SetAnimations();
+	void SetDirection();
+
+	void SetNextPos(float _DeltaTime);
 
 	void PlayerFSM(float _DeltaTime);
+	void Gravity(float _DeltaTime);
 
+	int CurIdleAnim();
 	void IdleStart(float _DeltaTime);
 	void Idle(float _DeltaTime);
+	void LookUpStart(float _DeltaTime);
+	void LookUpEnd(float _DeltaTime);
+	void BendStart(float _DeltaTime);
+	void BendEnd(float _DeltaTime);
 	void MoveStart(float _DeltaTime);
 	void Move(float _DeltaTime);
-
-	void SetCheckPos();
+	void JumpStart(float _DeltaTime);
+	void Jump(float _DeltaTime);
 };
 
