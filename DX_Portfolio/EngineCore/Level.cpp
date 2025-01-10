@@ -118,7 +118,6 @@ void ULevel::Render(float _DeltaTime)
 		Camera.second->GetCameraComponent()->Render(_DeltaTime);
 	}
 
-
 	{
 		std::shared_ptr<class ACameraActor> Camera = GetMainCamera();
 
@@ -145,8 +144,6 @@ void ULevel::Render(float _DeltaTime)
 
 	UEngineCore::GetDevice().RenderEnd();
 }
-
-
 
 void ULevel::ChangeRenderGroup(int _CameraOrder, int _PrevGroupOrder, std::shared_ptr<URenderer> _Renderer)
 {
@@ -221,6 +218,11 @@ void ULevel::Collision(float _DeltaTime)
 			{
 				for (std::shared_ptr<class UCollision>& RightCollision : RightList)
 				{
+					if (false == LeftCollision->IsActive())
+					{
+						continue;
+					}
+
 					LeftCollision->CollisionEventCheck(RightCollision);
 				}
 			}
