@@ -38,7 +38,7 @@ private:
 	public:
 		int Key = -1;
 
-		// 키가 안눌리다가 처음 눌렸을때
+		// 키가 안 눌리다가 처음 눌렸을때
 		bool IsDown = false;
 
 		// 키가 눌린 이후로 계속 누르고 있을때

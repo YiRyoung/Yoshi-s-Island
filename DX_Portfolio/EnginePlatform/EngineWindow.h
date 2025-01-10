@@ -56,7 +56,6 @@ public:
 		return LoopActive;
 	}
 
-
 	ENGINEAPI HWND GetWindowHandle() const
 	{
 		return WindowHandle;
@@ -68,9 +67,6 @@ public:
 	{
 		return IsFocusValue;
 	}
-
-
-
 
 protected:
 

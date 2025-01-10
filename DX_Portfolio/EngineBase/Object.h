@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <memory>
+#include "EngineSerializer.h"
 
 class UObject : public std::enable_shared_from_this<UObject>
 {
