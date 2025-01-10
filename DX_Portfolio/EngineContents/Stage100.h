@@ -26,6 +26,7 @@ public:
 	UColor GetPixelColor(FVector _Pos);
 	void SetBackground();
 
+
 	bool GetColStageOn() const
 	{
 		return ColStageRenderer->IsActive();

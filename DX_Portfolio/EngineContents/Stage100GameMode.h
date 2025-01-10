@@ -25,7 +25,6 @@ private:
 	std::shared_ptr<class AStage100> Stage;
 	std::shared_ptr<class ACameraActor> Camera;
 
-	class UEngineWinImage* ColImage = nullptr;
 	void SetCameraBoundary();
 };
 

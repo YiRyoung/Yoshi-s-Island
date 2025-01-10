@@ -3,6 +3,7 @@
 #include <string>
 #include <functional>
 
+// 충돌 함수를 제공해줍니다.
 #include <DirectXMath.h>
 #include <DirectXCollision.h>
 
@@ -83,6 +84,7 @@ public:
 	static const TVector FORWARD;
 	static const TVector BACK;
 
+
 public:
 	union
 	{
@@ -102,6 +104,7 @@ public:
 		DirectX::XMVECTOR DirectVector;
 	};
 
+
 	ENGINEAPI TVector()
 		: X(0.0f), Y(0.0f), Z(0.0f), W(1.0f)
 	{
@@ -112,6 +115,7 @@ public:
 	{
 
 	}
+
 
 	ENGINEAPI TVector(float _X, float _Y) : X(_X), Y(_Y), Z(0.0f), W(1.0f)
 	{
@@ -191,6 +195,12 @@ public:
 	// 360도 개념으로 넣어줘라.
 	static TVector AngleToVectorDeg(float _Angle)
 	{
+		// 360분법을 => 라디안으로 바꾸는 값을 만들어야 한다.
+		// 360 => 6.28
+
+		// 라디안 각도체계를 기반으로 sinf(_Angle) cosf
+
+		// 근본함수는 라디안 개념으로 만들고
 		return AngleToVectorRad(_Angle * UEngineMath::D2R);
 	}
 
@@ -204,15 +214,30 @@ public:
 		return Result;
 	}
 
+	//          Rad 라디안을 넣어주면 
+	// 여기에서 나온 결과값이 리턴해줄수 있는건
+	// 길이가 1인 벡터이다.
+	// static입니까?
 	static TVector AngleToVectorRad(float _Angle)
 	{
+		// 특정 각도를 가리키는 벡터를 만들수 있다고 해죠?
+		// 벡터 길이와 방향을 생각해라.
+		// 방향은 정해졌는데 길이는 1인 벡터를 만들어내는 겁니다.
+
+		// 0도일때의 밑변      0도일대의 높이
+
+		// cosf(_Angle) = 밑변
 		return { cosf(_Angle), sinf(_Angle) };
 	}
 
+	// 일반적으로 벡터와 행렬이 곱해지는 것을 트랜스폼이라고 부릅니다.
+	// 혹은 트랜슬레이션이라는 함수들이 있다.
 	static TVector Transform(const TVector& _Vector, const class FMatrix& _Matrix);
 
+	// 이동 적용할께
 	static TVector TransformCoord(const TVector& _Vector, const class FMatrix& _Matrix);
 
+	// 이동 적용하지 않을께.
 	static TVector TransformNormal(const TVector& _Vector, const class FMatrix& _Matrix);
 
 	int iX() const
@@ -235,6 +260,7 @@ public:
 		return Y * 0.5f;
 	}
 
+	// X든 Y든 0이있으면 터트리는 함수.
 	bool IsZeroed() const
 	{
 		return X == 0.0f || Y == 0.0f;
@@ -245,6 +271,7 @@ public:
 		return { X * 0.5f, Y * 0.5f };
 	}
 
+	// 빗변의 길이입니다.
 	float Length() const
 	{
 		return UEngineMath::Sqrt(X * X + Y * Y + Z * Z);
@@ -302,6 +329,8 @@ public:
 		return Result;
 	}
 
+
+	// 
 	void RotationYDeg(float _Angle)
 	{
 		RotationYRad(_Angle * UEngineMath::D2R);
@@ -331,7 +360,7 @@ public:
 	{
 		return DirectX::XMVectorAbs(DirectVector);
 	}
-
+	// 
 	void RotationZDeg(float _Angle)
 	{
 		RotationZRad(_Angle * UEngineMath::D2R);
@@ -782,18 +811,22 @@ enum class ECollisionType
 {
 	Point,
 	Rect,
-	CirCle,
+	CirCle, // 타원이 아닌 정방원 
 	OBB2D,
 	Sphere,
+	// 회전하지 않은 박스
 	AABB,
+	// 회전한 박스
 	OBB,
 	Max
+
 };
 
 struct FCollisionData
 {
 	union
 	{
+		// 정방원
 		DirectX::BoundingSphere Sphere;
 		DirectX::BoundingBox AABB;
 		DirectX::BoundingOrientedBox OBB;
@@ -851,6 +884,8 @@ struct FTransform
 public:
 	ENGINEAPI void TransformUpdate(bool _IsAbsolut = false);
 
+	// 역분해 크기 회전 위치를 뜯어내는 함수
+
 	ENGINEAPI void Decompose();
 
 
@@ -871,6 +906,7 @@ public:
 
 	FVector GetLocalFoward()
 	{
+		// 부모행렬이 곱해지지 않은 월드
 		return LocalWorld.GetFoward();;
 	}
 
@@ -883,6 +919,7 @@ public:
 	{
 		return LocalWorld.GetUp();
 	}
+
 
 private:
 	friend class CollisionFunctionInit;
@@ -902,14 +939,31 @@ public:
 	static bool CirCleToCirCle(const FTransform& _Left, const FTransform& _Right);
 	static bool CirCleToRect(const FTransform& _Left, const FTransform& _Right);
 
+	// 연산량이 크다.
 	static bool OBB2DToOBB2D(const FTransform& _Left, const FTransform& _Right);
 	static bool OBB2DToRect(const FTransform& _Left, const FTransform& _Right);
-	static bool OBB2DToSphere(const FTransform& _Left, const FTransform& _Right);
 	static bool OBB2DToPoint(const FTransform& _Left, const FTransform& _Right);
+	static bool OBB2DToCirCle(const FTransform& _Left, const FTransform& _Right);
+
+	static bool OBBToSphere(const FTransform& _Left, const FTransform& _Right);
+	static bool OBBToOBB(const FTransform& _Left, const FTransform& _Right);
+	static bool OBBToAABB(const FTransform& _Left, const FTransform& _Right);
+
+	static bool SphereToSphere(const FTransform& _Left, const FTransform& _Right);
+	static bool SphereToOBB(const FTransform& _Left, const FTransform& _Right);
+	static bool SphereToAABB(const FTransform& _Left, const FTransform& _Right);
+
+	static bool AABBToSphere(const FTransform& _Left, const FTransform& _Right);
+	static bool AABBToOBB(const FTransform& _Left, const FTransform& _Right);
+	static bool AABBToAABB(const FTransform& _Left, const FTransform& _Right);
+
+
 
 	FCollisionData GetCollisionData() const
 	{
 		FCollisionData Result;
+		// OBB를 세팅해준거 같지만 모든 애들을 다 세팅해준 것입니다.
+		// Sphere와 AABB전체를 다 세팅해준겁니다.
 		Result.OBB.Center = WorldLocation.DirectFloat3;
 		Result.OBB.Extents = (WorldScale * 0.5f).ABSVectorReturn().DirectFloat3;
 		Result.OBB.Orientation = WorldQuat.DirectFloat4;
@@ -1012,13 +1066,17 @@ public:
 		Y += _Other.Y;
 		return *this;
 	}
+
+
 };
 
-class UColor
+
+template<typename ValueType>
+class TColor
 {
 public:
-	static const UColor WHITE;
-	static const UColor BLACK;
+	static const TColor WHITE;
+	static const TColor BLACK;
 
 	union
 	{
@@ -1032,22 +1090,30 @@ public:
 		};
 	};
 
-	UColor(unsigned long _Value)
+	TColor(unsigned long _Value)
 		:Color(_Value)
 	{
 
 	}
 
-	bool operator==(const UColor& _Other)
+	bool operator==(const TColor& _Other)
 	{
 		return R == _Other.R && G == _Other.G && B == _Other.B;
 	}
 
 
-	UColor(unsigned char _R, unsigned char _G, unsigned char _B, unsigned char _A)
+	TColor(unsigned char _R, unsigned char _G, unsigned char _B, unsigned char _A)
 		:R(_R), G(_G), B(_B), A(_A)
 	{
 
 	}
 };
+
+using UColor = TColor<unsigned char>;
+
+template<>
+const TColor<unsigned char> TColor<unsigned char>::WHITE = TColor<unsigned char>(255, 255, 255, 0);
+
+template<>
+const TColor<unsigned char> TColor<unsigned char>::BLACK = TColor<unsigned char>(0, 0, 0, 0);
 

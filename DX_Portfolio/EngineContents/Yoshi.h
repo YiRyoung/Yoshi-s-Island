@@ -24,33 +24,43 @@ public:
 		return YoshiRenderer;
 	}
 
-	FVector GetCheckPos() const
+	void SetColImage(UEngineWinImage* _ColImage)
 	{
-		return NextPos;
+		ColImage = _ColImage;
 	}
-
-	void SetColor(UColor _Color)
-	{
-		Color = _Color;
-	}
-		
 
 protected:
-	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
+	virtual void BeginPlay();
+	virtual void Tick(float _DeltaTime);
 
-private:
+#pragma region Status
+	//Engine
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
+	UEngineWinImage* ColImage;
 	EDirection Dir = EDirection::MAX;
 	EPlayerState State = EPlayerState::MAX;
-	FVector NextPos = { 0, 0, 0 };
-	UColor Color = { 255, 255, 255, 255 };
-	float Speed = 300.0f;
+	
+	// GameManager
+	bool IsWithBaby = true;
 
+	// Speed
+	bool IsAccel = false;
+	float Speed = 300.0f;
+	float AccSpeed = 380.0f;
+	float DeAccSpeed = 10.0f;
+	float MaxSpeed = 420.0f;
+	FVector DirForce = { 0, 0, 0 };
+
+	// Jump & Gravity
+	float JumpPower = 420.0f;
+	float GravityPower = 450.0f;
+	FVector GravityForce = { 0, 0, 0 };
+#pragma endregion
+
+private:
+	bool IsGround();
 	void SetAnimations();
 	void SetDirection();
-
-	void SetNextPos(float _DeltaTime);
 
 	void PlayerFSM(float _DeltaTime);
 	void Gravity(float _DeltaTime);
@@ -66,5 +76,6 @@ private:
 	void Move(float _DeltaTime);
 	void JumpStart(float _DeltaTime);
 	void Jump(float _DeltaTime);
+	void JumpEnd(float _DeltaTime);
 };
 

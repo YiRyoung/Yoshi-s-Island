@@ -21,9 +21,6 @@ AStage100GameMode::AStage100GameMode()
 	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
 	Camera->GetCameraComponent()->SetZSort(0, true);
 
-	Stage = GetWorld()->SpawnActor<AStage100>();
-	Stage->SetBackground();
-	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
 }
 
 AStage100GameMode::~AStage100GameMode()
@@ -33,16 +30,18 @@ AStage100GameMode::~AStage100GameMode()
 void AStage100GameMode::BeginPlay()
 {
 	AActor::BeginPlay();
-	GetWorld()->GetMainPawn()->SetActorLocation({ 200.0f, -2687.0f, 0.0f });
+
+	Stage = GetWorld()->SpawnActor<AStage100>();
+	Stage->SetBackground();
+	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
+
+	GetWorld()->GetMainPawn()->SetActorLocation({ 420.0f, -2687.0f, 0.0f });
 	Stage->SwitchColStage(false);
 }
 
 void AStage100GameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
-
-	
-	dynamic_cast<AYoshi*>(GetWorld()->GetMainPawn())->SetColor(Stage->GetPixelColor(dynamic_cast<AYoshi*>(GetWorld()->GetMainPawn())->GetCheckPos()));
 
 	SetCameraBoundary();
 
@@ -98,5 +97,5 @@ void AStage100GameMode::SetCameraBoundary()
 		ResultCameraPos.Y = GetWorld()->GetMainPawn()->GetActorLocation().Y;
 	}
 
-	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y, -520.0f });
+	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y + 160.0f, -520.0f });
 }

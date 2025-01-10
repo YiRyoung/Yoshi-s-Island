@@ -9,8 +9,13 @@
 #include <EngineCore/EngineSprite.h>
 #include <EngineCore/DefaultSceneComponent.h>
 
+#include "Yoshi.h"
+
 AStage100::AStage100()
 {
+	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
+	RootComponent = Default;
+
 	{
 		UEngineDirectory Dir;
 		if (false == Dir.MoveParentToDirectory("ContentsResources"))
@@ -35,9 +40,6 @@ AStage100::AStage100()
 		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
 	}
 
-	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
-	RootComponent = Default;
-
 	{
 		UEngineDirectory Dir;
 		if (false == Dir.MoveParentToDirectory("ContentsResources"))
@@ -50,6 +52,9 @@ AStage100::AStage100()
 
 		ColImage.Load(nullptr, ImageFiles.GetPathToString());
 	}
+
+	AYoshi* Player = dynamic_cast<AYoshi*>(GetWorld()->GetMainPawn());
+	Player->SetColImage(&ColImage);
 }
 
 AStage100::~AStage100()

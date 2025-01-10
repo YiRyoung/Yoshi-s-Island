@@ -43,11 +43,32 @@ void AYoshi::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
+	if (true == IsGround())
+	{
+		AddActorLocation({ 0.0f, 300.0f * _DeltaTime, 0.0f });
+	}
+	else
+	{
+		Gravity(_DeltaTime);
+	}
+
 	SetDirection();
 	PlayerFSM(_DeltaTime);
-	SetNextPos(_DeltaTime);
 
-	UEngineDebug::OutPutString(std::to_string(YoshiRenderer->GetCurIndex()));
+	UEngineDebug::OutPutString("Pos : " + std::to_string(GetActorLocation().X) + "," + std::to_string(GetActorLocation().Y));
+	UEngineDebug::OutPutString("GravityPos : " + std::to_string(GravityForce.Y));
+	UEngineDebug::OutPutString("CurIndex : " + std::to_string(YoshiRenderer->GetCurIndex()));
+
+}
+
+bool AYoshi::IsGround()
+{
+	FVector Pos = GetActorLocation();
+	Pos.Y = -Pos.Y;
+	TColor Color = ColImage->GetColor(Pos);
+	
+	bool Result = (true == Color.operator==({ 255, 0, 255, 255 })) ? true : false;
+	return Result;
 }
 
 void AYoshi::SetAnimations()
@@ -76,35 +97,6 @@ void AYoshi::SetDirection()
 	else if (UEngineInput::IsDown(VK_RIGHT))
 	{
 		YoshiRenderer->SetRotation({ 0.0f, 0.0f, 0.0f });
-	}
-}
-
-void AYoshi::SetNextPos(float _DeltaTime)
-{
-	NextPos = GetActorLocation();
-	float NewSpeed = Speed * _DeltaTime;
-
-	switch (Dir)
-	{
-	case EDirection::LEFT:
-		NextPos.X += -NewSpeed;
-		NextPos.Y = -NextPos.Y;
-		break;
-	case EDirection::RIGHT:
-		NextPos.X += NewSpeed;
-		NextPos.Y = -NextPos.Y;
-		break;
-	case EDirection::DOWN:
-		NextPos.Y += -(NewSpeed + 1.0f);
-		NextPos.Y = -NextPos.Y;
-		break;
-	case EDirection::UP:
-		NextPos.Y += (NewSpeed + 1.0f + (YoshiRenderer->GetWorldScale3D().Y));
-		NextPos.Y = -NextPos.Y;
-		break;
-	case EDirection::MAX:
-		NextPos = GetActorLocation();
-		break;
 	}
 }
 
@@ -138,8 +130,16 @@ void AYoshi::PlayerFSM(float _DeltaTime)
 
 void AYoshi::Gravity(float _DeltaTime)
 {
-	Dir = EDirection::DOWN;
-
+	FVector Power = GravityForce * _DeltaTime;
+	FVector CheckPos = GetActorLocation() + Power;
+	CheckPos.Y = -CheckPos.Y;
+	UColor Color = ColImage->GetColor(CheckPos);
+	
+	if (false == Color.operator==({ 255, 0, 255, 255 }))
+	{
+		AddActorLocation(Power);
+		GravityForce += FVector{ 0.0f, -1.0f, 0.0f } *GravityPower * _DeltaTime;
+	}
 }
 
 int AYoshi::CurIdleAnim()
@@ -169,6 +169,7 @@ void AYoshi::IdleStart(float _DeltaTime)
 
 void AYoshi::Idle(float _DeltaTime)
 {
+
 	if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
 	{
 		State = EPlayerState::MOVE;
@@ -182,6 +183,12 @@ void AYoshi::Idle(float _DeltaTime)
 	if (true == UEngineInput::IsPress(VK_DOWN))
 	{
 		State = EPlayerState::BENDSTART;
+		return;
+	}
+
+	if (true == UEngineInput::IsPress('X'))
+	{
+		State = EPlayerState::JUMP;
 		return;
 	}
 }
@@ -200,6 +207,11 @@ void AYoshi::LookUpStart(float _DeltaTime)
 void AYoshi::LookUpEnd(float _DeltaTime)
 {
 	YoshiRenderer->ChangeAnimation("LookUpEnd");
+
+	if (1.0f >= UEngineInput::IsPressTime(VK_UP))
+	{
+
+	}
 
 	if (true == YoshiRenderer->IsCurAnimationEnd())
 	{
@@ -239,37 +251,36 @@ void AYoshi::Move(float _DeltaTime)
 {
 	if (true == UEngineInput::IsPress(VK_RIGHT))
 	{
-		Dir = EDirection::RIGHT;
-		if (false == Color.operator==(UColor {255, 0, 255, 255}))
-		{
-			AddActorLocation({ (Speed * _DeltaTime), 0.0f, 0.0f });
-		}
+		AddActorLocation(FVector{ Speed * _DeltaTime, 0.0f, 0.0f });
 	}
 
 	if (true == UEngineInput::IsPress(VK_LEFT))
 	{
-		Dir = EDirection::LEFT;
-		if (false == Color.operator==(UColor{ 255, 0, 255, 255 }))
-		{
-			AddActorLocation({ ( -Speed * _DeltaTime), 0.0f, 0.0f});
-		}
+		AddActorLocation(FVector{ -Speed * _DeltaTime, 0.0f, 0.0f });
 	}
 
 	if (false == UEngineInput::IsPress(VK_LEFT) && false == UEngineInput::IsPress(VK_RIGHT))
 	{
-		Dir = EDirection::MAX;
 		State = EPlayerState::IDLE;
 		return;
 	}
+
 }
 
 void AYoshi::JumpStart(float _DeltaTime)
 {
-	YoshiRenderer->ChangeAnimation("JumpStart");
+	float Force = JumpPower - GravityForce.Y;
 	Jump(_DeltaTime);
 }
 
 void AYoshi::Jump(float _DeltaTime)
 {
+	AddActorLocation({ 0.0f, (1.0f * JumpPower * _DeltaTime), 0.0f });
+}
+
+void AYoshi::JumpEnd(float _DeltaTime)
+{
+	State = EPlayerState::IDLE;
+	return;
 }
 
