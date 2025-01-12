@@ -4,7 +4,6 @@
 #include <EngineBase/EngineRandom.h>
 
 #include <EnginePlatform/EngineInput.h>
-
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/EngineSprite.h>
 #include <EngineCore/DefaultSceneComponent.h>
@@ -14,6 +13,9 @@ AYoshi::AYoshi()
 	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
 	RootComponent = Default;
 
+	Collision = new YoshiCollision(this);
+	State = new YoshiState(this);
+
 	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
 	YoshiRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	YoshiRenderer->SetupAttachment(RootComponent);
@@ -22,16 +24,25 @@ AYoshi::AYoshi()
 
 	SetAnimations();
 
-	State = EPlayerState::IDLE;
+	CurState = EPlayerState::IDLE;
 
-	int AnimNum = CurIdleAnim();
-
+	int AnimNum = SetIdleAnimNum();
 	YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
-
 }
 
 AYoshi::~AYoshi()
 {
+	if (Collision != nullptr) 
+	{ 
+		delete Collision;
+		Collision = nullptr;
+	}
+
+	if (State != nullptr) 
+	{
+		delete State;
+		State = nullptr;
+	}
 }
 
 void AYoshi::BeginPlay()
@@ -43,32 +54,8 @@ void AYoshi::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	if (true == IsGround())
-	{
-		AddActorLocation({ 0.0f, 300.0f * _DeltaTime, 0.0f });
-	}
-	else
-	{
-		Gravity(_DeltaTime);
-	}
-
-	SetDirection();
-	PlayerFSM(_DeltaTime);
-
-	UEngineDebug::OutPutString("Pos : " + std::to_string(GetActorLocation().X) + "," + std::to_string(GetActorLocation().Y));
-	UEngineDebug::OutPutString("GravityPos : " + std::to_string(GravityForce.Y));
-	UEngineDebug::OutPutString("CurIndex : " + std::to_string(YoshiRenderer->GetCurIndex()));
-
-}
-
-bool AYoshi::IsGround()
-{
-	FVector Pos = GetActorLocation();
-	Pos.Y = -Pos.Y;
-	TColor Color = ColImage->GetColor(Pos);
-	
-	bool Result = (true == Color.operator==({ 255, 0, 255, 255 })) ? true : false;
-	return Result;
+	SetAnimDir();
+	State->YoshiFSM(_DeltaTime);
 }
 
 void AYoshi::SetAnimations()
@@ -77,7 +64,7 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("Idle1", "YoshiAndMario.png", { 3, 4, 5, 4, 5}, 0.2f);
 	YoshiRenderer->CreateAnimation("Idle2", "YoshiAndMario.png", {2, 1, 0, 0, 0, 1, 2}, 0.15f);
 	
-	YoshiRenderer->CreateAnimation("Move", "YoshiAndMario.png", 40, 50, 0.08f);
+	YoshiRenderer->CreateAnimation("Walk", "YoshiAndMario.png", 40, 50, 0.08f);
 
 	YoshiRenderer->CreateAnimation("LookUpStart", "YoshiAndMario.png", 12, 13, 0.3f, false);
 	YoshiRenderer->CreateAnimation("LookUpEnd", "YoshiAndMario.png", 13, 12, 0.1f, false);
@@ -88,7 +75,7 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("JumpStart", "YoshiAndMario.png", 75, 76, 0.1f, false);
 }
 
-void AYoshi::SetDirection()
+void AYoshi::SetAnimDir()
 {
 	if (UEngineInput::IsDown(VK_LEFT))
 	{
@@ -100,49 +87,7 @@ void AYoshi::SetDirection()
 	}
 }
 
-void AYoshi::PlayerFSM(float _DeltaTime)
-{
-	switch (State)
-	{
-	case EPlayerState::IDLE:
-		IdleStart(_DeltaTime);
-		break;
-	case EPlayerState::LOOKUPSTART:
-		LookUpStart(_DeltaTime);
-		break;
-	case EPlayerState::LOOKUPEND:
-		LookUpEnd(_DeltaTime);
-		break;
-	case EPlayerState::BENDSTART:
-		BendStart(_DeltaTime);
-		break;
-	case EPlayerState::BENDEND:
-		BendEnd(_DeltaTime);
-		break;
-	case EPlayerState::MOVE:
-		MoveStart(_DeltaTime);
-		break;
-	case EPlayerState::JUMP:
-		JumpStart(_DeltaTime);
-		break;
-	}
-}
-
-void AYoshi::Gravity(float _DeltaTime)
-{
-	FVector Power = GravityForce * _DeltaTime;
-	FVector CheckPos = GetActorLocation() + Power;
-	CheckPos.Y = -CheckPos.Y;
-	UColor Color = ColImage->GetColor(CheckPos);
-	
-	if (false == Color.operator==({ 255, 0, 255, 255 }))
-	{
-		AddActorLocation(Power);
-		GravityForce += FVector{ 0.0f, -1.0f, 0.0f } *GravityPower * _DeltaTime;
-	}
-}
-
-int AYoshi::CurIdleAnim()
+int AYoshi::SetIdleAnimNum()
 {
 	UEngineRandom Random;
 	int RandomValue = Random.RandomInt(0, 9);
@@ -152,135 +97,11 @@ int AYoshi::CurIdleAnim()
 	else { return 0; }
 }
 
-void AYoshi::IdleStart(float _DeltaTime)
+void AYoshi::SetIdleAnim()
 {
-	Dir = EDirection::MAX;
-	
-	int AnimNum = CurIdleAnim();
-
+	int AnimNum = SetIdleAnimNum();
 	if (true == YoshiRenderer->IsCurAnimationEnd())
 	{
 		YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
-
-	}
-	Idle(_DeltaTime);
-}
-
-
-void AYoshi::Idle(float _DeltaTime)
-{
-
-	if (true == UEngineInput::IsPress(VK_LEFT) || true == UEngineInput::IsPress(VK_RIGHT))
-	{
-		State = EPlayerState::MOVE;
-		return;
-	}
-	if (true == UEngineInput::IsPress(VK_UP))
-	{
-		State = EPlayerState::LOOKUPSTART;
-		return;
-	}
-	if (true == UEngineInput::IsPress(VK_DOWN))
-	{
-		State = EPlayerState::BENDSTART;
-		return;
-	}
-
-	if (true == UEngineInput::IsPress('X'))
-	{
-		State = EPlayerState::JUMP;
-		return;
 	}
 }
-
-void AYoshi::LookUpStart(float _DeltaTime)
-{
-	YoshiRenderer->ChangeAnimation("LookUpStart");
-
-	if (false == UEngineInput::IsPress(VK_UP))
-	{
-		State = EPlayerState::LOOKUPEND;
-		return;
-	}
-}
-
-void AYoshi::LookUpEnd(float _DeltaTime)
-{
-	YoshiRenderer->ChangeAnimation("LookUpEnd");
-
-	if (1.0f >= UEngineInput::IsPressTime(VK_UP))
-	{
-
-	}
-
-	if (true == YoshiRenderer->IsCurAnimationEnd())
-	{
-		State = EPlayerState::IDLE;
-		return;
-	}
-}
-
-void AYoshi::BendStart(float _DeltaTime)
-{
-	YoshiRenderer->ChangeAnimation("BendStart");
-	if (false == UEngineInput::IsPress(VK_DOWN))
-	{
-		State = EPlayerState::BENDEND;
-		return;
-	}
-}
-
-void AYoshi::BendEnd(float _DeltaTime)
-{
-	YoshiRenderer->ChangeAnimation("BendEnd");
-
-	if (true == YoshiRenderer->IsCurAnimationEnd())
-	{
-		State = EPlayerState::IDLE;
-		return;
-	}
-}
-
-void AYoshi::MoveStart(float _DeltaTime)
-{
-	YoshiRenderer->ChangeAnimation("Move");
-	Move(_DeltaTime);
-}
-
-void AYoshi::Move(float _DeltaTime)
-{
-	if (true == UEngineInput::IsPress(VK_RIGHT))
-	{
-		AddActorLocation(FVector{ Speed * _DeltaTime, 0.0f, 0.0f });
-	}
-
-	if (true == UEngineInput::IsPress(VK_LEFT))
-	{
-		AddActorLocation(FVector{ -Speed * _DeltaTime, 0.0f, 0.0f });
-	}
-
-	if (false == UEngineInput::IsPress(VK_LEFT) && false == UEngineInput::IsPress(VK_RIGHT))
-	{
-		State = EPlayerState::IDLE;
-		return;
-	}
-
-}
-
-void AYoshi::JumpStart(float _DeltaTime)
-{
-	float Force = JumpPower - GravityForce.Y;
-	Jump(_DeltaTime);
-}
-
-void AYoshi::Jump(float _DeltaTime)
-{
-	AddActorLocation({ 0.0f, (1.0f * JumpPower * _DeltaTime), 0.0f });
-}
-
-void AYoshi::JumpEnd(float _DeltaTime)
-{
-	State = EPlayerState::IDLE;
-	return;
-}
-

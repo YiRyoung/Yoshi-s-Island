@@ -19,11 +19,17 @@
     <ClInclude Include="Stage100GameMode.h">
       <Filter>GameMode</Filter>
     </ClInclude>
-    <ClInclude Include="Yoshi.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="ContentsEnum.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Yoshi.h">
+      <Filter>Global\Yoshi</Filter>
+    </ClInclude>
+    <ClInclude Include="YoshiCollision.h">
+      <Filter>Global\Yoshi</Filter>
+    </ClInclude>
+    <ClInclude Include="YoshiState.h">
+      <Filter>Global\Yoshi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,11 +51,17 @@
     <ClCompile Include="Stage100GameMode.cpp">
       <Filter>GameMode</Filter>
     </ClCompile>
-    <ClCompile Include="Yoshi.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="ContentsEnum.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Yoshi.cpp">
+      <Filter>Global\Yoshi</Filter>
+    </ClCompile>
+    <ClCompile Include="YoshiCollision.cpp">
+      <Filter>Global\Yoshi</Filter>
+    </ClCompile>
+    <ClCompile Include="YoshiState.cpp">
+      <Filter>Global\Yoshi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +85,9 @@
     </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{38e2e770-9952-4a1f-bfa2-f4d151fc65c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global\Yoshi">
+      <UniqueIdentifier>{7b16824f-3b61-4122-a045-896968756743}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

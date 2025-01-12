@@ -195,6 +195,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="YoshiCollision.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="YoshiState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp" />
@@ -225,6 +233,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Yoshi.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="YoshiCollision.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="YoshiState.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -1,6 +1,6 @@
 #pragma once
 
-enum class EDirection
+enum class ECheckDir
 {
 	LEFT,
 	RIGHT,
@@ -16,7 +16,7 @@ enum class EPlayerState
 	LOOKUPEND,
 	BENDSTART,
 	BENDEND,
-	MOVE,
+	WALK,
 	JUMP,
 	MAX
 };

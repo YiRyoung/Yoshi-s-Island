@@ -49,7 +49,7 @@ public:
 	}
 
 	template <typename DataType>
-	static DataType Lerp(DataType A, DataType B, DataType Alpha)
+	static DataType Lerp(DataType A, DataType B, float Alpha)
 	{
 		return A * (1 - Alpha) + B * Alpha;
 	}
@@ -961,6 +961,9 @@ class TColor
 public:
 	static const TColor WHITE;
 	static const TColor BLACK;
+	static const TColor MAGENTA;
+	static const TColor CYAN;
+	static const TColor GREEN;
 
 	union
 	{
@@ -1001,3 +1004,11 @@ const TColor<unsigned char> TColor<unsigned char>::WHITE = TColor<unsigned char>
 template<>
 const TColor<unsigned char> TColor<unsigned char>::BLACK = TColor<unsigned char>(0, 0, 0, 0);
 
+template<>
+const TColor<unsigned char> TColor<unsigned char>::MAGENTA = TColor<unsigned char>(255, 0, 255, 255);
+
+template<>
+const TColor<unsigned char> TColor<unsigned char>::CYAN = TColor<unsigned char>(0, 255, 255, 255);
+
+template<>
+const TColor<unsigned char> TColor<unsigned char>::GREEN = TColor<unsigned char>(0, 255, 0, 255);
