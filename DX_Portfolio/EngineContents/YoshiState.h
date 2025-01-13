@@ -33,6 +33,8 @@ public:
 	void Idle(float _DeltaTime);
 	void WalkStart(float _DeltaTime);
 	void Walk(float _DeltaTime);
+	void RunStart(float _DeltaTime);
+	void Run(float _DeltaTime);
 	void JumpStart(float _DeltaTime);
 	void Jump(float _DeltaTime);
 	void StayUpStart(float _DeltaTime);

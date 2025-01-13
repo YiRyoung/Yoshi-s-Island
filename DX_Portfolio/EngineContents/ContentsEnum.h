@@ -15,6 +15,7 @@ enum class EPlayerState
 	LOOKUP,
 	BEND,
 	WALK,
+	RUN,
 	JUMP,
 	STAYUP,
 	FALL,

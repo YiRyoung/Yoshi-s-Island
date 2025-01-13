@@ -141,7 +141,7 @@ protected:
 
 	// Speed
 	bool IsAccel = false;
-	float Speed = 380.0f;
+	float Speed = 340.0f;
 	float AccSpeed = 420.0f;
 	float DeAccSpeed = 10.0f;
 	float MaxSpeed = 480.0f;

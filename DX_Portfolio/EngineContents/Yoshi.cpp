@@ -71,7 +71,8 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("Idle1", "YoshiAndMario.png", { 3, 4, 5, 4, 5}, 0.2f);
 	YoshiRenderer->CreateAnimation("Idle2", "YoshiAndMario.png", {2, 1, 0, 0, 0, 1, 2}, 0.15f);
 	
-	YoshiRenderer->CreateAnimation("Walk", "YoshiAndMario.png", 40, 50, 0.08f);
+	YoshiRenderer->CreateAnimation("Walk", "YoshiAndMario.png", 40, 52, 0.08f);
+	YoshiRenderer->CreateAnimation("Run", "YoshiAndMario.png", 53, 57, 0.04f);
 
 	YoshiRenderer->CreateAnimation("LookUpStart", "YoshiAndMario.png", 12, 13, 0.3f, false);
 	YoshiRenderer->CreateAnimation("LookUpEnd", "YoshiAndMario.png", 13, 12, 0.1f, false);

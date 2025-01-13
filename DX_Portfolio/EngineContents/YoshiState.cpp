@@ -56,6 +56,9 @@ void YoshiState::YoshiFSM(float _DeltaTime)
 	case EPlayerState::WALK:
 		WalkStart(_DeltaTime);
 		break;
+	case EPlayerState::RUN:
+		RunStart(_DeltaTime);
+		break;
 	case EPlayerState::JUMP:
 		JumpStart(_DeltaTime);
 		break;
@@ -152,6 +155,47 @@ void YoshiState::Walk(float _DeltaTime)
 		return;
 	}
 
+	if (IsPressTime(VK_LEFT, 0.4f) || IsPressTime(VK_RIGHT, 0.4f))
+	{
+		Yoshi->SetCurState(EPlayerState::RUN);
+		return;
+	}
+
+	if (!IsPressKey(VK_LEFT) && !IsPressKey(VK_RIGHT))
+	{
+		Yoshi->SetCurState(EPlayerState::IDLE);
+		return;
+	}
+
+	Gravity(_DeltaTime);
+}
+
+void YoshiState::RunStart(float _DeltaTime)
+{
+	ChangeAnimation("Run");
+	Run(_DeltaTime);
+}
+
+void YoshiState::Run(float _DeltaTime)
+{
+	if (IsPressKey(VK_LEFT) && !CheckColor(ECheckDir::LEFT, UColor::WHITE) && !CheckColor(ECheckDir::LEFT, UColor::MAGENTA))
+	{
+		Yoshi->Move((-Yoshi->GetSpeed() - 80.0f) * _DeltaTime, 0.0f);
+		Yoshi->GetCollision()->GroundUp(_DeltaTime);
+	}
+
+	if (IsPressKey(VK_RIGHT) && !CheckColor(ECheckDir::RIGHT, UColor::WHITE) && !CheckColor(ECheckDir::RIGHT, UColor::MAGENTA))
+	{
+		Yoshi->Move((Yoshi->GetSpeed() + 80.0f) * _DeltaTime, 0.0f);
+		Yoshi->GetCollision()->GroundUp(_DeltaTime);
+	}
+
+	if (IsPressKey('Z'))
+	{
+		Yoshi->SetCurState(EPlayerState::JUMP);
+		return;
+	}
+
 	if (!IsPressKey(VK_LEFT) && !IsPressKey(VK_RIGHT))
 	{
 		Yoshi->SetCurState(EPlayerState::IDLE);
@@ -223,11 +267,11 @@ void YoshiState::StayUp(float _DeltaTime)
 {
 	FVector Vector = FVector::ZERO;
 
-	if (IsPressKey(VK_LEFT))
+	if (IsPressKey(VK_LEFT) && !CheckColor(ECheckDir::LEFT, UColor::MAGENTA))
 	{
 		Vector += FVector::LEFT * Yoshi->GetSpeed() * 0.58f * _DeltaTime;
 	}
-	if (IsPressKey(VK_RIGHT))
+	if (IsPressKey(VK_RIGHT) && !CheckColor(ECheckDir::RIGHT, UColor::MAGENTA))
 	{
 		Vector += FVector::RIGHT * Yoshi->GetSpeed() * 0.58f * _DeltaTime;
 	}
