@@ -27,12 +27,22 @@ public:
 	void ChangeAnimation(std::string_view _Name);
 
 	void YoshiFSM(float _DeltaTime);
-	void Gravity(float _DeltaTime);
+	void Gravity(float _DeltaTime, float _Scale = 1.0f);
 
 	void IdleStart(float _DeltaTime);
 	void Idle(float _DeltaTime);
 	void WalkStart(float _DeltaTime);
 	void Walk(float _DeltaTime);
+	void JumpStart(float _DeltaTime);
+	void Jump(float _DeltaTime);
+	void StayUpStart(float _DeltaTime);
+	void StayUp(float _DeltaTime);
+	void LookUpStart(float _DeltaTime);
+	void LookUp(float _DeltaTime);
+	void BendStart(float _DeltaTime);
+	void Bend(float _DeltaTime);
+	void FallStart(float _DeltaTime);
+	void Fall(float _DeltaTime);
 
 protected:
 

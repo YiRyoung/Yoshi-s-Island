@@ -17,9 +17,7 @@ public:
 	YoshiCollision& operator=(YoshiCollision&& _Other) noexcept = delete;
 
 	bool CheckColor(ECheckDir _Dir, UColor _Color);
-	
-	bool IsAir();
-
+	void SetBoundary();
 	void GroundUp(float _DeltaTime);
 
 protected:

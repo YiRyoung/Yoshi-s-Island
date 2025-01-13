@@ -13,6 +13,20 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/EngineCore.h>
 #include <EngineCore/EngineCamera.h>
+#include <EngineCore/EngineGUIWindow.h>
+#include <EngineCore/EngineGUI.h>
+
+class TestWindow : public UEngineGUIWindow
+{
+public:
+	void OnGUI() override
+	{
+		if (true == ImGui::Button("FreeCameraOn"))
+		{
+			GetWorld()->GetMainCamera()->FreeCameraSwitch();
+		}
+	}
+};
 
 AStage100GameMode::AStage100GameMode()
 {
@@ -36,6 +50,7 @@ void AStage100GameMode::BeginPlay()
 	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
 
 	GetWorld()->GetMainPawn()->SetActorLocation({ 420.0f, -2687.0f, 0.0f });
+	dynamic_cast<AYoshi*>(GetWorld()->GetMainPawn())->SetCamera(GetWorld()->GetMainCamera());
 	Stage->SwitchColStage(false);
 }
 
@@ -55,6 +70,17 @@ void AStage100GameMode::Tick(float _DeltaTime)
 void AStage100GameMode::LevelChangeStart()
 {
 	AActor::LevelChangeStart();
+
+	{
+		std::shared_ptr<TestWindow> Window = UEngineGUI::FindGUIWindow<TestWindow>("TestWindow");
+
+		if (nullptr == Window)
+		{
+			Window = UEngineGUI::CreateGUIWindow<TestWindow>("TestWindow");
+		}
+
+		Window->SetActive(true);
+	}
 }
 
 void AStage100GameMode::LevelChangeEnd()
@@ -97,5 +123,5 @@ void AStage100GameMode::SetCameraBoundary()
 		ResultCameraPos.Y = GetWorld()->GetMainPawn()->GetActorLocation().Y;
 	}
 
-	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y + 160.0f, -520.0f });
+	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y + 100.0f, -520.0f });
 }

@@ -12,11 +12,11 @@ enum class ECheckDir
 enum class EPlayerState
 {
 	IDLE,
-	LOOKUPSTART,
-	LOOKUPEND,
-	BENDSTART,
-	BENDEND,
+	LOOKUP,
+	BEND,
 	WALK,
 	JUMP,
+	STAYUP,
+	FALL,
 	MAX
 };

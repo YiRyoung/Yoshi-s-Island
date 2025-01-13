@@ -21,6 +21,7 @@ AYoshi::AYoshi()
 	YoshiRenderer->SetupAttachment(RootComponent);
 	YoshiRenderer->SetAutoScaleRatio(3.0f);
 	YoshiRenderer->SetRelativeLocation({ 0, 0, -10 });
+	Scale = YoshiRenderer->GetTransformRef().Scale;
 
 	SetAnimations();
 
@@ -56,6 +57,12 @@ void AYoshi::Tick(float _DeltaTime)
 
 	SetAnimDir();
 	State->YoshiFSM(_DeltaTime);
+
+	//FVector CheckPos = GetActorLocation() + FVector::DOWN * (Scale.Y * -0.5f) + FVector::DOWN;
+	//UColor Color = GetColor(CheckPos);
+	//UEngineDebug::OutPutString("Scale : " + std::to_string(YoshiRenderer->GetTransformRef().Scale.Y));
+	//UEngineDebug::OutPutString("CheckColor : " + std::to_string(Color.R) + "," + std::to_string(Color.G) + "," + std::to_string(Color.B));
+	//UEngineDebug::OutPutString(std::to_string(GravityForce.Y));
 }
 
 void AYoshi::SetAnimations()
@@ -73,6 +80,8 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("BendEnd", "YoshiAndMario.png", 17, 14, 0.04f, false);
 
 	YoshiRenderer->CreateAnimation("JumpStart", "YoshiAndMario.png", 75, 76, 0.1f, false);
+	YoshiRenderer->CreateAnimation("Fall", "YoshiAndMario.png", 77, 79, 0.07f, false);
+	YoshiRenderer->CreateAnimation("StayUp", "YoshiAndMario.png", 80, 83, 0.04f);
 }
 
 void AYoshi::SetAnimDir()
