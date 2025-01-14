@@ -148,6 +148,8 @@ private:
 
 	std::map<int, std::shared_ptr<class ACameraActor>> Cameras;
 
+	std::shared_ptr<class UEngineRenderTarget> LastRenderTarget;
+
 	std::map<std::string, std::list<std::shared_ptr<class UCollision>>> Collisions;
 
 	std::map<std::string, std::list<std::shared_ptr<class UCollision>>> CheckCollisions;
@@ -156,4 +158,3 @@ private:
 
 	ENGINEAPI void InitLevel(AGameMode* _GameMode, APawn* _Pawn);
 };
-
