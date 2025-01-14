@@ -1,8 +1,10 @@
 #include "PreCompile.h"
 #include "ContentsCore.h"
+
 #include <EngineCore/Level.h>
 #include <EngineCore/EngineTexture.h>
 #include <EngineCore/EngineSprite.h>
+#include <EngineCore/HUD.h>
 
 #include "Yoshi.h"
 #include "TitleGameMode.h"
@@ -25,8 +27,8 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 
 	LoadSprites();
 
-	UEngineCore::CreateLevel<ATitleGameMode, APawn>("Title");
-	UEngineCore::CreateLevel<AStage100GameMode, AYoshi>("Stage101");
+	UEngineCore::CreateLevel<ATitleGameMode, APawn, AHUD>("Title");
+	UEngineCore::CreateLevel<AStage100GameMode, AYoshi, AHUD>("Stage101");
 	UEngineCore::OpenLevel("Stage101");
 
 }

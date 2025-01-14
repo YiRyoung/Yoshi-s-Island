@@ -148,6 +148,12 @@
     <ClInclude Include="EngineRenderTarget.h">
       <Filter>Object\Resources\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Widget.h">
+      <Filter>Object\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -288,6 +294,12 @@
     <ClCompile Include="EngineRenderTarget.cpp">
       <Filter>Object\Resources\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget.cpp">
+      <Filter>Object\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -367,6 +379,9 @@
     </Filter>
     <Filter Include="Object\Component\Collision">
       <UniqueIdentifier>{5ac451c0-ad05-4ae7-9ccd-2a357ca44405}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI">
+      <UniqueIdentifier>{f2cdcade-1261-4d3c-b261-27da6a18d11d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
