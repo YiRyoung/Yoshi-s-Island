@@ -35,6 +35,16 @@ void UEngineGraphicDevice::DepthStencilInit()
 
 	{
 		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
+		Desc.DepthEnable = false;
+		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		Desc.DepthFunc = D3D11_COMPARISON_LESS;
+		Desc.StencilEnable = false;
+
+		UEngineDepthStencilState::Create("UIDepth", Desc);
+	}
+
+	{
+		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
 		Desc.DepthEnable = true;
 		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 		Desc.DepthFunc = D3D11_COMPARISON_ALWAYS;
@@ -54,19 +64,17 @@ void UEngineGraphicDevice::DepthStencilInit()
 	}
 }
 
-
 void UEngineGraphicDevice::TextureInit()
 {
-		D3D11_SAMPLER_DESC SampInfo = { D3D11_FILTER::D3D11_FILTER_MIN_MAG_MIP_POINT };
-		SampInfo.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
-		SampInfo.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
-		SampInfo.AddressW = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_CLAMP;
-		SampInfo.BorderColor[0] = 0.0f;
-		SampInfo.BorderColor[1] = 0.0f;
-		SampInfo.BorderColor[2] = 0.0f;
-		SampInfo.BorderColor[3] = 0.0f;
 
-		UEngineSampler::Create("WRAPSampler", SampInfo);
+	D3D11_SAMPLER_DESC SampInfo = { D3D11_FILTER::D3D11_FILTER_MIN_MAG_MIP_POINT };
+	SampInfo.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;  	SampInfo.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;  	SampInfo.AddressW = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_CLAMP;
+	SampInfo.BorderColor[0] = 0.0f;
+	SampInfo.BorderColor[1] = 0.0f;
+	SampInfo.BorderColor[2] = 0.0f;
+	SampInfo.BorderColor[3] = 0.0f;
+
+	UEngineSampler::Create("WRAPSampler", SampInfo);
 
 	{
 		UEngineDirectory Dir;
@@ -89,7 +97,7 @@ void UEngineGraphicDevice::ShaderInit()
 	UEngineDirectory CurDir;
 	CurDir.MoveParentToDirectory("EngineShader");
 
-	std::vector<UEngineFile> ShaderFiles = CurDir.GetAllFile(true, {".fx", ".hlsl"});
+	std::vector<UEngineFile> ShaderFiles = CurDir.GetAllFile(true, { ".fx", ".hlsl" });
 
 	for (size_t i = 0; i < ShaderFiles.size(); i++)
 	{
@@ -144,8 +152,7 @@ void UEngineGraphicDevice::MeshInit()
 
 void UEngineGraphicDevice::BlendInit()
 {
-	D3D11_BLEND_DESC Desc = {0};
-
+	D3D11_BLEND_DESC Desc = { 0 };
 	Desc.AlphaToCoverageEnable = false;
 
 	Desc.IndependentBlendEnable = true;
@@ -165,11 +172,21 @@ void UEngineGraphicDevice::BlendInit()
 
 void UEngineGraphicDevice::RasterizerStateInit()
 {
-	D3D11_RASTERIZER_DESC Desc = {};
-	Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
-	Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
+	{
+		D3D11_RASTERIZER_DESC Desc = {};
+		Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
+		Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
 
-	UEngineRasterizerState::Create("EngineBase", Desc);
+		UEngineRasterizerState::Create("EngineBase", Desc);
+	}
+
+	{
+		D3D11_RASTERIZER_DESC Desc = {};
+		Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
+		Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_WIREFRAME;
+
+		UEngineRasterizerState::Create("CollisionDebugRas", Desc);
+	}
 }
 
 void UEngineGraphicDevice::MaterialInit()
@@ -178,6 +195,21 @@ void UEngineGraphicDevice::MaterialInit()
 		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("SpriteMaterial");
 		Mat->SetVertexShader("EngineSpriteShader.fx");
 		Mat->SetPixelShader("EngineSpriteShader.fx");
+	}
+
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("WidgetMaterial");
+		Mat->SetVertexShader("EngineSpriteShader.fx");
+		Mat->SetPixelShader("EngineSpriteShader.fx");
+		Mat->SetDepthStencilState("UIDepth");
+	}
+
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("CollisionDebugMaterial");
+		Mat->SetVertexShader("EngineDebugCollisionShader.fx");
+		Mat->SetPixelShader("EngineDebugCollisionShader.fx");
+		Mat->SetDepthStencilState("CollisionDebugDepth");
+		Mat->SetRasterizerState("CollisionDebugRas");
 	}
 
 	{

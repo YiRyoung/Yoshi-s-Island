@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <FxCompile Include="EngineDebugCollisionShader.fx" />
     <FxCompile Include="EngineSpriteShader.fx" />
     <FxCompile Include="EngineTargetMergeShader.fx" />
   </ItemGroup>

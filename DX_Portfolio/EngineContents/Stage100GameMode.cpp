@@ -16,7 +16,7 @@
 #include <EngineCore/EngineGUIWindow.h>
 #include <EngineCore/EngineGUI.h>
 
-class TestWindow : public UEngineGUIWindow
+class DebugTool : public UEngineGUIWindow
 {
 public:
 	void OnGUI() override
@@ -72,11 +72,11 @@ void AStage100GameMode::LevelChangeStart()
 	AActor::LevelChangeStart();
 
 	{
-		std::shared_ptr<TestWindow> Window = UEngineGUI::FindGUIWindow<TestWindow>("TestWindow");
+		std::shared_ptr<DebugTool> Window = UEngineGUI::FindGUIWindow<DebugTool>("DebugTool");
 
 		if (nullptr == Window)
 		{
-			Window = UEngineGUI::CreateGUIWindow<TestWindow>("TestWindow");
+			Window = UEngineGUI::CreateGUIWindow<DebugTool>("DebugTool");
 		}
 
 		Window->SetActive(true);
