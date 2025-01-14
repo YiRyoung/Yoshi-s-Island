@@ -8,8 +8,3 @@ UWidget::UWidget()
 UWidget::~UWidget()
 {
 }
-
-void UWidget::TransformUpdate()
-{
-
-}
