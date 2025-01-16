@@ -7,18 +7,6 @@
     <ClInclude Include="ContentsCore.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="TitleGameMode.h">
-      <Filter>GameMode</Filter>
-    </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>Level\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage100.h">
-      <Filter>Level\Stage</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage100GameMode.h">
-      <Filter>GameMode</Filter>
-    </ClInclude>
     <ClInclude Include="ContentsEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -31,6 +19,24 @@
     <ClInclude Include="YoshiState.h">
       <Filter>Global\Yoshi</Filter>
     </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Contents\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleGameMode.h">
+      <Filter>Contents\GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Select.h">
+      <Filter>Contents\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectGameMode.h">
+      <Filter>Contents\GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Contents\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage100GameMode.h">
+      <Filter>Contents\GameMode\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -38,21 +44,6 @@
     </ClCompile>
     <ClCompile Include="ContentsCore.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleGameMode.cpp">
-      <Filter>GameMode</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>Level\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage100.cpp">
-      <Filter>Level\Stage</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage100GameMode.cpp">
-      <Filter>GameMode</Filter>
-    </ClCompile>
-    <ClCompile Include="ContentsEnum.cpp">
-      <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Yoshi.cpp">
       <Filter>Global\Yoshi</Filter>
@@ -63,6 +54,24 @@
     <ClCompile Include="YoshiState.cpp">
       <Filter>Global\Yoshi</Filter>
     </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Contents\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleGameMode.cpp">
+      <Filter>Contents\GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Select.cpp">
+      <Filter>Contents\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGameMode.cpp">
+      <Filter>Contents\GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Contents\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage100GameMode.cpp">
+      <Filter>Contents\GameMode\Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -71,23 +80,23 @@
     <Filter Include="Core">
       <UniqueIdentifier>{203ae949-830f-4d35-b47e-ffd0948db026}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameMode">
-      <UniqueIdentifier>{89d8afdb-c516-454e-b69a-e5619ca2e598}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level">
-      <UniqueIdentifier>{33f97681-46c5-4e9b-b619-cac86b0d1feb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\Title">
-      <UniqueIdentifier>{0c62a773-82ed-44d6-a453-71c80bc823b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\Stage">
-      <UniqueIdentifier>{2b6a8cc6-9892-4ec8-b1bf-84fa26797464}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{38e2e770-9952-4a1f-bfa2-f4d151fc65c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Global\Yoshi">
       <UniqueIdentifier>{7b16824f-3b61-4122-a045-896968756743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{33f97681-46c5-4e9b-b619-cac86b0d1feb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameMode">
+      <UniqueIdentifier>{89d8afdb-c516-454e-b69a-e5619ca2e598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Level">
+      <UniqueIdentifier>{143e156c-ef76-4b89-a788-24bcd2e1cfcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameMode\Stage">
+      <UniqueIdentifier>{37ea3f83-1e84-47d6-9ca3-e49f2dcbc7e9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

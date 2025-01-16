@@ -1,5 +1,15 @@
 #pragma once
 
+enum class EOrderNum
+{
+	FRONTBACKGROUND = -20,
+	OBSTACLE = -1,
+	COLSTAGE = 1,
+	STAGE,
+	FOREBACKGROUND,
+	BACKGROUND,
+};
+
 enum class ECheckDir
 {
 	LEFT,

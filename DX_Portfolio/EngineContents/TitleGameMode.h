@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+
 // Ό³Έν :
 class ATitleGameMode : public AGameMode
 {
@@ -14,11 +15,12 @@ public:
 	ATitleGameMode& operator=(const ATitleGameMode& _Other) = delete;
 	ATitleGameMode& operator=(ATitleGameMode&& _Other) noexcept = delete;
 
-
 protected:
-	void Tick(float _DeltaTime);
-	void LevelChangeStart();
-	void LevelChangeEnd();
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
+	void LevelChangeStart() override;
+	void LevelChangeEnd() override;
 
 private:
 	std::shared_ptr<class ATitle> Title;

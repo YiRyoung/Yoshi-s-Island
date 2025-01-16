@@ -1,7 +1,8 @@
 #pragma once
-#include <EngineCore/GameMode.h>
+#include <EngineCore/Actor.h>
 
-class ATitle : public AGameMode
+// Ό³Έν :
+class ATitle : public AActor
 {
 public:
 	// constrcuter destructer
@@ -14,31 +15,29 @@ public:
 	ATitle& operator=(const ATitle& _Other) = delete;
 	ATitle& operator=(ATitle&& _Other) noexcept = delete;
 
-	std::shared_ptr<class USpriteRenderer> GetBackgroundRenderer() const
+	std::shared_ptr<class USpriteRenderer> GetRenderer() const
 	{
 		return BackgroundRenderer;
 	}
 
 	bool IsEnd() const
 	{
-		return (EndAnimIndex != -1) ? true : false;
+		bool Result = (EndAnimIndex != -1) ? true : false;
+		return Result;
 	}
 
-	void SetEndAnimIndex(int _StartIndex)
-	{
-		EndAnimIndex = _StartIndex;
-	}
-
-	void EndAnimation();
+	void EndAnimation(int _StartIndex);
 
 protected:
-	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
 
 private:
+	std::shared_ptr<class ACameraActor> Camera;
 	std::shared_ptr<class USpriteRenderer> BackgroundRenderer;
 	std::shared_ptr<class USpriteRenderer> LogoRenderer;
 
 	int EndAnimIndex = -1;
+
+	void TitleRes();
+	void TitleInit();
 };
 

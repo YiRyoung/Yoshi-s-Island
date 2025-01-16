@@ -18,13 +18,7 @@ public:
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-	void LevelChangeStart() override;
-	void LevelChangeEnd() override;
 
 private:
-	std::shared_ptr<class AStage100> Stage;
-	std::shared_ptr<class ACameraActor> Camera;
-
-	void SetCameraBoundary();
+	std::shared_ptr<class AStage> Stage;
 };
-

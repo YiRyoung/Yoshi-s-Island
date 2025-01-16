@@ -8,6 +8,7 @@
 
 #include "Yoshi.h"
 #include "TitleGameMode.h"
+#include "SelectGameMode.h";
 #include "Stage100GameMode.h"
 
 CreateContentsCoreDefine(UContentsCore);
@@ -28,7 +29,9 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 	LoadSprites();
 
 	UEngineCore::CreateLevel<ATitleGameMode, APawn, AHUD>("Title");
+	UEngineCore::CreateLevel<ASelectGameMode, APawn, AHUD>("Select");
 	UEngineCore::CreateLevel<AStage100GameMode, AYoshi, AHUD>("Stage101");
+
 	UEngineCore::OpenLevel("Stage101");
 
 }
