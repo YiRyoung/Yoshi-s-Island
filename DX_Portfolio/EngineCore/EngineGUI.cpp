@@ -14,10 +14,8 @@ UEngineGUI::~UEngineGUI()
 {
 }
 
-
 void UEngineGUI::Init()
 {
-
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -48,10 +46,18 @@ void UEngineGUI::Init()
 
     // Setup Platform/Renderer backends
 
-
-
     ImGui_ImplWin32_Init(UEngineCore::GetMainWindow().GetWindowHandle());
     ImGui_ImplDX11_Init(UEngineCore::GetDevice().GetDevice(), UEngineCore::GetDevice().GetContext());
+
+    UEngineDirectory NewDir;
+    NewDir.MoveParentToDirectory("EngineResources");
+    NewDir.Move("Font");
+    UEngineFile File = NewDir.GetFile("malgun.ttf");
+
+    File.GetPathToString();
+    std::string UTF8Path = UEngineString::AnsiToUTF8(File.GetPathToString());
+
+    io.Fonts->AddFontFromFileTTF(UTF8Path.c_str(), 18.0f, nullptr, io.Fonts->GetGlyphRangesKorean());
 
     // Load Fonts
     // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.

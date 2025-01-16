@@ -970,9 +970,11 @@ class TColor
 public:
 	static const TColor WHITE;
 	static const TColor BLACK;
+	static const TColor RED;
+	static const TColor GREEN;
+	static const TColor BLUE;
 	static const TColor MAGENTA;
 	static const TColor CYAN;
-	static const TColor GREEN;
 
 	union
 	{
@@ -1014,10 +1016,16 @@ template<>
 const TColor<unsigned char> TColor<unsigned char>::BLACK = TColor<unsigned char>(0, 0, 0, 0);
 
 template<>
+const TColor<unsigned char> TColor<unsigned char>::RED = TColor<unsigned char>(255, 0, 0, 255);
+
+template<>
+const TColor<unsigned char> TColor<unsigned char>::GREEN = TColor<unsigned char>(0, 255, 0, 255);
+
+template<>
+const TColor<unsigned char> TColor<unsigned char>::BLUE = TColor<unsigned char>(0, 0, 255, 255);
+
+template<>
 const TColor<unsigned char> TColor<unsigned char>::MAGENTA = TColor<unsigned char>(255, 0, 255, 255);
 
 template<>
 const TColor<unsigned char> TColor<unsigned char>::CYAN = TColor<unsigned char>(0, 255, 255, 255);
-
-template<>
-const TColor<unsigned char> TColor<unsigned char>::GREEN = TColor<unsigned char>(0, 255, 0, 255);

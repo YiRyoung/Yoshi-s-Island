@@ -28,6 +28,10 @@ public:
 
 	ENGINEAPI FVector ScreenMousePosToWorldPosWithOutPos();
 
+	ENGINEAPI FVector ScreenPosToWorldPos(FVector _Pos);
+
+	ENGINEAPI FVector WorldPosToScreenPos(FVector _Pos);
+
 	ENGINEAPI inline bool IsFreeCamera()
 	{
 		return IsFreeCameraValue;
@@ -39,15 +43,12 @@ public:
 
 	ENGINEAPI void FreeCameraSwitch();
 
-
 	// #ifdef _DEBUG
 	void SetFreeCameraSpeed(float _Speed)
 	{
 		FreeSpeed = _Speed;
 	}
 	// #endif
-
-
 
 protected:
 
