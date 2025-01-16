@@ -2,7 +2,7 @@
 #include "TransformObject.h"
 #include "EngineCamera.h"
 
-UTransformObject::UTransformObject()
+UTransformObject::UTransformObject() : Parent(nullptr)
 {
 }
 
