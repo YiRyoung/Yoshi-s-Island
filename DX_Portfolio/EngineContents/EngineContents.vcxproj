@@ -183,7 +183,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Stage.h">
+    <ClInclude Include="Stage100.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -228,7 +228,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Stage.cpp">
+    <ClCompile Include="Stage100.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -20,5 +20,5 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
-	std::shared_ptr<class AStage> Stage;
+	std::shared_ptr<class AStage100> Stage;
 };
