@@ -44,7 +44,7 @@
       <Filter>Object\Component\Contents</Filter>
     </ClInclude>
     <ClInclude Include="EngineResources.h">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="imconfig.h">
       <Filter>GUI\IMGUI\Header</Filter>
@@ -83,61 +83,61 @@
       <Filter>Object\Component\Render</Filter>
     </ClInclude>
     <ClInclude Include="EngineBlend.h">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineEnums.h">
       <Filter>Data</Filter>
     </ClInclude>
     <ClInclude Include="EngineShader.h">
-      <Filter>Object\Resources\Shader</Filter>
+      <Filter>Resources\Shader</Filter>
     </ClInclude>
     <ClInclude Include="EngineRasterizerState.h">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineVertexShader.h">
-      <Filter>Object\Resources\Shader</Filter>
+      <Filter>Resources\Shader</Filter>
     </ClInclude>
     <ClInclude Include="EngineConstantBuffer.h">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineDeviceBuffer.h">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineIndexBuffer.h">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineVertexBuffer.h">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EnginePixelShader.h">
-      <Filter>Object\Resources\Shader</Filter>
+      <Filter>Resources\Shader</Filter>
     </ClInclude>
     <ClInclude Include="EngineShaderResources.h">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineVertex.h">
-      <Filter>Object\Resources\Mesh</Filter>
+      <Filter>Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
-      <Filter>Object\Resources\Mesh</Filter>
+      <Filter>Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineInputLayOutInfo.h">
-      <Filter>Object\Resources\Mesh</Filter>
+      <Filter>Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineSprite.h">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="EngineTexture.h">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="EngineSampler.h">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="EngineMaterial.h">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineDepthStencilState.h">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="TimeEventComponent.h">
       <Filter>Object\Component\Contents</Filter>
@@ -146,7 +146,7 @@
       <Filter>Object\Component\Collision</Filter>
     </ClInclude>
     <ClInclude Include="EngineRenderTarget.h">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="HUD.h">
       <Filter>Object\Actor</Filter>
@@ -159,6 +159,12 @@
     </ClInclude>
     <ClInclude Include="EngineDataStruct.h">
       <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FW1FontWrapper\Inc\FW1FontWrapper.h">
+      <Filter>ThirdParty\FW1FontWrapper\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineFont.h">
+      <Filter>Resources\Font</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -202,7 +208,7 @@
       <Filter>Object\Component\Contents</Filter>
     </ClCompile>
     <ClCompile Include="EngineResources.cpp">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="imgui.cpp">
       <Filter>GUI\IMGUI\Cpp</Filter>
@@ -238,58 +244,58 @@
       <Filter>Graphic</Filter>
     </ClCompile>
     <ClCompile Include="EngineBlend.cpp">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineShader.cpp">
-      <Filter>Object\Resources\Shader</Filter>
+      <Filter>Resources\Shader</Filter>
     </ClCompile>
     <ClCompile Include="EngineRasterizerState.cpp">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineVertexShader.cpp">
-      <Filter>Object\Resources\Shader</Filter>
+      <Filter>Resources\Shader</Filter>
     </ClCompile>
     <ClCompile Include="EngineConstantBuffer.cpp">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineDeviceBuffer.cpp">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineIndexBuffer.cpp">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineVertexBuffer.cpp">
-      <Filter>Object\Resources\Buffer</Filter>
+      <Filter>Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EnginePixelShader.cpp">
-      <Filter>Object\Resources\Shader</Filter>
+      <Filter>Resources\Shader</Filter>
     </ClCompile>
     <ClCompile Include="EngineShaderResources.cpp">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
-      <Filter>Object\Resources\Mesh</Filter>
+      <Filter>Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineInputLayOutInfo.cpp">
-      <Filter>Object\Resources\Mesh</Filter>
+      <Filter>Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineVertex.cpp">
-      <Filter>Object\Resources\Mesh</Filter>
+      <Filter>Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineSprite.cpp">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="EngineTexture.cpp">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="EngineSampler.cpp">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="EngineMaterial.cpp">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineDepthStencilState.cpp">
-      <Filter>Object\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="TimeEventComponent.cpp">
       <Filter>Object\Component\Contents</Filter>
@@ -298,7 +304,7 @@
       <Filter>Object\Component\Collision</Filter>
     </ClCompile>
     <ClCompile Include="EngineRenderTarget.cpp">
-      <Filter>Object\Resources\Texture</Filter>
+      <Filter>Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="HUD.cpp">
       <Filter>Object\Actor</Filter>
@@ -308,6 +314,9 @@
     </ClCompile>
     <ClCompile Include="TransformObject.cpp">
       <Filter>Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineFont.cpp">
+      <Filter>Resources\Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +362,6 @@
     <Filter Include="Object\Component\Contents">
       <UniqueIdentifier>{49555c9f-5028-462a-a6cc-794a6bd346ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Resources">
-      <UniqueIdentifier>{9e8ff694-93a7-4784-8b61-2c0c8f009176}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{5132f8e1-1ec9-4f4a-99f4-45bf08d1b097}</UniqueIdentifier>
     </Filter>
@@ -374,23 +380,41 @@
     <Filter Include="Data">
       <UniqueIdentifier>{9069cbea-f968-4c5e-9bf3-c02787551736}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Resources\Buffer">
-      <UniqueIdentifier>{4cd7047d-20a6-4d20-8b5d-80a4803585aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Resources\Shader">
-      <UniqueIdentifier>{27051545-2f45-4147-840a-60da55a10df6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Resources\Mesh">
-      <UniqueIdentifier>{86f9dce5-1fb6-4d7e-aa95-320c84d667ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Resources\Texture">
-      <UniqueIdentifier>{f5a3a391-a8b4-4705-92ee-88aebd549700}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Component\Collision">
       <UniqueIdentifier>{5ac451c0-ad05-4ae7-9ccd-2a357ca44405}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\UI">
       <UniqueIdentifier>{f2cdcade-1261-4d3c-b261-27da6a18d11d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\FW1FontWrapper">
+      <UniqueIdentifier>{a7d4ef48-ecbb-432c-ab7b-8282109ff093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\FW1FontWrapper\Debug">
+      <UniqueIdentifier>{7d933084-9035-4251-92c6-c340f4185719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\FW1FontWrapper\Inc">
+      <UniqueIdentifier>{efec7803-f82b-4679-bfe9-de6619e6db83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\FW1FontWrapper\Release">
+      <UniqueIdentifier>{d333c09d-57c0-4aae-8503-815a5436f160}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{9e8ff694-93a7-4784-8b61-2c0c8f009176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Buffer">
+      <UniqueIdentifier>{4cd7047d-20a6-4d20-8b5d-80a4803585aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shader">
+      <UniqueIdentifier>{27051545-2f45-4147-840a-60da55a10df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Mesh">
+      <UniqueIdentifier>{86f9dce5-1fb6-4d7e-aa95-320c84d667ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Texture">
+      <UniqueIdentifier>{f5a3a391-a8b4-4705-92ee-88aebd549700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Font">
+      <UniqueIdentifier>{ccfecf95-98bc-4986-8f77-d0230b503a8d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -406,5 +430,21 @@
     <CopyFileToFolders Include="ThirdParty\DirectxTex\Release\DirectXTex_Release.lib">
       <Filter>ThirdParty\DirectxTex\Release</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.dll">
+      <Filter>ThirdParty\FW1FontWrapper\Debug</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.lib">
+      <Filter>ThirdParty\FW1FontWrapper\Debug</Filter>
+    </Library>
+    <Library Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.lib">
+      <Filter>ThirdParty\FW1FontWrapper\Release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.dll">
+      <Filter>ThirdParty\FW1FontWrapper\Release</Filter>
+    </None>
   </ItemGroup>
 </Project>

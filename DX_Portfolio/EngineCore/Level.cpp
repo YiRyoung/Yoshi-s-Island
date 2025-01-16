@@ -261,6 +261,11 @@ void ULevel::Collision(float _DeltaTime)
 			{
 				for (std::shared_ptr<class UCollision>& RightCollision : RightList)
 				{
+					if (LeftCollision == RightCollision)
+					{
+						continue;
+					}
+
 					if (false == LeftCollision->IsActive())
 					{
 						continue;
@@ -282,6 +287,27 @@ void ULevel::Release(float _DeltaTime)
 
 	{
 		for (std::pair<const std::string, std::list<std::shared_ptr<UCollision>>>& Group : Collisions)
+		{
+			std::list<std::shared_ptr<UCollision>>& List = Group.second;
+
+			std::list<std::shared_ptr<UCollision>>::iterator StartIter = List.begin();
+			std::list<std::shared_ptr<UCollision>>::iterator EndIter = List.end();
+
+			for (; StartIter != EndIter; )
+			{
+				if (false == (*StartIter)->IsDestroy())
+				{
+					++StartIter;
+					continue;
+				}
+
+				StartIter = List.erase(StartIter);
+			}
+		}
+	}
+
+	{
+		for (std::pair<const std::string, std::list<std::shared_ptr<UCollision>>>& Group : CheckCollisions)
 		{
 			std::list<std::shared_ptr<UCollision>>& List = Group.second;
 
@@ -325,7 +351,6 @@ void ULevel::Release(float _DeltaTime)
 		}
 	}
 }
-
 void ULevel::InitLevel(AGameMode* _GameMode, APawn* _Pawn, AHUD* _HUD)
 {
 	GameMode = _GameMode;
