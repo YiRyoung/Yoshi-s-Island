@@ -50,7 +50,6 @@ void URenderUnit::MaterialResourcesCheck()
 			FTransform& Ref = TransformObject->GetTransformRef();
 			Resources[i].ConstantBufferLinkData("FTransform", Ref);
 		}
-
 	}
 }
 
@@ -215,4 +214,12 @@ void URenderUnit::InputLayOutCreate()
 		Blob->GetBufferPointer(),
 		Blob->GetBufferSize(),
 		&InputLayOut);
+}
+
+void URenderUnit::Reset()
+{
+	for (std::pair<const EShaderType, UEngineShaderResources>& Pair : Resources)
+	{
+		Pair.second.Reset();
+	}
 }
