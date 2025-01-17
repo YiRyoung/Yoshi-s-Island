@@ -37,6 +37,12 @@
     <ClInclude Include="Stage100.h">
       <Filter>Contents\Level\Stage1</Filter>
     </ClInclude>
+    <ClInclude Include="Stage101.h">
+      <Filter>Contents\Level\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage101GameMode.h">
+      <Filter>Contents\GameMode\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -71,6 +77,12 @@
     </ClCompile>
     <ClCompile Include="Stage100.cpp">
       <Filter>Contents\Level\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage101.cpp">
+      <Filter>Contents\Level\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage101GameMode.cpp">
+      <Filter>Contents\GameMode\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

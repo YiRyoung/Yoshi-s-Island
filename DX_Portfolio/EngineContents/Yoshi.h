@@ -22,16 +22,6 @@ public:
 	AYoshi& operator=(const AYoshi& _Other) = delete;
 	AYoshi& operator=(AYoshi&& _Other) noexcept = delete;
 
-	void SetColImage(UEngineWinImage* _ColImage)
-	{
-		ColImage = _ColImage;
-	}
-
-	void SetCamera(std::shared_ptr<ACameraActor> _Camera)
-	{
-		Camera = _Camera;
-	}
-
 	YoshiCollision* GetCollision() const
 	{
 		return Collision;
@@ -45,6 +35,16 @@ public:
 	std::shared_ptr<ACameraActor> GetCamera() const
 	{
 		return Camera;
+	}
+
+	void SetColImage(UEngineWinImage* _ColImage)
+	{
+		ColImage = _ColImage;
+	}
+
+	void SetCamera(std::shared_ptr<ACameraActor> _Camera)
+	{
+		Camera = _Camera;
 	}
 
 	// Wrapping
@@ -130,6 +130,10 @@ protected:
 	// Class
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
 	std::shared_ptr<class UCollision> BodyCollision;
+	std::shared_ptr<class UCollision> DebugDownCollision;
+	std::shared_ptr<class UCollision> DebugLeftCollision;
+	std::shared_ptr<class UCollision> DebugRightCollision;
+	std::shared_ptr<class UCollision> DebugUpCollision;
 	std::shared_ptr<ACameraActor> Camera;
 	UEngineWinImage* ColImage;
 	YoshiCollision* Collision;
@@ -159,5 +163,9 @@ private:
 	void SetAnimations();
 	void SetAnimDir();
 	int SetIdleAnimNum();
+
+	// Collision
+	void SetCollision();
+	void SetDebugCollision();
 };
 

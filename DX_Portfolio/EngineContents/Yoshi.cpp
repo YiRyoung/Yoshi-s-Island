@@ -23,13 +23,6 @@ AYoshi::AYoshi()
 	YoshiRenderer->SetupAttachment(RootComponent);
 	YoshiRenderer->SetAutoScaleRatio(3.0f);
 	YoshiRenderer->SetRelativeLocation({ 0, 0, -10 });
-	Scale = YoshiRenderer->GetTransformRef().RelativeScale;
-
-	BodyCollision = CreateDefaultSubObject<UCollision>();
-	BodyCollision->SetupAttachment(RootComponent);
-	BodyCollision->SetCollisionProfileName("BodyCollision");
-	BodyCollision->SetScale3D({90.0f, 100.0f});
-	BodyCollision->SetRelativeLocation({0.0f, 50.0f});
 
 	SetAnimations();
 
@@ -57,6 +50,10 @@ AYoshi::~AYoshi()
 void AYoshi::BeginPlay()
 {
 	AActor::BeginPlay();
+	Scale = YoshiRenderer->GetTransformRef().Scale;
+
+	SetCollision();
+	SetDebugCollision();
 }
 
 void AYoshi::Tick(float _DeltaTime)
@@ -113,6 +110,41 @@ int AYoshi::SetIdleAnimNum()
 	if (RandomValue == 0) { return 2; }
 	else if (RandomValue == 1) { return 1; }
 	else { return 0; }
+}
+
+void AYoshi::SetCollision()
+{
+	BodyCollision = CreateDefaultSubObject<UCollision>();
+	BodyCollision->SetupAttachment(RootComponent);
+	BodyCollision->SetCollisionProfileName("BodyCollision");
+	BodyCollision->SetScale3D({ Scale });
+	BodyCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.5f });
+}
+
+void AYoshi::SetDebugCollision()
+{
+	DebugDownCollision = CreateDefaultSubObject<UCollision>();
+	DebugDownCollision->SetupAttachment(RootComponent);
+	DebugDownCollision->SetCollisionProfileName("DebugCollision");
+	DebugDownCollision->SetScale3D({ 5.0f, 5.0f });
+
+	DebugLeftCollision = CreateDefaultSubObject<UCollision>();
+	DebugLeftCollision->SetupAttachment(RootComponent);
+	DebugLeftCollision->SetCollisionProfileName("DebugCollision");
+	DebugLeftCollision->SetScale3D({ 5.0f, 5.0f });
+	DebugLeftCollision->SetRelativeLocation({ Scale.X * -0.5f, Scale.Y * 0.5f });
+
+	DebugRightCollision = CreateDefaultSubObject<UCollision>();
+	DebugRightCollision->SetupAttachment(RootComponent);
+	DebugRightCollision->SetCollisionProfileName("DebugCollision");
+	DebugRightCollision->SetScale3D({ 5.0f, 5.0f });
+	DebugRightCollision->SetRelativeLocation({ Scale.X * 0.5f, Scale.Y * 0.5f });
+
+	DebugUpCollision = CreateDefaultSubObject<UCollision>();
+	DebugUpCollision->SetupAttachment(RootComponent);
+	DebugUpCollision->SetCollisionProfileName("DebugCollision");
+	DebugUpCollision->SetScale3D({ 5.0f, 5.0f });
+	DebugUpCollision->SetRelativeLocation({ 0.0f, Scale.Y });
 }
 
 void AYoshi::SetIdleAnim()

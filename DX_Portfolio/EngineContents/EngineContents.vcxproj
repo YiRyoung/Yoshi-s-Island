@@ -191,6 +191,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Stage101.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stage101GameMode.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Title.h">
       <SubType>
       </SubType>
@@ -233,6 +241,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Stage100GameMode.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stage101.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stage101GameMode.cpp">
       <SubType>
       </SubType>
     </ClCompile>

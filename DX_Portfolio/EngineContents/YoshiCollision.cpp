@@ -1,7 +1,9 @@
 #include "PreCompile.h"
 #include "YoshiCollision.h"
 
+#include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/Collision.h>
 
 #include "Yoshi.h"
 
@@ -50,5 +52,3 @@ void YoshiCollision::GroundUp(float _DeltaTime)
 		Yoshi->Move(0.0f, 300.0f * _DeltaTime);
 	}
 }
-
-
