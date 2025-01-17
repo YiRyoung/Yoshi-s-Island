@@ -4,9 +4,11 @@
 #include <EngineBase/EngineRandom.h>
 
 #include <EnginePlatform/EngineInput.h>
+
+#include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/EngineSprite.h>
-#include <EngineCore/DefaultSceneComponent.h>
+#include <EngineCore/Collision.h>
 
 AYoshi::AYoshi()
 {
@@ -21,7 +23,13 @@ AYoshi::AYoshi()
 	YoshiRenderer->SetupAttachment(RootComponent);
 	YoshiRenderer->SetAutoScaleRatio(3.0f);
 	YoshiRenderer->SetRelativeLocation({ 0, 0, -10 });
-	Scale = YoshiRenderer->GetTransformRef().Scale;
+	Scale = YoshiRenderer->GetTransformRef().RelativeScale;
+
+	BodyCollision = CreateDefaultSubObject<UCollision>();
+	BodyCollision->SetupAttachment(RootComponent);
+	BodyCollision->SetCollisionProfileName("BodyCollision");
+	BodyCollision->SetScale3D({90.0f, 100.0f});
+	BodyCollision->SetRelativeLocation({0.0f, 50.0f});
 
 	SetAnimations();
 

@@ -129,6 +129,7 @@ protected:
 #pragma region Status
 	// Class
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
+	std::shared_ptr<class UCollision> BodyCollision;
 	std::shared_ptr<ACameraActor> Camera;
 	UEngineWinImage* ColImage;
 	YoshiCollision* Collision;
