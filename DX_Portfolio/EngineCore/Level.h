@@ -24,9 +24,22 @@ public:
 
 	void LevelChangeEnd();
 
+	template<typename Type>
+	Type* GetGameMode()
+	{
+		return dynamic_cast<Type*>(GameMode);
+	}
+
+
 	class AGameMode* GetGameMode()
 	{
 		return GameMode;
+	}
+
+	template<typename Type>
+	Type* GetMainPawn()
+	{
+		return dynamic_cast<Type*>(MainPawn);
 	}
 
 	class APawn* GetMainPawn()
@@ -34,9 +47,10 @@ public:
 		return MainPawn;
 	}
 
-	class AHUD* GetHUD()
+	template<typename Type>
+	Type* GetHUD()
 	{
-		return HUD;
+		return dynamic_cast<Type*>(HUD);
 	}
 
 	void Tick(float _DeltaTime);

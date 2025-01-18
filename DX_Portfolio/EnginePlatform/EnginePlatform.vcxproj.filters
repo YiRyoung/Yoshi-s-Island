@@ -13,6 +13,9 @@
     <ClInclude Include="EngineWinImage.h">
       <Filter>Window</Filter>
     </ClInclude>
+    <ClInclude Include="EngineThread.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -27,6 +30,9 @@
     <ClCompile Include="EngineWinImage.cpp">
       <Filter>Window</Filter>
     </ClCompile>
+    <ClCompile Include="EngineThread.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -37,6 +43,9 @@
     </Filter>
     <Filter Include="Input">
       <UniqueIdentifier>{abdd81c1-914d-47cb-9035-70ea1d36bba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{7462b46c-2af9-4b63-bda0-cdbd956dd297}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
