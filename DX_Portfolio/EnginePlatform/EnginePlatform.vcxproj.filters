@@ -16,6 +16,9 @@
     <ClInclude Include="EngineThread.h">
       <Filter>Thread</Filter>
     </ClInclude>
+    <ClInclude Include="EngineWorkThreadPool.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -31,6 +34,9 @@
       <Filter>Window</Filter>
     </ClCompile>
     <ClCompile Include="EngineThread.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineWorkThreadPool.cpp">
       <Filter>Thread</Filter>
     </ClCompile>
   </ItemGroup>
