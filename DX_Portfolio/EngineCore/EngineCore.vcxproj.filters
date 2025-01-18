@@ -175,6 +175,9 @@
     <ClInclude Include="GameInstance.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="FontRenderer.h">
+      <Filter>Object\Component\Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -335,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="GameInstance.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FontRenderer.cpp">
+      <Filter>Object\Component\Contents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -41,7 +41,6 @@ void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThre
 	}
 
 	RunningCount = ThreadCount;
-
 	IOCPHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
 
 	if (nullptr == IOCPHandle)
@@ -49,12 +48,10 @@ void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThre
 		MSGASSERT("IOCP 핸들 생성에 실패했습니다.");
 	}
 
-	// IOCPHandle
 	Threads.resize(ThreadCount);
 	for (size_t i = 0; i < ThreadCount; i++)
 	{
 		Threads[i] = std::make_shared<UEngineThread>();
-
 		Threads[i]->Start(std::string(ThreadName) + std::to_string(i), std::bind(ThreadQueueFunction, IOCPHandle, this));
 	}
 }

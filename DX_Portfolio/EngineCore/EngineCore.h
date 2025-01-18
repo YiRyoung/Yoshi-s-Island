@@ -3,6 +3,7 @@
 #include <EngineBase/EngineTimer.h>
 #include <EngineBase/EngineString.h>
 #include <EnginePlatform/EngineWindow.h>
+#include <EnginePlatform/EngineWorkThreadPool.h>
 #include "EngineGraphicDevice.h"
 #include "IContentsCore.h"
 #include "Level.h"
@@ -44,6 +45,8 @@ public:
 
 	ENGINEAPI static class UGameInstance* GetGameInstance();
 
+	ENGINEAPI static class UEngineWorkThreadPool& GetThreadPool();
+
 	template<typename Type>
 	static void CreateGameInstance()
 	{
@@ -54,6 +57,8 @@ protected:
 
 private:
 	std::shared_ptr<class UGameInstance> GameInstance;
+
+	UEngineWorkThreadPool ThreadPool;
 
 	UEngineWindow MainWindow;
 

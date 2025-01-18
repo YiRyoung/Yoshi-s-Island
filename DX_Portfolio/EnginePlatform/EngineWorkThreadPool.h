@@ -12,6 +12,8 @@ enum class EThreadStatus
 // 설명 :
 class UEngineWorkThreadPool
 {
+	// 
+public:
 	// constrcuter destructer
 	ENGINEAPI UEngineWorkThreadPool();
 	ENGINEAPI ~UEngineWorkThreadPool();
@@ -35,6 +37,7 @@ private:
 	HANDLE IOCPHandle = nullptr;
 
 	int ThreadCount = 0;
+	// 코어개수 * 2 + 1 => 
 	std::vector<std::shared_ptr<UEngineThread>> Threads;
 
 	static void ThreadQueueFunction(HANDLE _IOCPHandle, UEngineWorkThreadPool* _JobQueue);
