@@ -32,7 +32,7 @@ public:
 		return State;
 	}
 
-	std::shared_ptr<ACameraActor> GetCamera() const
+	std::shared_ptr<ACameraActor> GetMainCamera() const
 	{
 		return Camera;
 	}
@@ -119,25 +119,21 @@ public:
 	{
 		GravityForce = _NewForce;
 	}
-
 #pragma endregion
 
 protected:
 	virtual void BeginPlay();
 	virtual void Tick(float _DeltaTime);
-
-#pragma region Status
-	// Class
-	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
-	std::shared_ptr<class UCollision> BodyCollision;
-	std::shared_ptr<class UCollision> DebugDownCollision;
-	std::shared_ptr<class UCollision> DebugLeftCollision;
-	std::shared_ptr<class UCollision> DebugRightCollision;
-	std::shared_ptr<class UCollision> DebugUpCollision;
-	std::shared_ptr<ACameraActor> Camera;
+private:
 	UEngineWinImage* ColImage;
 	YoshiCollision* Collision;
 	YoshiState* State;
+
+	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
+	
+	std::shared_ptr<class UCollision> BodyCollision;
+
+	std::shared_ptr<ACameraActor> Camera;
 	EPlayerState CurState = EPlayerState::MAX;
 
 	// GameManager
@@ -156,9 +152,7 @@ protected:
 	float JumpPower = 550.0f;
 	float GravityPower = 800.0f;
 	FVector GravityForce = { 0, 0, 0 };
-#pragma endregion
 
-private:
 	// Animation
 	void SetAnimations();
 	void SetAnimDir();
@@ -167,5 +161,13 @@ private:
 	// Collision
 	void SetCollision();
 	void SetDebugCollision();
+
+#pragma region Debug
+	std::shared_ptr<class UCollision> DebugDownCollision;
+	std::shared_ptr<class UCollision> DebugLeftCollision;
+	std::shared_ptr<class UCollision> DebugRightCollision;
+	std::shared_ptr<class UCollision> DebugUpCollision;
+#pragma endregion
+
 };
 
