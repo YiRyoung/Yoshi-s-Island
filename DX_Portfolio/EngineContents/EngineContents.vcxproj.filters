@@ -7,17 +7,14 @@
     <ClInclude Include="ContentsCore.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsEnum.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="Yoshi.h">
-      <Filter>Global\Yoshi</Filter>
+      <Filter>Contents\Global\Yoshi</Filter>
     </ClInclude>
     <ClInclude Include="YoshiCollision.h">
-      <Filter>Global\Yoshi</Filter>
+      <Filter>Contents\Global\Yoshi</Filter>
     </ClInclude>
     <ClInclude Include="YoshiState.h">
-      <Filter>Global\Yoshi</Filter>
+      <Filter>Contents\Global\Yoshi</Filter>
     </ClInclude>
     <ClInclude Include="Title.h">
       <Filter>Contents\Level</Filter>
@@ -43,6 +40,9 @@
     <ClInclude Include="Stage101GameMode.h">
       <Filter>Contents\GameMode\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsEnum.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -52,13 +52,13 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Yoshi.cpp">
-      <Filter>Global\Yoshi</Filter>
+      <Filter>Contents\Global\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="YoshiCollision.cpp">
-      <Filter>Global\Yoshi</Filter>
+      <Filter>Contents\Global\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="YoshiState.cpp">
-      <Filter>Global\Yoshi</Filter>
+      <Filter>Contents\Global\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp">
       <Filter>Contents\Level</Filter>
@@ -92,12 +92,6 @@
     <Filter Include="Core">
       <UniqueIdentifier>{203ae949-830f-4d35-b47e-ffd0948db026}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Global">
-      <UniqueIdentifier>{38e2e770-9952-4a1f-bfa2-f4d151fc65c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Global\Yoshi">
-      <UniqueIdentifier>{7b16824f-3b61-4122-a045-896968756743}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents">
       <UniqueIdentifier>{33f97681-46c5-4e9b-b619-cac86b0d1feb}</UniqueIdentifier>
     </Filter>
@@ -112,6 +106,15 @@
     </Filter>
     <Filter Include="Contents\Level\Stage1">
       <UniqueIdentifier>{ee7dab8a-0846-4526-99c3-e09da3f1b10c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Global">
+      <UniqueIdentifier>{38e2e770-9952-4a1f-bfa2-f4d151fc65c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Global\Yoshi">
+      <UniqueIdentifier>{7b16824f-3b61-4122-a045-896968756743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{f2cd59ec-fedb-4106-a60f-346750907a2d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -37,7 +37,7 @@ bool YoshiState::IsUpKey(int _KeyCode)
 
 bool YoshiState::CheckColor(ECheckDir _Dir, UColor _Color)
 {
-	return Yoshi->GetCollision()->CheckColor(_Dir, _Color);
+	return Yoshi->GetCollision()->CheckPointColor(_Dir, _Color);
 }
 
 void YoshiState::ChangeAnimation(std::string_view _Name)
@@ -79,8 +79,9 @@ void YoshiState::YoshiFSM(float _DeltaTime)
 
 void YoshiState::Gravity(float _DeltaTime, float _Scale)
 {
-	FVector Power = Yoshi->GetGravityForce() * _DeltaTime;
+	FVector Power = (FVector::DOWN + Yoshi->GetGravityForce()) * _DeltaTime;
 	FVector CheckPos = Yoshi->GetActorLocation() + Power;
+
 	UColor Color = Yoshi->GetColor(CheckPos);
 
 	if (Color != UColor::MAGENTA && Color != UColor::CYAN)
@@ -102,6 +103,8 @@ void YoshiState::IdleStart(float _DeltaTime)
 
 void YoshiState::Idle(float _DeltaTime)
 {
+	Gravity(_DeltaTime);
+
 	if (IsPressKey(VK_LEFT) || IsPressKey(VK_RIGHT))
 	{
 		Yoshi->SetCurState(EPlayerState::WALK);
@@ -114,19 +117,17 @@ void YoshiState::Idle(float _DeltaTime)
 		return;
 	}
 
+	if (!CheckColor(ECheckDir::DOWN, UColor::MAGENTA) && !Yoshi->GetCollision()->IsHill())
+	{
+		Yoshi->SetCurState(EPlayerState::FALL);
+		return;
+	}
+
 	if (IsPressKey(VK_UP))
 	{
 		Yoshi->SetCurState(EPlayerState::LOOKUP);
 		return;
 	}
-
-	//if (!CheckColor(ECheckDir::DOWN, UColor::MAGENTA) && !CheckColor(ECheckDir::DOWN, UColor::CYAN))
-	//{
-	//	Yoshi->SetCurState(EPlayerState::FALL);
-	//	return;
-	//}
-
-	Gravity(_DeltaTime);
 }
 
 void YoshiState::WalkStart(float _DeltaTime)
@@ -313,5 +314,11 @@ void YoshiState::FallStart(float _DeltaTime)
 
 void YoshiState::Fall(float _DeltaTime)
 {
+	Gravity(_DeltaTime);
 
+	if (CheckColor(ECheckDir::DOWN, UColor::MAGENTA) || CheckColor(ECheckDir::DOWN, UColor::CYAN))
+	{
+		Yoshi->SetCurState(EPlayerState::IDLE);
+		return;
+	}
 }
