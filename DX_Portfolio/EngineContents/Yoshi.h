@@ -140,7 +140,9 @@ private:
 
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
 	
+	std::shared_ptr<class UCollision> HeadCollision;
 	std::shared_ptr<class UCollision> BodyCollision;
+	std::shared_ptr<class UCollision> FootCollision;
 
 	std::shared_ptr<ACameraActor> Camera;
 	EPlayerState CurState = EPlayerState::MAX;

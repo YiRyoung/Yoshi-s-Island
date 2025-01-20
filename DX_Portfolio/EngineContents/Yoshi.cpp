@@ -116,11 +116,23 @@ int AYoshi::SetIdleAnimNum()
 
 void AYoshi::SetCollision()
 {
+	HeadCollision = CreateDefaultSubObject<UCollision>();
+	HeadCollision->SetupAttachment(RootComponent);
+	HeadCollision->SetCollisionProfileName("HeadCollision");
+	HeadCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.3f });
+	HeadCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.8f });
+
 	BodyCollision = CreateDefaultSubObject<UCollision>();
 	BodyCollision->SetupAttachment(RootComponent);
 	BodyCollision->SetCollisionProfileName("BodyCollision");
-	BodyCollision->SetScale3D({ Scale });
-	BodyCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.5f });
+	BodyCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.4f });
+	BodyCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.4f });
+	
+	FootCollision = CreateDefaultSubObject<UCollision>();
+	FootCollision->SetupAttachment(RootComponent);
+	FootCollision->SetCollisionProfileName("FootCollision");
+	FootCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.2f });
+	FootCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.05f });
 }
 
 void AYoshi::SetDebugCollision()

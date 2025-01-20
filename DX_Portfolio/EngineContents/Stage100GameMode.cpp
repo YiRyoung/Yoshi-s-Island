@@ -9,7 +9,10 @@
 
 AStage100GameMode::AStage100GameMode()
 {
+	GetWorld()->CreateCollisionProfile("HeadCollision");
 	GetWorld()->CreateCollisionProfile("BodyCollision");
+	GetWorld()->CreateCollisionProfile("FootCollision");
+
 	GetWorld()->CreateCollisionProfile("DebugCollision");
 }
 
