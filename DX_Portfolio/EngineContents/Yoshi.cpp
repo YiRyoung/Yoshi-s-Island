@@ -18,7 +18,7 @@ AYoshi::AYoshi()
 	Collision = new YoshiCollision(this);
 	State = new YoshiState(this);
 
-	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
+	
 	YoshiRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	YoshiRenderer->SetupAttachment(RootComponent);
 	YoshiRenderer->SetAutoScaleRatio(3.0f);
@@ -88,6 +88,8 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("JumpStart", "YoshiAndMario.png", 75, 76, 0.1f, false);
 	YoshiRenderer->CreateAnimation("Fall", "YoshiAndMario.png", 77, 79, 0.07f, false);
 	YoshiRenderer->CreateAnimation("StayUp", "YoshiAndMario.png", 80, 83, 0.04f);
+
+	YoshiRenderer->CreateAnimation("Stick", "YoshiAndMario.png", { 94, 95, 96, 97, 98, 99, 100, 101, 102, 101, 100, 99, 98, 97, 96, 95, 94 }, 0.04f, false);
 }
 
 void AYoshi::SetAnimDir()

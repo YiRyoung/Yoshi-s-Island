@@ -125,13 +125,17 @@ void AStage100::Stage100Init()
 
 void AStage100::CameraBoundary()
 {
-	Camera->SetActorLocation({ GetWorld()->GetMainPawn()->GetActorLocation().X, GetWorld()->GetMainPawn()->GetActorLocation().Y, -520.0f });
+	AYoshi* Player = GetWorld()->GetMainPawn<AYoshi>();
+	FVector CameraPivot = Player->GetCameraPivot();
 
+	Camera->SetActorLocation({ GetWorld()->GetMainPawn()->GetActorLocation().X, GetWorld()->GetMainPawn()->GetActorLocation().Y, -520.0f });
+	
 	FVector ResultCameraPos = { 0.0f, 0.0f, 0.0f };
 	FVector ScreenSize = UEngineCore::GetScreenScale();
 	FVector MapSize = ColStageRenderer->GetWorldScale3D();
-	FVector CameraPos = Camera->GetActorLocation();
+	FVector CameraPos = Camera->GetActorLocation() + CameraPivot;
 
+	// SetBoundary
 	if ((ScreenSize.X * 0.5f) >= CameraPos.X)
 	{
 		ResultCameraPos.X = ScreenSize.X * 0.5f;
@@ -142,7 +146,7 @@ void AStage100::CameraBoundary()
 	}
 	else
 	{
-		ResultCameraPos.X = GetWorld()->GetMainPawn()->GetActorLocation().X;
+		ResultCameraPos.X = GetWorld()->GetMainPawn()->GetActorLocation().X + CameraPivot.X;
 	}
 
 	if ((ScreenSize.Y * -0.5f) <= CameraPos.Y)
@@ -155,7 +159,7 @@ void AStage100::CameraBoundary()
 	}
 	else
 	{
-		ResultCameraPos.Y = GetWorld()->GetMainPawn()->GetActorLocation().Y;
+		ResultCameraPos.Y = GetWorld()->GetMainPawn()->GetActorLocation().Y + CameraPivot.Y;
 	}
 
 	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y + 160.0f, -520.0f });

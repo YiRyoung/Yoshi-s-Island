@@ -11,6 +11,9 @@
 // Ό³Έν :
 class AYoshi : public APawn
 {
+	friend class YoshiState;
+	friend class YoshiCollision;
+
 public:
 	// constrcuter destructer
 	AYoshi();
@@ -45,6 +48,11 @@ public:
 	void SetCamera(std::shared_ptr<ACameraActor> _Camera)
 	{
 		Camera = _Camera;
+	}
+
+	FVector GetCameraPivot() const
+	{
+		return CameraPivot;
 	}
 
 	// Wrapping
@@ -128,6 +136,7 @@ private:
 	UEngineWinImage* ColImage;
 	YoshiCollision* Collision;
 	YoshiState* State;
+	FVector CameraPivot = FVector::ZERO;
 
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
 	
@@ -137,6 +146,7 @@ private:
 	EPlayerState CurState = EPlayerState::MAX;
 
 	// GameManager
+	bool IsCameraMove = false;
 	bool IsWithBaby = true;
 	FVector Scale = FVector::ZERO;
 
@@ -170,4 +180,3 @@ private:
 #pragma endregion
 
 };
-

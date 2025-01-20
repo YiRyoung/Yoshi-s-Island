@@ -37,7 +37,7 @@ void AStage101::BeginPlay()
 void AStage101::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
-	CameraBoundary();
+	//CameraBoundary();
 }
 
 void AStage101::Stage101Res()
@@ -86,17 +86,56 @@ void AStage101::Stage101Res()
 
 void AStage101::Stage101Init()
 {
+	Camera = GetWorld()->GetMainCamera();
+	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
+	Camera->GetCameraComponent()->SetZSort(0, true);
+
+	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	BackgroundRenderer->SetSprite("Stage101", 2);
+	BackgroundRenderer->SetAutoScaleRatio(3.0f);
+	FVector BackgroundScale = BackgroundRenderer->GetSprite()->GetSpriteScaleToReal(1) * BackgroundRenderer->GetAutoScaleRatio();
+	BackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), static_cast<int>(EOrderNum::BACKGROUND) });
+	BackgroundRenderer->SetupAttachment(RootComponent);
+
+	//ForeBackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	//ForeBackgroundRenderer->SetSprite("Stage100", 2);
+	//ForeBackgroundRenderer->SetAutoScaleRatio(3.0f);
+	//ForeBackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), static_cast<int>(EOrderNum::FOREBACKGROUND) });
+	//ForeBackgroundRenderer->SetupAttachment(RootComponent);
+
+	//StageRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	//StageRenderer->SetSprite("Stage100", 3);
+	//StageRenderer->SetAutoScaleRatio(3.0f);
+	//StageRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), static_cast<int>(EOrderNum::STAGE) });
+	//StageRenderer->SetupAttachment(RootComponent);
+
+	//FrontBackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	//FrontBackgroundRenderer->SetSprite("Stage100(Layer3)", 0);
+	//FrontBackgroundRenderer->SetAutoScaleRatio(3.0f);
+	//FrontBackgroundRenderer->SetRelativeLocation({ 3840.0f, -1500.0f, static_cast<int>(EOrderNum::FRONTBACKGROUND) });
+	//FrontBackgroundRenderer->CreateAnimation("Start", "Stage100(Layer3)", { 0, 1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 4, 3, 2, 1, 1 }, 0.2f);
+	//FrontBackgroundRenderer->ChangeAnimation("Start");
+	//FrontBackgroundRenderer->SetupAttachment(RootComponent);
+
+	ColStageRenderer = CreateDefaultSubObject<USpriteRenderer>();
+	ColStageRenderer->SetSprite("Stage101", 1);
+	//ColStageRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), 0.0f });
+	ColStageRenderer->SetupAttachment(RootComponent);
 }
 
 void AStage101::CameraBoundary()
 {
+	AYoshi* Player = GetWorld()->GetMainPawn<AYoshi>();
+	FVector CameraPivot = Player->GetCameraPivot();
+
 	Camera->SetActorLocation({ GetWorld()->GetMainPawn()->GetActorLocation().X, GetWorld()->GetMainPawn()->GetActorLocation().Y, -520.0f });
 
 	FVector ResultCameraPos = { 0.0f, 0.0f, 0.0f };
 	FVector ScreenSize = UEngineCore::GetScreenScale();
 	FVector MapSize = ColStageRenderer->GetWorldScale3D();
-	FVector CameraPos = Camera->GetActorLocation();
+	FVector CameraPos = Camera->GetActorLocation() + CameraPivot;
 
+	// SetBoundary
 	if ((ScreenSize.X * 0.5f) >= CameraPos.X)
 	{
 		ResultCameraPos.X = ScreenSize.X * 0.5f;
@@ -107,7 +146,7 @@ void AStage101::CameraBoundary()
 	}
 	else
 	{
-		ResultCameraPos.X = GetWorld()->GetMainPawn()->GetActorLocation().X;
+		ResultCameraPos.X = GetWorld()->GetMainPawn()->GetActorLocation().X + CameraPivot.X;
 	}
 
 	if ((ScreenSize.Y * -0.5f) <= CameraPos.Y)
@@ -120,8 +159,9 @@ void AStage101::CameraBoundary()
 	}
 	else
 	{
-		ResultCameraPos.Y = GetWorld()->GetMainPawn()->GetActorLocation().Y;
+		ResultCameraPos.Y = GetWorld()->GetMainPawn()->GetActorLocation().Y + CameraPivot.Y;
 	}
 
 	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y + 160.0f, -520.0f });
+
 }

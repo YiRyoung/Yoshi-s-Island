@@ -295,15 +295,33 @@ void YoshiState::LookUpStart(float _DeltaTime)
 
 void YoshiState::LookUp(float _DeltaTime)
 {
-
+	float MaxCameraPivotY = 100.0f;
+	 Yoshi->CameraPivot += FVector::UP * _DeltaTime * 100.0f;
+	 if (Yoshi->CameraPivot.Y > MaxCameraPivotY)
+	 {
+		 Yoshi->CameraPivot.Y = MaxCameraPivotY;
+		 Yoshi->SetCurState(EPlayerState::IDLE);
+		 return;
+	 }
 }
 
 void YoshiState::BendStart(float _DeltaTime)
 {
+	ChangeAnimation("Bend");
+	Bend(_DeltaTime);
 }
 
 void YoshiState::Bend(float _DeltaTime)
 {
+	float MinCameraPivotY = 0.0f;
+	Yoshi->CameraPivot += FVector::DOWN * _DeltaTime * 100.0f;
+
+	if (Yoshi->CameraPivot.Y < MinCameraPivotY)
+	{
+		Yoshi->CameraPivot.Y = MinCameraPivotY;
+		Yoshi->SetCurState(EPlayerState::IDLE);
+		return;
+	}
 }
 
 void YoshiState::FallStart(float _DeltaTime)
@@ -316,7 +334,8 @@ void YoshiState::Fall(float _DeltaTime)
 {
 	Gravity(_DeltaTime);
 
-	if (CheckColor(ECheckDir::DOWN, UColor::MAGENTA) || CheckColor(ECheckDir::DOWN, UColor::CYAN))
+	if (CheckColor(ECheckDir::DOWN, UColor::MAGENTA) 
+		|| CheckColor(ECheckDir::DOWN, UColor::CYAN))
 	{
 		Yoshi->SetCurState(EPlayerState::IDLE);
 		return;
