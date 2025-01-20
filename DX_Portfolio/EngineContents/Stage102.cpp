@@ -1,5 +1,5 @@
 #include "PreCompile.h"
-#include "Stage101.h"
+#include "Stage102.h"
 
 #include <EnginePlatform/EngineInput.h>
 
@@ -10,37 +10,37 @@
 #include "ContentsEnum.h"
 #include "Yoshi.h"
 
-AStage101::AStage101()
+AStage102::AStage102()
 {
 	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
 	RootComponent = Default;
 
-	Stage101Res();
-	Stage101Init();
+	Stage102Res();
+	Stage102Init();
 }
 
-AStage101::~AStage101()
+AStage102::~AStage102()
 {
 }
 
-void AStage101::SwitchColStage()
+void AStage102::SwitchColStage()
 {
 	ColStageRenderer->SetActive(!ColStageRenderer->IsActive());
 }
 
-void AStage101::BeginPlay()
+void AStage102::BeginPlay()
 {
 	AActor::BeginPlay();
 	SwitchColStage();
 }
 
-void AStage101::Tick(float _DeltaTime)
+void AStage102::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 	CameraBoundary();
 }
 
-void AStage101::Stage101Res()
+void AStage102::Stage102Res()
 {
 	{
 		UEngineDirectory Dir;
@@ -49,7 +49,7 @@ void AStage101::Stage101Res()
 			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
 			return;
 		}
-		Dir.Append("Image/Stage101");
+		Dir.Append("Image/Stage102");
 
 		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
 	}
@@ -61,7 +61,7 @@ void AStage101::Stage101Res()
 			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
 			return;
 		}
-		Dir.Append("Image/Stage101/Stage101(Layer1)");
+		Dir.Append("Image/Stage102/Stage102(Layer1)");
 
 		UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
 	}
@@ -73,8 +73,8 @@ void AStage101::Stage101Res()
 			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
 			return;
 		}
-		Dir.Append("Image/Stage101");
-		UEngineFile ImageFiles = Dir.GetFile("ColStage101.png");
+		Dir.Append("Image/Stage102");
+		UEngineFile ImageFiles = Dir.GetFile("ColStage102.png");
 
 		ColImage.Load(nullptr, ImageFiles.GetPathToString());
 	}
@@ -84,46 +84,46 @@ void AStage101::Stage101Res()
 	Player->SetCamera(GetWorld()->GetMainCamera());
 }
 
-void AStage101::Stage101Init()
+void AStage102::Stage102Init()
 {
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation({ 0.0f, 0.0f, -560.0f, 1.0f });
 	Camera->GetCameraComponent()->SetZSort(0, true);
 
 	BackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	BackgroundRenderer->SetSprite("Stage101", 2);
+	BackgroundRenderer->SetSprite("Stage102", 1);
 	BackgroundRenderer->SetAutoScaleRatio(3.0f);
-	FVector BackgroundScale = BackgroundRenderer->GetSprite()->GetSpriteScaleToReal(2) * BackgroundRenderer->GetAutoScaleRatio();
-	BackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.513f), static_cast<int>(EOrderNum::BACKGROUND) });
+	FVector BackgroundScale = BackgroundRenderer->GetSprite()->GetSpriteScaleToReal(1) * BackgroundRenderer->GetAutoScaleRatio();
+	BackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.496f), static_cast<int>(EOrderNum::BACKGROUND) });
 	BackgroundRenderer->SetupAttachment(RootComponent);
 
 	ForeBackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	ForeBackgroundRenderer->SetSprite("Stage101(Layer1)", 0);
+	ForeBackgroundRenderer->SetSprite("Stage102(Layer1)", 0);
 	ForeBackgroundRenderer->SetAutoScaleRatio(3.0f);
-	ForeBackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.486f), static_cast<int>(EOrderNum::FOREBACKGROUND) });
-	ForeBackgroundRenderer->CreateAnimation("Start", "Stage101(Layer1)", 0, 3, 0.5f);
+	ForeBackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.496f), static_cast<int>(EOrderNum::FOREBACKGROUND) });
+	ForeBackgroundRenderer->CreateAnimation("Start", "Stage102(Layer1)", 0, 7, 0.5f);
 	ForeBackgroundRenderer->ChangeAnimation("Start");
 	ForeBackgroundRenderer->SetupAttachment(RootComponent);
 
 	StageRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	StageRenderer->SetSprite("Stage101", 3);
+	StageRenderer->SetSprite("Stage102", 2);
 	StageRenderer->SetAutoScaleRatio(3.0f);
-	StageRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.485f), static_cast<int>(EOrderNum::STAGE) });
+	StageRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), static_cast<int>(EOrderNum::STAGE) });
 	StageRenderer->SetupAttachment(RootComponent);
 
 	FrontBackgroundRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	FrontBackgroundRenderer->SetSprite("Stage101", 5);
+	FrontBackgroundRenderer->SetSprite("Stage102", 3);
 	FrontBackgroundRenderer->SetAutoScaleRatio(3.0f);
-	FrontBackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.486f), static_cast<int>(EOrderNum::FRONTBACKGROUND) });
+	FrontBackgroundRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), static_cast<int>(EOrderNum::FRONTBACKGROUND) });
 	FrontBackgroundRenderer->SetupAttachment(RootComponent);
 
 	ColStageRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	ColStageRenderer->SetSprite("Stage101", 1);
-	ColStageRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.485f), 0.0f });
+	ColStageRenderer->SetSprite("Stage102", 0);
+	ColStageRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), 0.0f });
 	ColStageRenderer->SetupAttachment(RootComponent);
 }
 
-void AStage101::CameraBoundary()
+void AStage102::CameraBoundary()
 {
 	AYoshi* Player = GetWorld()->GetMainPawn<AYoshi>();
 	FVector CameraPivot = Player->GetCameraPivot();
@@ -149,7 +149,7 @@ void AStage101::CameraBoundary()
 		ResultCameraPos.X = GetWorld()->GetMainPawn()->GetActorLocation().X + CameraPivot.X;
 	}
 
-	if ((ScreenSize.Y * -0.5f) <= CameraPos.Y)
+	if ((ScreenSize.Y * -0.5f) <= CameraPos.Y + 15.0f)
 	{
 		ResultCameraPos.Y = (ScreenSize.Y * -0.5f);
 	}
@@ -162,6 +162,6 @@ void AStage101::CameraBoundary()
 		ResultCameraPos.Y = GetWorld()->GetMainPawn()->GetActorLocation().Y + CameraPivot.Y;
 	}
 
-	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y + 160.0f, -520.0f });
+	Camera->SetActorLocation({ ResultCameraPos.X, ResultCameraPos.Y + 15.0f, -520.0f });
 
 }

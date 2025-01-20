@@ -1,34 +1,33 @@
 #include "PreCompile.h"
-#include "Stage101GameMode.h"
+#include "Stage102GameMode.h"
 
 #include <EnginePlatform/EngineInput.h>
 
 #include <EngineCore/CameraActor.h>
 
-#include "Stage101.h"
+#include "Stage102.h"
 
-AStage101GameMode::AStage101GameMode()
+AStage102GameMode::AStage102GameMode()
 {
 	GetWorld()->CreateCollisionProfile("BodyCollision");
 	GetWorld()->CreateCollisionProfile("DebugCollision");
 }
 
-AStage101GameMode::~AStage101GameMode()
+AStage102GameMode::~AStage102GameMode()
 {
 }
 
-void AStage101GameMode::BeginPlay()
+void AStage102GameMode::BeginPlay()
 {
 	AActor::BeginPlay();
+	Stage = GetWorld()->SpawnActor<AStage102>();
+	Stage->SetActorLocation({ 3072 * 0.5f, 777 * -0.5f });
 
-	Stage = GetWorld()->SpawnActor<AStage101>();
-	Stage->SetActorLocation({ 12288 * 0.5f, 2241 * -0.5f });
-
-	GetWorld()->GetMainPawn()->SetActorLocation({ 100.0f, -1850.0f, 0.0f });
+	GetWorld()->GetMainPawn()->SetActorLocation({ 100.0f, -300.0f, 0.0f });
 	Stage->SwitchColStage();
 }
 
-void AStage101GameMode::Tick(float _DeltaTime)
+void AStage102GameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 

@@ -29,19 +29,25 @@
       <Filter>Contents\GameMode</Filter>
     </ClInclude>
     <ClInclude Include="Stage100GameMode.h">
-      <Filter>Contents\GameMode\Stage</Filter>
+      <Filter>Contents\GameMode\Stage100</Filter>
     </ClInclude>
     <ClInclude Include="Stage100.h">
-      <Filter>Contents\Level\Stage1</Filter>
+      <Filter>Contents\Level\Stage100</Filter>
     </ClInclude>
     <ClInclude Include="Stage101.h">
-      <Filter>Contents\Level\Stage1</Filter>
+      <Filter>Contents\Level\Stage100</Filter>
     </ClInclude>
     <ClInclude Include="Stage101GameMode.h">
-      <Filter>Contents\GameMode\Stage</Filter>
+      <Filter>Contents\GameMode\Stage100</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnum.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage102.h">
+      <Filter>Contents\Level\Stage100</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage102GameMode.h">
+      <Filter>Contents\GameMode\Stage100</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,16 +79,22 @@
       <Filter>Contents\GameMode</Filter>
     </ClCompile>
     <ClCompile Include="Stage100GameMode.cpp">
-      <Filter>Contents\GameMode\Stage</Filter>
+      <Filter>Contents\GameMode\Stage100</Filter>
     </ClCompile>
     <ClCompile Include="Stage100.cpp">
-      <Filter>Contents\Level\Stage1</Filter>
+      <Filter>Contents\Level\Stage100</Filter>
     </ClCompile>
     <ClCompile Include="Stage101.cpp">
-      <Filter>Contents\Level\Stage1</Filter>
+      <Filter>Contents\Level\Stage100</Filter>
     </ClCompile>
     <ClCompile Include="Stage101GameMode.cpp">
-      <Filter>Contents\GameMode\Stage</Filter>
+      <Filter>Contents\GameMode\Stage100</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage102.cpp">
+      <Filter>Contents\Level\Stage100</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage102GameMode.cpp">
+      <Filter>Contents\GameMode\Stage100</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,12 +113,6 @@
     <Filter Include="Contents\Level">
       <UniqueIdentifier>{143e156c-ef76-4b89-a788-24bcd2e1cfcd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameMode\Stage">
-      <UniqueIdentifier>{37ea3f83-1e84-47d6-9ca3-e49f2dcbc7e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Level\Stage1">
-      <UniqueIdentifier>{ee7dab8a-0846-4526-99c3-e09da3f1b10c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Global">
       <UniqueIdentifier>{38e2e770-9952-4a1f-bfa2-f4d151fc65c4}</UniqueIdentifier>
     </Filter>
@@ -115,6 +121,12 @@
     </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{f2cd59ec-fedb-4106-a60f-346750907a2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameMode\Stage100">
+      <UniqueIdentifier>{37ea3f83-1e84-47d6-9ca3-e49f2dcbc7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Level\Stage100">
+      <UniqueIdentifier>{ee7dab8a-0846-4526-99c3-e09da3f1b10c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

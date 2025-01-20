@@ -11,6 +11,7 @@
 #include "SelectGameMode.h";
 #include "Stage100GameMode.h"
 #include "Stage101GameMode.h"
+#include "Stage102GameMode.h"
 
 CreateContentsCoreDefine(UContentsCore);
 
@@ -33,8 +34,9 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 	UEngineCore::CreateLevel<ASelectGameMode, APawn, AHUD>("Select");
 	UEngineCore::CreateLevel<AStage100GameMode, AYoshi, AHUD>("Stage100");
 	UEngineCore::CreateLevel<AStage101GameMode, AYoshi, AHUD>("Stage101");
+	UEngineCore::CreateLevel<AStage102GameMode, AYoshi, AHUD>("Stage102");
 
-	UEngineCore::OpenLevel("Stage100");
+	UEngineCore::OpenLevel("Stage101");
 
 }
 
