@@ -67,5 +67,8 @@ void UContentsCore::LoadSprites()
 			UEngineTexture::Load(FilePath);
 		}
 	}
+
 	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("YoshiStick_Right.png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("YoshiStick_Upper.png", ".sdata");
 }

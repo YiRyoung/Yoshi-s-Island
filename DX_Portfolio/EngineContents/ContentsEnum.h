@@ -28,6 +28,5 @@ enum class EPlayerState
 	RUN,
 	JUMP,
 	STAYUP,
-	FALL,
-	MAX
+	STICK
 };

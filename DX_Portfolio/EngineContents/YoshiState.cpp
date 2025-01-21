@@ -35,20 +35,29 @@ bool YoshiState::IsUpKey(int _KeyCode)
 	return UEngineInput::IsUp(_KeyCode);
 }
 
-bool YoshiState::CheckColor(ECheckDir _Dir, UColor _Color)
+bool YoshiState::CheckPointColor(ECheckDir _Dir, UColor _Color)
 {
 	return Yoshi->GetCollision()->CheckPointColor(_Dir, _Color);
 }
 
+bool YoshiState::CheckLineColor(ECheckDir _Dir, UColor _Color)
+{
+	return Yoshi->GetCollision()->CheckLineColor(_Dir, _Color);
+}
+
 void YoshiState::ChangeAnimation(std::string_view _Name)
 {
-	Yoshi->GetYoshiRenderer()->ChangeAnimation(_Name);
+	Yoshi->YoshiRenderer->ChangeAnimation(_Name);
+}
+void YoshiState::ChangeState(EPlayerState _NextState)
+{
+	Yoshi->CurState = _NextState;
 }
 #pragma endregion
 
 void YoshiState::YoshiFSM(float _DeltaTime)
 {
-	switch (Yoshi->GetCurState())
+	switch (Yoshi->CurState)
 	{
 	case EPlayerState::IDLE:
 		IdleStart(_DeltaTime);
@@ -71,33 +80,33 @@ void YoshiState::YoshiFSM(float _DeltaTime)
 	case EPlayerState::BEND:
 		BendStart(_DeltaTime);
 		break;
-	case EPlayerState::FALL:
-		FallStart(_DeltaTime);
+	case EPlayerState::STICK:
+		StickStart(_DeltaTime);
 		break;
 	}
 }
 
 void YoshiState::Gravity(float _DeltaTime, float _Scale)
 {
-	FVector Power = (FVector::DOWN + Yoshi->GetGravityForce()) * _DeltaTime;
+	FVector Power = (FVector::DOWN + Yoshi->GravityForce) * _DeltaTime;
 	FVector CheckPos = Yoshi->GetActorLocation() + Power;
 
 	UColor Color = Yoshi->GetColor(CheckPos);
 
-	if (Color != UColor::MAGENTA && Color != UColor::CYAN)
+	if (Color == UColor::BLACK)
 	{
-		Yoshi->AddGravityForce(FVector::DOWN * Yoshi->GetGravityPower() *  _Scale * _DeltaTime);
-		Yoshi->Move(Power);
+		Yoshi->GravityForce += FVector::DOWN * Yoshi->GravityPower * _Scale * _DeltaTime;
+		Yoshi->AddActorLocation(Power);
 	}
 	else
 	{
-		Yoshi->SetGravityForce(FVector::ZERO);
+		Yoshi->GravityForce = FVector::ZERO;
 	}
 }
 
 void YoshiState::IdleStart(float _DeltaTime)
 {
-	Yoshi->SetIdleAnim();
+	Yoshi->PlayIdleAnim(false);
 	Idle(_DeltaTime);
 }
 
@@ -107,25 +116,24 @@ void YoshiState::Idle(float _DeltaTime)
 
 	if (IsPressKey(VK_LEFT) || IsPressKey(VK_RIGHT))
 	{
-		Yoshi->SetCurState(EPlayerState::WALK);
+		ChangeState(EPlayerState::WALK);
+		return;
+	}
+
+	if (IsDownKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
 		return;
 	}
 
 	if (IsDownKey('Z'))
 	{
-		Yoshi->SetCurState(EPlayerState::JUMP);
+		ChangeState(EPlayerState::JUMP);
 		return;
 	}
-
-	if (!CheckColor(ECheckDir::DOWN, UColor::MAGENTA) && !Yoshi->GetCollision()->IsHill())
-	{
-		Yoshi->SetCurState(EPlayerState::FALL);
-		return;
-	}
-
 	if (IsPressKey(VK_UP))
 	{
-		Yoshi->SetCurState(EPlayerState::LOOKUP);
+		ChangeState(EPlayerState::LOOKUP);
 		return;
 	}
 }
@@ -138,33 +146,38 @@ void YoshiState::WalkStart(float _DeltaTime)
 
 void YoshiState::Walk(float _DeltaTime)
 {
-	if (IsPressKey(VK_LEFT) && !CheckColor(ECheckDir::LEFT, UColor::WHITE) && !CheckColor(ECheckDir::LEFT, UColor::MAGENTA))
+	if (IsPressKey(VK_LEFT) && !CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA))
 	{
-		Yoshi->Move(-Yoshi->GetSpeed() * _DeltaTime, 0.0f);
-		Yoshi->GetCollision()->GroundUp(_DeltaTime);
+		Yoshi->AddActorLocation({ -Yoshi->Speed * _DeltaTime, 0.0f });
 	}
 
-	if (IsPressKey(VK_RIGHT) && !CheckColor(ECheckDir::RIGHT, UColor::WHITE) && !CheckColor(ECheckDir::RIGHT, UColor::MAGENTA))
+	if (IsPressKey(VK_RIGHT) && !CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA))
 	{
-		Yoshi->Move(Yoshi->GetSpeed() * _DeltaTime, 0.0f);
-		Yoshi->GetCollision()->GroundUp(_DeltaTime);
+		Yoshi->AddActorLocation({ Yoshi->Speed * _DeltaTime, 0.0f });
+	}
+
+
+	if (IsDownKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		return;
 	}
 
 	if (IsDownKey('Z'))
 	{
-		Yoshi->SetCurState(EPlayerState::JUMP);
+		ChangeState(EPlayerState::JUMP);
 		return;
 	}
 
 	if (IsPressTime(VK_LEFT, 0.4f) || IsPressTime(VK_RIGHT, 0.4f))
 	{
-		Yoshi->SetCurState(EPlayerState::RUN);
+		ChangeState(EPlayerState::RUN);
 		return;
 	}
 
 	if (!IsPressKey(VK_LEFT) && !IsPressKey(VK_RIGHT))
 	{
-		Yoshi->SetCurState(EPlayerState::IDLE);
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
 
@@ -179,27 +192,31 @@ void YoshiState::RunStart(float _DeltaTime)
 
 void YoshiState::Run(float _DeltaTime)
 {
-	if (IsPressKey(VK_LEFT) && !CheckColor(ECheckDir::LEFT, UColor::WHITE) && !CheckColor(ECheckDir::LEFT, UColor::MAGENTA))
+	if (IsPressKey(VK_LEFT) && !CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA))
 	{
-		Yoshi->Move((-Yoshi->GetSpeed() - 80.0f) * _DeltaTime, 0.0f);
-		Yoshi->GetCollision()->GroundUp(_DeltaTime);
+		Yoshi->AddActorLocation({(-Yoshi->Speed - 80.0f) * _DeltaTime, 0.0f });
 	}
 
-	if (IsPressKey(VK_RIGHT) && !CheckColor(ECheckDir::RIGHT, UColor::WHITE) && !CheckColor(ECheckDir::RIGHT, UColor::MAGENTA))
+	if (IsPressKey(VK_RIGHT) && !CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA))
 	{
-		Yoshi->Move((Yoshi->GetSpeed() + 80.0f) * _DeltaTime, 0.0f);
-		Yoshi->GetCollision()->GroundUp(_DeltaTime);
+		Yoshi->AddActorLocation({ (Yoshi->Speed + 80.0f) * _DeltaTime, 0.0f });
+	}
+
+	if (IsDownKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		return;
 	}
 
 	if (IsPressKey('Z'))
 	{
-		Yoshi->SetCurState(EPlayerState::JUMP);
+		ChangeState(EPlayerState::JUMP);
 		return;
 	}
 
 	if (!IsPressKey(VK_LEFT) && !IsPressKey(VK_RIGHT))
 	{
-		Yoshi->SetCurState(EPlayerState::IDLE);
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
 
@@ -208,7 +225,7 @@ void YoshiState::Run(float _DeltaTime)
 
 void YoshiState::JumpStart(float _DeltaTime)
 {
-	float Force = Yoshi->GetJumpPower() + Yoshi->GetGravityForce().Y;
+	float Force = Yoshi->JumpPower + Yoshi->GravityForce.Y;
 
 	if (Force > 0.0f)
 	{
@@ -218,8 +235,8 @@ void YoshiState::JumpStart(float _DeltaTime)
 	{
 		if (IsPressKey('Z')) 
 		{
-			Yoshi->SetGravityForce(FVector::ZERO);
-			Yoshi->SetCurState(EPlayerState::STAYUP);
+			Yoshi->GravityForce = FVector::ZERO;
+			ChangeState(EPlayerState::STAYUP);
 			return;
 		}
 
@@ -234,26 +251,26 @@ void YoshiState::Jump(float _DeltaTime)
 
 	FVector Vector = FVector::ZERO;
 
-	if (IsPressKey(VK_LEFT) && !CheckColor(ECheckDir::LEFT, UColor::MAGENTA))
+	if (IsPressKey(VK_LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA))
 	{
 		Vector += FVector::LEFT * 0.58f;
 	}
-	if (IsPressKey(VK_RIGHT) && !CheckColor(ECheckDir::RIGHT, UColor::MAGENTA))
+	if (IsPressKey(VK_RIGHT) && !CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA))
 	{
 		Vector += FVector::RIGHT * 0.58f;
 	}
-	if (CheckColor(ECheckDir::UP, UColor::MAGENTA))
+	if (CheckPointColor(ECheckDir::UP, UColor::MAGENTA))
 	{
-		Yoshi->SetCurState(EPlayerState::IDLE);
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
 
-	Yoshi->Move((Vector + FVector::UP)* Yoshi->GetJumpPower() * _DeltaTime);
+	Yoshi->AddActorLocation({ (Vector + FVector::UP) * Yoshi->JumpPower * _DeltaTime });
 	Gravity(_DeltaTime);
 
-	if (Yoshi->GetGravityForce() == FVector::ZERO)
+	if (Yoshi->GravityForce == FVector::ZERO)
 	{
-		Yoshi->SetCurState(EPlayerState::IDLE);
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
 }
@@ -268,21 +285,21 @@ void YoshiState::StayUp(float _DeltaTime)
 {
 	FVector Vector = FVector::ZERO;
 
-	if (IsPressKey(VK_LEFT) && !CheckColor(ECheckDir::LEFT, UColor::MAGENTA))
+	if (IsPressKey(VK_LEFT) && !CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA))
 	{
-		Vector += FVector::LEFT * Yoshi->GetSpeed() * 0.58f * _DeltaTime;
+		Vector += FVector::LEFT * Yoshi->Speed * 0.58f * _DeltaTime;
 	}
-	if (IsPressKey(VK_RIGHT) && !CheckColor(ECheckDir::RIGHT, UColor::MAGENTA))
+	if (IsPressKey(VK_RIGHT) && !CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA))
 	{
-		Vector += FVector::RIGHT * Yoshi->GetSpeed() * 0.58f * _DeltaTime;
+		Vector += FVector::RIGHT * Yoshi->Speed * 0.58f * _DeltaTime;
 	}
 
-	Yoshi->Move(Vector + FVector::UP * Yoshi->GetJumpPower() * 0.4f * _DeltaTime);
+	Yoshi->AddActorLocation({ Vector + FVector::UP * Yoshi->JumpPower * 0.4f * _DeltaTime });
 	Gravity(_DeltaTime, 0.52f);
 
 	if (!IsPressKey('Z') ||  1.8f <= UEngineInput::IsPressTime('Z'))
 	{
-		Yoshi->SetCurState(EPlayerState::IDLE);
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
 }
@@ -300,7 +317,7 @@ void YoshiState::LookUp(float _DeltaTime)
 	 if (Yoshi->CameraPivot.Y > MaxCameraPivotY)
 	 {
 		 Yoshi->CameraPivot.Y = MaxCameraPivotY;
-		 Yoshi->SetCurState(EPlayerState::IDLE);
+		 ChangeState(EPlayerState::IDLE);
 		 return;
 	 }
 }
@@ -319,25 +336,22 @@ void YoshiState::Bend(float _DeltaTime)
 	if (Yoshi->CameraPivot.Y < MinCameraPivotY)
 	{
 		Yoshi->CameraPivot.Y = MinCameraPivotY;
-		Yoshi->SetCurState(EPlayerState::IDLE);
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
 }
 
-void YoshiState::FallStart(float _DeltaTime)
+void YoshiState::StickStart(float _DeltaTime)
 {
-	ChangeAnimation("Fall");
-	Fall(_DeltaTime);
+	ChangeAnimation("Stick_Right");
+	Stick(_DeltaTime);
 }
 
-void YoshiState::Fall(float _DeltaTime)
+void YoshiState::Stick(float _DeltaTime)
 {
-	Gravity(_DeltaTime);
-
-	if (CheckColor(ECheckDir::DOWN, UColor::MAGENTA) 
-		|| CheckColor(ECheckDir::DOWN, UColor::CYAN))
+	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
 	{
-		Yoshi->SetCurState(EPlayerState::IDLE);
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
 }

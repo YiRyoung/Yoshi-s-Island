@@ -16,15 +16,11 @@ public:
 	YoshiCollision& operator=(const YoshiCollision& _Other) = delete;
 	YoshiCollision& operator=(YoshiCollision&& _Other) noexcept = delete;
 
-	//Warpping Functions
-	FVector GetYoshiLocation();
-	FVector GetYoshiScale();
-	UColor GetColor(FVector _Pos);
-
 	bool CheckPointColor(ECheckDir _Dir, UColor _Color);
 	bool CheckLineColor(ECheckDir _Dir, UColor _Color);
 
-	bool IsHill();
+	//bool IsHill();
+
 	void GroundUp(float _DeltaTime);
 
 protected:

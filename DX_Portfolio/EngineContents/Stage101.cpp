@@ -81,7 +81,7 @@ void AStage101::Stage101Res()
 
 	AYoshi* Player = dynamic_cast<AYoshi*>(GetWorld()->GetMainPawn());
 	Player->SetColImage(&ColImage);
-	Player->SetCamera(GetWorld()->GetMainCamera());
+	//Player->SetCamera(GetWorld()->GetMainCamera());
 }
 
 void AStage101::Stage101Init()

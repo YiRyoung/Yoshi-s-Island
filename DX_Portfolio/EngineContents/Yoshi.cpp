@@ -25,11 +25,7 @@ AYoshi::AYoshi()
 	YoshiRenderer->SetRelativeLocation({ 0, 0, -10 });
 
 	SetAnimations();
-
-	CurState = EPlayerState::IDLE;
-
-	int AnimNum = SetIdleAnimNum();
-	YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
+	PlayIdleAnim(true);
 }
 
 AYoshi::~AYoshi()
@@ -62,12 +58,7 @@ void AYoshi::Tick(float _DeltaTime)
 
 	SetAnimDir();
 	State->YoshiFSM(_DeltaTime);
-
-	//FVector CheckPos = GetActorLocation() + FVector::DOWN * (Scale.Y * -0.5f) + FVector::DOWN;
-	//UColor Color = GetColor(CheckPos);
-	//UEngineDebug::OutPutString("Scale : " + std::to_string(YoshiRenderer->GetTransformRef().Scale.Y));
-	//UEngineDebug::OutPutString("CheckColor : " + std::to_string(Color.R) + "," + std::to_string(Color.G) + "," + std::to_string(Color.B));
-	//UEngineDebug::OutPutString(std::to_string(GravityForce.Y));
+	Collision->GroundUp(_DeltaTime);
 }
 
 void AYoshi::SetAnimations()
@@ -89,7 +80,8 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("Fall", "YoshiAndMario.png", 77, 79, 0.07f, false);
 	YoshiRenderer->CreateAnimation("StayUp", "YoshiAndMario.png", 80, 83, 0.04f);
 
-	YoshiRenderer->CreateAnimation("Stick", "YoshiAndMario.png", { 94, 95, 96, 97, 98, 99, 100, 101, 102, 101, 100, 99, 98, 97, 96, 95, 94 }, 0.04f, false);
+	YoshiRenderer->CreateAnimation("Stick_Right", "YoshiStick_Right.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
+	YoshiRenderer->CreateAnimation("Stick_Upper", "YoshiStick_Upper.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
 }
 
 void AYoshi::SetAnimDir()
@@ -112,6 +104,16 @@ int AYoshi::SetIdleAnimNum()
 	if (RandomValue == 0) { return 2; }
 	else if (RandomValue == 1) { return 1; }
 	else { return 0; }
+}
+
+void AYoshi::PlayIdleAnim(bool _IsStart)
+{
+	int AnimNum = SetIdleAnimNum();
+
+	if (_IsStart || YoshiRenderer->IsCurAnimationEnd())
+	{
+		YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
+	}
 }
 
 void AYoshi::SetCollision()
@@ -159,13 +161,4 @@ void AYoshi::SetDebugCollision()
 	DebugUpCollision->SetCollisionProfileName("DebugCollision");
 	DebugUpCollision->SetScale3D({ 5.0f, 5.0f });
 	DebugUpCollision->SetRelativeLocation({ 0.0f, Scale.Y });
-}
-
-void AYoshi::SetIdleAnim()
-{
-	int AnimNum = SetIdleAnimNum();
-	if (true == YoshiRenderer->IsCurAnimationEnd())
-	{
-		YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
-	}
 }

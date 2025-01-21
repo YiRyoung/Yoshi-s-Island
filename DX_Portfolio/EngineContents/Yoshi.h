@@ -35,19 +35,9 @@ public:
 		return State;
 	}
 
-	std::shared_ptr<ACameraActor> GetMainCamera() const
-	{
-		return Camera;
-	}
-
 	void SetColImage(UEngineWinImage* _ColImage)
 	{
 		ColImage = _ColImage;
-	}
-
-	void SetCamera(std::shared_ptr<ACameraActor> _Camera)
-	{
-		Camera = _Camera;
 	}
 
 	FVector GetCameraPivot() const
@@ -55,79 +45,11 @@ public:
 		return CameraPivot;
 	}
 
-	// Wrapping
-	void Move(float _X, float _Y)
-	{
-		AddActorLocation({ _X, _Y, 0.0f });
-	};
-
-	void Move(FVector _Pos)
-	{
-		AddActorLocation(_Pos);
-	}
-
-#pragma region State
-	std::shared_ptr<class USpriteRenderer> GetYoshiRenderer() const
-	{
-		return YoshiRenderer;
-	}
-
-	EPlayerState GetCurState() const
-	{
-		return CurState;
-	}
-
-	float GetSpeed() const
-	{
-		return Speed;
-	}
-
-	void SetIdleAnim();
-
-	void SetCurState(EPlayerState _NextState)
-	{
-		CurState = _NextState;
-	}
-
-#pragma endregion
-
-#pragma region Collision
 	UColor GetColor(FVector _Pos)
 	{
 		_Pos.Y = -_Pos.Y;
 		return ColImage->GetColor(_Pos);
 	}
-
-	FVector GetScale() const
-	{
-		return Scale;
-	}
-
-	float GetJumpPower() const
-	{
-		return JumpPower;
-	}
-
-	float GetGravityPower() const
-	{
-		return GravityPower;
-	}
-
-	FVector GetGravityForce() const
-	{
-		return GravityForce;
-	}
-
-	void AddGravityForce(FVector _Power)
-	{
-		GravityForce += _Power;
-	}
-
-	void SetGravityForce(FVector _NewForce)
-	{
-		GravityForce = _NewForce;
-	}
-#pragma endregion
 
 protected:
 	virtual void BeginPlay();
@@ -136,7 +58,6 @@ private:
 	UEngineWinImage* ColImage;
 	YoshiCollision* Collision;
 	YoshiState* State;
-	FVector CameraPivot = FVector::ZERO;
 
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
 	
@@ -145,7 +66,9 @@ private:
 	std::shared_ptr<class UCollision> FootCollision;
 
 	std::shared_ptr<ACameraActor> Camera;
-	EPlayerState CurState = EPlayerState::MAX;
+
+	FVector CameraPivot = FVector::ZERO;
+	EPlayerState CurState = EPlayerState::IDLE;
 
 	// GameManager
 	bool IsCameraMove = false;
@@ -168,7 +91,9 @@ private:
 	// Animation
 	void SetAnimations();
 	void SetAnimDir();
+
 	int SetIdleAnimNum();
+	void PlayIdleAnim(bool _IsStart);
 
 	// Collision
 	void SetCollision();
