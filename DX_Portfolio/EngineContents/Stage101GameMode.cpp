@@ -6,12 +6,16 @@
 #include <EngineCore/CameraActor.h>
 
 #include "Stage101.h"
+#include "ShyGuy.h"
 
 AStage101GameMode::AStage101GameMode()
 {
 	GetWorld()->CreateCollisionProfile("HeadCollision");
 	GetWorld()->CreateCollisionProfile("BodyCollision");
 	GetWorld()->CreateCollisionProfile("FootCollision");
+
+	GetWorld()->CreateCollisionProfile("MonsterCollision");
+
 
 	GetWorld()->CreateCollisionProfile("DebugCollision");
 }
@@ -29,6 +33,9 @@ void AStage101GameMode::BeginPlay()
 
 	GetWorld()->GetMainPawn()->SetActorLocation({ 100.0f, -1850.0f, 0.0f });
 	Stage->SwitchColStage();
+
+	ShyGuy = GetWorld()->SpawnActor<AShyGuy>();
+	ShyGuy->SetActorLocation({ 200.0f, -1850.0f, -1.0f });
 }
 
 void AStage101GameMode::Tick(float _DeltaTime)

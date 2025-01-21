@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+
 // Ό³Έν :
 class AStage101GameMode : public AGameMode
 {
@@ -20,5 +21,6 @@ protected:
 
 private:
 	std::shared_ptr<class AStage101> Stage;
+	std::shared_ptr<class AShyGuy> ShyGuy;
 };
 

@@ -16,18 +16,6 @@
     <ClInclude Include="YoshiState.h">
       <Filter>Contents\Global\Yoshi</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>Contents\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleGameMode.h">
-      <Filter>Contents\GameMode</Filter>
-    </ClInclude>
-    <ClInclude Include="Select.h">
-      <Filter>Contents\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectGameMode.h">
-      <Filter>Contents\GameMode</Filter>
-    </ClInclude>
     <ClInclude Include="Stage100GameMode.h">
       <Filter>Contents\GameMode\Stage100</Filter>
     </ClInclude>
@@ -49,6 +37,24 @@
     <ClInclude Include="Stage102GameMode.h">
       <Filter>Contents\GameMode\Stage100</Filter>
     </ClInclude>
+    <ClInclude Include="Select.h">
+      <Filter>Contents\Level\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Contents\Level\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectGameMode.h">
+      <Filter>Contents\GameMode\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleGameMode.h">
+      <Filter>Contents\GameMode\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="ShyGuy.h">
+      <Filter>Contents\Global\Monster\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Contents\Global\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -65,18 +71,6 @@
     </ClCompile>
     <ClCompile Include="YoshiState.cpp">
       <Filter>Contents\Global\Yoshi</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>Contents\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleGameMode.cpp">
-      <Filter>Contents\GameMode</Filter>
-    </ClCompile>
-    <ClCompile Include="Select.cpp">
-      <Filter>Contents\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectGameMode.cpp">
-      <Filter>Contents\GameMode</Filter>
     </ClCompile>
     <ClCompile Include="Stage100GameMode.cpp">
       <Filter>Contents\GameMode\Stage100</Filter>
@@ -95,6 +89,24 @@
     </ClCompile>
     <ClCompile Include="Stage102GameMode.cpp">
       <Filter>Contents\GameMode\Stage100</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Contents\Level\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="Select.cpp">
+      <Filter>Contents\Level\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGameMode.cpp">
+      <Filter>Contents\GameMode\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleGameMode.cpp">
+      <Filter>Contents\GameMode\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="ShyGuy.cpp">
+      <Filter>Contents\Global\Monster\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Contents\Global\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +139,18 @@
     </Filter>
     <Filter Include="Contents\Level\Stage100">
       <UniqueIdentifier>{ee7dab8a-0846-4526-99c3-e09da3f1b10c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Level\Start">
+      <UniqueIdentifier>{ad98abe0-1be5-4ab6-a249-9a2379c66340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameMode\Start">
+      <UniqueIdentifier>{0a9936b2-9d24-4a94-96e2-38ebd3156e99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Global\Monster">
+      <UniqueIdentifier>{1a67c72b-4191-45cf-abc3-49d8a76291c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Global\Monster\Normal">
+      <UniqueIdentifier>{77a810d7-57a6-47e7-9f54-e1e03d97a26d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

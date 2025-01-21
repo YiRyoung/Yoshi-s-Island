@@ -110,27 +110,32 @@ bool YoshiCollision::CheckLineColor(ECheckDir _Dir, UColor _Color)
     return false;
 }
 
-//bool YoshiCollision::IsHill()
-//{
-//    FVector NextPos = FVector::ZERO;
-//    FVector Scale = Yoshi->YoshiRenderer->GetTransformRef().Scale;
-//    UColor Color = UColor::WHITE;;
-//
-//    NextPos = Yoshi->GetActorLocation() + FVector::DOWN;
-//
-//    for (int i = 0; i < 30; i++)
-//    {
-//        NextPos += FVector{ 0, i };
-//        Color = Yoshi->GetColor(NextPos);
-//
-//        if (Color.operator==(UColor::CYAN))
-//        {
-//            return true;
-//        }
-//    }
-//
-//    return false;
-//}
+bool YoshiCollision::IsHill()
+{
+    FVector NextPos = FVector::ZERO;
+    FVector Scale = Yoshi->YoshiRenderer->GetTransformRef().Scale;
+    UColor Color = UColor::WHITE;;
+
+    NextPos = Yoshi->GetActorLocation() + FVector::DOWN;
+
+    for (int i = 0; i < 20; i++)
+    {
+        NextPos += FVector{ 0, -i };
+        Color = Yoshi->GetColor(NextPos);
+
+        if (Color.operator==(UColor::MAGENTA) || Color.operator==(UColor::YELLOW) || Color.operator==(UColor::GREEN))
+        {
+            return false;
+        }
+
+        if (Color.operator==(UColor::CYAN))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 void YoshiCollision::GroundUp(float _DeltaTime)
 {
@@ -140,4 +145,13 @@ void YoshiCollision::GroundUp(float _DeltaTime)
 
         Yoshi->AddActorLocation({ 0.0f, Yoshi->Speed * _DeltaTime });
 	}
+}
+
+void YoshiCollision::GroundDown(float _DeltaTime)
+{
+    if ((Yoshi->CurState != EPlayerState::JUMP) && IsHill()
+        && !CheckPointColor(ECheckDir::DOWN, UColor::CYAN))
+    {
+        Yoshi->AddActorLocation({ 0.0f, -Yoshi->Speed * _DeltaTime });
+    }
 }

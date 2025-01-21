@@ -715,7 +715,6 @@ void ViewPort(float _Width, float _Height, float _Left, float _Top, float _ZMin,
 		Arr2D[1][0] = sinf(_Angle);
 		Arr2D[1][1] = cosf(_Angle);
 	}
-
 };
 
 using float4x4 = FMatrix;
@@ -975,6 +974,7 @@ public:
 	static const TColor BLUE;
 	static const TColor MAGENTA;
 	static const TColor CYAN;
+	static const TColor YELLOW;
 
 	union
 	{
@@ -1029,3 +1029,6 @@ const TColor<unsigned char> TColor<unsigned char>::MAGENTA = TColor<unsigned cha
 
 template<>
 const TColor<unsigned char> TColor<unsigned char>::CYAN = TColor<unsigned char>(0, 255, 255, 255);
+
+template<>
+const TColor<unsigned char> TColor<unsigned char>::YELLOW = TColor<unsigned char>(255, 255, 0, 255);

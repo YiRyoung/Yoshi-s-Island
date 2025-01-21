@@ -30,3 +30,20 @@ enum class EPlayerState
 	STAYUP,
 	STICK
 };
+
+enum class EColorType
+{
+	NONE,
+	MAGENTA,
+	RED,
+	GREEN,
+	YELLOW
+};
+
+enum class EMonsterState
+{
+	IDLE,
+	WALK,
+	ATTACK,
+	HURT
+};

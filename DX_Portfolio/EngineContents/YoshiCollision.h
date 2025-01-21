@@ -19,9 +19,9 @@ public:
 	bool CheckPointColor(ECheckDir _Dir, UColor _Color);
 	bool CheckLineColor(ECheckDir _Dir, UColor _Color);
 
-	//bool IsHill();
-
+	bool IsHill();
 	void GroundUp(float _DeltaTime);
+	void GroundDown(float _DeltaTime);
 
 protected:
 

@@ -59,6 +59,7 @@ void AYoshi::Tick(float _DeltaTime)
 	SetAnimDir();
 	State->YoshiFSM(_DeltaTime);
 	Collision->GroundUp(_DeltaTime);
+	Collision->GroundDown(_DeltaTime);
 }
 
 void AYoshi::SetAnimations()
