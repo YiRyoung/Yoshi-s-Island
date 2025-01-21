@@ -23,10 +23,10 @@ private:
 	std::shared_ptr<class UTimeEventComponent> TimeEvent;
 	void SetAnimation() override;
 
-	void ChangeIdleAnim();
-	void SetIdleAnim();
+	void ChangeAnimDir();
 
 	void IdleStart() override;
-	void Idle(float _DeltaTime);
+	void WalkStart() override;
+	void Walk(float _DeltaTime);
 };
 

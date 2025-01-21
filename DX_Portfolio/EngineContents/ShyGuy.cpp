@@ -1,6 +1,10 @@
 #include "PreCompile.h"
 #include "ShyGuy.h"
 
+#include <EngineBase/EngineRandom.h>
+
+#include <EnginePlatform/EngineInput.h>
+
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/TimeEventComponent.h>
@@ -26,6 +30,7 @@ void AShyGuy::BeginPlay()
 {
 	AMonster::BeginPlay();
 	ChangeState(EMonsterState::IDLE);
+	SetAnimation();
 }
 
 void AShyGuy::Tick(float _DeltaTime)
@@ -35,13 +40,20 @@ void AShyGuy::Tick(float _DeltaTime)
 
 void AShyGuy::SetAnimation()
 {
-	Renderer->SetSprite("Shy Guys.png", 0);
-	Renderer->CreateAnimation("Walk", "Shy Guys.png", 0, 5, 0.7f);
-	Renderer->ChangeAnimation("Walk");
+	Renderer->CreateAnimation("Walk", "Shy Guys.png", 0, 4, 0.2f);
 }
 
-void AShyGuy::ChangeIdleAnim()
+void AShyGuy::ChangeAnimDir()
 {
+	if (CurMonsterState != EMonsterState::IDLE)
+	{
+		if (TimeEvent != nullptr)
+		{
+			TimeEvent = nullptr;
+			return;
+		}
+	}
+
 	FVector RotationValue = RootComponent->GetTransformRef().WorldScale;
 
 	if (RotationValue.X > 0)
@@ -53,22 +65,22 @@ void AShyGuy::ChangeIdleAnim()
 		RootComponent->SetScale3D({ 1, 1, 1 });
 	}
 
-	TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AShyGuy::ChangeIdleAnim, this), false);
+	TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AShyGuy::ChangeAnimDir, this), false);
 
-}
-
-void AShyGuy::SetIdleAnim()
-{
 }
 
 void AShyGuy::IdleStart()
 {
-	 TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AShyGuy::ChangeIdleAnim, this), false);
-
-	SetIdleAnim();
+	Renderer->SetSprite("Shy Guys.png", 0);
+	TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AShyGuy::ChangeAnimDir, this), false);
 }
 
-void AShyGuy::Idle(float _DeltaTime)
+void AShyGuy::WalkStart()
 {
-	AMonster::Idle(_DeltaTime);
+	Renderer->ChangeAnimation("Walk");
+}
+
+void AShyGuy::Walk(float _DeltaTime)
+{
+	
 }
