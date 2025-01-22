@@ -163,3 +163,8 @@ void AYoshi::SetDebugCollision()
 	DebugUpCollision->SetScale3D({ 5.0f, 5.0f });
 	DebugUpCollision->SetRelativeLocation({ 0.0f, Scale.Y });
 }
+
+void AYoshi::Play(std::string_view _Name)
+{
+	SoundPlayer = UEngineSound::Play(_Name);
+}

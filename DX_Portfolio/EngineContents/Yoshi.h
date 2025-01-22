@@ -1,5 +1,6 @@
 #pragma once
 #include <EnginePlatform/EngineWinImage.h>
+#include <EnginePlatform/EngineSound.h>
 
 #include <EngineCore/Pawn.h>
 #include <EngineCore/CameraActor.h>
@@ -55,6 +56,8 @@ protected:
 	virtual void BeginPlay();
 	virtual void Tick(float _DeltaTime);
 private:
+	USoundPlayer SoundPlayer;
+
 	UEngineWinImage* ColImage;
 	YoshiCollision* Collision;
 	YoshiState* State;
@@ -98,6 +101,9 @@ private:
 	// Collision
 	void SetCollision();
 	void SetDebugCollision();
+
+	// Sound
+	void Play(std::string_view _Name);
 
 #pragma region Debug
 	std::shared_ptr<class UCollision> DebugDownCollision;

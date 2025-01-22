@@ -3,6 +3,7 @@
 #include <EngineBase/EngineDebug.h>
 #include <EnginePlatform/EngineWindow.h>
 #include <EnginePlatform/EngineInput.h>
+#include <EnginePlatform/EngineSound.h>
 #include "IContentsCore.h"
 #include "EngineResources.h"
 #include "EngineConstantBuffer.h"
@@ -115,6 +116,7 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 	UEngineWindow::WindowMessageLoop(
 		[]()
 		{
+			UEngineSound::Init();
 			GEngine->Device.CreateDeviceAndContext();
 
 			GEngine->Core->EngineStart(GEngine->Data);
@@ -193,6 +195,8 @@ void UEngineCore::EngineFrame()
 		UEngineInput::KeyReset();
 	}
 
+	UEngineSound::Update();
+
 	GEngine->CurLevel->Tick(DeltaTime);
 	GEngine->CurLevel->Render(DeltaTime);
 	GEngine->CurLevel->Collision(DeltaTime);
@@ -209,6 +213,7 @@ void UEngineCore::EngineEnd()
 
 	UEngineResources::Release();
 	UEngineConstantBuffer::Release();
+	UEngineSound::Release();
 
 	GEngine->CurLevel = nullptr;
 	GEngine->NextLevel = nullptr;

@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "ContentsCore.h"
 
+#include <EnginePlatform/EngineSound.h>
+
 #include <EngineCore/Level.h>
 #include <EngineCore/EngineTexture.h>
 #include <EngineCore/EngineSprite.h>
@@ -68,8 +70,26 @@ void UContentsCore::LoadSprites()
 		}
 	}
 
+	{
+		UEngineDirectory Dir;
+		if (false == Dir.MoveParentToDirectory("ContentsResources"))
+		{
+			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
+			return;
+		}
+		Dir.Append("Sound");
+		std::vector<UEngineFile> ImageFiles = Dir.GetAllFile(true, { ".wav", ".mp3" });
+
+		for (size_t i = 0; i < ImageFiles.size(); i++)
+		{
+			std::string FilePath = ImageFiles[i].GetPathToString();
+			UEngineSound::Load(FilePath);
+		}
+	}
+
 	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("YoshiStick_Right.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("YoshiStick_Upper.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("Shy Guys.png", ".sdata");
+
 }
