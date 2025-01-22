@@ -15,6 +15,12 @@ std::map<std::string, WNDCLASSEXA> UEngineWindow::WindowClasss;
 std::map<HWND, UEngineWindow*> UEngineWindow::AllWindows;
 std::function<bool(HWND, UINT, WPARAM, LPARAM)> UEngineWindow::CustomProc = nullptr;
 int WindowCount = 0;
+int WheelDir = 0;
+
+int UEngineWindow::GetWheelDir()
+{
+	return WheelDir;
+}
 
 void UEngineWindow::SetCustomProc(std::function<bool(HWND, UINT, WPARAM, LPARAM)> _CustomProc)
 {
@@ -43,6 +49,11 @@ LRESULT CALLBACK UEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, 
 		HDC hdc = BeginPaint(hWnd, &ps);
 		// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
 		EndPaint(hWnd, &ps);
+	}
+	break;
+	case WM_MOUSEWHEEL:
+	{
+		WheelDir = GET_WHEEL_DELTA_WPARAM(wParam);
 	}
 	break;
 	case WM_SETFOCUS:
@@ -127,6 +138,7 @@ int UEngineWindow::WindowMessageLoop(std::function<void()> _StartFunction, std::
 		}
 
 		_FrameFunction();
+		WheelDir = 0;
 	}
 
 	if (nullptr != _EndFunction)

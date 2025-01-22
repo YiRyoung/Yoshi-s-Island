@@ -51,6 +51,8 @@ public:
 		LoopActive = false;
 	}
 
+	ENGINEAPI static int GetWheelDir();
+
 	ENGINEAPI static bool IsApplicationOn()
 	{
 		return LoopActive;
