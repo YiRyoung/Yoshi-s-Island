@@ -248,7 +248,7 @@ void YoshiState::Idle(float _DeltaTime)
 	}
 
 	// Stick
-	if (IsPressKey('X'))
+	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
 		StateStart();
@@ -293,7 +293,7 @@ void YoshiState::Walk(float _DeltaTime)
 	Gravity(_DeltaTime);
 
 	// Stick
-	if (IsPressKey('X'))
+	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
 		StateStart();
@@ -339,7 +339,7 @@ void YoshiState::Run(float _DeltaTime)
 {
 	Gravity(_DeltaTime);
 	// Stick
-	if (IsPressKey('X'))
+	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
 		StateStart();
@@ -403,7 +403,7 @@ void YoshiState::Jump(float _DeltaTime)
 	Gravity(_DeltaTime);
 	
 	//Stick
-	if (IsPressKey('X'))
+	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
 		StateStart();
@@ -442,7 +442,7 @@ void YoshiState::Fall(float _DeltaTime)
 	Gravity(_DeltaTime);
 
 	// Stick
-	if (IsPressKey('X'))
+	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
 		StateStart();
@@ -468,7 +468,7 @@ void YoshiState::Fall(float _DeltaTime)
 
 void YoshiState::LookUp(float _DeltaTime)
 {
-	if (IsPressKey('X'))
+	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
 		StateStart();
@@ -490,7 +490,7 @@ void YoshiState::LookUp(float _DeltaTime)
 
 void YoshiState::Bend(float _DeltaTime)
 {
-	if (IsPressKey('X'))
+	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
 		StateStart();
@@ -514,11 +514,21 @@ void YoshiState::Stick(float _DeltaTime)
 {
 	Gravity(_DeltaTime);
 
+	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
+	{
+		Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+	}
+	else if (IsPressKey(VK_RIGHT) && IsScreen(ECheckDir::RIGHT) && !CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
+	{
+		Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+	}
+
 	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
 	{
 		ChangeState(EPlayerState::IDLE);
 		StateStart();
 		return;
 	}
+
 }
 #pragma endregion

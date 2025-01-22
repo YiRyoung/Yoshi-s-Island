@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "Monster.h"
 
-#include <EngineCore/Collision.h>
-
 AMonster::AMonster()
 {
 }
@@ -34,8 +32,6 @@ void AMonster::ChangeState(EMonsterState _CurMonsterState)
 	case EMonsterState::HURT:
 		HurtStart();
 		break;
-	default:
-		break;
 	}
 }
 
@@ -43,19 +39,6 @@ void AMonster::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 	MosnterFSM(_DeltaTime);
-}
-
-void AMonster::SetAnimation()
-{
-}
-
-void AMonster::SetCollision()
-{
-	Collision = CreateDefaultSubObject<UCollision>();
-	Collision->SetupAttachment(RootComponent);
-	Collision->SetCollisionProfileName("MonsterCollision");
-	Collision->SetScale3D({ MonsterScale.X, MonsterScale.Y });
-	Collision->SetRelativeLocation({ 0.0f, MonsterScale.Y });
 }
 
 void AMonster::MosnterFSM(float _DeltaTime)

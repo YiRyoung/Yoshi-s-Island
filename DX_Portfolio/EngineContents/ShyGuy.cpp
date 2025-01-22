@@ -7,6 +7,7 @@
 
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/Collision.h>
 #include <EngineCore/TimeEventComponent.h>
 
 AShyGuy::AShyGuy()
@@ -31,11 +32,21 @@ void AShyGuy::BeginPlay()
 	AMonster::BeginPlay();
 	ChangeState(EMonsterState::IDLE);
 	SetAnimation();
+	SetCollision();
 }
 
 void AShyGuy::Tick(float _DeltaTime)
 {
 	AMonster::Tick(_DeltaTime);
+}
+
+void AShyGuy::SetCollision()
+{
+	Collision = CreateDefaultSubObject<UCollision>();
+	Collision->SetupAttachment(RootComponent);
+	Collision->SetCollisionProfileName("MonsterCollision");
+	Collision->SetScale3D({ 48, 57 });
+	Collision->SetRelativeLocation({ 0.0f, 57 * 0.5f });
 }
 
 void AShyGuy::SetAnimation()

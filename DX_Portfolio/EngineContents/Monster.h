@@ -22,15 +22,9 @@ protected:
 	virtual void Tick(float _DeltaTime);
 	void ChangeState(EMonsterState _CurMonsterState);
 
-	std::shared_ptr<class USpriteRenderer> Renderer;
-	std::shared_ptr<class UCollision> Collision;
-
 	EColorType MonsterColor = EColorType::NONE;
 	EMonsterState CurMonsterState = EMonsterState::IDLE;
 	FVector MonsterScale = FVector::ZERO;
-
-	virtual void SetAnimation();
-	virtual void SetCollision();
 
 	void MosnterFSM(float _DeltaTime);
 	void Gravity(float _DeltaTime);
