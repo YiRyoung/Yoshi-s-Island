@@ -135,8 +135,9 @@ private:
 	int CurIndex = 0;
 	float CurAnimationSpeed = 1.0f;
 
+	FrameAnimation* CurAnimation = nullptr;
 	std::map<std::string, FrameAnimation> FrameAnimations;
-	FrameAnimation* CurAnimation = nullptr; 
+
 	UEngineSprite* Sprite = nullptr;
 	bool IsAutoScale = true;
 	float AutoScaleRatio = 1.0f;
