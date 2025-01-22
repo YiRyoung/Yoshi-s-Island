@@ -175,7 +175,7 @@ void YoshiState::LookUpStart()
 
 void YoshiState::BendStart()
 {
-	ChangeAnimation("BentStart");
+	ChangeAnimation("BendStart");
 }
 
 void YoshiState::StickStart()
@@ -226,6 +226,30 @@ void YoshiState::Idle(float _DeltaTime)
 		return;
 	}
 
+	// LookUp
+	if (IsPressTime(VK_UP, 0.3f))
+	{
+		ChangeState(EPlayerState::LOOKUP);
+		StateStart();
+		return;
+	}
+
+	// Bend
+	if (IsPressTime(VK_DOWN, 0.3f))
+	{
+		ChangeState(EPlayerState::BEND);
+		StateStart();
+		return;
+	}
+
+	// Stick
+	if (IsPressKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+	}
+	
 	// Jump
 	if (IsDownKey(VK_LCONTROL))
 	{
@@ -262,6 +286,14 @@ void YoshiState::Idle(float _DeltaTime)
 void YoshiState::Walk(float _DeltaTime)
 {
 	Gravity(_DeltaTime);
+
+	// Stick
+	if (IsPressKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+	}
 
 	// Run
 	if (IsPressTime(VK_LEFT, 0.4f) || IsPressTime(VK_RIGHT, 0.4f))
@@ -301,6 +333,13 @@ void YoshiState::Walk(float _DeltaTime)
 void YoshiState::Run(float _DeltaTime)
 {
 	Gravity(_DeltaTime);
+	// Stick
+	if (IsPressKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+	}
 
 	// Jump
 	if (IsDownKey(VK_LCONTROL))
@@ -358,6 +397,14 @@ void YoshiState::Jump(float _DeltaTime)
 {
 	Gravity(_DeltaTime);
 	
+	//Stick
+	if (IsPressKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+	}
+
 	// Fall
 	if (Yoshi->JumpPower + Yoshi->GravityForce.Y < 0.0f)
 	{
@@ -389,6 +436,14 @@ void YoshiState::Fall(float _DeltaTime)
 {
 	Gravity(_DeltaTime);
 
+	// Stick
+	if (IsPressKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+	}
+
 	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
 	{
 		Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
@@ -408,13 +463,71 @@ void YoshiState::Fall(float _DeltaTime)
 
 void YoshiState::LookUp(float _DeltaTime)
 {
+	if (IsPressKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+
+	}
+
+	if (!IsPressKey(VK_UP))
+	{
+		ChangeAnimation("LookUpEnd");
+
+		if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+		{
+			ChangeState(EPlayerState::IDLE);
+			StateStart();
+			return;
+		}
+	}
+
+	float MaxCameraPivotY = 100.0f;
+	Yoshi->CameraPivot += FVector::UP * _DeltaTime * 100.0f;
+	if (Yoshi->CameraPivot.Y > MaxCameraPivotY)
+	{
+		Yoshi->CameraPivot.Y = MaxCameraPivotY;
+	}
 }
 
 void YoshiState::Bend(float _DeltaTime)
 {
+	if (IsPressKey('X'))
+	{
+		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+	}
+
+	if (!IsPressKey(VK_DOWN))
+	{
+		ChangeAnimation("BendEnd");
+	
+		if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+		{
+			ChangeState(EPlayerState::IDLE);
+			StateStart();
+			return;
+		}
+	}
+
+	float MinCameraPivotY = 0.0f;
+	Yoshi->CameraPivot += FVector::DOWN * _DeltaTime * 100.0f;
+
+	if (Yoshi->CameraPivot.Y < MinCameraPivotY)
+	{
+		Yoshi->CameraPivot.Y = MinCameraPivotY;	
+	}
 }
 
 void YoshiState::Stick(float _DeltaTime)
 {
+	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(EPlayerState::IDLE);
+		StateStart();
+		return;
+	}
 }
 #pragma endregion
