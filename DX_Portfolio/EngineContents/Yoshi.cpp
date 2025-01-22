@@ -59,7 +59,35 @@ void AYoshi::Tick(float _DeltaTime)
 	State->StateFunc(_DeltaTime);
 	Collision->MoveSlopeUp(_DeltaTime);
 
-	UEngineDebug::OutPutString(std::to_string(static_cast<int>(CurState)));
+	MoveCamera(CameraNum, _DeltaTime);
+
+	//UEngineDebug::OutPutString(std::to_string(static_cast<int>(CurState)));
+}
+
+void AYoshi::MoveCamera(int _IsUP, float _DeltaTime)
+{
+	switch (_IsUP)
+	{
+	case 1:
+		// UP
+		CameraPivot += FVector::UP * _DeltaTime * 100.0f;
+		if (CameraPivot.Y > MaxCameraPivotY)
+		{
+			CameraPivot.Y = MaxCameraPivotY;
+			CameraNum = -1;
+		}
+		break;
+	case 2:
+		// DOWN
+		CameraPivot += FVector::DOWN * _DeltaTime * 100.0f;
+
+		if (CameraPivot.Y < MinCameraPivotY)
+		{
+			CameraPivot.Y = MinCameraPivotY;
+			CameraNum = -1;
+		}
+		break;
+	}
 }
 
 void AYoshi::SetAnimations()

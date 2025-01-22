@@ -171,15 +171,20 @@ void YoshiState::FallStart()
 void YoshiState::LookUpStart()
 {
 	ChangeAnimation("LookUpStart");
+	Yoshi->CameraNum = 1;
 }
 
 void YoshiState::BendStart()
 {
 	ChangeAnimation("BendStart");
+	Yoshi->CameraNum = 2;
 }
 
 void YoshiState::StickStart()
 {
+	Yoshi->GravityForce = FVector::ZERO;
+	Yoshi->DirForce = FVector::ZERO;
+
 	if (IsPressKey(VK_UP))
 	{
 		ChangeAnimation("Stick_Up");
@@ -468,7 +473,6 @@ void YoshiState::LookUp(float _DeltaTime)
 		ChangeState(EPlayerState::STICK);
 		StateStart();
 		return;
-
 	}
 
 	if (!IsPressKey(VK_UP))
@@ -481,13 +485,6 @@ void YoshiState::LookUp(float _DeltaTime)
 			StateStart();
 			return;
 		}
-	}
-
-	float MaxCameraPivotY = 100.0f;
-	Yoshi->CameraPivot += FVector::UP * _DeltaTime * 100.0f;
-	if (Yoshi->CameraPivot.Y > MaxCameraPivotY)
-	{
-		Yoshi->CameraPivot.Y = MaxCameraPivotY;
 	}
 }
 
@@ -511,18 +508,12 @@ void YoshiState::Bend(float _DeltaTime)
 			return;
 		}
 	}
-
-	float MinCameraPivotY = 0.0f;
-	Yoshi->CameraPivot += FVector::DOWN * _DeltaTime * 100.0f;
-
-	if (Yoshi->CameraPivot.Y < MinCameraPivotY)
-	{
-		Yoshi->CameraPivot.Y = MinCameraPivotY;	
-	}
 }
 
 void YoshiState::Stick(float _DeltaTime)
 {
+	Gravity(_DeltaTime);
+
 	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
 	{
 		ChangeState(EPlayerState::IDLE);

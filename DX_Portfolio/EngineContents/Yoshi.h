@@ -65,7 +65,7 @@ private:
 	EPlayerState CurState = EPlayerState::IDLE;
 
 	// GameManager
-	bool IsCameraMove = false;
+	int CameraNum = -1; 
 	bool IsWithBaby = true;
 	FVector Scale = FVector::ZERO;
 
@@ -81,6 +81,11 @@ private:
 	float JumpPower = 550.0f;
 	float GravityPower = 800.0f;
 	FVector GravityForce = { 0, 0, 0 };
+
+	// Camera
+	void MoveCamera(int _IsUP, float _DeltaTime);
+	float MaxCameraPivotY = 100.0f;
+	float MinCameraPivotY = 0.0f;
 
 	// Animation
 	void SetAnimations();
