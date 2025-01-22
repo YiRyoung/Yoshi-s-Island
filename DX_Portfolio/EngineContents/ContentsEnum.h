@@ -16,7 +16,7 @@ enum class ECheckDir
 	RIGHT,
 	UP,
 	DOWN,
-	MAX
+	NONE
 };
 
 enum class EPlayerState
@@ -28,6 +28,7 @@ enum class EPlayerState
 	RUN,
 	JUMP,
 	STAYUP,
+	FALL,
 	STICK
 };
 

@@ -18,7 +18,6 @@ AYoshi::AYoshi()
 	Collision = new YoshiCollision(this);
 	State = new YoshiState(this);
 
-	
 	YoshiRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	YoshiRenderer->SetupAttachment(RootComponent);
 	YoshiRenderer->SetAutoScaleRatio(3.0f);
@@ -57,9 +56,10 @@ void AYoshi::Tick(float _DeltaTime)
 	AActor::Tick(_DeltaTime);
 
 	SetAnimDir();
-	State->YoshiFSM(_DeltaTime);
-	Collision->GroundUp(_DeltaTime);
-	Collision->GroundDown(_DeltaTime);
+	State->StateFunc(_DeltaTime);
+	Collision->MoveSlopeUp(_DeltaTime);
+
+	UEngineDebug::OutPutString(std::to_string(static_cast<int>(CurState)));
 }
 
 void AYoshi::SetAnimations()
@@ -77,23 +77,23 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("BendStart", "YoshiAndMario.png", 14, 17, 0.05f, false);
 	YoshiRenderer->CreateAnimation("BendEnd", "YoshiAndMario.png", 17, 14, 0.04f, false);
 
-	YoshiRenderer->CreateAnimation("JumpStart", "YoshiAndMario.png", 75, 76, 0.1f, false);
+	YoshiRenderer->CreateAnimation("Jump", "YoshiAndMario.png", 75, 76, 0.1f, false);
 	YoshiRenderer->CreateAnimation("Fall", "YoshiAndMario.png", 77, 79, 0.07f, false);
 	YoshiRenderer->CreateAnimation("StayUp", "YoshiAndMario.png", 80, 83, 0.04f);
 
 	YoshiRenderer->CreateAnimation("Stick_Right", "YoshiStick_Right.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
-	YoshiRenderer->CreateAnimation("Stick_Upper", "YoshiStick_Upper.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
+	YoshiRenderer->CreateAnimation("Stick_Up", "YoshiStick_Upper.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
 }
 
 void AYoshi::SetAnimDir()
 {
 	if (UEngineInput::IsDown(VK_LEFT))
 	{
-		YoshiRenderer->SetRotation({ 0.0f, 180.0f, 0.0f });
+		RootComponent->SetScale3D({ -1, 1, 1 });
 	}
 	else if (UEngineInput::IsDown(VK_RIGHT))
 	{
-		YoshiRenderer->SetRotation({ 0.0f, 0.0f, 0.0f });
+		RootComponent->SetScale3D({ 1, 1, 1 });
 	}
 }
 
@@ -110,11 +110,7 @@ int AYoshi::SetIdleAnimNum()
 void AYoshi::PlayIdleAnim(bool _IsStart)
 {
 	int AnimNum = SetIdleAnimNum();
-
-	if (_IsStart || YoshiRenderer->IsCurAnimationEnd())
-	{
-		YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
-	}
+	YoshiRenderer->ChangeAnimation("Idle" + std::to_string(AnimNum));
 }
 
 void AYoshi::SetCollision()

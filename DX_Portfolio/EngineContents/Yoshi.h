@@ -26,24 +26,9 @@ public:
 	AYoshi& operator=(const AYoshi& _Other) = delete;
 	AYoshi& operator=(AYoshi&& _Other) noexcept = delete;
 
-	YoshiCollision* GetCollision() const
-	{
-		return Collision;
-	}
-
-	YoshiState* GetState() const
-	{
-		return State;
-	}
-
 	void SetColImage(UEngineWinImage* _ColImage)
 	{
 		ColImage = _ColImage;
-	}
-
-	FVector GetCameraPivot() const
-	{
-		return CameraPivot;
 	}
 
 	UColor GetColor(FVector _Pos)
@@ -52,9 +37,15 @@ public:
 		return ColImage->GetColor(_Pos);
 	}
 
+	FVector GetCameraPivot() const
+	{
+		return CameraPivot;
+	}
+
 protected:
 	virtual void BeginPlay();
 	virtual void Tick(float _DeltaTime);
+
 private:
 	USoundPlayer SoundPlayer;
 

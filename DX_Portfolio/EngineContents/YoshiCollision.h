@@ -18,10 +18,14 @@ public:
 
 	bool CheckPointColor(ECheckDir _Dir, UColor _Color);
 	bool CheckLineColor(ECheckDir _Dir, UColor _Color);
+	bool CheckForceColor(FVector _Force, UColor _Color);
 
-	bool IsHill();
-	void GroundUp(float _DeltaTime);
-	void GroundDown(float _DeltaTime);
+	bool IsScreen(ECheckDir _Dir);
+	bool IsGround();
+	bool IsSlope();
+
+	void MoveSlopeUp(float _DeltaTime);
+	void MoveSlopeDown(float _DeltaTime);
 
 protected:
 

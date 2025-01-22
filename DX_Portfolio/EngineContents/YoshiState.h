@@ -25,28 +25,37 @@ public:
 
 	bool CheckPointColor(ECheckDir _Dir, UColor _Color);
 	bool CheckLineColor(ECheckDir _Dir, UColor _Color);
+	bool CheckForceColor(FVector _Force, UColor _Color);
+	
+	bool IsScreen(ECheckDir _Dir);
+	bool IsGround();
+	bool IsSlope();
 
 	void ChangeAnimation(std::string_view _Name);
 	void ChangeState(EPlayerState _NextState);
 
-	void YoshiFSM(float _DeltaTime);
+	void StateStart();
+	void StateFunc(float _DeltaTime);
+
 	void Gravity(float _DeltaTime, float _Scale = 1.0f);
 
-	void IdleStart(float _DeltaTime);
+	void WalkStart();
+	void RunStart();
+	void JumpStart();
+	void StayUpStart();
+	void FallStart();
+	void LookUpStart();
+	void BendStart();
+	void StickStart();
+
 	void Idle(float _DeltaTime);
-	void WalkStart(float _DeltaTime);
 	void Walk(float _DeltaTime);
-	void RunStart(float _DeltaTime);
 	void Run(float _DeltaTime);
-	void JumpStart(float _DeltaTime);
 	void Jump(float _DeltaTime);
-	void StayUpStart(float _DeltaTime);
 	void StayUp(float _DeltaTime);
-	void LookUpStart(float _DeltaTime);
+	void Fall(float _DeltaTime);
 	void LookUp(float _DeltaTime);
-	void BendStart(float _DeltaTime);
 	void Bend(float _DeltaTime);
-	void StickStart(float _DeltaTime);
 	void Stick(float _DeltaTime);
 
 protected:

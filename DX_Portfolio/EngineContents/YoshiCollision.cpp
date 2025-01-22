@@ -37,6 +37,9 @@ bool YoshiCollision::CheckPointColor(ECheckDir _Dir, UColor _Color)
 		NextPos = Yoshi->GetActorLocation() + FVector::DOWN;
 		Color = Yoshi->GetColor(NextPos);
 		break;
+	case ECheckDir::NONE:
+		Color = Yoshi->GetColor(Yoshi->GetActorLocation());
+		break;
 	}
 
 	bool Result = (_Color.operator==(Color)) ? true : false;
@@ -93,12 +96,26 @@ bool YoshiCollision::CheckLineColor(ECheckDir _Dir, UColor _Color)
         break;
 
     case ECheckDir::DOWN:
-        NextStartPos = Yoshi->GetActorLocation() + FVector::DOWN + FVector{ Yoshi->Scale.X * -0.5f, -3.0f };
-        NextEndPos = Yoshi->GetActorLocation() + FVector::DOWN + FVector{ Yoshi->Scale.X * 0.5f, -3.0f };
+        NextStartPos = Yoshi->GetActorLocation() + FVector::DOWN + FVector{ Yoshi->Scale.X * -0.5f, 0.0f };
+        NextEndPos = Yoshi->GetActorLocation() + FVector::DOWN + FVector{ Yoshi->Scale.X * 0.5f, 0.0f };
 
         for (int x = static_cast<int>(NextStartPos.X); x <= static_cast<int>(NextEndPos.X); x++)
         {
             UColor NextColor = Yoshi->GetColor({ static_cast<float>(x), NextStartPos.Y });
+            if (NextColor.operator==(_Color))
+            {
+                return true;
+            }
+        }
+        break;
+    
+    case ECheckDir::NONE:
+        NextStartPos = Yoshi->GetActorLocation();
+        NextEndPos = Yoshi->GetActorLocation() + FVector{ 0.0f, Yoshi->Scale.Y * 0.5f };
+
+        for (int y = static_cast<int>(NextStartPos.Y); y <= static_cast<int>(NextEndPos.Y); y++)
+        {
+            UColor NextColor = Yoshi->GetColor({ NextStartPos.X, static_cast<float>(y) });
             if (NextColor.operator==(_Color))
             {
                 return true;
@@ -110,48 +127,60 @@ bool YoshiCollision::CheckLineColor(ECheckDir _Dir, UColor _Color)
     return false;
 }
 
-bool YoshiCollision::IsHill()
+bool YoshiCollision::CheckForceColor(FVector _Force, UColor _Color)
 {
-    FVector NextPos = FVector::ZERO;
-    FVector Scale = Yoshi->YoshiRenderer->GetTransformRef().Scale;
-    UColor Color = UColor::WHITE;;
+	FVector NextPos = Yoshi->GetActorLocation() + _Force;
+	UColor Color = Yoshi->GetColor(NextPos);
 
-    NextPos = Yoshi->GetActorLocation() + FVector::DOWN;
-
-    for (int i = 0; i < 20; i++)
+    if (Color.operator==(_Color))
     {
-        NextPos += FVector{ 0, -i };
-        Color = Yoshi->GetColor(NextPos);
-
-        if (Color.operator==(UColor::MAGENTA) || Color.operator==(UColor::YELLOW) || Color.operator==(UColor::GREEN))
-        {
-            return false;
-        }
-
-        if (Color.operator==(UColor::CYAN))
-        {
-            return true;
-        }
+		return true;
     }
 
     return false;
 }
 
-void YoshiCollision::GroundUp(float _DeltaTime)
+bool YoshiCollision::IsScreen(ECheckDir _Dir)
 {
-	UColor Color = Yoshi->GetColor(Yoshi->GetActorLocation());
-	if (Color.operator==(UColor::CYAN))
-	{
-
-        Yoshi->AddActorLocation({ 0.0f, Yoshi->Speed * _DeltaTime });
-	}
+    if (CheckPointColor(_Dir, UColor::WHITE))
+    {
+        return false;
+    }
+    return true;
 }
 
-void YoshiCollision::GroundDown(float _DeltaTime)
+bool YoshiCollision::IsGround()
 {
-    if ((Yoshi->CurState != EPlayerState::JUMP) && IsHill()
-        && !CheckPointColor(ECheckDir::DOWN, UColor::CYAN))
+    if (CheckLineColor(ECheckDir::DOWN, UColor::BLACK))
     {
-        Yoshi->AddActorLocation({ 0.0f, -Yoshi->Speed * _DeltaTime });
+        return false;
     }
+    return true;
+}
+
+bool YoshiCollision::IsSlope()
+{
+    for (int i = 0; i < 50; i++)
+    {
+        FVector NextPos = Yoshi->GetActorLocation() + FVector{ 0.0f, static_cast<float>(-i) };
+		UColor Color = Yoshi->GetColor(NextPos);
+
+		if (Color.operator==(UColor::MAGENTA) || Color.operator==(UColor::YELLOW) || Color.operator==(UColor::GREEN))
+		{
+            return false;
+		}
+		if (Color.operator==(UColor::CYAN))
+		{
+			return true;
+		}
+    }
+    return false;
+}
+
+void YoshiCollision::MoveSlopeUp(float _DeltaTime)
+{
+	if (IsSlope() && CheckLineColor(ECheckDir::NONE, UColor::CYAN))
+	{
+		Yoshi->AddActorLocation(FVector::UP * Yoshi->Speed * _DeltaTime);
+	}
 }
