@@ -104,6 +104,9 @@ void YoshiState::StateStart()
 	case EPlayerState::STICK:
 		StickStart();
 		break;
+	case EPlayerState::AIM:
+		AimStart();
+		break;
 	}
 }
 
@@ -137,6 +140,9 @@ void YoshiState::StateFunc(float _DeltaTime)
 		break;
 	case EPlayerState::STICK:
 		Stick(_DeltaTime);
+		break;
+	case EPlayerState::AIM:
+		Aim(_DeltaTime);
 		break;
 	}
 }
@@ -193,6 +199,10 @@ void YoshiState::StickStart()
 	{
 		ChangeAnimation("Stick_Right");
 	}
+}
+void YoshiState::AimStart()
+{
+	ChangeAnimation("AimWalk");
 }
 #pragma endregion
 
@@ -251,6 +261,14 @@ void YoshiState::Idle(float _DeltaTime)
 	if (IsDownKey('X'))
 	{
 		ChangeState(EPlayerState::STICK);
+		StateStart();
+		return;
+	}
+
+	// Aim
+	if (IsDownKey('Z'))
+	{
+		ChangeState(EPlayerState::AIM);
 		StateStart();
 		return;
 	}
@@ -530,5 +548,8 @@ void YoshiState::Stick(float _DeltaTime)
 		return;
 	}
 
+}
+void YoshiState::Aim(float _DeltaTime)
+{
 }
 #pragma endregion

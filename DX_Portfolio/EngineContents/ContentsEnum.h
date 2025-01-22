@@ -29,7 +29,8 @@ enum class EPlayerState
 	JUMP,
 	STAYUP,
 	FALL,
-	STICK
+	STICK,
+	AIM
 };
 
 enum class EColorType

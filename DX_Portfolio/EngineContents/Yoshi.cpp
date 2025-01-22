@@ -111,6 +111,12 @@ void AYoshi::SetAnimations()
 
 	YoshiRenderer->CreateAnimation("Stick_Right", "YoshiStick_Right.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
 	YoshiRenderer->CreateAnimation("Stick_Up", "YoshiStick_Upper.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
+	
+	YoshiRenderer->CreateAnimation("AimIdle", "YoshiAndMario.png", 119, 119, 0.028f, false);
+	YoshiRenderer->CreateAnimation("AimWalk", "YoshiAndMario.png", 119, 124, 0.08f);
+	YoshiRenderer->CreateAnimation("AimRun", "YoshiAndMario.png", 119, 124, 0.04f);
+	//YoshiRenderer->CreateAnimation("AimJump", "YoshiAndMario.png", 119, 124, 0.04f);
+	
 }
 
 void AYoshi::SetAnimDir()

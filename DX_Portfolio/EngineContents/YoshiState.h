@@ -47,6 +47,7 @@ public:
 	void LookUpStart();
 	void BendStart();
 	void StickStart();
+	void AimStart();
 
 	void Idle(float _DeltaTime);
 	void Walk(float _DeltaTime);
@@ -57,6 +58,7 @@ public:
 	void LookUp(float _DeltaTime);
 	void Bend(float _DeltaTime);
 	void Stick(float _DeltaTime);
+	void Aim(float _DeltaTime);
 
 protected:
 

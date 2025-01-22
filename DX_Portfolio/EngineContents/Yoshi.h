@@ -67,6 +67,8 @@ private:
 	// GameManager
 	int CameraNum = -1; 
 	bool IsWithBaby = true;
+	bool IsAim = false;
+	bool IsHold = false;
 	FVector Scale = FVector::ZERO;
 
 	// Speed
