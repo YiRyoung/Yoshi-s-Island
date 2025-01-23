@@ -42,6 +42,37 @@ public:
 		return CameraPivot;
 	}
 
+	class APlatforms* GetPlatform() const
+	{
+		return Platform;
+	}
+
+	void SetPlatform(class APlatforms* _Platform)
+	{
+		Platform = _Platform;
+	}
+
+	FVector GetPlatformPos() const
+	{
+		return PlatformPos;
+	}
+
+	void SetPlatformPos(FVector _Value)
+	{
+		PlatformPos = _Value;
+	}
+
+	EPlayerState GetCurState() const
+	{
+		return CurState;
+	}
+
+	void ChangetState(EPlayerState _NextState)
+	{
+		CurState = _NextState;
+		return;
+	}
+
 protected:
 	virtual void BeginPlay();
 	virtual void Tick(float _DeltaTime);
@@ -65,6 +96,10 @@ private:
 
 	FVector CameraPivot = FVector::ZERO;
 	EPlayerState CurState = EPlayerState::IDLE;
+
+	// Platforms
+	class APlatforms* Platform = nullptr;
+	FVector PlatformPos = FVector::ZERO;
 
 	// GameManager
 	int CameraNum = -1; 
@@ -105,8 +140,6 @@ private:
 	// Sound
 	void Play(std::string_view _Name);
 
-	class APlatforms* Platform = nullptr;
-	FVector PlatformPos = FVector::ZERO;
 
 #pragma region Debug
 	std::shared_ptr<class UCollision> DebugDownCollision;

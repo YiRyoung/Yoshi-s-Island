@@ -10,7 +10,7 @@
 
 #include "Yoshi.h"
 #include "TitleGameMode.h"
-#include "SelectGameMode.h";
+#include "SelectGameMode.h"
 #include "Stage100GameMode.h"
 #include "Stage101GameMode.h"
 #include "Stage102GameMode.h"

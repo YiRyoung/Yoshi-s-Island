@@ -67,8 +67,6 @@ void AYoshi::Tick(float _DeltaTime)
 	Collision->MoveSlopeUp(_DeltaTime);
 	MoveCamera(CameraNum, _DeltaTime);
 	Collision->SetCollisionsCheck(_DeltaTime);
-
-	//UEngineDebug::OutPutString(std::to_string(static_cast<int>(CurState)));
 }
 
 void AYoshi::MoveCamera(int _IsUP, float _DeltaTime)
@@ -158,19 +156,19 @@ void AYoshi::SetCollision()
 	HeadCollision = CreateDefaultSubObject<UCollision>();
 	HeadCollision->SetupAttachment(RootComponent);
 	HeadCollision->SetCollisionProfileName("HeadCollision");
-	HeadCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.2f });
-	HeadCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.8f });
+	HeadCollision->SetScale3D({ Scale.X * 0.8f, 5.0f});
+	HeadCollision->SetRelativeLocation({ 0.0f, Scale.Y });
 
 	BodyCollision = CreateDefaultSubObject<UCollision>();
 	BodyCollision->SetupAttachment(RootComponent);
 	BodyCollision->SetCollisionProfileName("BodyCollision");
-	BodyCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.5f });
-	BodyCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.4f });
+	BodyCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.8f });
+	BodyCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.5f });
 	
 	FootCollision = CreateDefaultSubObject<UCollision>();
 	FootCollision->SetupAttachment(RootComponent);
 	FootCollision->SetCollisionProfileName("FootCollision");
-	FootCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.2f });
+	FootCollision->SetScale3D({ Scale.X * 0.7f, 5.0f });
 	FootCollision->SetRelativeLocation({ 0.0f, -0.0f });
 }
 

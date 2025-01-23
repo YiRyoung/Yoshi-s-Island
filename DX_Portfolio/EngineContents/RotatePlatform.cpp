@@ -27,12 +27,6 @@ void ARotatePlatform::BeginPlay()
 {
 	AActor::BeginPlay();
 
-	DebugCollision = CreateDefaultSubObject<UCollision>();
-	DebugCollision->SetCollisionProfileName("DebugCollision");
-	DebugCollision->SetScale3D({ 5.0f, 5.0f });
-	DebugCollision->SetRelativeLocation({ 0.0f, 0.0f, 0.0f });
-	DebugCollision->SetupAttachment(RootComponent);
-
 	float Angle = 0;
 
 	for (int i = 0; i < 4; i++)

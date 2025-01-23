@@ -48,7 +48,7 @@ void AStage101GameMode::BeginPlay()
 	GetWorld()->CreateCollisionProfile("DebugCollision");
 
 	GetWorld()->LinkCollisionProfile("FootCollision", "MonsterHeadCollision");
-	GetWorld()->LinkCollisionProfile("FootCollision", "PlatformCollision");
+	GetWorld()->LinkCollisionProfile("PlatformCollision", "FootCollision");
 }
 
 void AStage101GameMode::Tick(float _DeltaTime)
