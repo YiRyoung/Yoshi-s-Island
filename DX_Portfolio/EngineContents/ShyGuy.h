@@ -21,7 +21,8 @@ protected:
 
 private:
 	std::shared_ptr<class USpriteRenderer> Renderer;
-	std::shared_ptr<class UCollision> Collision;
+	std::shared_ptr<class UCollision> MonsterHeadCollision;
+	std::shared_ptr<class UCollision> MonsterBodyCollision;
 	std::shared_ptr<class UTimeEventComponent> TimeEvent;
 
 	void SetCollision();

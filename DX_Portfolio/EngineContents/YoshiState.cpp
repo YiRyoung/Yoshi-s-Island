@@ -6,6 +6,7 @@
 #include <EngineCore/SpriteRenderer.h>
 
 #include "Yoshi.h"
+#include "Platforms.h"
 
 YoshiState::YoshiState() {}
 
@@ -104,9 +105,6 @@ void YoshiState::StateStart()
 	case EPlayerState::STICK:
 		StickStart();
 		break;
-	case EPlayerState::AIM:
-		AimStart();
-		break;
 	}
 }
 
@@ -141,9 +139,6 @@ void YoshiState::StateFunc(float _DeltaTime)
 	case EPlayerState::STICK:
 		Stick(_DeltaTime);
 		break;
-	case EPlayerState::AIM:
-		Aim(_DeltaTime);
-		break;
 	}
 }
 #pragma endregion
@@ -151,12 +146,26 @@ void YoshiState::StateFunc(float _DeltaTime)
 #pragma region Start Functions
 void YoshiState::WalkStart()
 {
-	ChangeAnimation("Walk");
+	if (Yoshi->IsAim)
+	{
+		ChangeAnimation("AimWalk");
+	}
+	else
+	{
+		ChangeAnimation("Walk");
+	}
 }
 
 void YoshiState::RunStart()
 {
-	ChangeAnimation("Run");
+	if (Yoshi->IsAim)
+	{
+		ChangeAnimation("AimRun");
+	}
+	else
+	{
+		ChangeAnimation("Run");
+	}
 }
 
 void YoshiState::JumpStart()
@@ -200,10 +209,6 @@ void YoshiState::StickStart()
 		ChangeAnimation("Stick_Right");
 	}
 }
-void YoshiState::AimStart()
-{
-	ChangeAnimation("AimWalk");
-}
 #pragma endregion
 
 #pragma region State Functions
@@ -230,8 +235,18 @@ void YoshiState::Gravity(float _DeltaTime, float _Scale)
 
 void YoshiState::Idle(float _DeltaTime)
 {
+
 	Yoshi->PlayIdleAnim(false);
-	Gravity(_DeltaTime);
+	if (nullptr == Yoshi->Platform)
+	{
+		Gravity(_DeltaTime);
+	}
+	else
+	{
+		Yoshi->SetActorLocation(Yoshi->Platform->GetActorLocation() + Yoshi->PlatformPos);
+		return;
+	}
+	
 
 	// Walk
 	if (IsPressKey(VK_LEFT) || IsPressKey(VK_RIGHT))
@@ -264,14 +279,6 @@ void YoshiState::Idle(float _DeltaTime)
 		StateStart();
 		return;
 	}
-
-	// Aim
-	if (IsDownKey('Z'))
-	{
-		ChangeState(EPlayerState::AIM);
-		StateStart();
-		return;
-	}
 	
 	// Jump
 	if (IsDownKey(VK_LCONTROL))
@@ -282,11 +289,18 @@ void YoshiState::Idle(float _DeltaTime)
 	}
 
 	// Fall
-	if (CheckPointColor(ECheckDir::DOWN, UColor::BLACK) && !IsSlope())
+	if (nullptr == Yoshi->Platform && CheckPointColor(ECheckDir::DOWN, UColor::BLACK) && !IsSlope())
 	{
 		ChangeState(EPlayerState::FALL);
 		StateStart();
 		return;
+	}
+
+	// IsAim
+	if (IsDownKey('Z') || Yoshi->IsAim)
+	{
+		Yoshi->IsAim = true;
+		ChangeAnimation("AimIdle");
 	}
 	
 	// DeAccel
@@ -526,6 +540,9 @@ void YoshiState::Bend(float _DeltaTime)
 			return;
 		}
 	}
+
+	if (Yoshi->IsAim) { Yoshi->IsAim = false; }
+	
 }
 
 void YoshiState::Stick(float _DeltaTime)
@@ -548,8 +565,5 @@ void YoshiState::Stick(float _DeltaTime)
 		return;
 	}
 
-}
-void YoshiState::Aim(float _DeltaTime)
-{
 }
 #pragma endregion

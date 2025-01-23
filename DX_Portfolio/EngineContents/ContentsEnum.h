@@ -2,7 +2,10 @@
 
 enum class EOrderNum
 {
-	FRONTBACKGROUND = -20,
+
+	HUD = -15,
+	PLAYER = -12,
+	FRONTBACKGROUND = -10,
 	OBSTACLE = -1,
 	COLSTAGE = 1,
 	STAGE,
@@ -29,8 +32,7 @@ enum class EPlayerState
 	JUMP,
 	STAYUP,
 	FALL,
-	STICK,
-	AIM
+	STICK
 };
 
 enum class EColorType

@@ -42,11 +42,17 @@ void AShyGuy::Tick(float _DeltaTime)
 
 void AShyGuy::SetCollision()
 {
-	Collision = CreateDefaultSubObject<UCollision>();
-	Collision->SetupAttachment(RootComponent);
-	Collision->SetCollisionProfileName("MonsterCollision");
-	Collision->SetScale3D({ 48, 57 });
-	Collision->SetRelativeLocation({ 0.0f, 57 * 0.5f });
+	MonsterBodyCollision = CreateDefaultSubObject<UCollision>();
+	MonsterBodyCollision->SetupAttachment(RootComponent);
+	MonsterBodyCollision->SetCollisionProfileName("MonsterHeadCollision");
+	MonsterBodyCollision->SetScale3D({ 48.0f , 57* 0.3f });
+	MonsterBodyCollision->SetRelativeLocation({ 0.0f, 57 * 0.8f });
+
+	MonsterHeadCollision = CreateDefaultSubObject<UCollision>();
+	MonsterHeadCollision->SetupAttachment(RootComponent);
+	MonsterHeadCollision->SetCollisionProfileName("MonsterBodyCollision");
+	MonsterHeadCollision->SetScale3D({ 48.0f, 57 * 0.7f });
+	MonsterHeadCollision->SetRelativeLocation({ 0.0f, 57 * 0.3f });
 }
 
 void AShyGuy::SetAnimation()

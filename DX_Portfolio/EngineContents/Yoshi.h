@@ -61,6 +61,8 @@ private:
 
 	std::shared_ptr<ACameraActor> Camera;
 
+	std::shared_ptr<class ACrossHair> CrossHair;
+
 	FVector CameraPivot = FVector::ZERO;
 	EPlayerState CurState = EPlayerState::IDLE;
 
@@ -102,6 +104,9 @@ private:
 
 	// Sound
 	void Play(std::string_view _Name);
+
+	class APlatforms* Platform = nullptr;
+	FVector PlatformPos = FVector::ZERO;
 
 #pragma region Debug
 	std::shared_ptr<class UCollision> DebugDownCollision;

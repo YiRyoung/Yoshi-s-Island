@@ -24,8 +24,8 @@ public:
 	bool IsGround();
 	bool IsSlope();
 
+	void SetCollisionsCheck(float _DeltaTime);
 	void MoveSlopeUp(float _DeltaTime);
-	void MoveSlopeDown(float _DeltaTime);
 
 protected:
 

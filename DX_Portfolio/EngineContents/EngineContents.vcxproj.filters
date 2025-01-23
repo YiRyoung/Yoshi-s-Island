@@ -55,6 +55,15 @@
     <ClInclude Include="Monster.h">
       <Filter>Contents\Global\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="CrossHair.h">
+      <Filter>Contents\Global\Yoshi</Filter>
+    </ClInclude>
+    <ClInclude Include="Platforms.h">
+      <Filter>Contents\Global\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatePlatform.h">
+      <Filter>Contents\Global\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -108,6 +117,15 @@
     <ClCompile Include="Monster.cpp">
       <Filter>Contents\Global\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="CrossHair.cpp">
+      <Filter>Contents\Global\Yoshi</Filter>
+    </ClCompile>
+    <ClCompile Include="Platforms.cpp">
+      <Filter>Contents\Global\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatePlatform.cpp">
+      <Filter>Contents\Global\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -151,6 +169,9 @@
     </Filter>
     <Filter Include="Contents\Global\Monster\Normal">
       <UniqueIdentifier>{77a810d7-57a6-47e7-9f54-e1e03d97a26d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Global\Object">
+      <UniqueIdentifier>{ef682b5d-fa7c-4102-925d-29c0c1dda9c1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
