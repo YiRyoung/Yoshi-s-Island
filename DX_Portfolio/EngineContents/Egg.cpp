@@ -34,11 +34,23 @@ void AEgg::Tick(float _DeltaTime)
 
 	AddActorLocation(ThrowDir * 300.0f * _DeltaTime);
 
-	FVector NextPos = GetActorLocation() + ThrowDir * 300.0f * _DeltaTime + FVector{ 0.0f,  22.5f};
+	FVector NextPos = GetActorLocation() + ThrowDir * 300.0f * _DeltaTime + FVector{ 0.0f, 22.5f };
 	UColor Color = GetWorld()->GetMainPawn<AYoshi>()->GetColor(NextPos);
 	if (Color.operator==(UColor::MAGENTA))
 	{
-		int a = 0;
+		ThrowDir += FVector::DOWN * 2.0f * (-ThrowDir.Dot(FVector::DOWN));
+
+		/*FVector Reflect(FVector _N)
+		{
+			FVector Result;
+			Result = this + (_N * 2.0f * (-this->Dot(_N)));
+
+			return Result;
+		}*/
+
+		// �Ի簢
+		/*ThrowDir * 300.0f * _DeltaTime;*/
+
 	}
 }
 
