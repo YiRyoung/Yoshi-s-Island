@@ -1,9 +1,13 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
+#include "Yoshi.h"
+
 // Ό³Έν :
 class ACrossHair : public AActor
 {
+	friend class AYoshi;
+
 public: 
 	// constrcuter destructer
 	ACrossHair();
@@ -23,8 +27,14 @@ protected:
 private:
 	std::shared_ptr<class USpriteRenderer> CrossHairRenderer;
 
+	bool IsPlusValue = false;
 	float Radius = 200.0f;
-	float StartAngle = 0.0f;
-	float Speed = 35.0f;
+	float Speed = 120.0f;
+	
+	float StartAngle = 0.0f;	// CurAngle
+	float MinAngle = 0.0f;
+	float MaxAngle = 0.0f;
+
+	void Move(float _DeltaTime);
 };
 

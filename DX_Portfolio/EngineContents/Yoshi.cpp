@@ -32,13 +32,13 @@ AYoshi::AYoshi()
 
 AYoshi::~AYoshi()
 {
-	if (Collision != nullptr) 
-	{ 
+	if (Collision != nullptr)
+	{
 		delete Collision;
 		Collision = nullptr;
 	}
 
-	if (State != nullptr) 
+	if (State != nullptr)
 	{
 		delete State;
 		State = nullptr;
@@ -55,7 +55,6 @@ void AYoshi::BeginPlay()
 
 	CrossHair = GetWorld()->SpawnActor<ACrossHair>();
 	CrossHair->Init(this);
-	CrossHair->SetActive(false);
 }
 
 void AYoshi::Tick(float _DeltaTime)
@@ -65,8 +64,10 @@ void AYoshi::Tick(float _DeltaTime)
 	SetAnimDir();
 	State->StateFunc(_DeltaTime);
 	Collision->MoveSlopeUp(_DeltaTime);
-	MoveCamera(CameraNum, _DeltaTime);
 	Collision->SetCollisionsCheck(_DeltaTime);
+	MoveCamera(CameraNum, _DeltaTime);
+
+	SetCrossHair();
 }
 
 void AYoshi::MoveCamera(int _IsUP, float _DeltaTime)
@@ -97,16 +98,16 @@ void AYoshi::MoveCamera(int _IsUP, float _DeltaTime)
 
 void AYoshi::SetAnimations()
 {
-	YoshiRenderer->CreateAnimation("Idle0", "YoshiAndMario.png", {7, 8, 9, 10, 11, 10, 9, 8}, 0.15f);
-	YoshiRenderer->CreateAnimation("Idle1", "YoshiAndMario.png", { 3, 4, 5, 4, 5}, 0.2f);
-	YoshiRenderer->CreateAnimation("Idle2", "YoshiAndMario.png", {2, 1, 0, 0, 0, 1, 2}, 0.15f);
-	
+	YoshiRenderer->CreateAnimation("Idle0", "YoshiAndMario.png", { 7, 8, 9, 10, 11, 10, 9, 8 }, 0.15f);
+	YoshiRenderer->CreateAnimation("Idle1", "YoshiAndMario.png", { 3, 4, 5, 4, 5 }, 0.2f);
+	YoshiRenderer->CreateAnimation("Idle2", "YoshiAndMario.png", { 2, 1, 0, 0, 0, 1, 2 }, 0.15f);
+
 	YoshiRenderer->CreateAnimation("Walk", "YoshiAndMario.png", 40, 52, 0.08f);
 	YoshiRenderer->CreateAnimation("Run", "YoshiAndMario.png", 53, 57, 0.04f);
 
 	YoshiRenderer->CreateAnimation("LookUpStart", "YoshiAndMario.png", 12, 13, 0.3f, false);
 	YoshiRenderer->CreateAnimation("LookUpEnd", "YoshiAndMario.png", 13, 12, 0.1f, false);
-	
+
 	YoshiRenderer->CreateAnimation("BendStart", "YoshiAndMario.png", 14, 17, 0.05f, false);
 	YoshiRenderer->CreateAnimation("BendEnd", "YoshiAndMario.png", 17, 14, 0.04f, false);
 
@@ -114,9 +115,9 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("Fall", "YoshiAndMario.png", 77, 79, 0.07f, false);
 	YoshiRenderer->CreateAnimation("StayUp", "YoshiAndMario.png", 80, 83, 0.04f);
 
-	YoshiRenderer->CreateAnimation("Stick_Right", "YoshiStick_Right.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
-	YoshiRenderer->CreateAnimation("Stick_Up", "YoshiStick_Upper.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0}, 0.028f, false);
-	
+	YoshiRenderer->CreateAnimation("Stick_Right", "YoshiStick_Right.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0 }, 0.028f, false);
+	YoshiRenderer->CreateAnimation("Stick_Up", "YoshiStick_Upper.png", { 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0 }, 0.028f, false);
+
 	YoshiRenderer->CreateAnimation("AimIdle", "YoshiAndMario.png", 119, 119, 0.028f, false);
 	YoshiRenderer->CreateAnimation("AimWalk", "YoshiAndMario.png", 119, 124, 0.08f);
 	YoshiRenderer->CreateAnimation("AimRun", "YoshiAndMario.png", 119, 124, 0.04f);
@@ -125,13 +126,16 @@ void AYoshi::SetAnimations()
 
 void AYoshi::SetAnimDir()
 {
-	if (UEngineInput::IsDown(VK_LEFT))
+	if (!IsAim)
 	{
-		RootComponent->SetScale3D({ -1, 1, 1 });
-	}
-	else if (UEngineInput::IsDown(VK_RIGHT))
-	{
-		RootComponent->SetScale3D({ 1, 1, 1 });
+		if (UEngineInput::IsDown(VK_LEFT))
+		{
+			RootComponent->SetScale3D({ -1, 1, 1 });
+		}
+		else if (UEngineInput::IsDown(VK_RIGHT))
+		{
+			RootComponent->SetScale3D({ 1, 1, 1 });
+		}
 	}
 }
 
@@ -156,7 +160,7 @@ void AYoshi::SetCollision()
 	HeadCollision = CreateDefaultSubObject<UCollision>();
 	HeadCollision->SetupAttachment(RootComponent);
 	HeadCollision->SetCollisionProfileName("HeadCollision");
-	HeadCollision->SetScale3D({ Scale.X * 0.8f, 5.0f});
+	HeadCollision->SetScale3D({ Scale.X * 0.8f, 5.0f });
 	HeadCollision->SetRelativeLocation({ 0.0f, Scale.Y });
 
 	BodyCollision = CreateDefaultSubObject<UCollision>();
@@ -164,7 +168,7 @@ void AYoshi::SetCollision()
 	BodyCollision->SetCollisionProfileName("BodyCollision");
 	BodyCollision->SetScale3D({ Scale.X * 0.8f, Scale.Y * 0.8f });
 	BodyCollision->SetRelativeLocation({ 0.0f, Scale.Y * 0.5f });
-	
+
 	FootCollision = CreateDefaultSubObject<UCollision>();
 	FootCollision->SetupAttachment(RootComponent);
 	FootCollision->SetCollisionProfileName("FootCollision");
@@ -201,4 +205,25 @@ void AYoshi::SetDebugCollision()
 void AYoshi::Play(std::string_view _Name)
 {
 	SoundPlayer = UEngineSound::Play(_Name);
+}
+
+void AYoshi::SetCrossHair()
+{
+	CrossHair->SetActive(IsAim);
+
+	if (!CrossHair->IsActive())
+	{
+		if (GetActorTransform().Scale.X < 0.0f)	// LEFT
+		{
+			CrossHair->MinAngle = 90.0f;
+			CrossHair->MaxAngle = 200.0f;
+			CrossHair->StartAngle = CrossHair->MaxAngle;
+		}
+		else
+		{
+			CrossHair->MinAngle = 340.0f;
+			CrossHair->MaxAngle = 450.0f;
+			CrossHair->StartAngle = CrossHair->MinAngle;
+		}
+	}
 }

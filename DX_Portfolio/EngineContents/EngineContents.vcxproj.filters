@@ -64,6 +64,9 @@
     <ClInclude Include="RotatePlatform.h">
       <Filter>Contents\Global\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Egg.h">
+      <Filter>Contents\Global\Yoshi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -125,6 +128,9 @@
     </ClCompile>
     <ClCompile Include="RotatePlatform.cpp">
       <Filter>Contents\Global\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Egg.cpp">
+      <Filter>Contents\Global\Yoshi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

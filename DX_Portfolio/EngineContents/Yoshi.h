@@ -140,6 +140,8 @@ private:
 	// Sound
 	void Play(std::string_view _Name);
 
+	// CrossHair
+	void SetCrossHair();
 
 #pragma region Debug
 	std::shared_ptr<class UCollision> DebugDownCollision;
