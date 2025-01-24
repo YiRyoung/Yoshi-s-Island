@@ -90,6 +90,7 @@ void UContentsCore::LoadSprites()
 	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("YoshiStick_Right.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("YoshiStick_Upper.png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("Eggs.png", ".sdata");
 
 	UEngineSprite::CreateSpriteToMeta("Shy Guys.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("Platforms.png", ".sdata");

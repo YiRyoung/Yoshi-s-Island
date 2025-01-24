@@ -58,8 +58,5 @@ void ARotatePlatform::Tick(float _DeltaTime)
 		Platforms[i]->SetActorLocation(GetActorLocation() + Pos);
 		Platforms[i]->AddActorLocation({ 0.0f, 0.0f, -1.0f });
 	}
-
-
-	//Platform->SetActorLocation({ GetActorLocation().X, GetActorLocation().Y + 90.0f, -3.0f});
 }
 

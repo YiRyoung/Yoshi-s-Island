@@ -148,6 +148,9 @@ private:
 	// CrossHair
 	void SetCrossHair();
 
+	// Egg
+	void SpawnEgg();
+
 #pragma region Debug
 	std::shared_ptr<class UCollision> DebugDownCollision;
 	std::shared_ptr<class UCollision> DebugLeftCollision;

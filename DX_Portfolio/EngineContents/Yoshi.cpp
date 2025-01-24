@@ -12,6 +12,7 @@
 
 #include "CrossHair.h"
 #include "ShyGuy.h"
+#include "Egg.h"
 
 AYoshi::AYoshi()
 {
@@ -126,6 +127,8 @@ void AYoshi::SetAnimations()
 	YoshiRenderer->CreateAnimation("AimWalk", "YoshiAndMario.png", 119, 124, 0.08f);
 	YoshiRenderer->CreateAnimation("AimRun", "YoshiAndMario.png", 119, 124, 0.04f);
 	//YoshiRenderer->CreateAnimation("AimJump", "YoshiAndMario.png", 119, 124, 0.04f);	
+
+	YoshiRenderer->CreateAnimation("Throw", "YoshiAndMario.png", 129, 134, 0.04f, false);
 }
 
 void AYoshi::SetAnimDir()
@@ -230,4 +233,12 @@ void AYoshi::SetCrossHair()
 			CrossHair->StartAngle = CrossHair->MinAngle;
 		}
 	}
+}
+
+void AYoshi::SpawnEgg()
+{
+	std::shared_ptr<class AEgg> Egg = GetWorld()->SpawnActor<AEgg>();
+	Egg->SetActorLocation(GetActorLocation());
+	Egg->AddActorLocation({ 0.0f, Scale.Y * 0.5f, -12.0f });
+	Egg->SetThrowDir(CrossHair->GetCurAngle());
 }

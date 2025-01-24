@@ -81,6 +81,9 @@ void YoshiState::StateStart()
 {
 	switch (Yoshi->CurState)
 	{
+	case EPlayerState::IDLE:
+		IdleStart();
+		break;
 	case EPlayerState::WALK:
 		WalkStart();
 		break;
@@ -104,6 +107,9 @@ void YoshiState::StateStart()
 		break;
 	case EPlayerState::STICK:
 		StickStart();
+		break;
+	case EPlayerState::THROW:
+		ThrowStart();
 		break;
 	}
 }
@@ -139,11 +145,21 @@ void YoshiState::StateFunc(float _DeltaTime)
 	case EPlayerState::STICK:
 		Stick(_DeltaTime);
 		break;
+	case EPlayerState::THROW:
+		Throw(_DeltaTime);
+		break;
 	}
 }
 #pragma endregion
 
 #pragma region Start Functions
+void YoshiState::IdleStart()
+{
+	if (Yoshi->IsAim)
+	{
+		ChangeAnimation("AimIdle");
+	}
+}
 void YoshiState::WalkStart()
 {
 	if (Yoshi->IsAim)
@@ -209,6 +225,12 @@ void YoshiState::StickStart()
 		ChangeAnimation("Stick_Right");
 	}
 }
+
+void YoshiState::ThrowStart()
+{
+	ChangeAnimation("Throw");
+	Yoshi->SpawnEgg();
+}
 #pragma endregion
 
 #pragma region State Functions
@@ -235,7 +257,10 @@ void YoshiState::Gravity(float _DeltaTime, float _Scale)
 
 void YoshiState::Idle(float _DeltaTime)
 {
-	Yoshi->PlayIdleAnim(false);
+	if (!Yoshi->IsAim)
+	{
+		Yoshi->PlayIdleAnim(false);
+	}
 	
 	// Walk
 	if (IsPressKey(VK_LEFT) || IsPressKey(VK_RIGHT))
@@ -286,10 +311,20 @@ void YoshiState::Idle(float _DeltaTime)
 	}
 
 	// IsAim
-	if (IsDownKey('Z') || Yoshi->IsAim)
+	if (IsDownKey('Z'))
 	{
-		Yoshi->IsAim = true;
-		ChangeAnimation("AimIdle");
+		if (!Yoshi->IsAim)
+		{
+			Yoshi->IsAim = true;
+			StateStart();
+		}
+		else
+		{
+			Yoshi->CurState = EPlayerState::THROW;
+			StateStart();
+			return;
+		}
+		
 	}
 	
 	// DeAccel
@@ -592,6 +627,17 @@ void YoshiState::Stick(float _DeltaTime)
 	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
 	{
 		ChangeState(EPlayerState::IDLE);
+		StateStart();
+		return;
+	}
+}
+
+void YoshiState::Throw(float _DeltaTime)
+{
+	Yoshi->IsAim = false;
+	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+	{
+		Yoshi->CurState = EPlayerState::IDLE;
 		StateStart();
 		return;
 	}

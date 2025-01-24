@@ -21,6 +21,16 @@ public:
 
 	void Init(class AYoshi* _Yoshi);
 
+	FVector GetCurAngle()
+	{
+		if (StartAngle >= 360.0f)
+		{
+			StartAngle -= 360.0f;
+		}
+
+		return FVector::AngleToVectorDeg(StartAngle);
+	}
+
 protected:
 	void Tick(float _DeltaTime) override;
 

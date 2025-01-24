@@ -39,6 +39,7 @@ public:
 
 	void Gravity(float _DeltaTime, float _Scale = 1.0f);
 
+	void IdleStart();
 	void WalkStart();
 	void RunStart();
 	void JumpStart();
@@ -47,6 +48,7 @@ public:
 	void LookUpStart();
 	void BendStart();
 	void StickStart();
+	void ThrowStart();
 
 	void Idle(float _DeltaTime);
 	void Walk(float _DeltaTime);
@@ -57,6 +59,7 @@ public:
 	void LookUp(float _DeltaTime);
 	void Bend(float _DeltaTime);
 	void Stick(float _DeltaTime);
+	void Throw(float _DeltaTime);
 
 protected:
 
