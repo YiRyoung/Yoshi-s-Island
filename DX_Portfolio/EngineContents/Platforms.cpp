@@ -5,6 +5,7 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Collision.h>
 
+#include "Yoshi.h"
 #include "RotatePlatform.h"
 
 APlatforms::APlatforms()
@@ -36,4 +37,17 @@ void APlatforms::BeginPlay()
 void APlatforms::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+
+	AYoshi* Yoshi = GetWorld()->GetMainPawn<AYoshi>();
+
+	if (Yoshi->Platform == this)
+	{
+		Yoshi->SetActorLocation(Yoshi->Platform->GetActorLocation() + Yoshi->PlatformPos);
+
+		std::vector<UCollision*> Platforms;
+		if (false == Yoshi->FootCollision->CollisionCheck("PlatformCollision", Platforms))
+		{
+			Yoshi->Platform = nullptr;
+		}
+	}
 }

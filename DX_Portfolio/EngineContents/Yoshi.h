@@ -12,6 +12,7 @@
 // Ό³Έν :
 class AYoshi : public APawn
 {
+	friend class APlatforms;
 	friend class YoshiState;
 	friend class YoshiCollision;
 

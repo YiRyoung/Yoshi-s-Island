@@ -195,17 +195,16 @@ void YoshiCollision::SetCollisionsCheck(float _DeltaTime)
 	}
 
 	{
-		std::vector<UCollision*> Platforms;
-		if (Yoshi->FootCollision->CollisionCheck("PlatformCollision", Platforms)
-			&& Yoshi->CurState == EPlayerState::FALL)
+		if (nullptr == Yoshi->Platform)
 		{
-			Yoshi->Platform = Platforms[0]->GetActor<APlatforms>();
-			Yoshi->PlatformPos = Yoshi->GetActorLocation() - Yoshi->Platform->GetActorLocation();
-			Yoshi->CurState = EPlayerState::IDLE;
-		}
-		else
-		{
-			//Yoshi->Platform = nullptr;
+			std::vector<UCollision*> Platforms;
+			if (Yoshi->FootCollision->CollisionCheck("PlatformCollision", Platforms)
+				&& Yoshi->CurState == EPlayerState::FALL)
+			{
+				Yoshi->Platform = Platforms[0]->GetActor<APlatforms>();
+				Yoshi->PlatformPos = Yoshi->GetActorLocation() - Yoshi->Platform->GetActorLocation();
+				Yoshi->CurState = EPlayerState::IDLE;
+			}
 		}
 	}
 }

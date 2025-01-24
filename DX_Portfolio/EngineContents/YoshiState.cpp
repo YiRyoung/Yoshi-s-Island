@@ -241,12 +241,6 @@ void YoshiState::Idle(float _DeltaTime)
 	{
 		Gravity(_DeltaTime);
 	}
-	else
-	{
-		Yoshi->SetActorLocation(Yoshi->Platform->GetActorLocation() + Yoshi->PlatformPos);
-		return;
-	}
-	
 
 	// Walk
 	if (IsPressKey(VK_LEFT) || IsPressKey(VK_RIGHT))
@@ -359,11 +353,25 @@ void YoshiState::Walk(float _DeltaTime)
 	// Walk
 	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
 	{
-		Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+		if (nullptr == Yoshi->Platform)
+		{
+			Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+		}
+		else {
+			Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
+		}
 	}
 	else if (IsPressKey(VK_RIGHT) && IsScreen(ECheckDir::RIGHT) && !CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckPointColor(ECheckDir::RIGHT, UColor::GREEN))
 	{
-		Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+		if (nullptr == Yoshi->Platform)
+		{
+			Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+		}
+		else
+		{
+			Yoshi->PlatformPos += FVector::RIGHT * Yoshi->Speed * _DeltaTime;
+		}
+
 	}
 }
 
