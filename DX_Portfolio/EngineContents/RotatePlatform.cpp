@@ -39,7 +39,6 @@ void ARotatePlatform::BeginPlay()
 		APlat->SetActorLocation(GetActorLocation() + Pos);
 		Platforms.push_back(APlat.get());
 	}
-	
 }
 
 void ARotatePlatform::Tick(float _DeltaTime)

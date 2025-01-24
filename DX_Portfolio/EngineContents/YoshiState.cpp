@@ -235,13 +235,8 @@ void YoshiState::Gravity(float _DeltaTime, float _Scale)
 
 void YoshiState::Idle(float _DeltaTime)
 {
-
 	Yoshi->PlayIdleAnim(false);
-	if (nullptr == Yoshi->Platform)
-	{
-		Gravity(_DeltaTime);
-	}
-
+	
 	// Walk
 	if (IsPressKey(VK_LEFT) || IsPressKey(VK_RIGHT))
 	{
@@ -316,8 +311,6 @@ void YoshiState::Idle(float _DeltaTime)
 
 void YoshiState::Walk(float _DeltaTime)
 {
-	Gravity(_DeltaTime);
-
 	// Stick
 	if (IsDownKey('X'))
 	{
@@ -371,13 +364,11 @@ void YoshiState::Walk(float _DeltaTime)
 		{
 			Yoshi->PlatformPos += FVector::RIGHT * Yoshi->Speed * _DeltaTime;
 		}
-
 	}
 }
 
 void YoshiState::Run(float _DeltaTime)
 {
-	Gravity(_DeltaTime);
 	// Stick
 	if (IsDownKey('X'))
 	{
@@ -406,7 +397,15 @@ void YoshiState::Run(float _DeltaTime)
 	FVector Force = Yoshi->DirForce * _DeltaTime;
 	if (IsPressKey(VK_LEFT) && !CheckForceColor(Force, UColor::MAGENTA) && !CheckForceColor(Force, UColor::GREEN))
 	{
-		Yoshi->AddActorLocation(Force);
+		if (nullptr == Yoshi->Platform)
+		{
+			Yoshi->AddActorLocation(Force);
+		}
+		else
+		{
+			Yoshi->PlatformPos += Force;
+		}
+
 		Yoshi->DirForce += FVector::LEFT * Yoshi->AccSpeed * _DeltaTime;
 
 		if (Yoshi->DirForce.X > Yoshi->MaxSpeed)
@@ -422,7 +421,16 @@ void YoshiState::Run(float _DeltaTime)
 
 	if (IsPressKey(VK_RIGHT) && !CheckForceColor(Force, UColor::MAGENTA) && !CheckForceColor(Force, UColor::GREEN))
 	{
-		Yoshi->AddActorLocation(Force);
+
+		if (nullptr == Yoshi->Platform)
+		{
+			Yoshi->AddActorLocation(Force);
+		}
+		else
+		{
+			Yoshi->PlatformPos += Force;
+		}
+
 		Yoshi->DirForce += FVector::RIGHT * Yoshi->AccSpeed * _DeltaTime;
 
 		if (Yoshi->DirForce.X > Yoshi->MaxSpeed)
@@ -440,8 +448,6 @@ void YoshiState::Run(float _DeltaTime)
 
 void YoshiState::Jump(float _DeltaTime)
 {
-	Gravity(_DeltaTime);
-	
 	//Stick
 	if (IsDownKey('X'))
 	{
@@ -461,15 +467,36 @@ void YoshiState::Jump(float _DeltaTime)
 	// Jump
 	if (!CheckPointColor(ECheckDir::UP, UColor::MAGENTA))
 	{
-		Yoshi->AddActorLocation(FVector::UP * Yoshi->JumpPower * _DeltaTime);
+		if (nullptr == Yoshi->Platform)
+		{
+			Yoshi->AddActorLocation(FVector::UP * Yoshi->JumpPower * _DeltaTime);
+		}
+		else
+		{
+			Yoshi->PlatformPos += FVector::UP * Yoshi->JumpPower * _DeltaTime;
+		}
 	}
 	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
 	{
-		Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+		if (nullptr == Yoshi->Platform)
+		{
+			Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+		}
+		else
+		{
+			Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
+		}
 	}
 	else if (IsPressKey(VK_RIGHT) && IsScreen(ECheckDir::RIGHT) && !CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
 	{
-		Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+		if (nullptr == Yoshi->Platform)
+		{
+			Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+		}
+		else
+		{
+			Yoshi->PlatformPos += FVector::RIGHT * Yoshi->Speed * _DeltaTime;
+		}
 	}
 }
 
@@ -479,8 +506,6 @@ void YoshiState::StayUp(float _DeltaTime)
 
 void YoshiState::Fall(float _DeltaTime)
 {
-	Gravity(_DeltaTime);
-
 	// Stick
 	if (IsDownKey('X'))
 	{
@@ -555,8 +580,6 @@ void YoshiState::Bend(float _DeltaTime)
 
 void YoshiState::Stick(float _DeltaTime)
 {
-	Gravity(_DeltaTime);
-
 	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
 	{
 		Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
@@ -572,6 +595,5 @@ void YoshiState::Stick(float _DeltaTime)
 		StateStart();
 		return;
 	}
-
 }
 #pragma endregion

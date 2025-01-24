@@ -12,7 +12,6 @@
 // Ό³Έν :
 class AYoshi : public APawn
 {
-	friend class APlatforms;
 	friend class YoshiState;
 	friend class YoshiCollision;
 
@@ -41,6 +40,11 @@ public:
 	FVector GetCameraPivot() const
 	{
 		return CameraPivot;
+	}
+
+	void ResetGraviryForce()
+	{
+		GravityForce = FVector::ZERO;
 	}
 
 	class APlatforms* GetPlatform() const

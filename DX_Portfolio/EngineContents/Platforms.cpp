@@ -40,14 +40,15 @@ void APlatforms::Tick(float _DeltaTime)
 
 	AYoshi* Yoshi = GetWorld()->GetMainPawn<AYoshi>();
 
-	if (Yoshi->Platform == this)
+	if (Yoshi->GetPlatform() == this)
 	{
-		Yoshi->SetActorLocation(Yoshi->Platform->GetActorLocation() + Yoshi->PlatformPos);
+		Yoshi->ResetGraviryForce();
+		Yoshi->SetActorLocation(Yoshi->GetPlatform()->GetActorLocation() + Yoshi->GetPlatformPos());
 
-		std::vector<UCollision*> Platforms;
-		if (false == Yoshi->FootCollision->CollisionCheck("PlatformCollision", Platforms))
+		std::vector<UCollision*> FootCollision;
+		if (false == Collision->CollisionCheck("FootCollision", FootCollision))
 		{
-			Yoshi->Platform = nullptr;
+			Yoshi->SetPlatform(nullptr);
 		}
 	}
 }

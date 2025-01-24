@@ -63,6 +63,10 @@ void AYoshi::Tick(float _DeltaTime)
 
 	SetAnimDir();
 	State->StateFunc(_DeltaTime);
+	if (Platform == nullptr)
+	{
+		State->Gravity(_DeltaTime);
+	}
 	Collision->MoveSlopeUp(_DeltaTime);
 	Collision->SetCollisionsCheck(_DeltaTime);
 	MoveCamera(CameraNum, _DeltaTime);
