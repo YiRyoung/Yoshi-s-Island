@@ -19,6 +19,18 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void LevelChangeStart() override;
+	void LevelChangeEnd() override;
+
 private:
 	std::shared_ptr<class AStage100> Stage;
+	
+	std::shared_ptr<class AShyGuy> ShyGuy;
+
+	std::shared_ptr<class AScaleBlock> ScaleBlock;
+	std::shared_ptr<class ARotatePlatform> RotatePlatform;
+	std::shared_ptr<class APlatforms> Platform;
+
+	void SetGUI();
 };
+

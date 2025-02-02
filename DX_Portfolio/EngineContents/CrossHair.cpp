@@ -1,10 +1,13 @@
 #include "PreCompile.h"
 #include "CrossHair.h"
 
+#include <EnginePlatform/EngineInput.h>
+
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 
 #include "ContentsEnum.h"
+#include "Yoshi.h"
 
 ACrossHair::ACrossHair()
 {
@@ -16,15 +19,7 @@ ACrossHair::~ACrossHair()
 {
 }
 
-void ACrossHair::Tick(float _DeltaTime)
-{
-	AActor::Tick(_DeltaTime);
-
-	Move(_DeltaTime);
-}
-
-
-void ACrossHair::Init(class AYoshi* _Yoshi)
+void ACrossHair::InitCrossHair(class AYoshi* _Yoshi)
 {
 	CrossHairRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	CrossHairRenderer->SetupAttachment(RootComponent);
@@ -35,12 +30,24 @@ void ACrossHair::Init(class AYoshi* _Yoshi)
 	AddActorLocation({ 0.0f, 0.0f, static_cast<float>(EOrderNum::HUD) });
 }
 
+void ACrossHair::Tick(float _DeltaTime)
+{
+	AActor::Tick(_DeltaTime);
+
+	Move(_DeltaTime);
+
+	UEngineDebug::OutPutString("StartAngle : " + std::to_string(StartAngle));
+}
+
 void ACrossHair::Move(float _DeltaTime)
 {
 	if (StartAngle > MaxAngle) { IsPlusValue = false; }
 	else if (StartAngle < MinAngle) { IsPlusValue = true; }
 
 	(IsPlusValue) ? StartAngle += Speed * _DeltaTime : StartAngle -= Speed * _DeltaTime;
+
+	if (UEngineInput::IsPress(VK_UP) && IsPlusValue && StartAngle > MaxAngle) { StartAngle = MaxAngle; }
+	else if (UEngineInput::IsPress(VK_UP) && !IsPlusValue && StartAngle < MinAngle) { StartAngle = MinAngle; }
 
 	FVector ParentLocation = GetWorld()->GetMainPawn()->GetActorLocation();
 

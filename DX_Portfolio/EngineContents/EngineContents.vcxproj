@@ -178,7 +178,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Egg.h">
+    <ClInclude Include="DebugGUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EggList.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -186,12 +190,10 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Platforms.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="Platforms.h" />
     <ClInclude Include="PreCompile.h" />
-    <ClInclude Include="RotatePlatform.h">
+    <ClInclude Include="RotatePlatform.h" />
+    <ClInclude Include="ScaleBlock.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -203,10 +205,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ShyGuy.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="ShyGuy.h" />
     <ClInclude Include="Stage100.h">
       <SubType>
       </SubType>
@@ -215,19 +214,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Stage101.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Stage101GameMode.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Stage102.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Stage102GameMode.h">
+    <ClInclude Include="ThrowEgg.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -243,7 +230,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="YoshiCollision.h">
+    <ClInclude Include="YoshiGameInstance.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -258,7 +245,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Egg.cpp">
+    <ClCompile Include="DebugGUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EggList.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -266,17 +257,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Platforms.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="Platforms.cpp" />
     <ClCompile Include="PreCompile.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="RotatePlatform.cpp">
+    <ClCompile Include="RotatePlatform.cpp" />
+    <ClCompile Include="ScaleBlock.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -288,10 +277,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ShyGuy.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="ShyGuy.cpp" />
     <ClCompile Include="Stage100.cpp">
       <SubType>
       </SubType>
@@ -300,19 +286,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Stage101.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Stage101GameMode.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Stage102.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Stage102GameMode.cpp">
+    <ClCompile Include="ThrowEgg.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -328,7 +302,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="YoshiCollision.cpp">
+    <ClCompile Include="YoshiGameInstance.cpp">
       <SubType>
       </SubType>
     </ClCompile>

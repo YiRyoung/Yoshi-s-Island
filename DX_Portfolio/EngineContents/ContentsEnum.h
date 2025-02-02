@@ -33,6 +33,8 @@ enum class EPlayerState
 	STAYUP,
 	FALL,
 	STICK,
+	EAT,
+	SPIT,
 	THROW
 };
 
@@ -51,4 +53,12 @@ enum class EMonsterState
 	WALK,
 	ATTACK,
 	HURT
+};
+
+enum class EShyGuyTypes
+{
+	GREEN,
+	MAGETNTA,
+	RED,
+	NONE
 };

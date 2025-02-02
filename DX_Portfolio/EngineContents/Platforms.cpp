@@ -42,7 +42,7 @@ void APlatforms::Tick(float _DeltaTime)
 
 	if (Yoshi->GetPlatform() == this)
 	{
-		Yoshi->ResetGraviryForce();
+		Yoshi->ResetGravityForce();
 		Yoshi->SetActorLocation(Yoshi->GetPlatform()->GetActorLocation() + Yoshi->GetPlatformPos());
 
 		std::vector<UCollision*> FootCollision;

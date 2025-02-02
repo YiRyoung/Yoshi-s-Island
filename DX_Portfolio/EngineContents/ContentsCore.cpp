@@ -8,12 +8,11 @@
 #include <EngineCore/EngineSprite.h>
 #include <EngineCore/HUD.h>
 
+#include "YoshiGameInstance.h"
 #include "Yoshi.h"
 #include "TitleGameMode.h"
 #include "SelectGameMode.h"
 #include "Stage100GameMode.h"
-#include "Stage101GameMode.h"
-#include "Stage102GameMode.h"
 
 CreateContentsCoreDefine(UContentsCore);
 
@@ -27,6 +26,8 @@ UContentsCore::~UContentsCore()
 
 void UContentsCore::EngineStart(UEngineInitData& _Data)
 {
+	GEngine->CreateGameInstance<AYoshiGameInstance>();
+
 	_Data.WindowPos = { 100, 100 };
 	_Data.WindowSize = { 768, 660 };
 
@@ -35,10 +36,8 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 	UEngineCore::CreateLevel<ATitleGameMode, APawn, AHUD>("Title");
 	UEngineCore::CreateLevel<ASelectGameMode, APawn, AHUD>("Select");
 	UEngineCore::CreateLevel<AStage100GameMode, AYoshi, AHUD>("Stage100");
-	UEngineCore::CreateLevel<AStage101GameMode, AYoshi, AHUD>("Stage101");
-	UEngineCore::CreateLevel<AStage102GameMode, AYoshi, AHUD>("Stage102");
 
-	UEngineCore::OpenLevel("Stage101");
+	UEngineCore::OpenLevel("Stage100");
 
 }
 
@@ -88,6 +87,10 @@ void UContentsCore::LoadSprites()
 	}
 
 	UEngineSprite::CreateSpriteToMeta("YoshiAndMario.png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("Yoshi(Not_Hold).png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("Yoshi(Hold).png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("YoshiAndMarioStick_Right.png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("YoshiAndMarioStick_Upper.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("YoshiStick_Right.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("YoshiStick_Upper.png", ".sdata");
 	UEngineSprite::CreateSpriteToMeta("Eggs.png", ".sdata");

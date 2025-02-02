@@ -6,14 +6,12 @@
 #include <EngineCore/CameraActor.h>
 
 #include "ContentsEnum.h"
-#include "YoshiCollision.h"
 #include "YoshiState.h"
 
 // Ό³Έν :
 class AYoshi : public APawn
 {
 	friend class YoshiState;
-	friend class YoshiCollision;
 
 public:
 	// constrcuter destructer
@@ -26,9 +24,10 @@ public:
 	AYoshi& operator=(const AYoshi& _Other) = delete;
 	AYoshi& operator=(AYoshi&& _Other) noexcept = delete;
 
-	void SetColImage(UEngineWinImage* _ColImage)
+	// Pixel Collision (Ground)
+	void SetColImage(UEngineWinImage* _Image)
 	{
-		ColImage = _ColImage;
+		ColImage = _Image;
 	}
 
 	UColor GetColor(FVector _Pos)
@@ -37,21 +36,27 @@ public:
 		return ColImage->GetColor(_Pos);
 	}
 
-	FVector GetCameraPivot() const
+	// Camera Limit
+	void CameraBoundary(FVector _StageScale);
+
+	// FSM
+	void ChangeState(EPlayerState _NextState)
 	{
-		return CameraPivot;
+		State->ChangeFSM(_NextState);
 	}
 
-	void ResetGraviryForce()
+	// Egg
+	void SetEggCount(int _Value)
 	{
-		GravityForce = FVector::ZERO;
+		EggCount = _Value;
 	}
 
+	// Platform
 	class APlatforms* GetPlatform() const
 	{
 		return Platform;
 	}
-
+	
 	void SetPlatform(class APlatforms* _Platform)
 	{
 		Platform = _Platform;
@@ -62,9 +67,15 @@ public:
 		return PlatformPos;
 	}
 
-	void SetPlatformPos(FVector _Value)
+	void ResetGravityForce()
 	{
-		PlatformPos = _Value;
+		GravityForce = FVector::ZERO;
+	}
+
+#pragma region Debug Funcs
+	UEngineWinImage* GetColImage() const
+	{
+		return ColImage;
 	}
 
 	EPlayerState GetCurState() const
@@ -72,90 +83,129 @@ public:
 		return CurState;
 	}
 
-	void ChangetState(EPlayerState _NextState)
+	bool GetIsWithBaby() const
 	{
-		CurState = _NextState;
+		return IsWithBaby;
+	}
+
+	void SwitchIsWithBaby()
+	{
+		IsWithBaby = !IsWithBaby;
+		ChangeState(EPlayerState::IDLE);
 		return;
 	}
+
+	bool GetIsAim() const
+	{
+		return IsAim;
+	}
+
+	void SwitchIsAim()
+	{
+		IsAim = !IsAim;
+		ChangeState(EPlayerState::IDLE);
+		return;
+	}
+
+	bool GetIsHold() const
+	{
+		return IsHold;
+	}
+
+	void SwitchIsHold()
+	{
+		IsHold = !IsHold;
+		ChangeState(EPlayerState::IDLE);
+		return;
+	}
+#pragma endregion
+
 
 protected:
 	virtual void BeginPlay();
 	virtual void Tick(float _DeltaTime);
 
 private:
+	UEngineWinImage* ColImage;
 	USoundPlayer SoundPlayer;
 
-	UEngineWinImage* ColImage;
-	YoshiCollision* Collision;
-	YoshiState* State;
+	class YoshiState* State = nullptr;
 
+	std::shared_ptr<class ACameraActor> Camera;
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
-	
+	std::shared_ptr<class ACrossHair> CrossHair;
+
+	// Init
+	void YoshiInit();
+
+	// Camera
+	int CameraNum = -1;
+	float MaxCameraPivotY = 100.0f;
+	float MinCameraPivotY = 0.0f;
+	FVector CameraPivot = FVector::ZERO;
+
+	void MoveCamera( float _DeltaTime);
+
+	// Animation
+	bool IsHolding = false;
+	bool IsWithBaby = true;
+	bool IsAim = false;
+	bool IsHold = false;
+	FVector YoshiScale = FVector::ZERO;
+
+	void SetAnimation();
+	void SetAnimDir();
+
+	int IdleAnimNum();
+	void PlayIdleAnim();
+
+	// Collision
 	std::shared_ptr<class UCollision> HeadCollision;
 	std::shared_ptr<class UCollision> BodyCollision;
 	std::shared_ptr<class UCollision> FootCollision;
 
-	std::shared_ptr<ACameraActor> Camera;
+	std::shared_ptr<class UCollision> StickBodyCollision;
+	std::shared_ptr<class UCollision> StickCollision;
 
-	std::shared_ptr<class ACrossHair> CrossHair;
-
-	FVector CameraPivot = FVector::ZERO;
-	EPlayerState CurState = EPlayerState::IDLE;
-
-	// Platforms
-	class APlatforms* Platform = nullptr;
-	FVector PlatformPos = FVector::ZERO;
-
-	// GameManager
-	int CameraNum = -1; 
-	bool IsWithBaby = true;
-	bool IsAim = false;
-	bool IsHold = false;
-	FVector Scale = FVector::ZERO;
-
-	// Speed
-	bool IsAccel = false;
-	float Speed = 340.0f;
-	float AccSpeed = 420.0f;
-	float DeAccSpeed = 10.0f;
-	float MaxSpeed = 480.0f;
-	FVector DirForce = { 0, 0, 0 };
-
-	// Jump & Gravity
-	float JumpPower = 550.0f;
-	float GravityPower = 800.0f;
-	FVector GravityForce = { 0, 0, 0 };
-
-	// Camera
-	void MoveCamera(int _IsUP, float _DeltaTime);
-	float MaxCameraPivotY = 100.0f;
-	float MinCameraPivotY = 0.0f;
-
-	// Animation
-	void SetAnimations();
-	void SetAnimDir();
-
-	int SetIdleAnimNum();
-	void PlayIdleAnim(bool _IsStart);
-
-	// Collision
 	void SetCollision();
-	void SetDebugCollision();
+	void SetStickCollision();
+	
+	bool CheckPointColor(ECheckDir _Dir, UColor _Color);
+	bool CheckLineColor(ECheckDir _Dir, UColor _Color);
+	bool CheckForceColor(FVector _Force, UColor _Color);
 
-	// Sound
-	void Play(std::string_view _Name);
+	bool IsSlope();
+	void MoveSlope(float _DeltaTime);
+
+	void SetCollisionsCheck();
 
 	// CrossHair
 	void SetCrossHair();
 
-	// Egg
-	void SpawnEgg();
+	// ThrowEgg
+	void SpawnThrowEgg();
 
-#pragma region Debug
-	std::shared_ptr<class UCollision> DebugDownCollision;
-	std::shared_ptr<class UCollision> DebugLeftCollision;
-	std::shared_ptr<class UCollision> DebugRightCollision;
-	std::shared_ptr<class UCollision> DebugUpCollision;
-#pragma endregion
+	// Platform
+	class APlatforms* Platform = nullptr;
+	FVector PlatformPos = FVector::ZERO;
+
+	// Status
+	int StickDir = 0;
+	int EggCount = 0;
+	EPlayerState CurState = EPlayerState::IDLE;
+
+	// Speed
+	bool IsAccel = false;
+	float Speed = 380.0f;
+	float AccSpeed = 400.0f;
+	float DeAccSpeed = 20.0f;
+	float MaxSpeed = 450.0f;
+	FVector DirForce = { 0, 0, 0 };
+
+	// Jump & Gravity
+	bool IsStayUp = false;
+	float JumpPower = 550.0f;
+	float GravityPower = 800.0f;
+	FVector GravityForce = { 0, 0, 0 };
 
 };

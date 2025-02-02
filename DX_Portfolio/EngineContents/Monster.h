@@ -1,8 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
-#include "ContentsEnum.h"
-
 // Ό³Έν :
 class AMonster : public AActor
 {
@@ -18,27 +16,18 @@ public:
 	AMonster& operator=(AMonster&& _Other) noexcept = delete;
 
 protected:
-	virtual void BeginPlay();
-	virtual void Tick(float _DeltaTime);
-	void ChangeState(EMonsterState _CurMonsterState);
-
-	EColorType MonsterColor = EColorType::NONE;
-	EMonsterState CurMonsterState = EMonsterState::IDLE;
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+	
 	FVector MonsterScale = FVector::ZERO;
 
-	void MosnterFSM(float _DeltaTime);
+	bool CheckForceColor(FVector _Force, UColor _Color);
 	void Gravity(float _DeltaTime);
-
-	virtual void IdleStart();
-	virtual void Idle(float _DeltaTime);
-	virtual void WalkStart();
-	virtual void Walk(float _DeltaTime);
-	virtual void AttackStart();
-	virtual void Attack(float _DeltaTime);
-	virtual void HurtStart();
-	virtual void Hurt(float _DeltaTime);
 
 private:
 
+	float GravityPower = 800.0f;
+	FVector GravityForce = { 0, 0, 0 };
+	
 };
 

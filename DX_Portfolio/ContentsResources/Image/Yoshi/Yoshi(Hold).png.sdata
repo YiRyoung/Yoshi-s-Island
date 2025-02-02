@@ -1,0 +1,2980 @@
+fileFormatVersion: 2
+guid: 470a4e66ea0560d49a8971dd08604829
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yoshi(Hold)_0
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 894
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5324d5de5ae1e479f82bcb31829d0c
+      internalID: 374631736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_1
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 894
+        width: 28
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38634558a2451ab4c944d179617a7881
+      internalID: -121361753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_2
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 894
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a662f5f97245f84a875ccaf073916b7
+      internalID: 1948410205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 894
+        width: 28
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c424cbd1dc6a9254b8917a116d6ac767
+      internalID: 2018537224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_4
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 894
+        width: 28
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95359b3c6c077f34182a6bdc1f866f2b
+      internalID: -415780513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_5
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 894
+        width: 28
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23db48f2fb74e540a86b36bc7752051
+      internalID: -1750523611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_6
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 894
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe9f3aa8a7299b4fbe62a577e1fd23a
+      internalID: 796532029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_7
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 894
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09ed08e88662f447a0b75284d2db716
+      internalID: 1313339734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_8
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 894
+        width: 28
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5fd406af924db40805dad6bba1a54d
+      internalID: -751120667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_9
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 894
+        width: 28
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f0210064af9bf44b9f69ddf685a8eba
+      internalID: 31189913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_10
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 859
+        width: 28
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de236182c7cb84a42941bd6331f2e5dd
+      internalID: -1705062764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_11
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 859
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59994f51e09607546a2ba07562419fcf
+      internalID: 508963735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_12
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 859
+        width: 28
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991fa5dd2c935af4b91a75d84d36194c
+      internalID: 1145347348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_13
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 859
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20db6226bdc5d1549940aa04f3663b9a
+      internalID: 1932398075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_14
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 859
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2610603cd9f61046bafa36ce49ff713
+      internalID: -1453368226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_15
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 859
+        width: 29
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1666175eb5e410249bd02ba396446f6e
+      internalID: -1125333326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_16
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 859
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7093f0aa72866489a951f778727d0f
+      internalID: 953182787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_17
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 826
+        width: 23
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d505ee23926a9e43adecc9199b0dd35
+      internalID: 384063301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_18
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 826
+        width: 21
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3769c6e282a66cc4d8302cc2c181ea5c
+      internalID: -712086406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_19
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 826
+        width: 22
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b682b80715286464dbf01b5a65cfb4a6
+      internalID: -1004893303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_20
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 826
+        width: 21
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d301f9fbc944b7f4a96c77a95aa57bea
+      internalID: -946820422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_21
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 826
+        width: 23
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc517311edcf17449b001f9375e5557
+      internalID: 2069795887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_22
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 826
+        width: 24
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b955755135c1c14aa0db26cfbbc1e3c
+      internalID: -1757862324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_23
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 793
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67aa7fd6991839d4db2c7ec21df0a0f4
+      internalID: -819414881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_24
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 793
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f031475a4e2d084e90858d253eb2df1
+      internalID: 593740674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_25
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 793
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2307b5d4d72546747bf79cb07742d10a
+      internalID: 1401731323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_26
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 793
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6686d5787b02c464b879c47aeb9e9200
+      internalID: 84431560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_27
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 754
+        width: 25
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd345dae80ed0f458426a5c10607973
+      internalID: -1653839812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_28
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 751
+        width: 25
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ec93eb5d0a9b942b547a779c020c55
+      internalID: 706759978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_29
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 747
+        width: 25
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ac0ce3147524148a5ffe8ff05c7652
+      internalID: 571169579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_30
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 717
+        width: 28
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3f1404acdbc6842923ab7dea83039f
+      internalID: -1858152864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_31
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 717
+        width: 28
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f74d153acec35a8439be43b6c7badc2e
+      internalID: 245846780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_32
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 717
+        width: 28
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce05162756188ef47a53dfc0e613c7f5
+      internalID: -1577432300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_33
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 688
+        width: 24
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aee1b387b1cec3147a312902ccac5691
+      internalID: -86448042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_34
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 688
+        width: 28
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a473c049b33c7a34a9ab95d67bf7bc80
+      internalID: 972303748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_35
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 688
+        width: 28
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1505eef3be905b4da54659453ef1457
+      internalID: 511981078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_36
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 652
+        width: 34
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b2738b46f4d8964ba0194548b42df07
+      internalID: -1751059709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_37
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 652
+        width: 37
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb07ae9a160a4b1499180806f7156722
+      internalID: 347038440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_38
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 612
+        width: 25
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2220b5fd1058f54694dd91dbf7e0f37
+      internalID: -1241215157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_39
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 580
+        width: 24
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3adfad2c2c1d3b3428d5a20b814b4d21
+      internalID: -1918918145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_40
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 577
+        width: 22
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9d24a05bb9a254ea40318b71679c94
+      internalID: 2008465904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_41
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 579
+        width: 23
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dee2ca7f068633448c8c8776dc69ac8
+      internalID: 1589324919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_42
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 544
+        width: 22
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c1fdf189ed0274b982caf7411c71c5
+      internalID: -1872085686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_43
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 544
+        width: 25
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c921063c3938bb440b83d56309e43337
+      internalID: -568797833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_44
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 544
+        width: 30
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af062bc06efbbd84a92bf621526b8939
+      internalID: 326333027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_45
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 544
+        width: 23
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa522e4622aa0045b7a4c5bb6129b9e
+      internalID: -1094457009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_46
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 544
+        width: 21
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51369f8088ee6f340a2feefad4d4cfe3
+      internalID: -1662124820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_47
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 509
+        width: 26
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca4e273e2b13304a82a4cf9c2519f5b
+      internalID: -496535794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_48
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 509
+        width: 26
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89afcef661199fa44921a52dc65b31de
+      internalID: 563073078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_49
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 509
+        width: 26
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a8ccd2261863084481531d145ccc3f9
+      internalID: -1064355930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_50
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 509
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a002fe7858be94896bba82184c36a7
+      internalID: -573630974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_51
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 509
+        width: 29
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608f02de66e0f3e449da48187c472310
+      internalID: -1296828117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_52
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 478
+        width: 30
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c384d066f716b646bfa54940749d64a
+      internalID: 2047008323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_53
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 474
+        width: 30
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b750471ba24f64cb0ee07c319ca7c8
+      internalID: -1580857504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_54
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 477
+        width: 33
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd7e96fe155a01489e86fa0dbb4d13f
+      internalID: -409455816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_55
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 475
+        width: 26
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af70dabaa8741042a669d834187497f
+      internalID: -809083084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_56
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 437
+        width: 29
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6fc74d853d68c449993aa4b1eae7119
+      internalID: 1739732208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_57
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 438
+        width: 30
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bded4c4e4acd8d4d87b4692fa9eaa6b
+      internalID: -954857972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_58
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 438
+        width: 30
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f438340625271408e37d563e2eeb93
+      internalID: 1071035541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_59
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 404
+        width: 34
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a11d83edf6b7d4fbfda76a8fea09ad
+      internalID: -300128293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_60
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 404
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052b5c48f24a8704fa640396b56ae36c
+      internalID: -956775881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_61
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 404
+        width: 29
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8402389a65b5b774bbcaa5c23768c4b1
+      internalID: 387808074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_62
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 404
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47634b355f7485040a210bb770232512
+      internalID: -193726370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_63
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 404
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987ab2646a6b45e458a7ccd23712e1e8
+      internalID: -582380679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_64
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 370
+        width: 26
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b83debb10d2624b87875493397f4b3
+      internalID: -1604280712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_65
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 301
+        width: 28
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7efb6791b2e251d4ca32bcaed6dc2041
+      internalID: -71152351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_66
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 301
+        width: 28
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7792b2a85a00604586750c74554b38e
+      internalID: 633837500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_67
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 301
+        width: 28
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e679bf39ada06549988d6203dc1609d
+      internalID: -1169376045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_68
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 301
+        width: 28
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a67cfb557ddb454d9732200d27af60b
+      internalID: -1183248244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_69
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 301
+        width: 28
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b3617ea4131ba9488e16e508f276e25
+      internalID: 1521789530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_70
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 301
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e2c648b00247b44ca814e396e299aef
+      internalID: 208419566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_71
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 301
+        width: 29
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6305a3cf49d4130469f646dac272d5ac
+      internalID: -851802104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_72
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 301
+        width: 29
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8362e13a919e14082cac62d4b63c6d
+      internalID: -1591339145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_73
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 301
+        width: 29
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aacf0dcc67c5dae489d8283f4f0bee0b
+      internalID: -1930826664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_74
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 301
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e50f77103e3d7489473bfc181e5fda
+      internalID: 2050417348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_75
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 301
+        width: 28
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b5df95f14934047b28c60e9bcf2271
+      internalID: -335506306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_76
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 301
+        width: 27
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d6da31780ce0e54fb37de6b8152a50d
+      internalID: 1834635865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_77
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 301
+        width: 25
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29fd44dd58badf3408de9b40f97e8166
+      internalID: 1552621784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_78
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 301
+        width: 26
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff206f78a43e2354384b6295545d029e
+      internalID: 496131051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_79
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 301
+        width: 27
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672bff36f48c11d4b90ad38558c0aece
+      internalID: -1961133525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_80
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 301
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6c76ce94239fd418bb930a233acc5c
+      internalID: -1348528717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_83
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 266
+        width: 29
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b2b49a025daad48a6f5cbe5cfb0499
+      internalID: -1280630789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_84
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 266
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f5fd2076d29eb468782bb6afd17501
+      internalID: 802410490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_85
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 266
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c87b48e73180164f9e80d42271cda74
+      internalID: -1535843407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_86
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 266
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d7d202f9fbdc1b48bdb920d764dd7d8
+      internalID: 1721484874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_87
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 266
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb9d4156acc4964daa6a12cc48de8ab
+      internalID: -1771862267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_88
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 266
+        width: 31
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdae44e389d809498b8dc08cfdb30e6
+      internalID: -1425606942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_89
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 266
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1634554bfa84f44ca1dc36cc117b5eb
+      internalID: -1382886110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_90
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 266
+        width: 31
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a52bf369200ffc46b0ead35c22112d5
+      internalID: -365964703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_91
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 266
+        width: 29
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 347c92390a28cc342a6ca92fdcf65c5a
+      internalID: -307214040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_92
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 266
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c82e0fac3ab5b874699c3568b0393b63
+      internalID: 986093546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_93
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 266
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21fb3f7400901e14e8540309ea353ce4
+      internalID: -1687669550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_94
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 266
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2484f2262773e649913c3147868ad6b
+      internalID: 1030115602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_95
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 266
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb60fd1f574f9b4ba6a730ada729a13
+      internalID: -1691810012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_96
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 266
+        width: 31
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28040f471f6dc2b40b01aa718c08da55
+      internalID: -361473125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_97
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 266
+        width: 32
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b46ce5fb72802343ac6ef19391843ad
+      internalID: 271906162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_98
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 266
+        width: 31
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f070d5845ac14c64dab4942fa1a5d7a2
+      internalID: 628972477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_103
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 233
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025b5bee0f8b43046b5299097aefcff7
+      internalID: 1081298633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_104
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 193
+        width: 24
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b57a2ff4383d0b4faee2a307db3ebc3
+      internalID: 1753946619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_105
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 193
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d025fa3f8e2276e47802a62f98870426
+      internalID: 1035500747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_106
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 152
+        width: 30
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be5f2aaa4ae0614db7a1b6262433423
+      internalID: 690575497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_107
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 152
+        width: 30
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312cb86f2a30eab4fa92fbe32942472f
+      internalID: -2061647756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_108
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 152
+        width: 30
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ed64ca87cbeca49b86ca47af5ecb0a
+      internalID: 1035779359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_109
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 152
+        width: 30
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5733d0e6ede2d8444a540e98b0495f8a
+      internalID: -858258288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_110
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 152
+        width: 31
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d66a217c43723e4cbe644e0531201df
+      internalID: 1737189477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_111
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 152
+        width: 19
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ba0a9109ba71846ab16a086ce2841c
+      internalID: -1699990882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_112
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 152
+        width: 19
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b75365528b337d4cbfc34ea079de692
+      internalID: 1485357312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_113
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 152
+        width: 21
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd21b0a7d1d5ad45a5c57de8ebc3017
+      internalID: -1320183652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_114
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 152
+        width: 19
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81838dbe2916fe84498cccbb339984fa
+      internalID: 1197099917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_115
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 152
+        width: 19
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a57f1ab201a0349ac5057160a6dfe8
+      internalID: 66125428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_116
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 152
+        width: 20
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0eced0a8519b2f47a3470e5ef88388f
+      internalID: 1700411426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_117
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 106
+        width: 21
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1dd54faa5d60154b9305555173e1d52
+      internalID: -1484985584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_118
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 99
+        width: 23
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b511b00844de04db223355a01b0418
+      internalID: 186550016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_119
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 104
+        width: 26
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3944109da270f459545f5d3fa38372
+      internalID: 1774957028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_120
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 111
+        width: 28
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7a18ac74bffbf429d333d36d6ee41f
+      internalID: -74618814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_121
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 111
+        width: 28
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efc01557fb0af604fb6fc3b6cee7d8a8
+      internalID: 954910622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_122
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 111
+        width: 28
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ef8fe7fe4d48645a1b899fef599066
+      internalID: -1597590941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_123
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 59
+        width: 23
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb82c2c55864d4c42b53beb319b19287
+      internalID: -827272864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_124
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 59
+        width: 22
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ef8e0aa96282a428f05809f88e3edc
+      internalID: -1254860902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_125
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 59
+        width: 21
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ba1239c767ce84891a2de515359cdc
+      internalID: -538890408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_126
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 61
+        width: 21
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9a7ec49f639ac49b4df104e41cdc7a
+      internalID: 317988886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_127
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 64
+        width: 23
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf6c666f89d2ca54a8733d82fcf82d90
+      internalID: -1069560334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_128
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 65
+        width: 23
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24760d046d642544189580227a74fe51
+      internalID: 1430756318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_129
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 61
+        width: 22
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4539df3193cd0749b65ceef4edfeb57
+      internalID: 270210046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_130
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 59
+        width: 22
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f684553b61e0dee41b8381cf368d7bb0
+      internalID: 1059007203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_131
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 59
+        width: 22
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bea2b802cbebead46825b7d6a5b141bf
+      internalID: -2056181721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_132
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 28
+        width: 20
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9caaff71040c3eb4eac5451292b13763
+      internalID: 54322298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_133
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 28
+        width: 29
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e19af74a50546458626e473dfc562e
+      internalID: -1434876523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_134
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 28
+        width: 24
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4447cfb572853474c82f7fcd4b0fd036
+      internalID: 39752395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoshi(Hold)_135
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 0
+        width: 29
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0612085d9e69b1d499be7237b32adf09
+      internalID: 1129233479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: ba4be12fcae28964fb33863fb56e4d62
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Yoshi(Hold)_0: 374631736
+      Yoshi(Hold)_1: -121361753
+      Yoshi(Hold)_10: -1705062764
+      Yoshi(Hold)_100: -933521811
+      Yoshi(Hold)_101: -1578546132
+      Yoshi(Hold)_102: 2141337751
+      Yoshi(Hold)_103: 1081298633
+      Yoshi(Hold)_104: 1753946619
+      Yoshi(Hold)_105: 1035500747
+      Yoshi(Hold)_106: 690575497
+      Yoshi(Hold)_107: -2061647756
+      Yoshi(Hold)_108: 1035779359
+      Yoshi(Hold)_109: -858258288
+      Yoshi(Hold)_11: 508963735
+      Yoshi(Hold)_110: 1737189477
+      Yoshi(Hold)_111: -1699990882
+      Yoshi(Hold)_112: 1485357312
+      Yoshi(Hold)_113: -1320183652
+      Yoshi(Hold)_114: 1197099917
+      Yoshi(Hold)_115: 66125428
+      Yoshi(Hold)_116: 1700411426
+      Yoshi(Hold)_117: -1484985584
+      Yoshi(Hold)_118: 186550016
+      Yoshi(Hold)_119: 1774957028
+      Yoshi(Hold)_12: 1145347348
+      Yoshi(Hold)_120: -74618814
+      Yoshi(Hold)_121: 954910622
+      Yoshi(Hold)_122: -1597590941
+      Yoshi(Hold)_123: -827272864
+      Yoshi(Hold)_124: -1254860902
+      Yoshi(Hold)_125: -538890408
+      Yoshi(Hold)_126: 317988886
+      Yoshi(Hold)_127: -1069560334
+      Yoshi(Hold)_128: 1430756318
+      Yoshi(Hold)_129: 270210046
+      Yoshi(Hold)_13: 1932398075
+      Yoshi(Hold)_130: 1059007203
+      Yoshi(Hold)_131: -2056181721
+      Yoshi(Hold)_132: 54322298
+      Yoshi(Hold)_133: -1434876523
+      Yoshi(Hold)_134: 39752395
+      Yoshi(Hold)_135: 1129233479
+      Yoshi(Hold)_14: -1453368226
+      Yoshi(Hold)_15: -1125333326
+      Yoshi(Hold)_16: 953182787
+      Yoshi(Hold)_17: 384063301
+      Yoshi(Hold)_18: -712086406
+      Yoshi(Hold)_19: -1004893303
+      Yoshi(Hold)_2: 1948410205
+      Yoshi(Hold)_20: -946820422
+      Yoshi(Hold)_21: 2069795887
+      Yoshi(Hold)_22: -1757862324
+      Yoshi(Hold)_23: -819414881
+      Yoshi(Hold)_24: 593740674
+      Yoshi(Hold)_25: 1401731323
+      Yoshi(Hold)_26: 84431560
+      Yoshi(Hold)_27: -1653839812
+      Yoshi(Hold)_28: 706759978
+      Yoshi(Hold)_29: 571169579
+      Yoshi(Hold)_3: 2018537224
+      Yoshi(Hold)_30: -1858152864
+      Yoshi(Hold)_31: 245846780
+      Yoshi(Hold)_32: -1577432300
+      Yoshi(Hold)_33: -86448042
+      Yoshi(Hold)_34: 972303748
+      Yoshi(Hold)_35: 511981078
+      Yoshi(Hold)_36: -1751059709
+      Yoshi(Hold)_37: 347038440
+      Yoshi(Hold)_38: -1241215157
+      Yoshi(Hold)_39: -1918918145
+      Yoshi(Hold)_4: -415780513
+      Yoshi(Hold)_40: 2008465904
+      Yoshi(Hold)_41: 1589324919
+      Yoshi(Hold)_42: -1872085686
+      Yoshi(Hold)_43: -568797833
+      Yoshi(Hold)_44: 326333027
+      Yoshi(Hold)_45: -1094457009
+      Yoshi(Hold)_46: -1662124820
+      Yoshi(Hold)_47: -496535794
+      Yoshi(Hold)_48: 563073078
+      Yoshi(Hold)_49: -1064355930
+      Yoshi(Hold)_5: -1750523611
+      Yoshi(Hold)_50: -573630974
+      Yoshi(Hold)_51: -1296828117
+      Yoshi(Hold)_52: 2047008323
+      Yoshi(Hold)_53: -1580857504
+      Yoshi(Hold)_54: -409455816
+      Yoshi(Hold)_55: -809083084
+      Yoshi(Hold)_56: 1739732208
+      Yoshi(Hold)_57: -954857972
+      Yoshi(Hold)_58: 1071035541
+      Yoshi(Hold)_59: -300128293
+      Yoshi(Hold)_6: 796532029
+      Yoshi(Hold)_60: -956775881
+      Yoshi(Hold)_61: 387808074
+      Yoshi(Hold)_62: -193726370
+      Yoshi(Hold)_63: -582380679
+      Yoshi(Hold)_64: -1604280712
+      Yoshi(Hold)_65: -71152351
+      Yoshi(Hold)_66: 633837500
+      Yoshi(Hold)_67: -1169376045
+      Yoshi(Hold)_68: -1183248244
+      Yoshi(Hold)_69: 1521789530
+      Yoshi(Hold)_7: 1313339734
+      Yoshi(Hold)_70: 208419566
+      Yoshi(Hold)_71: -851802104
+      Yoshi(Hold)_72: -1591339145
+      Yoshi(Hold)_73: -1930826664
+      Yoshi(Hold)_74: 2050417348
+      Yoshi(Hold)_75: -335506306
+      Yoshi(Hold)_76: 1834635865
+      Yoshi(Hold)_77: 1552621784
+      Yoshi(Hold)_78: 496131051
+      Yoshi(Hold)_79: -1961133525
+      Yoshi(Hold)_8: -751120667
+      Yoshi(Hold)_80: -1348528717
+      Yoshi(Hold)_81: -1016555591
+      Yoshi(Hold)_82: -854568404
+      Yoshi(Hold)_83: -1280630789
+      Yoshi(Hold)_84: 802410490
+      Yoshi(Hold)_85: -1535843407
+      Yoshi(Hold)_86: 1721484874
+      Yoshi(Hold)_87: -1771862267
+      Yoshi(Hold)_88: -1425606942
+      Yoshi(Hold)_89: -1382886110
+      Yoshi(Hold)_9: 31189913
+      Yoshi(Hold)_90: -365964703
+      Yoshi(Hold)_91: -307214040
+      Yoshi(Hold)_92: 986093546
+      Yoshi(Hold)_93: -1687669550
+      Yoshi(Hold)_94: 1030115602
+      Yoshi(Hold)_95: -1691810012
+      Yoshi(Hold)_96: -361473125
+      Yoshi(Hold)_97: 271906162
+      Yoshi(Hold)_98: 628972477
+      Yoshi(Hold)_99: 92020054
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,9 +6,8 @@
 // Ό³Έν :
 class ACrossHair : public AActor
 {
-	friend class AYoshi;
 
-public: 
+public:
 	// constrcuter destructer
 	ACrossHair();
 	~ACrossHair();
@@ -19,7 +18,7 @@ public:
 	ACrossHair& operator=(const ACrossHair& _Other) = delete;
 	ACrossHair& operator=(ACrossHair&& _Other) noexcept = delete;
 
-	void Init(class AYoshi* _Yoshi);
+	void InitCrossHair(class AYoshi* _Yoshi);
 
 	FVector GetCurAngle()
 	{
@@ -31,16 +30,29 @@ public:
 		return FVector::AngleToVectorDeg(StartAngle);
 	}
 
+	void SetMinAngle(float _Value)
+	{
+		MinAngle = _Value;
+	}
+
+	void SetMaxAngle(float _Value)
+	{
+		MaxAngle = _Value;
+	}
+
+	void SetStartAngle(bool _IsMax)
+	{
+		(_IsMax) ? StartAngle = MaxAngle : StartAngle = MinAngle;
+	}
 protected:
 	void Tick(float _DeltaTime) override;
-
 private:
 	std::shared_ptr<class USpriteRenderer> CrossHairRenderer;
 
 	bool IsPlusValue = false;
 	float Radius = 200.0f;
 	float Speed = 120.0f;
-	
+
 	float StartAngle = 0.0f;	// CurAngle
 	float MinAngle = 0.0f;
 	float MaxAngle = 0.0f;

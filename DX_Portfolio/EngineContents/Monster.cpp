@@ -1,9 +1,10 @@
 #include "PreCompile.h"
 #include "Monster.h"
 
+#include "Yoshi.h"
+
 AMonster::AMonster()
 {
-
 }
 
 AMonster::~AMonster()
@@ -15,84 +16,38 @@ void AMonster::BeginPlay()
 	AActor::BeginPlay();
 }
 
-void AMonster::ChangeState(EMonsterState _CurMonsterState)
-{
-	CurMonsterState = _CurMonsterState;
-
-	switch (CurMonsterState)
-	{
-	case EMonsterState::IDLE:
-		IdleStart();
-		break;
-	case EMonsterState::WALK:
-		WalkStart();
-		break;
-	case EMonsterState::ATTACK:
-		AttackStart();
-		break;
-	case EMonsterState::HURT:
-		HurtStart();
-		break;
-	}
-}
-
 void AMonster::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
-	MosnterFSM(_DeltaTime);
+
+	Gravity(_DeltaTime);
 }
 
-void AMonster::MosnterFSM(float _DeltaTime)
+bool AMonster::CheckForceColor(FVector _Force, UColor _Color)
 {
-	switch (CurMonsterState)
+	FVector NextPos = GetActorLocation() + _Force;
+	UColor Color = GetWorld()->GetMainPawn<AYoshi>()->GetColor(NextPos);
+
+	if (Color.operator==(_Color))
 	{
-	case EMonsterState::IDLE:
-		Idle(_DeltaTime);
-		break;
-	case EMonsterState::WALK:
-		Walk(_DeltaTime);
-		break;
-	case EMonsterState::ATTACK:
-		Attack(_DeltaTime);
-		break;
-	case EMonsterState::HURT:
-		Hurt(_DeltaTime);
-		break;
+		return true;
 	}
+
+	return false;
 }
 
 void AMonster::Gravity(float _DeltaTime)
 {
+	FVector GravityValue = GravityForce * _DeltaTime;
+
+	if (CheckForceColor(GravityValue, UColor::BLACK))
+	{
+		AddActorLocation(GravityValue);
+		GravityForce += FVector::DOWN * GravityPower * _DeltaTime;
+	}
+	else
+	{
+		GravityForce = FVector::ZERO;
+	}
 }
 
-void AMonster::IdleStart()
-{
-}
-
-void AMonster::Idle(float _DeltaTime)
-{
-}
-
-void AMonster::WalkStart()
-{
-}
-
-void AMonster::Walk(float _DeltaTime)
-{
-}
-
-void AMonster::AttackStart()
-{
-}
-
-void AMonster::Attack(float _DeltaTime)
-{
-}
-
-void AMonster::HurtStart()
-{
-}
-
-void AMonster::Hurt(float _DeltaTime)
-{
-}

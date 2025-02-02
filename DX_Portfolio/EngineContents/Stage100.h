@@ -1,7 +1,7 @@
 #pragma once
-#include <EnginePlatform/EngineWinImage.h>
-
 #include <EngineCore/Actor.h>
+
+#include <EnginePlatform/EngineWinImage.h>
 
 // Ό³Έν :
 class AStage100 : public AActor
@@ -17,19 +17,15 @@ public:
 	AStage100& operator=(const AStage100& _Other) = delete;
 	AStage100& operator=(AStage100&& _Other) noexcept = delete;
 
-	UColor GetPixelColor(FVector _Pos)
-	{
-		return ColImage.GetColor(_Pos);
-	}
+	FVector GetStageScale() const;
 
-	void SwitchColStage();
-	
+	void SwitchColImage();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
 private:
-	std::shared_ptr<class ACameraActor> Camera;
+	UEngineWinImage ColImage;
 
 	std::shared_ptr<class USpriteRenderer> BackgroundRenderer;
 	std::shared_ptr<class USpriteRenderer> ForeBackgroundRenderer;
@@ -37,10 +33,8 @@ private:
 	std::shared_ptr<class USpriteRenderer> ColStageRenderer;
 	std::shared_ptr<class USpriteRenderer> FrontBackgroundRenderer;
 
-	UEngineWinImage ColImage;
-
 	void Stage100Res();
+	void Stage100ColRes();
 	void Stage100Init();
-	void CameraBoundary();
 };
 

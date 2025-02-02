@@ -3,9 +3,23 @@
 
 #include <EnginePlatform/EngineInput.h>
 
-#include <EngineCore/CameraActor.h>
+#include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/EngineGUIWindow.h>
+#include <EngineCore/EngineGUI.h>
+#include <EngineCore/imgui.h>
 
+#include "YoshiGameInstance.h"
+#include "ContentsEnum.h"
+#include "DebugGUI.h"
 #include "Stage100.h"
+
+#include "Yoshi.h"
+
+#include "ShyGuy.h"
+
+#include "ScaleBlock.h"
+#include "RotatePlatform.h"
+#include "Platforms.h"
 
 AStage100GameMode::AStage100GameMode()
 {
@@ -13,7 +27,35 @@ AStage100GameMode::AStage100GameMode()
 	GetWorld()->CreateCollisionProfile("BodyCollision");
 	GetWorld()->CreateCollisionProfile("FootCollision");
 
-	GetWorld()->CreateCollisionProfile("DebugCollision");
+	GetWorld()->CreateCollisionProfile("StickBodyCollision");
+	GetWorld()->CreateCollisionProfile("StickCollision");
+
+	GetWorld()->CreateCollisionProfile("MonsterHeadCollision");
+	GetWorld()->CreateCollisionProfile("MonsterBodyCollision");
+
+	GetWorld()->CreateCollisionProfile("ScaleBlockCollision");
+	GetWorld()->CreateCollisionProfile("PlatformCollision");
+	
+	GetWorld()->LinkCollisionProfile("MonsterHeadCollision", "FootCollision");
+	GetWorld()->LinkCollisionProfile("MonsterBodyCollision", "BodyCollision");
+	GetWorld()->LinkCollisionProfile("MonsterBodyCollision", "StickCollision");
+
+	GetWorld()->LinkCollisionProfile("PlatformCollision", "FootCollision");
+	GetWorld()->LinkCollisionProfile("ScaleBlockCollision", "HeadCollision");
+
+
+	Stage = GetWorld()->SpawnActor<AStage100>();
+	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
+
+	ShyGuy = GetWorld()->SpawnActor<AShyGuy>();
+	ShyGuy->SetType(EShyGuyTypes::MAGETNTA);
+	ShyGuy->SetActorLocation({ 1000.0f, -2600.0f, static_cast<int>(EOrderNum::PLAYER) });
+
+	/*RotatePlatform = GetWorld()->SpawnActor<ARotatePlatform>();
+	RotatePlatform->SetActorLocation({ 800.0f, -2400.0f, -2.0f });*/
+
+	ScaleBlock = GetWorld()->SpawnActor<AScaleBlock>();
+	ScaleBlock->SetActorLocation({1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBSTACLE)});
 }
 
 AStage100GameMode::~AStage100GameMode()
@@ -22,28 +64,51 @@ AStage100GameMode::~AStage100GameMode()
 
 void AStage100GameMode::BeginPlay()
 {
-	AActor::BeginPlay();
-	
-	Stage = GetWorld()->SpawnActor<AStage100>();
-	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
+	AGameMode::BeginPlay();
 
-	GetWorld()->GetMainPawn()->SetActorLocation({ 420.0f, -2687.0f, 0.0f });
-	Stage->SwitchColStage();
-
+	Stage->SwitchColImage();
+	GetWorld()->GetMainPawn()->SetActorLocation({ 400.0f, -2686.0f, static_cast<float>(EOrderNum::PLAYER)});
+	GetWorld()->GetMainPawn<AYoshi>()->SetEggCount(GetGameInstance<AYoshiGameInstance>()->EggCount);
 }
 
 void AStage100GameMode::Tick(float _DeltaTime)
 {
-	AActor::Tick(_DeltaTime);
-	
-	if (UEngineInput::IsDown('V'))
-	{
-		Stage->SwitchColStage();
-	}
+	AGameMode::Tick(_DeltaTime);
 
-	if (UEngineInput::IsDown('F'))
+	GetWorld()->GetMainPawn<AYoshi>()->CameraBoundary(Stage->GetStageScale());
+
+	ScaleBlock->ScaleUp(ScaleBlock->GetActorLocation(), _DeltaTime);
+
+	if (UEngineInput::IsDown('O'))
 	{
-		GetWorld()->GetMainCamera()->FreeCameraSwitch();
+		Stage->SwitchColImage();
 	}
 }
 
+void AStage100GameMode::LevelChangeStart()
+{
+	AGameMode::LevelChangeStart();
+	
+	SetGUI();
+}
+
+void AStage100GameMode::LevelChangeEnd()
+{
+	AGameMode::LevelChangeEnd();
+}
+
+void AStage100GameMode::SetGUI()
+{
+#ifdef _DEBUG
+	std::shared_ptr<UDebugGUI> Window = UEngineGUI::FindGUIWindow<UDebugGUI>("DebugGUI");
+
+	if (nullptr == Window)
+	{
+		Window = UEngineGUI::CreateGUIWindow<UDebugGUI>("DebugGUI");
+	}
+
+	Window->SetActive(true);
+#else
+
+#endif
+}

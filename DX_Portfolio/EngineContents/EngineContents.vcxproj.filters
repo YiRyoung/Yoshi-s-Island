@@ -7,65 +7,62 @@
     <ClInclude Include="ContentsCore.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Yoshi.h">
-      <Filter>Contents\Global\Yoshi</Filter>
-    </ClInclude>
-    <ClInclude Include="YoshiCollision.h">
-      <Filter>Contents\Global\Yoshi</Filter>
-    </ClInclude>
-    <ClInclude Include="YoshiState.h">
-      <Filter>Contents\Global\Yoshi</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage100GameMode.h">
-      <Filter>Contents\GameMode\Stage100</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage100.h">
-      <Filter>Contents\Level\Stage100</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage101.h">
-      <Filter>Contents\Level\Stage100</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage101GameMode.h">
-      <Filter>Contents\GameMode\Stage100</Filter>
-    </ClInclude>
     <ClInclude Include="ContentsEnum.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Stage102.h">
-      <Filter>Contents\Level\Stage100</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage102GameMode.h">
-      <Filter>Contents\GameMode\Stage100</Filter>
-    </ClInclude>
     <ClInclude Include="Select.h">
-      <Filter>Contents\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start</Filter>
     </ClInclude>
     <ClInclude Include="Title.h">
-      <Filter>Contents\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start</Filter>
     </ClInclude>
     <ClInclude Include="SelectGameMode.h">
-      <Filter>Contents\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start</Filter>
     </ClInclude>
     <ClInclude Include="TitleGameMode.h">
-      <Filter>Contents\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start</Filter>
     </ClInclude>
-    <ClInclude Include="ShyGuy.h">
-      <Filter>Contents\Global\Monster\Normal</Filter>
+    <ClInclude Include="Stage100.h">
+      <Filter>Contents\Maps\Level\Stage100</Filter>
     </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Contents\Global\Monster</Filter>
+    <ClInclude Include="Stage100GameMode.h">
+      <Filter>Contents\Maps\GameMode\Stage100</Filter>
+    </ClInclude>
+    <ClInclude Include="YoshiState.h">
+      <Filter>Contents\Yoshi</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugGUI.h">
+      <Filter>Global\GUI</Filter>
     </ClInclude>
     <ClInclude Include="CrossHair.h">
-      <Filter>Contents\Global\Yoshi</Filter>
+      <Filter>Contents\Yoshi</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleBlock.h">
+      <Filter>Contents\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Yoshi.h">
+      <Filter>Contents\Yoshi</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Contents\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ShyGuy.h">
+      <Filter>Contents\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="YoshiGameInstance.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="EggList.h">
+      <Filter>Contents\Yoshi</Filter>
     </ClInclude>
     <ClInclude Include="Platforms.h">
-      <Filter>Contents\Global\Object</Filter>
+      <Filter>Contents\Objects</Filter>
     </ClInclude>
     <ClInclude Include="RotatePlatform.h">
-      <Filter>Contents\Global\Object</Filter>
+      <Filter>Contents\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Egg.h">
-      <Filter>Contents\Global\Yoshi</Filter>
+    <ClInclude Include="ThrowEgg.h">
+      <Filter>Contents\Yoshi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -76,61 +73,58 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Yoshi.cpp">
-      <Filter>Contents\Global\Yoshi</Filter>
-    </ClCompile>
-    <ClCompile Include="YoshiCollision.cpp">
-      <Filter>Contents\Global\Yoshi</Filter>
-    </ClCompile>
-    <ClCompile Include="YoshiState.cpp">
-      <Filter>Contents\Global\Yoshi</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage100GameMode.cpp">
-      <Filter>Contents\GameMode\Stage100</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage100.cpp">
-      <Filter>Contents\Level\Stage100</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage101.cpp">
-      <Filter>Contents\Level\Stage100</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage101GameMode.cpp">
-      <Filter>Contents\GameMode\Stage100</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage102.cpp">
-      <Filter>Contents\Level\Stage100</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage102GameMode.cpp">
-      <Filter>Contents\GameMode\Stage100</Filter>
+      <Filter>Contents\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp">
-      <Filter>Contents\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start</Filter>
     </ClCompile>
     <ClCompile Include="Select.cpp">
-      <Filter>Contents\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start</Filter>
     </ClCompile>
     <ClCompile Include="SelectGameMode.cpp">
-      <Filter>Contents\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start</Filter>
     </ClCompile>
     <ClCompile Include="TitleGameMode.cpp">
-      <Filter>Contents\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start</Filter>
     </ClCompile>
-    <ClCompile Include="ShyGuy.cpp">
-      <Filter>Contents\Global\Monster\Normal</Filter>
+    <ClCompile Include="Stage100.cpp">
+      <Filter>Contents\Maps\Level\Stage100</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Contents\Global\Monster</Filter>
+    <ClCompile Include="Stage100GameMode.cpp">
+      <Filter>Contents\Maps\GameMode\Stage100</Filter>
+    </ClCompile>
+    <ClCompile Include="YoshiState.cpp">
+      <Filter>Contents\Yoshi</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugGUI.cpp">
+      <Filter>Global\GUI</Filter>
     </ClCompile>
     <ClCompile Include="CrossHair.cpp">
-      <Filter>Contents\Global\Yoshi</Filter>
+      <Filter>Contents\Yoshi</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleBlock.cpp">
+      <Filter>Contents\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Contents\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ShyGuy.cpp">
+      <Filter>Contents\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="YoshiGameInstance.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="EggList.cpp">
+      <Filter>Contents\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="Platforms.cpp">
-      <Filter>Contents\Global\Object</Filter>
+      <Filter>Contents\Objects</Filter>
     </ClCompile>
     <ClCompile Include="RotatePlatform.cpp">
-      <Filter>Contents\Global\Object</Filter>
+      <Filter>Contents\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Egg.cpp">
-      <Filter>Contents\Global\Yoshi</Filter>
+    <ClCompile Include="ThrowEgg.cpp">
+      <Filter>Contents\Yoshi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,41 +137,41 @@
     <Filter Include="Contents">
       <UniqueIdentifier>{33f97681-46c5-4e9b-b619-cac86b0d1feb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameMode">
-      <UniqueIdentifier>{89d8afdb-c516-454e-b69a-e5619ca2e598}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Level">
-      <UniqueIdentifier>{143e156c-ef76-4b89-a788-24bcd2e1cfcd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Global">
-      <UniqueIdentifier>{38e2e770-9952-4a1f-bfa2-f4d151fc65c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Global\Yoshi">
-      <UniqueIdentifier>{7b16824f-3b61-4122-a045-896968756743}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{f2cd59ec-fedb-4106-a60f-346750907a2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameMode\Stage100">
-      <UniqueIdentifier>{37ea3f83-1e84-47d6-9ca3-e49f2dcbc7e9}</UniqueIdentifier>
+    <Filter Include="Global\GUI">
+      <UniqueIdentifier>{edff7e01-0aa4-447e-9da0-67948a31a6d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Level\Stage100">
-      <UniqueIdentifier>{ee7dab8a-0846-4526-99c3-e09da3f1b10c}</UniqueIdentifier>
+    <Filter Include="Contents\Maps">
+      <UniqueIdentifier>{7dda0837-271f-4928-8e3d-38753db5d532}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Level\Start">
-      <UniqueIdentifier>{ad98abe0-1be5-4ab6-a249-9a2379c66340}</UniqueIdentifier>
+    <Filter Include="Contents\Maps\GameMode">
+      <UniqueIdentifier>{89d8afdb-c516-454e-b69a-e5619ca2e598}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\GameMode\Start">
+    <Filter Include="Contents\Maps\GameMode\Start">
       <UniqueIdentifier>{0a9936b2-9d24-4a94-96e2-38ebd3156e99}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Global\Monster">
-      <UniqueIdentifier>{1a67c72b-4191-45cf-abc3-49d8a76291c6}</UniqueIdentifier>
+    <Filter Include="Contents\Maps\Level">
+      <UniqueIdentifier>{143e156c-ef76-4b89-a788-24bcd2e1cfcd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Global\Monster\Normal">
-      <UniqueIdentifier>{77a810d7-57a6-47e7-9f54-e1e03d97a26d}</UniqueIdentifier>
+    <Filter Include="Contents\Maps\Level\Start">
+      <UniqueIdentifier>{ad98abe0-1be5-4ab6-a249-9a2379c66340}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Global\Object">
-      <UniqueIdentifier>{ef682b5d-fa7c-4102-925d-29c0c1dda9c1}</UniqueIdentifier>
+    <Filter Include="Contents\Maps\Level\Stage100">
+      <UniqueIdentifier>{1f322783-62b0-43cd-acf5-95468faf91db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Maps\GameMode\Stage100">
+      <UniqueIdentifier>{39e9bd5c-223c-4dfe-989e-3f2187859de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects">
+      <UniqueIdentifier>{dc7ba126-ea6a-4099-b53f-c01ecaa41dff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Monster">
+      <UniqueIdentifier>{5aa6007f-8bc2-428b-b562-3e3580e3305f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Yoshi">
+      <UniqueIdentifier>{7b16824f-3b61-4122-a045-896968756743}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

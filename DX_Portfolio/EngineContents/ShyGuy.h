@@ -1,6 +1,9 @@
 #pragma once
 #include "Monster.h"
 
+#include <EngineBase/FSMStateManager.h>
+#include "ContentsEnum.h"
+
 // Ό³Έν :
 class AShyGuy : public AMonster
 {
@@ -15,23 +18,32 @@ public:
 	AShyGuy& operator=(const AShyGuy& _Other) = delete;
 	AShyGuy& operator=(AShyGuy&& _Other) noexcept = delete;
 
+	void SetType(EShyGuyTypes _Type)
+	{
+		CurType = _Type;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
 private:
-	std::shared_ptr<class USpriteRenderer> Renderer;
-	std::shared_ptr<class UCollision> MonsterHeadCollision;
-	std::shared_ptr<class UCollision> MonsterBodyCollision;
+	UFSMStateManager FSM;
+
+	std::shared_ptr<class USpriteRenderer> ShyGuyRenderer;
+	std::shared_ptr<class UCollision> ShyGuyHeadCollision;
+	std::shared_ptr<class UCollision> ShyGuyBodyCollision;
+
 	std::shared_ptr<class UTimeEventComponent> TimeEvent;
 
-	void SetCollision();
+	EMonsterState CurMonsterState = EMonsterState::IDLE;
+	EShyGuyTypes CurType = EShyGuyTypes::NONE;
+
+	void Init(EShyGuyTypes _CurType);
 	void SetAnimation();
-
+	void SetCollision();
+	void SetCheckCollision();
 	void ChangeAnimDir();
-
-	void IdleStart() override;
-	void WalkStart() override;
-	void Walk(float _DeltaTime);
+	void CreateFSM();
 };
 

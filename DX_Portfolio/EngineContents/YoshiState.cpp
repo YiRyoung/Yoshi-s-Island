@@ -4,18 +4,13 @@
 #include <EnginePlatform/EngineInput.h>
 
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/Collision.h>
 
+#include "YoshiGameInstance.h"
 #include "Yoshi.h"
-#include "Platforms.h"
 
-YoshiState::YoshiState() {}
-
-YoshiState::YoshiState(AYoshi* _Yoshi) : Yoshi(_Yoshi) {}
-
-YoshiState::~YoshiState() {}
-
-#pragma region Wrapping Func
-bool YoshiState::IsPressKey(int _KeyCode)
+#pragma region Wrapping Functions
+bool YoshiState::IsPress(int _KeyCode)
 {
 	return UEngineInput::IsPress(_KeyCode);
 }
@@ -26,620 +21,1100 @@ bool YoshiState::IsPressTime(int _KeyCode, float _Time)
 	return Result;
 }
 
-bool YoshiState::IsDownKey(int _KeyCode)
+bool YoshiState::IsDown(int _KeyCode)
 {
 	return UEngineInput::IsDown(_KeyCode);
 }
 
-bool YoshiState::IsUpKey(int _KeyCode)
+bool YoshiState::IsUp(int _KeyCode)
 {
 	return UEngineInput::IsUp(_KeyCode);
 }
 
-bool YoshiState::CheckPointColor(ECheckDir _Dir, UColor _Color)
+bool YoshiState::IsFree(int _KeyCode)
 {
-	return Yoshi->Collision->CheckPointColor(_Dir, _Color);
+	return UEngineInput::IsFree(_KeyCode);
 }
-
-bool YoshiState::CheckLineColor(ECheckDir _Dir, UColor _Color)
+void YoshiState::ChangeAnimation(std::string _AnimName)
 {
-	return Yoshi->Collision->CheckLineColor(_Dir, _Color);
+	Yoshi->YoshiRenderer->ChangeAnimation(_AnimName);
 }
-
-bool YoshiState::CheckForceColor(FVector _Force, UColor _Color)
-{
-	return Yoshi->Collision->CheckForceColor(_Force, _Color);
-}
-
-bool YoshiState::IsScreen(ECheckDir _Dir)
-{
-	return Yoshi->Collision->IsScreen(_Dir);
-}
-
-bool YoshiState::IsGround()
-{
-	return Yoshi->Collision->IsGround();
-}
-
-bool YoshiState::IsSlope()
-{
-	return Yoshi->Collision->IsSlope();
-}
-
-void YoshiState::ChangeAnimation(std::string_view _Name)
-{
-	Yoshi->YoshiRenderer->ChangeAnimation(_Name);
-}
-void YoshiState::ChangeState(EPlayerState _NextState)
-{
-	Yoshi->CurState = _NextState;
-}
-#pragma endregion
-
-#pragma region FSM Functions
-void YoshiState::StateStart()
-{
-	switch (Yoshi->CurState)
-	{
-	case EPlayerState::IDLE:
-		IdleStart();
-		break;
-	case EPlayerState::WALK:
-		WalkStart();
-		break;
-	case EPlayerState::RUN:
-		RunStart();
-		break;
-	case EPlayerState::JUMP:
-		JumpStart();
-		break;
-	case EPlayerState::STAYUP:
-		StayUpStart();
-		break;
-	case EPlayerState::FALL:
-		FallStart();
-		break;
-	case EPlayerState::LOOKUP:
-		LookUpStart();
-		break;
-	case EPlayerState::BEND:
-		BendStart();
-		break;
-	case EPlayerState::STICK:
-		StickStart();
-		break;
-	case EPlayerState::THROW:
-		ThrowStart();
-		break;
-	}
-}
-
-void YoshiState::StateFunc(float _DeltaTime)
-{
-	switch (Yoshi->CurState)
-	{
-	case EPlayerState::IDLE:
-		Idle(_DeltaTime);
-		break;
-	case EPlayerState::WALK:
-		Walk(_DeltaTime);
-		break;
-	case EPlayerState::RUN:
-		Run(_DeltaTime);
-		break;
-	case EPlayerState::JUMP:
-		Jump(_DeltaTime);
-		break;
-	case EPlayerState::FALL:
-		Fall(_DeltaTime);
-		break;
-	case EPlayerState::STAYUP:
-		StayUp(_DeltaTime);
-		break;
-	case EPlayerState::LOOKUP:
-		LookUp(_DeltaTime);
-		break;
-	case EPlayerState::BEND:
-		Bend(_DeltaTime);
-		break;
-	case EPlayerState::STICK:
-		Stick(_DeltaTime);
-		break;
-	case EPlayerState::THROW:
-		Throw(_DeltaTime);
-		break;
-	}
-}
-#pragma endregion
-
-#pragma region Start Functions
-void YoshiState::IdleStart()
-{
-	if (Yoshi->IsAim)
-	{
-		ChangeAnimation("AimIdle");
-	}
-}
-void YoshiState::WalkStart()
-{
-	if (Yoshi->IsAim)
-	{
-		ChangeAnimation("AimWalk");
-	}
-	else
-	{
-		ChangeAnimation("Walk");
-	}
-}
-
-void YoshiState::RunStart()
-{
-	if (Yoshi->IsAim)
-	{
-		ChangeAnimation("AimRun");
-	}
-	else
-	{
-		ChangeAnimation("Run");
-	}
-}
-
-void YoshiState::JumpStart()
-{
-	ChangeAnimation("Jump");
-}
-
-void YoshiState::StayUpStart()
-{
-	ChangeAnimation("StayUp");
-}
-
-void YoshiState::FallStart()
-{
-	ChangeAnimation("Fall");
-}
-
-void YoshiState::LookUpStart()
-{
-	ChangeAnimation("LookUpStart");
-	Yoshi->CameraNum = 1;
-}
-
-void YoshiState::BendStart()
-{
-	ChangeAnimation("BendStart");
-	Yoshi->CameraNum = 2;
-}
-
-void YoshiState::StickStart()
-{
-	Yoshi->GravityForce = FVector::ZERO;
-	Yoshi->DirForce = FVector::ZERO;
-
-	if (IsPressKey(VK_UP))
-	{
-		ChangeAnimation("Stick_Up");
-	}
-	else
-	{
-		ChangeAnimation("Stick_Right");
-	}
-}
-
-void YoshiState::ThrowStart()
-{
-	ChangeAnimation("Throw");
-	Yoshi->SpawnEgg();
-}
-#pragma endregion
-
-#pragma region State Functions
-void YoshiState::Gravity(float _DeltaTime, float _Scale)
+void YoshiState::Gravity(float _DeltaTime)
 {
 	FVector GravityValue = Yoshi->GravityForce * _DeltaTime;
 
-	if (CheckForceColor(GravityValue, UColor::BLACK))
+	if (Yoshi->CheckForceColor(GravityValue, UColor::BLACK))
 	{
 		Yoshi->AddActorLocation(GravityValue);
-		Yoshi->GravityForce += FVector::DOWN * Yoshi->GravityPower * _Scale * _DeltaTime;
-	}
-	else if (CheckForceColor(GravityValue * 2.0f, UColor::BLACK) && IsSlope()
-		&& Yoshi->CurState != EPlayerState::JUMP)
-	{
-		Yoshi->AddActorLocation(GravityValue * 2.0f);
-		Yoshi->GravityForce += FVector::DOWN * Yoshi->GravityPower * 2.0f * _DeltaTime;
+		Yoshi->GravityForce += FVector::DOWN * Yoshi->GravityPower * _DeltaTime;
 	}
 	else
 	{
 		Yoshi->GravityForce = FVector::ZERO;
-	}
-}
-
-void YoshiState::Idle(float _DeltaTime)
-{
-	if (!Yoshi->IsAim)
-	{
-		Yoshi->PlayIdleAnim(false);
-	}
-	
-	// Walk
-	if (IsPressKey(VK_LEFT) || IsPressKey(VK_RIGHT))
-	{
-		ChangeState(EPlayerState::WALK);
-		StateStart();
-		return;
-	}
-
-	// LookUp
-	if (IsPressTime(VK_UP, 0.3f))
-	{
-		ChangeState(EPlayerState::LOOKUP);
-		StateStart();
-		return;
-	}
-
-	// Bend
-	if (IsPressTime(VK_DOWN, 0.3f))
-	{
-		ChangeState(EPlayerState::BEND);
-		StateStart();
-		return;
-	}
-
-	// Stick
-	if (IsDownKey('X'))
-	{
-		ChangeState(EPlayerState::STICK);
-		StateStart();
-		return;
-	}
-	
-	// Jump
-	if (IsDownKey(VK_LCONTROL))
-	{
-		ChangeState(EPlayerState::JUMP);
-		StateStart();
-		return;
-	}
-
-	// Fall
-	if (nullptr == Yoshi->Platform && CheckPointColor(ECheckDir::DOWN, UColor::BLACK) && !IsSlope())
-	{
-		ChangeState(EPlayerState::FALL);
-		StateStart();
-		return;
-	}
-
-	// IsAim
-	if (IsDownKey('Z'))
-	{
-		if (!Yoshi->IsAim)
-		{
-			Yoshi->IsAim = true;
-			StateStart();
-		}
-		else
-		{
-			Yoshi->CurState = EPlayerState::THROW;
-			StateStart();
-			return;
-		}
-		
-	}
-	
-	// DeAccel
-	if ((Yoshi->DirForce.X < 0.0f && !CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
-		|| (Yoshi->DirForce.X > 0.0f && !CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckPointColor(ECheckDir::RIGHT, UColor::GREEN)))
-	{
-		Yoshi->DirForce.X += -Yoshi->DirForce.X * Yoshi->DeAccSpeed * _DeltaTime;
-		if (Yoshi->DirForce.Length() < 0.01f)
-		{
-			Yoshi->DirForce.X = 0.0f;
-		}
-		Yoshi->AddActorLocation(Yoshi->DirForce * _DeltaTime);
-	}
-	else
-	{
-		Yoshi->DirForce.X = 0.0f;
-	}
-}
-
-void YoshiState::Walk(float _DeltaTime)
-{
-	// Stick
-	if (IsDownKey('X'))
-	{
-		ChangeState(EPlayerState::STICK);
-		StateStart();
-		return;
-	}
-
-	// Run
-	if (IsPressTime(VK_LEFT, 0.4f) || IsPressTime(VK_RIGHT, 0.4f))
-	{
-		ChangeState(EPlayerState::RUN);
-		StateStart();
-		return;
-	}
-
-	// Jump
-	if (IsDownKey(VK_LCONTROL))
-	{
-		ChangeState(EPlayerState::JUMP);
-		StateStart();
-		return;
-	}
-
-	// Idle
-	if (!IsPressKey(VK_LEFT) && !IsPressKey(VK_RIGHT))
-	{
-		ChangeState(EPlayerState::IDLE);
-		StateStart();
-		return;
-	}
-
-	// Walk
-	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
-	{
-		if (nullptr == Yoshi->Platform)
-		{
-			Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
-		}
-		else {
-			Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
-		}
-	}
-	else if (IsPressKey(VK_RIGHT) && IsScreen(ECheckDir::RIGHT) && !CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckPointColor(ECheckDir::RIGHT, UColor::GREEN))
-	{
-		if (nullptr == Yoshi->Platform)
-		{
-			Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
-		}
-		else
-		{
-			Yoshi->PlatformPos += FVector::RIGHT * Yoshi->Speed * _DeltaTime;
-		}
-	}
-}
-
-void YoshiState::Run(float _DeltaTime)
-{
-	// Stick
-	if (IsDownKey('X'))
-	{
-		ChangeState(EPlayerState::STICK);
-		StateStart();
-		return;
-	}
-
-	// Jump
-	if (IsDownKey(VK_LCONTROL))
-	{
-		ChangeState(EPlayerState::JUMP);
-		StateStart();
-		return;
-	}
-
-	// Idle
-	if (!IsPressKey(VK_LEFT) && !IsPressKey(VK_RIGHT))
-	{
-		ChangeState(EPlayerState::IDLE);
-		StateStart();
-		return;
-	}
-
-	// Run (Accel)
-	FVector Force = Yoshi->DirForce * _DeltaTime;
-	if (IsPressKey(VK_LEFT) && !CheckForceColor(Force, UColor::MAGENTA) && !CheckForceColor(Force, UColor::GREEN))
-	{
-		if (nullptr == Yoshi->Platform)
-		{
-			Yoshi->AddActorLocation(Force);
-		}
-		else
-		{
-			Yoshi->PlatformPos += Force;
-		}
-
-		Yoshi->DirForce += FVector::LEFT * Yoshi->AccSpeed * _DeltaTime;
-
-		if (Yoshi->DirForce.X > Yoshi->MaxSpeed)
-		{
-			Yoshi->DirForce.Normalize();
-			Yoshi->DirForce.X *= Yoshi->MaxSpeed;
-		}
-	}
-	else if ((IsPressKey(VK_LEFT) && CheckForceColor(Force, UColor::MAGENTA) && CheckForceColor(Force, UColor::GREEN)))
-	{
-		Yoshi->DirForce.X = 0.0f;
-	}
-
-	if (IsPressKey(VK_RIGHT) && !CheckForceColor(Force, UColor::MAGENTA) && !CheckForceColor(Force, UColor::GREEN))
-	{
-
-		if (nullptr == Yoshi->Platform)
-		{
-			Yoshi->AddActorLocation(Force);
-		}
-		else
-		{
-			Yoshi->PlatformPos += Force;
-		}
-
-		Yoshi->DirForce += FVector::RIGHT * Yoshi->AccSpeed * _DeltaTime;
-
-		if (Yoshi->DirForce.X > Yoshi->MaxSpeed)
-		{
-			Yoshi->DirForce.Normalize();
-			Yoshi->DirForce.X *= Yoshi->MaxSpeed;
-		}
-	}
-	else if (IsPressKey(VK_RIGHT) && CheckForceColor(Force, UColor::MAGENTA) && CheckForceColor(Force, UColor::GREEN))
-	{
-		Yoshi->DirForce.X = 0.0f;
-	}
-	
-}
-
-void YoshiState::Jump(float _DeltaTime)
-{
-	//Stick
-	if (IsDownKey('X'))
-	{
-		ChangeState(EPlayerState::STICK);
-		StateStart();
-		return;
-	}
-
-	// Fall
-	if (Yoshi->JumpPower + Yoshi->GravityForce.Y < 0.0f)
-	{
-		Yoshi->GravityForce = FVector::ZERO;
-		ChangeState(EPlayerState::FALL);
-		StateStart();
-	}
-
-	// Jump
-	if (!CheckPointColor(ECheckDir::UP, UColor::MAGENTA))
-	{
-		if (nullptr == Yoshi->Platform)
-		{
-			Yoshi->AddActorLocation(FVector::UP * Yoshi->JumpPower * _DeltaTime);
-		}
-		else
-		{
-			Yoshi->PlatformPos += FVector::UP * Yoshi->JumpPower * _DeltaTime;
-		}
-	}
-	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
-	{
-		if (nullptr == Yoshi->Platform)
-		{
-			Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
-		}
-		else
-		{
-			Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
-		}
-	}
-	else if (IsPressKey(VK_RIGHT) && IsScreen(ECheckDir::RIGHT) && !CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
-	{
-		if (nullptr == Yoshi->Platform)
-		{
-			Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
-		}
-		else
-		{
-			Yoshi->PlatformPos += FVector::RIGHT * Yoshi->Speed * _DeltaTime;
-		}
-	}
-}
-
-void YoshiState::StayUp(float _DeltaTime)
-{
-}
-
-void YoshiState::Fall(float _DeltaTime)
-{
-	// Stick
-	if (IsDownKey('X'))
-	{
-		ChangeState(EPlayerState::STICK);
-		StateStart();
-		return;
-	}
-
-	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
-	{
-		Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
-	}
-	else if (IsPressKey(VK_RIGHT) && IsScreen(ECheckDir::RIGHT) && !CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
-	{
-		Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
-	}
-
-	// Idle
-	if (Yoshi->GravityForce == FVector::ZERO)
-	{
-		ChangeState(EPlayerState::IDLE);
-		StateStart();
-	}
-}
-
-void YoshiState::LookUp(float _DeltaTime)
-{
-	if (IsDownKey('X'))
-	{
-		ChangeState(EPlayerState::STICK);
-		StateStart();
-		return;
-	}
-
-	if (!IsPressKey(VK_UP))
-	{
-		ChangeAnimation("LookUpEnd");
-
-		if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
-		{
-			ChangeState(EPlayerState::IDLE);
-			StateStart();
-			return;
-		}
-	}
-}
-
-void YoshiState::Bend(float _DeltaTime)
-{
-	if (IsDownKey('X'))
-	{
-		ChangeState(EPlayerState::STICK);
-		StateStart();
-		return;
-	}
-
-	if (!IsPressKey(VK_DOWN))
-	{
-		ChangeAnimation("BendEnd");
-	
-		if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
-		{
-			ChangeState(EPlayerState::IDLE);
-			StateStart();
-			return;
-		}
-	}
-
-	if (Yoshi->IsAim) { Yoshi->IsAim = false; }
-	
-}
-
-void YoshiState::Stick(float _DeltaTime)
-{
-	if (IsPressKey(VK_LEFT) && IsScreen(ECheckDir::LEFT) && !CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
-	{
-		Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
-	}
-	else if (IsPressKey(VK_RIGHT) && IsScreen(ECheckDir::RIGHT) && !CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
-	{
-		Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
-	}
-
-	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
-	{
-		ChangeState(EPlayerState::IDLE);
-		StateStart();
-		return;
-	}
-}
-
-void YoshiState::Throw(float _DeltaTime)
-{
-	Yoshi->IsAim = false;
-	if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
-	{
-		Yoshi->CurState = EPlayerState::IDLE;
-		StateStart();
-		return;
 	}
 }
 #pragma endregion
+
+void YoshiState::CreateFSM()
+{
+	FSM.CreateState(EPlayerState::IDLE,
+		[this](float _DeltaTime)
+		{
+			// Animation
+			if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			{
+				if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					Yoshi->PlayIdleAnim();
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					Yoshi->PlayIdleAnim();
+				}
+			}
+
+			// Fall
+			if (nullptr == Yoshi->Platform && Yoshi->CheckForceColor(FVector::DOWN * 10.0f, UColor::BLACK) && !Yoshi->IsSlope())
+			{
+				FSM.ChangeState(EPlayerState::FALL);
+				return;
+			}
+
+			// Walk
+			if (IsPress(VK_LEFT) || IsPress(VK_RIGHT))
+			{
+				FSM.ChangeState(EPlayerState::WALK);
+				return;
+			}
+
+			// Jump
+			if (IsDown(VK_LCONTROL))
+			{
+				FSM.ChangeState(EPlayerState::JUMP);
+				return;
+			}
+
+			// LookUp
+			if (IsPress(VK_UP))
+			{
+				FSM.ChangeState(EPlayerState::LOOKUP);
+				return;
+			}
+
+			// Bend
+			if (IsPress(VK_DOWN) && !Yoshi->IsHold)
+			{
+				FSM.ChangeState(EPlayerState::BEND);
+				return;
+			}
+
+			// Stick
+			if (IsDown('X'))
+			{
+				Yoshi->StickDir = 2;
+				FSM.ChangeState(EPlayerState::STICK);
+				return;
+			}
+
+			if (IsDown('Z'))
+			{
+				// Aim
+				if (!Yoshi->IsAim)
+				{
+					Yoshi->IsAim = true;
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+				else  // Throw
+				{
+					Yoshi->IsAim = false;
+					FSM.ChangeState(EPlayerState::THROW);
+					return;
+				}
+			}
+
+			// Eat
+			if (Yoshi->IsHold && IsPress(VK_DOWN))
+			{
+				FSM.ChangeState(EPlayerState::EAT);
+				return;
+			}
+
+			// DeAccel
+			if ((Yoshi->DirForce.X < 0.0f && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::WHITE) &&
+				!Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
+				|| (Yoshi->DirForce.X > 0.0f && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::WHITE) &&
+					!Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::GREEN)))
+			{
+				Yoshi->DirForce.X += -Yoshi->DirForce.X * Yoshi->DeAccSpeed * _DeltaTime;
+				if (Yoshi->DirForce.Length() < 0.01f)
+				{
+					Yoshi->DirForce.X = 0.0f;
+				}
+				Yoshi->AddActorLocation(Yoshi->DirForce * _DeltaTime);
+			}
+			else
+			{
+				Yoshi->DirForce.X = 0.0f;
+			}
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::IDLE;
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					int AnimNum = Yoshi->IdleAnimNum();
+					ChangeAnimation("MNH_Idle" + std::to_string(AnimNum));
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					int AnimNum = Yoshi->IdleAnimNum();
+					ChangeAnimation("MH_Idle" + std::to_string(AnimNum));
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					int AnimNum = Yoshi->IdleAnimNum();
+					ChangeAnimation("YNH_Idle" + std::to_string(AnimNum));
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					int AnimNum = Yoshi->IdleAnimNum();
+					ChangeAnimation("YH_Idle" + std::to_string(AnimNum));
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::WALK,
+		[this](float _DeltaTime)
+		{
+			// Run
+			if ((IsPressTime(VK_LEFT, 0.4f) || IsPressTime(VK_RIGHT, 0.4f)) && !Yoshi->IsAim)
+			{
+				FSM.ChangeState(EPlayerState::RUN);
+				return;
+			}
+
+			// Jump
+			if (IsDown(VK_LCONTROL))
+			{
+				FSM.ChangeState(EPlayerState::JUMP);
+				return;
+			}
+
+			// Idle
+			if (!IsPress(VK_LEFT) && !IsPress(VK_RIGHT))
+			{
+				FSM.ChangeState(EPlayerState::IDLE);
+				return;
+			}
+
+			// Stick
+			if (IsDown('X'))
+			{
+				Yoshi->StickDir = 2;
+				FSM.ChangeState(EPlayerState::STICK);
+				return;
+			}
+
+			if (IsDown('Z'))
+			{
+				// Aim
+				if (!Yoshi->IsAim)
+				{
+					Yoshi->IsAim = true;
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+				else  // Throw
+				{
+					Yoshi->IsAim = false;
+					FSM.ChangeState(EPlayerState::THROW);
+					return;
+				}
+			}
+
+			// Walk
+			if (IsPress(VK_LEFT) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::WHITE) &&
+				!Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
+			{
+				if (nullptr == Yoshi->Platform)
+				{
+					Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+				}
+				else 
+				{
+					Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
+				}
+			}
+			if (IsPress(VK_RIGHT) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::WHITE) &&
+				!Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::GREEN))
+			{
+				if (nullptr == Yoshi->Platform)
+				{
+					Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+				}
+				else
+				{
+					Yoshi->PlatformPos += FVector::RIGHT * Yoshi->Speed * _DeltaTime;
+				}
+			}
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::WALK;
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_AimWalk");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_Walk");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_AimWalk");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_Walk");
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_AimWalk");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_Walk");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_AimWalk");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_Walk");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::RUN,
+		[this](float _DeltaTime)
+		{
+			// Idle
+			if (!IsPress(VK_LEFT) && !IsPress(VK_RIGHT))
+			{
+				FSM.ChangeState(EPlayerState::IDLE);
+				return;
+			}
+
+			// Jump
+			if (IsDown(VK_LCONTROL))
+			{
+				FSM.ChangeState(EPlayerState::JUMP);
+				return;
+			}
+
+			// Stick
+			if (IsDown('X'))
+			{
+				Yoshi->StickDir = 2;
+				FSM.ChangeState(EPlayerState::STICK);
+				return;
+			}
+
+			if (IsDown('Z'))
+			{
+				// Aim
+				if (!Yoshi->IsAim)
+				{
+					Yoshi->IsAim = true;
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+				else  // Throw
+				{
+					Yoshi->IsAim = false;
+					FSM.ChangeState(EPlayerState::THROW);
+					return;
+				}
+			}
+
+			// Run
+			FVector Force = Yoshi->DirForce * _DeltaTime;
+
+			if (IsPress(VK_LEFT) && !Yoshi->CheckForceColor(Force, UColor::WHITE)
+				&& !Yoshi->CheckForceColor(Force, UColor::MAGENTA) && !Yoshi->CheckForceColor(Force, UColor::GREEN))
+			{
+				if (nullptr == Yoshi->Platform)
+				{
+					Yoshi->AddActorLocation(Force);
+				}
+				else
+				{
+					Yoshi->PlatformPos += Force;
+				}
+
+				Yoshi->DirForce += FVector::LEFT * Yoshi->AccSpeed * _DeltaTime;
+
+				if (Yoshi->DirForce.X < -Yoshi->MaxSpeed)
+				{
+					Yoshi->DirForce.Normalize();
+					Yoshi->DirForce.X *= Yoshi->MaxSpeed;
+				}
+			}
+			else if ((IsPress(VK_LEFT) && Yoshi->CheckForceColor(Force, UColor::MAGENTA)
+				&& Yoshi->CheckForceColor(Force, UColor::GREEN)))
+			{
+				Yoshi->DirForce.X = 0.0f;
+			}
+
+			if (IsPress(VK_RIGHT) && !Yoshi->CheckForceColor(Force, UColor::WHITE)
+				&& !Yoshi->CheckForceColor(Force, UColor::MAGENTA) && !Yoshi->CheckForceColor(Force, UColor::GREEN))
+			{
+				if (nullptr == Yoshi->Platform)
+				{
+					Yoshi->AddActorLocation(Force);
+				}
+				else
+				{
+					Yoshi->PlatformPos += Force;
+				}
+
+				Yoshi->DirForce += FVector::RIGHT * Yoshi->AccSpeed * _DeltaTime;
+
+				if (Yoshi->DirForce.X > Yoshi->MaxSpeed)
+				{
+					Yoshi->DirForce.Normalize();
+					Yoshi->DirForce.X *= Yoshi->MaxSpeed;
+				}
+			}
+			else if ((IsPress(VK_RIGHT) && Yoshi->CheckForceColor(Force, UColor::MAGENTA)
+				&& Yoshi->CheckForceColor(Force, UColor::GREEN)))
+			{
+				Yoshi->DirForce.X = 0.0f;
+			}
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::RUN;
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_Run");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_Run");
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_Run");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_Run");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::JUMP,
+		[this](float _DeltaTime)
+		{
+			// StayUp
+			if (Yoshi->IsStayUp == false && (Yoshi->JumpPower + Yoshi->GravityForce.Y) < 0.0f && IsPress(VK_LCONTROL))
+			{
+				Yoshi->IsStayUp = true;
+				Yoshi->GravityForce = FVector::ZERO;
+				FSM.ChangeState(EPlayerState::STAYUP);
+				return;
+			}
+
+			// Fall
+			if ((Yoshi->JumpPower + Yoshi->GravityForce.Y) < 0.0f)
+			{
+				Yoshi->GravityForce = FVector::ZERO;
+				Yoshi->HeadCollision->SetActive(false);
+				FSM.ChangeState(EPlayerState::FALL);
+				return;
+			}
+
+			// Stick
+			if (IsDown('X'))
+			{
+				if (IsPress(VK_UP))
+				{
+					Yoshi->StickDir = 1;
+				}
+				else
+				{
+					Yoshi->StickDir = 2;
+				}
+
+				Yoshi->GravityForce = FVector::ZERO;
+				FSM.ChangeState(EPlayerState::STICK);
+				return;
+			}
+
+			if (IsDown('Z'))
+			{
+				// Aim
+				if (!Yoshi->IsAim)
+				{
+					Yoshi->IsAim = true;
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+				else  // Throw
+				{
+					Yoshi->IsAim = false;
+					FSM.ChangeState(EPlayerState::THROW);
+					return;
+				}
+			}
+
+			// Jump
+			if (!Yoshi->CheckPointColor(ECheckDir::UP, UColor::MAGENTA))
+			{
+				if (nullptr == Yoshi->Platform)
+				{
+					Yoshi->AddActorLocation(FVector::UP * Yoshi->JumpPower * _DeltaTime);
+				}
+				else
+				{
+					Yoshi->PlatformPos += FVector::UP * Yoshi->JumpPower * _DeltaTime;
+				}
+			}
+			else
+			{
+				Yoshi->HeadCollision->SetActive(false);
+				FSM.ChangeState(EPlayerState::FALL);
+				return;
+			}
+
+			if (IsPress(VK_LEFT) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::WHITE)
+				&& !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
+			{
+				if (nullptr == Yoshi->Platform)
+				{
+					Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+				}
+				else
+				{
+					Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
+				}
+			}
+			if (IsPress(VK_RIGHT) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::WHITE)
+				&& !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
+			{
+				if (nullptr == Yoshi->Platform)
+				{
+					Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+				}
+				else
+				{
+					Yoshi->PlatformPos += FVector::RIGHT * Yoshi->Speed * _DeltaTime;
+				}
+			}
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::JUMP;
+			Yoshi->HeadCollision->SetActive(true);
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_Jump");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_Jump");
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_Jump");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_Jump");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::FALL,
+		[this](float _DeltaTime)
+		{
+			// StayUp
+			if (IsDown(VK_LCONTROL))
+			{
+				Yoshi->IsStayUp = true;
+				Yoshi->GravityForce = FVector::ZERO;
+				Yoshi->HeadCollision->SetActive(true);
+				FSM.ChangeState(EPlayerState::STAYUP);
+				return;
+			}
+
+			// Stick
+			if (IsDown('X'))
+			{
+				if (IsPress(VK_UP))
+				{
+					Yoshi->StickDir = 1;
+				}
+				else
+				{
+					Yoshi->StickDir = 2;
+				}
+				FSM.ChangeState(EPlayerState::STICK);
+				return;
+			}
+
+			if (IsDown('Z'))
+			{
+				// Aim
+				if (!Yoshi->IsAim)
+				{
+					Yoshi->IsAim = true;
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+				else  // Throw
+				{
+					Yoshi->IsAim = false;
+					FSM.ChangeState(EPlayerState::THROW);
+					return;
+				}
+			}
+
+			// Idle
+			if (!Yoshi->CheckForceColor(Yoshi->GravityForce * _DeltaTime, UColor::BLACK))
+			{
+				FSM.ChangeState(EPlayerState::IDLE);
+				return;
+			}
+
+			if (IsPress(VK_LEFT) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::WHITE)
+				&& !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
+			{
+				Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
+			}
+			if (IsPress(VK_RIGHT) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::WHITE)
+				&& !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
+			{
+				Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
+			}
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::FALL;
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_Fall");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_Fall");
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_Fall");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_Fall");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::STAYUP,
+		[this](float _DeltaTime)
+		{
+			// Fall
+			if (!IsPress(VK_LCONTROL))
+			{
+				Yoshi->IsStayUp = false;
+				Yoshi->HeadCollision->SetActive(false);
+				FSM.ChangeState(EPlayerState::FALL);
+				return;
+			}
+
+			// Idle
+			if (!Yoshi->CheckForceColor(Yoshi->GravityForce * _DeltaTime, UColor::BLACK))
+			{
+				Yoshi->IsStayUp = false;
+				Yoshi->HeadCollision->SetActive(false);
+				FSM.ChangeState(EPlayerState::IDLE);
+				return;
+			}
+
+			// StayUp
+			Yoshi->AddActorLocation(FVector::UP * Yoshi->JumpPower * 0.7f * _DeltaTime);
+
+			if (IsPress(VK_LEFT) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::WHITE)
+				&& !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
+			{
+				Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * 0.6f * _DeltaTime);
+			}
+			if (IsPress(VK_RIGHT) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::WHITE)
+				&& !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
+			{
+				Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * 0.6f * _DeltaTime);
+			}
+
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::STAYUP;
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_AimStayUp");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_StayUp");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_AimStayUp");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_StayUp");
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_AimStayUp");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_StayUp");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_AimStayUp");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_StayUp");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::LOOKUP,
+		[this](float _DeltaTime)
+		{
+			// Stick
+			if (IsDown('X'))
+			{
+				Yoshi->StickDir = 1;
+				FSM.ChangeState(EPlayerState::STICK);
+				return;
+			}
+
+			if (IsPress(VK_UP) && Yoshi->IsAim)
+			{
+				// CrossHair Look Up
+			}
+
+			// Idle
+			if (!IsPress(VK_UP))
+			{
+				if (Yoshi->IsWithBaby && !Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_LookUpEnd");
+				}
+				else if (Yoshi->IsWithBaby && Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_LookUpEnd");
+				}
+
+				if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+				{
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+			}
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::LOOKUP;
+			Yoshi->CameraNum = 1;
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MNH_LookUpStart");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("MH_LookUpStart");
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_AimIdle");
+				}
+				else if (!Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YNH_LookUpStart");
+				}
+				else if (Yoshi->IsHold && Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_AimIdle");
+				}
+				else if (Yoshi->IsHold && !Yoshi->IsAim)
+				{
+					ChangeAnimation("YH_LookUpStart");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::BEND,
+		[this](float _DeltaTime)
+		{
+			// Stick
+			if (IsDown('X'))
+			{
+				Yoshi->StickDir = 2;
+				FSM.ChangeState(EPlayerState::STICK);
+				return;
+			}
+
+			// Idle
+			if (!IsPress(VK_DOWN))
+			{
+				if (Yoshi->IsWithBaby)	// M
+				{
+					if (!Yoshi->IsHold && !Yoshi->IsAim)
+					{
+						ChangeAnimation("MNH_BendEnd");
+					}
+					else if (Yoshi->IsHold && !Yoshi->IsAim)
+					{
+						ChangeAnimation("MH_BendEnd");
+					}
+				}
+				else   // Y
+				{
+					if (!Yoshi->IsHold && !Yoshi->IsAim)
+					{
+						ChangeAnimation("YNH_BendEnd");
+					}
+					else if (Yoshi->IsHold && !Yoshi->IsAim)
+					{
+						ChangeAnimation("YH_BendEnd");
+					}
+				}
+
+				if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+				{
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+			}
+
+			// Bend
+			if (Yoshi->IsAim) { Yoshi->IsAim = false; }
+		},
+		[this]()
+		{
+			Yoshi->CurState = EPlayerState::BEND;
+			Yoshi->CameraNum = 2;
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if ((!Yoshi->IsHold && Yoshi->IsAim) || (!Yoshi->IsHold && !Yoshi->IsAim))
+				{
+					ChangeAnimation("MNH_BendStart");
+				}
+				else if ((Yoshi->IsHold && Yoshi->IsAim) || (Yoshi->IsHold && !Yoshi->IsAim))
+				{
+					ChangeAnimation("MH_BendStart");
+				}
+			}
+			else   // Y
+			{
+				if ((!Yoshi->IsHold && Yoshi->IsAim) || (!Yoshi->IsHold && !Yoshi->IsAim))
+				{
+					ChangeAnimation("YNH_BendStart");
+				}
+				else if ((Yoshi->IsHold && Yoshi->IsAim) || (Yoshi->IsHold && !Yoshi->IsAim))
+				{
+					ChangeAnimation("YH_BendStart");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::STICK,
+		[this](float _DeltaTime)
+		{
+			// Animation
+			// Collision Check
+			Yoshi->CurState = EPlayerState::STICK;
+			Yoshi->SetStickCollision();
+
+			if (Yoshi->StickDir == 1 && !Yoshi->IsHolding &&
+				Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			{
+				ChangeAnimation("MNH_Stick_UpEnd");
+
+				if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+				{
+					Yoshi->FootCollision->SetActive(true);
+					Yoshi->StickCollision->SetActive(false);
+
+					Yoshi->StickDir = 0;
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+			}
+			else if (Yoshi->StickDir == 2 && !Yoshi->IsHolding &&
+				Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			{
+				ChangeAnimation("MNH_Stick_RightEnd");
+
+				if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+				{
+					Yoshi->BodyCollision->SetActive(true);
+					Yoshi->FootCollision->SetActive(true);
+
+					Yoshi->StickBodyCollision->SetActive(false);
+					Yoshi->StickCollision->SetActive(false);
+					
+					Yoshi->StickDir = 0;
+					FSM.ChangeState(EPlayerState::IDLE);
+					return;
+				}
+			}
+
+			// DeAccel
+			if ((Yoshi->DirForce.X < 0.0f && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::WHITE) &&
+				!Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
+				|| (Yoshi->DirForce.X > 0.0f && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::WHITE) &&
+					!Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::GREEN)))
+			{
+				Yoshi->DirForce.X += -Yoshi->DirForce.X * Yoshi->DeAccSpeed * _DeltaTime;
+				if (Yoshi->DirForce.Length() < 0.01f)
+				{
+					Yoshi->DirForce.X = 0.0f;
+				}
+				Yoshi->AddActorLocation(Yoshi->DirForce * _DeltaTime);
+			}
+			else
+			{
+				Yoshi->DirForce.X = 0.0f;
+			}
+		},
+		[this]()
+		{
+			if (Yoshi->StickDir == 1)
+			{
+				Yoshi->HeadCollision->SetActive(false);
+				Yoshi->FootCollision->SetActive(false);
+				Yoshi->StickCollision->SetActive(true);
+
+				if ((Yoshi->IsWithBaby) && (!Yoshi->IsHold && !Yoshi->IsAim))	// M
+				{
+					ChangeAnimation("MNH_Stick_UpStart");
+				}
+				else if ((!Yoshi->IsWithBaby) && (!Yoshi->IsHold && !Yoshi->IsAim)) // Y
+				{
+					ChangeAnimation("YNH_Stick_UpStart");
+				}
+			}
+			else if (Yoshi->StickDir == 2)
+			{
+				Yoshi->HeadCollision->SetActive(false);
+				Yoshi->BodyCollision->SetActive(false);
+				Yoshi->FootCollision->SetActive(false);
+
+				Yoshi->StickBodyCollision->SetActive(true);
+				Yoshi->StickCollision->SetActive(true);
+
+				if ((Yoshi->IsWithBaby) && (!Yoshi->IsHold && !Yoshi->IsAim))	// M
+				{
+					ChangeAnimation("MNH_Stick_RightStart");
+				}
+				else if ((!Yoshi->IsWithBaby) && (!Yoshi->IsHold && !Yoshi->IsAim)) // Y
+				{
+					ChangeAnimation("YNH_Stick_RightStart");
+				}
+			}
+		}
+	);
+
+	FSM.CreateState(EPlayerState::EAT,
+		[this](float _DeltaTime)
+		{
+			if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			{
+				Yoshi->IsAim = false;
+				Yoshi->IsHold = false;
+				Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount += 1;
+
+				FSM.ChangeState(EPlayerState::IDLE);
+				return;
+			}
+		},
+		[this]()
+		{
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if ((Yoshi->IsHold && Yoshi->IsAim) || (Yoshi->IsHold && !Yoshi->IsAim))
+				{
+					ChangeAnimation("MH_Eat");
+				}
+			}
+			else   // Y
+			{
+				if ((Yoshi->IsHold && Yoshi->IsAim) || (Yoshi->IsHold && !Yoshi->IsAim))
+				{
+					ChangeAnimation("YH_Eat");
+				}
+			}
+		});
+
+	FSM.CreateState(EPlayerState::THROW,
+		[this](float _DeltaTime)
+		{
+			if (Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			{
+				FSM.ChangeState(EPlayerState::IDLE);
+				return;
+			}
+		},
+		[this]()
+		{
+			Yoshi->IsAim = false;
+			Yoshi->SpawnThrowEgg();
+
+			if (Yoshi->IsWithBaby)	// M
+			{
+				if (!Yoshi->IsHold)
+				{
+					ChangeAnimation("MNH_Throw");
+				}
+				else
+				{
+					ChangeAnimation("MH_Throw");
+				}
+			}
+			else   // Y
+			{
+				if (!Yoshi->IsHold)
+				{
+					ChangeAnimation("YNH_Throw");
+				}
+				else
+				{
+					ChangeAnimation("YH_Throw");
+				}
+			}
+
+			// SpawnEgg
+
+
+		});
+
+	FSM.ChangeState(EPlayerState::IDLE);
+}
