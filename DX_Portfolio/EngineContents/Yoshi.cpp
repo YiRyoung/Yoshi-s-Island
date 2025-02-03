@@ -17,6 +17,7 @@
 
 #include "Platforms.h"
 #include "ThrowEgg.h"
+#include "JumpBall.h"
 
 AYoshi::AYoshi()
 {

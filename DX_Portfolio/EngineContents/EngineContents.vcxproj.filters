@@ -64,6 +64,9 @@
     <ClInclude Include="ThrowEgg.h">
       <Filter>Contents\Yoshi</Filter>
     </ClInclude>
+    <ClInclude Include="JumpBall.h">
+      <Filter>Contents\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -125,6 +128,9 @@
     </ClCompile>
     <ClCompile Include="ThrowEgg.cpp">
       <Filter>Contents\Yoshi</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpBall.cpp">
+      <Filter>Contents\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

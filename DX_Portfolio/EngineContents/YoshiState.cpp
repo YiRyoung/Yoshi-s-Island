@@ -464,6 +464,7 @@ void YoshiState::CreateFSM()
 			{
 				Yoshi->IsStayUp = true;
 				Yoshi->GravityForce = FVector::ZERO;
+				Yoshi->JumpPower = 550.0f;
 				FSM.ChangeState(EPlayerState::STAYUP);
 				return;
 			}
@@ -559,6 +560,15 @@ void YoshiState::CreateFSM()
 		{
 			Yoshi->CurState = EPlayerState::JUMP;
 			Yoshi->HeadCollision->SetActive(true);
+
+			if (Yoshi->JumpBallType == -1)
+			{
+				Yoshi->JumpPower = 550.0f;
+			}
+			else if (Yoshi->JumpBallType == 1)
+			{
+				Yoshi->JumpPower = 550.0f * 1.4f;
+			}
 
 			if (Yoshi->IsWithBaby)	// M
 			{

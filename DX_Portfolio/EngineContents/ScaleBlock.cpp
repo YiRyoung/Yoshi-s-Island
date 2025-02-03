@@ -24,7 +24,7 @@ AScaleBlock::~AScaleBlock()
 void AScaleBlock::InitScaleBlock()
 {
 	ScaleBlockRenderer = CreateDefaultSubObject<USpriteRenderer>();
-	ScaleBlockRenderer->SetTexture("Scale Block.png");
+	ScaleBlockRenderer->SetTexture("ScaleBlock.png");
 	ScaleBlockRenderer->SetScale3D({ 48.0f, 48.0f });
 	ScaleBlockRenderer->SetupAttachment(RootComponent);
 

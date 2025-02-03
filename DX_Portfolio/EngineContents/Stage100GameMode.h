@@ -30,6 +30,7 @@ private:
 	std::shared_ptr<class AScaleBlock> ScaleBlock;
 	std::shared_ptr<class ARotatePlatform> RotatePlatform;
 	std::shared_ptr<class APlatforms> Platform;
+	std::shared_ptr<class AJumpBall> JumpBall;
 
 	void SetGUI();
 };

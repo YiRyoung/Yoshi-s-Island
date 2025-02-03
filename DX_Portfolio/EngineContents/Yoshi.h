@@ -72,6 +72,16 @@ public:
 		GravityForce = FVector::ZERO;
 	}
 
+	void SetJumpBallType(int _TypeIndex)
+	{
+		JumpBallType = _TypeIndex;
+	}
+
+	void SetJumpPower(float _Value)
+	{
+		JumpPower = _Value;
+	}
+
 #pragma region Debug Funcs
 	UEngineWinImage* GetColImage() const
 	{
@@ -189,6 +199,9 @@ private:
 	class APlatforms* Platform = nullptr;
 	FVector PlatformPos = FVector::ZERO;
 
+	// JumpBall
+	int JumpBallType = -1;
+	
 	// Status
 	int StickDir = 0;
 	int EggCount = 0;

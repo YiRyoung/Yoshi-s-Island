@@ -96,5 +96,7 @@ void UContentsCore::LoadSprites()
 	UEngineSprite::CreateSpriteToMeta("Eggs.png", ".sdata");
 
 	UEngineSprite::CreateSpriteToMeta("Shy Guys.png", ".sdata");
+
 	UEngineSprite::CreateSpriteToMeta("Platforms.png", ".sdata");
+	UEngineSprite::CreateSpriteToMeta("JumpBalls.png", ".sdata");
 }

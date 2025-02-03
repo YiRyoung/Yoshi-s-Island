@@ -20,6 +20,7 @@
 #include "ScaleBlock.h"
 #include "RotatePlatform.h"
 #include "Platforms.h"
+#include "JumpBall.h"
 
 AStage100GameMode::AStage100GameMode()
 {
@@ -35,6 +36,7 @@ AStage100GameMode::AStage100GameMode()
 
 	GetWorld()->CreateCollisionProfile("ScaleBlockCollision");
 	GetWorld()->CreateCollisionProfile("PlatformCollision");
+	GetWorld()->CreateCollisionProfile("JumpBallCollision");
 	
 	GetWorld()->LinkCollisionProfile("MonsterHeadCollision", "FootCollision");
 	GetWorld()->LinkCollisionProfile("MonsterBodyCollision", "BodyCollision");
@@ -42,6 +44,7 @@ AStage100GameMode::AStage100GameMode()
 
 	GetWorld()->LinkCollisionProfile("PlatformCollision", "FootCollision");
 	GetWorld()->LinkCollisionProfile("ScaleBlockCollision", "HeadCollision");
+	GetWorld()->LinkCollisionProfile("BodyCollision", "JumpBallCollision");
 
 
 	Stage = GetWorld()->SpawnActor<AStage100>();
@@ -51,11 +54,14 @@ AStage100GameMode::AStage100GameMode()
 	ShyGuy->SetType(EShyGuyTypes::MAGETNTA);
 	ShyGuy->SetActorLocation({ 1000.0f, -2600.0f, static_cast<int>(EOrderNum::PLAYER) });
 
+	JumpBall = GetWorld()->SpawnActor<AJumpBall>();
+	JumpBall->SetActorLocation({ 3305.0f, -2115.0f, static_cast<int>(EOrderNum::OBJECT) });
+
 	/*RotatePlatform = GetWorld()->SpawnActor<ARotatePlatform>();
 	RotatePlatform->SetActorLocation({ 800.0f, -2400.0f, -2.0f });*/
 
 	ScaleBlock = GetWorld()->SpawnActor<AScaleBlock>();
-	ScaleBlock->SetActorLocation({1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBSTACLE)});
+	ScaleBlock->SetActorLocation({1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBJECT)});
 }
 
 AStage100GameMode::~AStage100GameMode()

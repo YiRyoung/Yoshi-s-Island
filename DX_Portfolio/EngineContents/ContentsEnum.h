@@ -6,7 +6,7 @@ enum class EOrderNum
 	HUD = -15,
 	PLAYER = -12,
 	FRONTBACKGROUND = -10,
-	OBSTACLE = -1,
+	OBJECT = -1,
 	COLSTAGE = 1,
 	STAGE,
 	FOREBACKGROUND,
