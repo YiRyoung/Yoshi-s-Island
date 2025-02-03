@@ -21,6 +21,7 @@
 #include "RotatePlatform.h"
 #include "Platforms.h"
 #include "JumpBall.h"
+#include "BigJumpBall.h"
 
 AStage100GameMode::AStage100GameMode()
 {
@@ -36,6 +37,7 @@ AStage100GameMode::AStage100GameMode()
 
 	GetWorld()->CreateCollisionProfile("PlatformCollision");
 	GetWorld()->CreateCollisionProfile("JumpBallCollision");
+	GetWorld()->CreateCollisionProfile("BigJumpBallCollision");
 	GetWorld()->CreateCollisionProfile("ScaleBlockDownCollision");
 	
 	GetWorld()->LinkCollisionProfile("MonsterHeadCollision", "FootCollision");
@@ -44,7 +46,8 @@ AStage100GameMode::AStage100GameMode()
 
 	GetWorld()->LinkCollisionProfile("PlatformCollision", "FootCollision");
 	GetWorld()->LinkCollisionProfile("ScaleBlockDownCollision", "HeadCollision");
-	GetWorld()->LinkCollisionProfile("BodyCollision", "JumpBallCollision");
+	GetWorld()->LinkCollisionProfile("FootCollision", "JumpBallCollision");
+	GetWorld()->LinkCollisionProfile("FootCollision", "BigJumpBallCollision");
 
 
 	Stage = GetWorld()->SpawnActor<AStage100>();
@@ -56,6 +59,9 @@ AStage100GameMode::AStage100GameMode()
 
 	JumpBall = GetWorld()->SpawnActor<AJumpBall>();
 	JumpBall->SetActorLocation({ 3305.0f, -2115.0f, static_cast<int>(EOrderNum::OBJECT) });
+
+	BigJumpBall = GetWorld()->SpawnActor<ABigJumpBall>();
+	BigJumpBall->SetActorLocation({ 3770.6f, -1778.0f, static_cast<int>(EOrderNum::OBJECT) });
 
 	/*RotatePlatform = GetWorld()->SpawnActor<ARotatePlatform>();
 	RotatePlatform->SetActorLocation({ 800.0f, -2400.0f, -2.0f });*/
@@ -105,16 +111,12 @@ void AStage100GameMode::LevelChangeEnd()
 
 void AStage100GameMode::SetGUI()
 {
-#ifdef _DEBUG
 	std::shared_ptr<UDebugGUI> Window = UEngineGUI::FindGUIWindow<UDebugGUI>("DebugGUI");
-
+	
 	if (nullptr == Window)
 	{
 		Window = UEngineGUI::CreateGUIWindow<UDebugGUI>("DebugGUI");
 	}
-
+	
 	Window->SetActive(true);
-#else
-
-#endif
 }

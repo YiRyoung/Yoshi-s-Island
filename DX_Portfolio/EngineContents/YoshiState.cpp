@@ -472,6 +472,7 @@ void YoshiState::CreateFSM()
 			// Fall
 			if ((Yoshi->JumpPower + Yoshi->GravityForce.Y) < 0.0f)
 			{
+				Yoshi->JumpPower = 550.0f;
 				Yoshi->GravityForce = FVector::ZERO;
 				Yoshi->HeadCollision->SetActive(false);
 				FSM.ChangeState(EPlayerState::FALL);
@@ -490,6 +491,7 @@ void YoshiState::CreateFSM()
 					Yoshi->StickDir = 2;
 				}
 
+				Yoshi->JumpPower = 550.0f;
 				Yoshi->GravityForce = FVector::ZERO;
 				FSM.ChangeState(EPlayerState::STICK);
 				return;
@@ -497,6 +499,8 @@ void YoshiState::CreateFSM()
 
 			if (IsDown('Z'))
 			{
+				Yoshi->JumpPower = 550.0f;
+
 				// Aim
 				if (!Yoshi->IsAim)
 				{
@@ -559,16 +563,7 @@ void YoshiState::CreateFSM()
 		[this]()
 		{
 			Yoshi->CurState = EPlayerState::JUMP;
-			Yoshi->HeadCollision->SetActive(true);
-
-			if (Yoshi->JumpBallType == -1)
-			{
-				Yoshi->JumpPower = 550.0f;
-			}
-			else if (Yoshi->JumpBallType == 1)
-			{
-				Yoshi->JumpPower = 550.0f * 1.4f;
-			}
+			Yoshi->HeadCollision->SetActive(true);			
 
 			if (Yoshi->IsWithBaby)	// M
 			{
@@ -966,8 +961,7 @@ void YoshiState::CreateFSM()
 			Yoshi->CurState = EPlayerState::STICK;
 			Yoshi->SetStickCollision();
 
-			if (Yoshi->StickDir == 1 && !Yoshi->IsHolding &&
-				Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			if (Yoshi->StickDir == 1 &&	Yoshi->YoshiRenderer->IsCurAnimationEnd())
 			{
 				ChangeAnimation("MNH_Stick_UpEnd");
 
@@ -981,8 +975,7 @@ void YoshiState::CreateFSM()
 					return;
 				}
 			}
-			else if (Yoshi->StickDir == 2 && !Yoshi->IsHolding &&
-				Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			else if (Yoshi->StickDir == 2 && Yoshi->YoshiRenderer->IsCurAnimationEnd())
 			{
 				ChangeAnimation("MNH_Stick_RightEnd");
 
@@ -1099,6 +1092,7 @@ void YoshiState::CreateFSM()
 		[this]()
 		{
 			Yoshi->IsAim = false;
+			Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount -= 1;
 			Yoshi->SpawnThrowEgg();
 
 			if (Yoshi->IsWithBaby)	// M

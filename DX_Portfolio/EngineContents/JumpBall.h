@@ -20,8 +20,6 @@ public:
 		RootComponent->SetScale3D(_Value);
 	}
 
-	void Init(int _CaseNum);
-
 protected:
 	void Tick(float _DeltaTime) override;
 private:

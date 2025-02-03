@@ -64,6 +64,9 @@
     <ClInclude Include="JumpBall.h">
       <Filter>Contents\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="BigJumpBall.h">
+      <Filter>Contents\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -124,6 +127,9 @@
       <Filter>Contents\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="JumpBall.cpp">
+      <Filter>Contents\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BigJumpBall.cpp">
       <Filter>Contents\Objects</Filter>
     </ClCompile>
   </ItemGroup>

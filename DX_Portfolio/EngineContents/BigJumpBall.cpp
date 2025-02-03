@@ -1,5 +1,5 @@
 #include "PreCompile.h"
-#include "JumpBall.h"
+#include "BigJumpBall.h"
 
 #include <EnginePlatform/EngineInput.h>
 
@@ -9,41 +9,42 @@
 
 #include "Yoshi.h"
 
-AJumpBall::AJumpBall()
+ABigJumpBall::ABigJumpBall()
 {
 	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
 	RootComponent = Default;
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>();
 	Renderer->SetupAttachment(RootComponent);
-	Renderer->SetSprite("JumpBalls.png", 0);
+	Renderer->SetSprite("JumpBalls.png", 1);
 	Renderer->SetAutoScaleRatio(3.0f);
 
 	Collision = CreateDefaultSubObject<UCollision>();
 	Collision->SetupAttachment(RootComponent);
-	Collision->SetCollisionProfileName("JumpBallCollision");
-	Collision->SetScale3D({ 51.0f, 51.0f });
-	Collision->SetWorldLocation({ 0.0f, 25.5f });
+	Collision->SetCollisionProfileName("BigJumpBallCollision");
+	Collision->SetScale3D({ 72.0f, 72.0f });
+	Collision->SetWorldLocation({ 0.0f, 36.0f });
 }
 
-AJumpBall::~AJumpBall()
+ABigJumpBall::~ABigJumpBall()
 {
 }
 
-void AJumpBall::Tick(float _DeltaTime)
+void ABigJumpBall::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
 	std::vector<UCollision*> FootCollisions;
-	if(Collision->CollisionCheck("FootCollision", FootCollisions))
+	if (Collision->CollisionCheck("FootCollision", FootCollisions))
 	{
 		AYoshi* Yoshi = FootCollisions[0]->GetActor<AYoshi>();
-		Yoshi->SetJumpBallType(1);
+		Yoshi->SetJumpBallType(2);
 		RootComponent->SetScale3D({ 1.0f, 0.3f });
 	}
 	else
 	{
-		//GetWorld()->GetMainPawn<AYoshi>()->SetJumpBallType(-1);
+		GetWorld()->GetMainPawn<AYoshi>()->SetJumpBallType(-1);
 		RootComponent->SetScale3D({ 1.0f, 1.0f });
 	}
 }
+

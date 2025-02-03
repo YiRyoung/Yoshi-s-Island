@@ -72,6 +72,7 @@ public:
 		GravityForce = FVector::ZERO;
 	}
 
+	// JumpBall
 	void SetJumpBallType(int _TypeIndex)
 	{
 		JumpBallType = _TypeIndex;

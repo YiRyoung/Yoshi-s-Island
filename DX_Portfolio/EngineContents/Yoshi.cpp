@@ -647,8 +647,24 @@ void AYoshi::SetCollisionsCheck()
 				return;
 			}
 		}
+
+		{
+			std::vector<UCollision*> JumpBall;
+			if (FootCollision->CollisionCheck("JumpBallCollision", JumpBall))
+			{
+				JumpPower = 550.0f * 1.4f;
+			}
+
+			std::vector<UCollision*> BigJumpBall;
+			if (FootCollision->CollisionCheck("BigJumpBallCollision", BigJumpBall))
+			{
+				JumpPower = 550.0f * 2.4f;
+			}
+		}
 	}
 }
+#pragma endregion
+
 void AYoshi::SetCrossHair()
 {
 	CrossHair->SetActive(IsAim);
@@ -676,4 +692,3 @@ void AYoshi::SpawnThrowEgg()
 	Egg->AddActorLocation({ 0.0f, YoshiScale.Y * 0.5f, -12.0f });
 	Egg->SetThrowDir(CrossHair->GetCurAngle());
 }
-#pragma endregion
