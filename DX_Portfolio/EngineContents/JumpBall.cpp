@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "JumpBall.h"
 
-#include <EnginePlatform/EngineInput.h>
-
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Collision.h>

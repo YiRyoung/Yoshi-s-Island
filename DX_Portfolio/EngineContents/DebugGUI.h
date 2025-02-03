@@ -19,6 +19,14 @@ public:
 
 protected:
 	void OnGUI() override;
+
 private:
 	class UFSMStateManager FSM;
+
+	void SwitchFreeCamera();
+	void PrintPixelCollisionKey();
+	void PrintEggCount();
+	void PrintYellowCoinCount();
+	void PrintCurState();
+	void ChangeAnimationButtons();
 };

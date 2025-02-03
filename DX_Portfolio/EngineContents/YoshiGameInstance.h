@@ -15,7 +15,7 @@ public:
 	AYoshiGameInstance& operator=(const AYoshiGameInstance& _Other) = delete;
 	AYoshiGameInstance& operator=(AYoshiGameInstance&& _Other) noexcept = delete;
 
-	int HPCount = 10;
+	int YellowCoin = 0;
 	int EggCount = 0;
 };
 

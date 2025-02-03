@@ -33,6 +33,8 @@ private:
 	std::shared_ptr<class AJumpBall> JumpBall;
 	std::shared_ptr<class ABigJumpBall> BigJumpBall;
 
+	void SetCollisionLink();
+	void InitActors();
 	void SetGUI();
 };
 

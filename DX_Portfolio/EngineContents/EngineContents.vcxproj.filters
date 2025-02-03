@@ -67,6 +67,15 @@
     <ClInclude Include="BigJumpBall.h">
       <Filter>Contents\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="KeyNoticeGUI.h">
+      <Filter>Global\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="YellowCoin.h">
+      <Filter>Contents\Objects\Coins</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateCoinGUI.h">
+      <Filter>Global\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -132,6 +141,15 @@
     <ClCompile Include="BigJumpBall.cpp">
       <Filter>Contents\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="KeyNoticeGUI.cpp">
+      <Filter>Global\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowCoin.cpp">
+      <Filter>Contents\Objects\Coins</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateCoinGUI.cpp">
+      <Filter>Global\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -178,6 +196,9 @@
     </Filter>
     <Filter Include="Contents\Yoshi">
       <UniqueIdentifier>{7b16824f-3b61-4122-a045-896968756743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Coins">
+      <UniqueIdentifier>{1b5139fc-4e92-4b12-abc0-4128285b382f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

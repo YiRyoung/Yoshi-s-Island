@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "DebugGUI.h"
 
+#include <EnginePlatform/EngineInput.h>
+
 #include <EngineCore/EngineCore.h>
 #include <EngineCore/EngineGUI.h>
 
@@ -18,18 +20,44 @@ UDebugGUI::~UDebugGUI()
 
 void UDebugGUI::OnGUI()
 {
+	PrintEggCount();
+	PrintYellowCoinCount();
+	PrintCurState();
+	PrintPixelCollisionKey();
+	SwitchFreeCamera();
+	ChangeAnimationButtons();
+}
+
+void UDebugGUI::SwitchFreeCamera()
+{
 	if (ImGui::Button("FreeCamera"))
 	{
 		GetWorld()->GetMainCamera()->FreeCameraSwitch();
 	}
+}
+
+void UDebugGUI::PrintPixelCollisionKey()
+{
+	ImGui::Text("SwitchPixelCollision : P");
 	ImGui::NewLine();
+}
 
-
-	std::string EggCount = "EggCount : " + std::to_string(GetWorld()->GetMainPawn<AYoshi>()->GetGameInstance<AYoshiGameInstance>()->EggCount);
+void UDebugGUI::PrintEggCount()
+{
+	std::string EggCount = "Egg : " + std::to_string(GetWorld()->GetMainPawn<AYoshi>()->GetGameInstance<AYoshiGameInstance>()->EggCount);
 	EggCount = UEngineString::AnsiToUTF8(EggCount);
 	ImGui::Text(EggCount.c_str());
-	ImGui::NewLine();
+}
 
+void UDebugGUI::PrintYellowCoinCount()
+{
+	std::string YellowCoinCount = "YellowCoin : " + std::to_string(GetWorld()->GetMainPawn<AYoshi>()->GetGameInstance<AYoshiGameInstance>()->YellowCoin);
+	YellowCoinCount = UEngineString::AnsiToUTF8(YellowCoinCount);
+	ImGui::Text(YellowCoinCount.c_str());
+}
+
+void UDebugGUI::PrintCurState()
+{
 	std::string CurStateName;
 	switch (GetWorld()->GetMainPawn<AYoshi>()->GetCurState())
 	{
@@ -67,7 +95,10 @@ void UDebugGUI::OnGUI()
 	ImGui::Text("CurState : ");
 	ImGui::SameLine();
 	ImGui::Text(CurStateName.c_str());
+}
 
+void UDebugGUI::ChangeAnimationButtons()
+{
 	if (ImGui::Button("SwitchIsWithBaby"))
 	{
 		GetWorld()->GetMainPawn<AYoshi>()->SwitchIsWithBaby();
@@ -107,4 +138,3 @@ void UDebugGUI::OnGUI()
 	ImGui::SameLine();
 	ImGui::Text(CurIsHold.c_str());
 }
-
