@@ -118,18 +118,21 @@ void YoshiState::CreateFSM()
 
 			if (IsDown('Z'))
 			{
-				// Aim
-				if (!Yoshi->IsAim)
+				if (Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount > 0)
 				{
-					Yoshi->IsAim = true;
-					FSM.ChangeState(EPlayerState::IDLE);
-					return;
-				}
-				else  // Throw
-				{
-					Yoshi->IsAim = false;
-					FSM.ChangeState(EPlayerState::THROW);
-					return;
+					// Aim
+					if (!Yoshi->IsAim)
+					{
+						Yoshi->IsAim = true;
+						FSM.ChangeState(EPlayerState::IDLE);
+						return;
+					}
+					else  // Throw
+					{
+						Yoshi->IsAim = false;
+						FSM.ChangeState(EPlayerState::THROW);
+						return;
+					}
 				}
 			}
 
