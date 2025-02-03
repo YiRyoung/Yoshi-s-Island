@@ -28,10 +28,11 @@ void AScaleBlock::InitScaleBlock()
 	ScaleBlockRenderer->SetScale3D({ 48.0f, 48.0f });
 	ScaleBlockRenderer->SetupAttachment(RootComponent);
 
-	/*ScaleBlockCollision = CreateDefaultSubObject<UCollision>();
-	ScaleBlockCollision->SetupAttachment(RootComponent);
-	ScaleBlockCollision->SetCollisionProfileName("ScaleBlockCollision");
-	ScaleBlockCollision->SetScale3D({ 48.0f, 48.0f });*/
+	ScaleBlockDownCollision = CreateDefaultSubObject<UCollision>();
+	ScaleBlockDownCollision->SetupAttachment(RootComponent);
+	ScaleBlockDownCollision->SetCollisionProfileName("ScaleBlockDownCollision");
+	ScaleBlockDownCollision->SetScale3D({ 48.0f, 10.0f });
+	ScaleBlockDownCollision->SetWorldLocation(FVector{ 0.0f, -24.0f + 5.0f });
 }
 
 void AScaleBlock::ScaleUp(FVector _Pos, float _DeltaTime)

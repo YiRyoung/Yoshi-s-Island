@@ -52,9 +52,6 @@
     <ClInclude Include="YoshiGameInstance.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="EggList.h">
-      <Filter>Contents\Yoshi</Filter>
-    </ClInclude>
     <ClInclude Include="Platforms.h">
       <Filter>Contents\Objects</Filter>
     </ClInclude>
@@ -116,9 +113,6 @@
     </ClCompile>
     <ClCompile Include="YoshiGameInstance.cpp">
       <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="EggList.cpp">
-      <Filter>Contents\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="Platforms.cpp">
       <Filter>Contents\Objects</Filter>

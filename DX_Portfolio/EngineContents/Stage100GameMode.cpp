@@ -34,16 +34,16 @@ AStage100GameMode::AStage100GameMode()
 	GetWorld()->CreateCollisionProfile("MonsterHeadCollision");
 	GetWorld()->CreateCollisionProfile("MonsterBodyCollision");
 
-	GetWorld()->CreateCollisionProfile("ScaleBlockCollision");
 	GetWorld()->CreateCollisionProfile("PlatformCollision");
 	GetWorld()->CreateCollisionProfile("JumpBallCollision");
+	GetWorld()->CreateCollisionProfile("ScaleBlockDownCollision");
 	
 	GetWorld()->LinkCollisionProfile("MonsterHeadCollision", "FootCollision");
 	GetWorld()->LinkCollisionProfile("MonsterBodyCollision", "BodyCollision");
 	GetWorld()->LinkCollisionProfile("MonsterBodyCollision", "StickCollision");
 
 	GetWorld()->LinkCollisionProfile("PlatformCollision", "FootCollision");
-	GetWorld()->LinkCollisionProfile("ScaleBlockCollision", "HeadCollision");
+	GetWorld()->LinkCollisionProfile("ScaleBlockDownCollision", "HeadCollision");
 	GetWorld()->LinkCollisionProfile("BodyCollision", "JumpBallCollision");
 
 
