@@ -110,7 +110,7 @@ void AShyGuy::ChangeAnimDir()
 		RootComponent->SetScale3D({ 1, 1, 1 });
 	}
 
-	TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AShyGuy::ChangeAnimDir, this), false);
+	//TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AShyGuy::ChangeAnimDir, this), false);
 }
 
 void AShyGuy::CreateFSM()

@@ -3,7 +3,7 @@
 #include <memory>
 #include "EngineSerializer.h"
 
-class UObject : public std::enable_shared_from_this<UObject>
+class UObject : public std::enable_shared_from_this<UObject>, public ISerializObject
 {
 public:
 	// constrcuter destructer

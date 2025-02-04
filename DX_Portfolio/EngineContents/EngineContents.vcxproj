@@ -178,6 +178,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="CrazyDayzee.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CreateCoinGUI.h">
       <SubType>
       </SubType>
@@ -258,6 +262,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore.cpp" />
+    <ClCompile Include="CrazyDayzee.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CreateCoinGUI.cpp">
       <SubType>
       </SubType>

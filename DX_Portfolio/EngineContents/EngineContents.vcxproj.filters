@@ -46,9 +46,6 @@
     <ClInclude Include="Monster.h">
       <Filter>Contents\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="ShyGuy.h">
-      <Filter>Contents\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="YoshiGameInstance.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -75,6 +72,12 @@
     </ClInclude>
     <ClInclude Include="CreateCoinGUI.h">
       <Filter>Global\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ShyGuy.h">
+      <Filter>Contents\Monster\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="CrazyDayzee.h">
+      <Filter>Contents\Monster\Normal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -120,9 +123,6 @@
     <ClCompile Include="Monster.cpp">
       <Filter>Contents\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="ShyGuy.cpp">
-      <Filter>Contents\Monster</Filter>
-    </ClCompile>
     <ClCompile Include="YoshiGameInstance.cpp">
       <Filter>Global</Filter>
     </ClCompile>
@@ -149,6 +149,12 @@
     </ClCompile>
     <ClCompile Include="CreateCoinGUI.cpp">
       <Filter>Global\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ShyGuy.cpp">
+      <Filter>Contents\Monster\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="CrazyDayzee.cpp">
+      <Filter>Contents\Monster\Normal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +205,9 @@
     </Filter>
     <Filter Include="Contents\Objects\Coins">
       <UniqueIdentifier>{1b5139fc-4e92-4b12-abc0-4128285b382f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Monster\Normal">
+      <UniqueIdentifier>{1154a4eb-3675-4574-a077-fec6576df3db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

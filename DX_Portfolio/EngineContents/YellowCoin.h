@@ -20,8 +20,8 @@ public:
 		return Renderer;
 	}
 
-	void Serialize(UEngineSerializer& _Ser);
-	void DeSerialize(UEngineSerializer& _Ser);
+	void Serialize(UEngineSerializer& _Ser) override;
+	void DeSerialize(UEngineSerializer& _Ser) override;
 
 protected:
 	void Tick(float _DeltaTime);
