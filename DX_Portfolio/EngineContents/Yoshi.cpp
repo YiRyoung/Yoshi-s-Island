@@ -187,6 +187,9 @@ void AYoshi::SetAnimation()
 	YoshiRenderer->CreateAnimation("MNH_Stick_UPEnd", "YoshiAndMarioStick_Upper.png", 4, 0, 0.04f, false);
 	
 	YoshiRenderer->CreateAnimation("MNH_Throw", "YoshiAndMario.png", 131, 134, 0.04f, false);
+
+	// Hurt
+	YoshiRenderer->CreateAnimation("MNH_Hurt", "YoshiAndMario.png", 197, 198, 0.07f, false);
 #pragma endregion
 
 #pragma region WithBabyMario And Hold

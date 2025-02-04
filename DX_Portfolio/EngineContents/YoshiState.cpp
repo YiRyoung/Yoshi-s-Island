@@ -1128,6 +1128,7 @@ void YoshiState::CreateFSM()
 	FSM.CreateState(EPlayerState::HURT,
 		[this](float _DeltaTime)
 		{
+			Yoshi->AddActorLocation({ FVector::UP * Yoshi->JumpPower * 0.7f * _DeltaTime });
 			if (!Yoshi->IsDefence)
 			{
 				FSM.ChangeState(EPlayerState::IDLE);
@@ -1138,20 +1139,26 @@ void YoshiState::CreateFSM()
 		{
 			if (Yoshi->IsWithBaby)
 			{
+				ChangeAnimation("MNH_Hurt");
+			}
+			else
+			{
+				if (Yoshi->IsHold)
+				{
+					ChangeAnimation("YH_Hurt");
+				}
+				else
+				{
+					ChangeAnimation("YNH_Hurt");
+				}
+			}
+			
+			if (Yoshi->IsWithBaby)
+			{
 				Yoshi->IsWithBaby = false;
 				Yoshi->BodyCollision->SetActive(false);
 				Yoshi->FootCollision->SetActive(false);
 			}
-
-			if (Yoshi->IsHold)
-			{
-				ChangeAnimation("YH_Hurt");
-			}
-			else
-			{
-				ChangeAnimation("YNH_Hurt");
-			}
-
 			Yoshi->TimeEvent->AddEvent(0.4f, nullptr, std::bind(&YoshiState::ChangeDefence, this), false);
 		});
 
