@@ -46,6 +46,6 @@ void ATitleGameMode::LevelChangeEnd()
 {
 	AActor::LevelChangeEnd();
 
-	UEngineCore::OpenLevel("Select");
+	UEngineCore::OpenLevel("Stage100");
 }
 

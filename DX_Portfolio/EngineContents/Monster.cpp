@@ -1,10 +1,13 @@
 #include "PreCompile.h"
 #include "Monster.h"
 
+#include <EngineCore/TimeEventComponent.h>
+
 #include "Yoshi.h"
 
 AMonster::AMonster()
 {
+	TimeEvent = CreateDefaultSubObject<UTimeEventComponent>();
 }
 
 AMonster::~AMonster()
@@ -49,5 +52,18 @@ void AMonster::Gravity(float _DeltaTime)
 	{
 		GravityForce = FVector::ZERO;
 	}
+}
+
+void AMonster::FallDown(float _DeltaTime)
+{
+	GravityForce = FVector::ZERO;
+	AddActorLocation(FVector::DOWN * GravityPower * 0.5f * _DeltaTime);
+
+	TimeEvent->AddEvent(2.0f, nullptr, std::bind(&AMonster::Off, this), false);
+}
+
+void AMonster::Off()
+{
+	this->Destroy();
 }
 

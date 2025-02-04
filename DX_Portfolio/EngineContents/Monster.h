@@ -19,13 +19,17 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	
+	std::shared_ptr<class UTimeEventComponent> TimeEvent;
 	FVector MonsterScale = FVector::ZERO;
 
 	bool CheckForceColor(FVector _Force, UColor _Color);
+
+	bool IsStepped = false;
 	void Gravity(float _DeltaTime);
+	void FallDown(float _DeltaTime);
+	void Off();
 
 private:
-
 	float GravityPower = 800.0f;
 	FVector GravityForce = { 0, 0, 0 };
 	

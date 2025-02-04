@@ -219,7 +219,6 @@ void AYoshi::SetAnimation()
 	YoshiRenderer->CreateAnimation("MH_Throw", "YoshiAndMario.png", {  149, 150, 153 }, 0.1f);
 #pragma endregion
 
-
 #pragma region Yoshi And NotHold
 	YoshiRenderer->CreateAnimation("YNH_Idle0", "Yoshi(Not_Hold).png", 17, 10, 0.15f);
 	YoshiRenderer->CreateAnimation("YNH_Idle1", "Yoshi(Not_Hold).png", { 27, 26, 25, 26, 25, 24 }, 0.2f);
@@ -575,7 +574,6 @@ void AYoshi::SetStickCollision()
 		}
 	}
 }
-
 void AYoshi::SetCollisionsCheck()
 {
 	std::vector<UCollision*> MonsterBodys;
@@ -583,7 +581,6 @@ void AYoshi::SetCollisionsCheck()
 	{
 		IsHolding = true;
 
-		
 		if (StickDir == 1)
 		{
 			if ((IsWithBaby) && (!IsHold && !IsAim))	// M
