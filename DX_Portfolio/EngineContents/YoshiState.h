@@ -1,6 +1,7 @@
 #pragma once
 
 #include <EngineBase/FSMStateManager.h>
+#include <EngineCore/TimeEventComponent.h>
 
 #include "ContentsEnum.h"
 
@@ -47,5 +48,6 @@ private:
 	void ChangeAnimation(std::string _AnimName);
 #pragma endregion
 
+	void ChangeDefence();
 };
 

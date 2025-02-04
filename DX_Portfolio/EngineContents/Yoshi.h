@@ -145,6 +145,7 @@ private:
 	std::shared_ptr<class ACameraActor> Camera;
 	std::shared_ptr<class USpriteRenderer> YoshiRenderer;
 	std::shared_ptr<class ACrossHair> CrossHair;
+	std::shared_ptr<class UTimeEventComponent> TimeEvent;
 
 	// Init
 	void YoshiInit();
@@ -178,6 +179,7 @@ private:
 	std::shared_ptr<class UCollision> StickBodyCollision;
 	std::shared_ptr<class UCollision> StickCollision;
 
+	bool IsDefence = false;
 	void SetCollision();
 	void SetStickCollision();
 	

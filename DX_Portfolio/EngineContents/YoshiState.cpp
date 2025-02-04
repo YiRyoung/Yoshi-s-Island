@@ -39,6 +39,12 @@ void YoshiState::ChangeAnimation(std::string _AnimName)
 {
 	Yoshi->YoshiRenderer->ChangeAnimation(_AnimName);
 }
+void YoshiState::ChangeDefence()
+{
+		Yoshi->IsDefence = false;
+		Yoshi->BodyCollision->SetActive(true);
+		Yoshi->FootCollision->SetActive(true);
+}
 void YoshiState::Gravity(float _DeltaTime)
 {
 	FVector GravityValue = Yoshi->GravityForce * _DeltaTime;
@@ -1117,10 +1123,36 @@ void YoshiState::CreateFSM()
 					ChangeAnimation("YH_Throw");
 				}
 			}
+		});
 
-			// SpawnEgg
+	FSM.CreateState(EPlayerState::HURT,
+		[this](float _DeltaTime)
+		{
+			if (!Yoshi->IsDefence)
+			{
+				FSM.ChangeState(EPlayerState::IDLE);
+				return;
+			}
+		},
+		[this]()
+		{
+			if (Yoshi->IsWithBaby)
+			{
+				Yoshi->IsWithBaby = false;
+				Yoshi->BodyCollision->SetActive(false);
+				Yoshi->FootCollision->SetActive(false);
+			}
 
+			if (Yoshi->IsHold)
+			{
+				ChangeAnimation("YH_Hurt");
+			}
+			else
+			{
+				ChangeAnimation("YNH_Hurt");
+			}
 
+			Yoshi->TimeEvent->AddEvent(0.4f, nullptr, std::bind(&YoshiState::ChangeDefence, this), false);
 		});
 
 	FSM.ChangeState(EPlayerState::IDLE);

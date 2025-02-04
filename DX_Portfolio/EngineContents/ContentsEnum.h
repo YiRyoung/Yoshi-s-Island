@@ -35,7 +35,8 @@ enum class EPlayerState
 	STICK,
 	EAT,
 	SPIT,
-	THROW
+	THROW,
+	HURT
 };
 
 enum class EColorType

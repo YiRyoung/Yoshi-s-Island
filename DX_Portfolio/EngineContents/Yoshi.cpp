@@ -81,6 +81,8 @@ void AYoshi::YoshiInit()
 	// Unused
 	YoshiRenderer->CreateAnimation("Idle0", "YoshiAndMario.png", { 7, 8, 9, 10, 11, 10, 9, 8 }, 0.15f);
 	YoshiRenderer->ChangeAnimation("Idle0");
+
+	TimeEvent = CreateDefaultSubObject<UTimeEventComponent>();
 }
 
 #pragma region Camera Funcs
@@ -185,8 +187,6 @@ void AYoshi::SetAnimation()
 	YoshiRenderer->CreateAnimation("MNH_Stick_UPEnd", "YoshiAndMarioStick_Upper.png", 4, 0, 0.04f, false);
 	
 	YoshiRenderer->CreateAnimation("MNH_Throw", "YoshiAndMario.png", 131, 134, 0.04f, false);
-
-
 #pragma endregion
 
 #pragma region WithBabyMario And Hold
@@ -250,6 +250,9 @@ void AYoshi::SetAnimation()
 	
 	YoshiRenderer->CreateAnimation("YNH_Throw", "Yoshi(Not_Hold).png", 64, 60, 0.04f, false);
 
+	// Hurt
+	YoshiRenderer->CreateAnimation("YNH_Hurt", "Yoshi(Not_Hold).png", 173, 168, 0.1f);
+
 #pragma endregion
 
 #pragma region Yoshi And Hold
@@ -279,6 +282,10 @@ void AYoshi::SetAnimation()
 
 	// Attack
 	YoshiRenderer->CreateAnimation("YH_Throw", "Yoshi(Hold).png", 63, 59, 0.04f);
+
+	// Hurt
+	YoshiRenderer->CreateAnimation("YH_Hurt", "Yoshi(Hold).png", 112, 107, 0.1f);
+
 #pragma endregion
 }
 void AYoshi::SetAnimDir()
@@ -470,14 +477,9 @@ bool AYoshi::IsSlope()
 
 void AYoshi::MoveSlope(float _DeltaTime)
 {
-	if (IsSlope() && CheckLineColor(ECheckDir::NONE, UColor::CYAN))
+	if (CheckLineColor(ECheckDir::NONE, UColor::CYAN))
 	{
 		AddActorLocation(FVector::UP * Speed * _DeltaTime);
-	}
-	if (IsSlope() && !CheckPointColor(ECheckDir::DOWN, UColor::CYAN)
-		&& CurState != EPlayerState::JUMP && CurState != EPlayerState::FALL)
-	{
-		AddActorLocation(FVector::DOWN * Speed * _DeltaTime);
 	}
 }
 #pragma endregion
@@ -627,6 +629,17 @@ void AYoshi::SetCollisionsCheck()
 			return;
 		}
 		MonsterBodys[0]->GetActor<AMonster>()->Destroy();
+	}
+
+	{
+		std::vector<UCollision*> MonsterBodys;
+		if (!IsDefence && BodyCollision->CollisionCheck("MonsterBodyCollision", MonsterBodys))
+		{
+			MonsterBodys[0]->GetActor<AMonster>()->Destroy();
+			IsDefence = true;
+			State->ChangeFSM(EPlayerState::HURT);
+			return;
+		}
 	}
 
 	{
