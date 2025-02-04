@@ -1,8 +1,11 @@
 #pragma once
-#include <EngineCore/Actor.h>
+#include "Monster.h"
+
+#include <EngineBase/FSMStateManager.h>
+#include "ContentsEnum.h"
 
 // Ό³Έν :
-class ACrazyDayzee : public AActor
+class ACrazyDayzee : public AMonster
 {
 public:
 	// constrcuter destructer
@@ -19,6 +22,7 @@ protected:
 
 private:
 	std::shared_ptr<class USpriteRenderer> Renderer;
-	std::shared_ptr<class UCollision> Collision;
+	std::shared_ptr<class UCollision> HeadCollision;
+	std::shared_ptr<class UCollision> BodyCollision;
 };
 

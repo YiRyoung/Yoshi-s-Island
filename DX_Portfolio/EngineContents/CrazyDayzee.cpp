@@ -13,8 +13,12 @@ ACrazyDayzee::ACrazyDayzee()
 	Renderer = CreateDefaultSubObject<USpriteRenderer>();
 	Renderer->SetupAttachment(RootComponent);
 	Renderer->SetAutoScaleRatio(3.0f);
-	Renderer->SetSprite("Shy Guys.png", 0);
+	Renderer->SetSprite("CrazyDazee.png", 10);
 
+	Renderer->CreateAnimation("Idle", "CrazyDazee.png", 10, 10, false);
+	Renderer->CreateAnimation("Sing", "CrazyDazee.png", 10, 12, 0.7f, false);
+	Renderer->CreateAnimation("Walk", "CrazyDazee.png", 0, 9, 0.07f);
+	Renderer->ChangeAnimation("Idle");
 }
 
 ACrazyDayzee::~ACrazyDayzee()

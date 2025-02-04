@@ -16,12 +16,9 @@
 #include "Stage100.h"
 
 #include "Yoshi.h"
-
-#include "ShyGuy.h"
+#include "CrazyDayzee.h"
 
 #include "ScaleBlock.h"
-#include "RotatePlatform.h"
-#include "Platforms.h"
 #include "JumpBall.h"
 #include "BigJumpBall.h"
 
@@ -101,8 +98,6 @@ void AStage100GameMode::SetCollisionLink()
 	GetWorld()->LinkCollisionProfile("FootCollision", "PlatformCollision");
 	GetWorld()->LinkCollisionProfile("FootCollision", "JumpBallCollision");
 	GetWorld()->LinkCollisionProfile("FootCollision", "BigJumpBallCollision");
-
-
 }
 
 void AStage100GameMode::InitActors()
@@ -110,9 +105,10 @@ void AStage100GameMode::InitActors()
 	Stage = GetWorld()->SpawnActor<AStage100>();
 	Stage->SetActorLocation({ 4608 * 0.5f, 3072 * -0.5f });
 
-	ShyGuy = GetWorld()->SpawnActor<AShyGuy>();
-	ShyGuy->SetType(EShyGuyTypes::MAGETNTA);
-	ShyGuy->SetActorLocation({ 1000.0f, -2600.0f, static_cast<int>(EOrderNum::PLAYER) });
+	CrazyDayzee1 = GetWorld()->SpawnActor<ACrazyDayzee>();
+	CrazyDayzee1->SetActorLocation({ 880.0f, -2600.0f, static_cast<int>(EOrderNum::PLAYER) });
+	CrazyDayzee2 = GetWorld()->SpawnActor<ACrazyDayzee>();
+	CrazyDayzee2->SetActorLocation({ 1080.0f, -2600.0f, static_cast<int>(EOrderNum::PLAYER) });
 
 	JumpBall = GetWorld()->SpawnActor<AJumpBall>();
 	JumpBall->SetActorLocation({ 3305.0f, -2115.0f, static_cast<int>(EOrderNum::OBJECT) });
@@ -120,31 +116,20 @@ void AStage100GameMode::InitActors()
 	BigJumpBall = GetWorld()->SpawnActor<ABigJumpBall>();
 	BigJumpBall->SetActorLocation({ 3770.6f, -1778.0f, static_cast<int>(EOrderNum::OBJECT) });
 
-	/*RotatePlatform = GetWorld()->SpawnActor<ARotatePlatform>();
-	RotatePlatform->SetActorLocation({ 800.0f, -2400.0f, -2.0f });*/
-
 	ScaleBlock = GetWorld()->SpawnActor<AScaleBlock>();
 	ScaleBlock->SetActorLocation({ 1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBJECT) });
 }
 
 void AStage100GameMode::SetGUI()
 {
-	std::shared_ptr<UKeyNoticeGUI> KeyWindow = UEngineGUI::FindGUIWindow<UKeyNoticeGUI>("KeyNoticeGUI");
-
-	if (nullptr == KeyWindow)
-	{
-		KeyWindow = UEngineGUI::CreateGUIWindow<UKeyNoticeGUI>("KeyNoticeGUI");
-	}
-
-	KeyWindow->SetActive(true);
-
+#ifdef _DEBUG
 	std::shared_ptr<UDebugGUI> DebugWindow = UEngineGUI::FindGUIWindow<UDebugGUI>("DebugGUI");
-	
+
 	if (nullptr == DebugWindow)
 	{
 		DebugWindow = UEngineGUI::CreateGUIWindow<UDebugGUI>("DebugGUI");
 	}
-	
+
 	DebugWindow->SetActive(true);
 
 	std::shared_ptr<UCreateCoinGUI> CreateCoinWindow = UEngineGUI::FindGUIWindow<UCreateCoinGUI>("CreateCoinGUI");
@@ -155,6 +140,16 @@ void AStage100GameMode::SetGUI()
 	}
 
 	CreateCoinWindow->SetActive(true);
+#else
+	std::shared_ptr<UKeyNoticeGUI> KeyWindow = UEngineGUI::FindGUIWindow<UKeyNoticeGUI>("KeyNoticeGUI");
+
+	if (nullptr == KeyWindow)
+	{
+		KeyWindow = UEngineGUI::CreateGUIWindow<UKeyNoticeGUI>("KeyNoticeGUI");
+	}
+
+	KeyWindow->SetActive(true);
+#endif
 }
 
 void AStage100GameMode::LoadMap()

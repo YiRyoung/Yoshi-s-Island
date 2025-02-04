@@ -24,8 +24,11 @@ protected:
 
 private:
 	std::shared_ptr<class AStage100> Stage;
-	
-	std::shared_ptr<class AShyGuy> ShyGuy;
+
+	std::shared_ptr<class ACrazyDayzee> CrazyDayzee1;
+	std::shared_ptr<class ACrazyDayzee> CrazyDayzee2;
+	std::shared_ptr<class ACrazyDayzee> CrazyDayzee3;
+	std::shared_ptr<class ACrazyDayzee> CrazyDayzee4;
 
 	std::shared_ptr<class AScaleBlock> ScaleBlock;
 	std::shared_ptr<class ARotatePlatform> RotatePlatform;
