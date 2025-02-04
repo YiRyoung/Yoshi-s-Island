@@ -36,5 +36,7 @@ private:
 	void SetCollisionLink();
 	void InitActors();
 	void SetGUI();
+
+	void LoadMap();
 };
 

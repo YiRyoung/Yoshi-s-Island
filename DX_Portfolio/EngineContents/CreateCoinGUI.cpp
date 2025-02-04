@@ -26,7 +26,19 @@ void UCreateCoinGUI::OnGUI()
 void UCreateCoinGUI::CreateYellowCoin()
 {
 	{
-		if (UEngineInput::IsDown(VK_LBUTTON))
+		if (ImGui::Button("CreateMode"))
+		{
+			IsCreateMode = !IsCreateMode;
+		}
+
+		std::string str = "";
+		(IsCreateMode) ? str = "true" : str = "false";
+		ImGui::SameLine();
+		ImGui::Text(str.c_str());
+	}
+
+	{
+		if (IsCreateMode && UEngineInput::IsDown(VK_LBUTTON))
 		{
 			std::shared_ptr<class ACameraActor> Camera = GetWorld()->GetMainCamera();
 			FVector Pos = Camera->ScreenMousePosToWorldPos();
@@ -167,7 +179,6 @@ void UCreateCoinGUI::SaveAndLoad()
 				
 				NewMon->DeSerialize(Ser);
 			}
-
 		}
 	}
 }

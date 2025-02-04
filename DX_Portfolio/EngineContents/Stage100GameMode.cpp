@@ -65,6 +65,7 @@ void AStage100GameMode::LevelChangeStart()
 	AGameMode::LevelChangeStart();
 	
 	SetGUI();
+	LoadMap();
 }
 
 void AStage100GameMode::LevelChangeEnd()
@@ -154,4 +155,51 @@ void AStage100GameMode::SetGUI()
 	}
 
 	CreateCoinWindow->SetActive(true);
+}
+
+void AStage100GameMode::LoadMap()
+{
+	UEngineDirectory Dir;
+	if (false == Dir.MoveParentToDirectory("ContentsResources"))
+	{
+		MSGASSERT("리소스 폴더를 찾지 못했습니다.");
+		return;
+	}
+	Dir.Append("Data");
+	std::string InitPath = Dir.GetPathToString();
+
+	OPENFILENAME ofn;       // common dialog box structure
+	char szFile[260] = { 0 };       // if using TCHAR macros
+	// Initialize OPENFILENAME
+	ZeroMemory(&ofn, sizeof(ofn));
+	ofn.lStructSize = sizeof(ofn);
+	ofn.hwndOwner = nullptr;
+	ofn.lpstrFile = szFile;
+	ofn.nMaxFile = sizeof(szFile);
+	ofn.lpstrFilter = ("All\0*.*\0Text\0*.MapData\0");
+	ofn.nFilterIndex = 1;
+	ofn.lpstrFileTitle = NULL;
+	ofn.nMaxFileTitle = 0;
+	ofn.lpstrInitialDir = InitPath.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	std::string FileName = "Stage100.Mapdata";
+	std::string FilePath = Dir.GetPathToString() + "\\" + FileName;
+
+	UEngineFile NewFile = Dir.GetFile(FilePath);
+	UEngineSerializer Ser;
+
+	NewFile.FileOpen("rb");
+	NewFile.Read(Ser);
+
+	int CoinCount = 0;
+	Ser >> CoinCount;
+
+	for (size_t i = 0; i < CoinCount; i++)
+	{
+		std::shared_ptr<AYellowCoin> NewMon = nullptr;
+		NewMon = GetWorld()->SpawnActor<AYellowCoin>();
+
+		NewMon->DeSerialize(Ser);
+	}
 }

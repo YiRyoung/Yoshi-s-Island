@@ -19,6 +19,7 @@ protected:
 	void OnGUI() override;
 
 private:
+	bool IsCreateMode = false;
 	int SelectItem = 0;
 	int ObjectItem = -1;
 
