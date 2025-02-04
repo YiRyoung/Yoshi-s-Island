@@ -25,5 +25,20 @@ private:
 	std::shared_ptr<class USpriteRenderer> Renderer;
 	std::shared_ptr<class UCollision> HeadCollision;
 	std::shared_ptr<class UCollision> BodyCollision;
+	
+	UFSMStateManager MonsterFSM;
+	EMonsterState CurState = EMonsterState::IDLE;
+
+	void UpdateMonsterFSM(float _DeltaTime)
+	{
+		MonsterFSM.Update(_DeltaTime);
+	}
+
+	void CreateMonsterFSM();
+
+	void Init();
+	void SetAnimation();
+	void SetCollision();
+	void SetCollisionLink(float _DeltaTime);
 };
 

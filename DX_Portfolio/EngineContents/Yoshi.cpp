@@ -473,13 +473,11 @@ void AYoshi::MoveSlope(float _DeltaTime)
 	if (IsSlope() && CheckLineColor(ECheckDir::NONE, UColor::CYAN))
 	{
 		AddActorLocation(FVector::UP * Speed * _DeltaTime);
-		UEngineDebug::OutPutString("SlopeUp");
 	}
 	if (IsSlope() && !CheckPointColor(ECheckDir::DOWN, UColor::CYAN)
 		&& CurState != EPlayerState::JUMP && CurState != EPlayerState::FALL)
 	{
 		AddActorLocation(FVector::DOWN * Speed * _DeltaTime);
-		UEngineDebug::OutPutString("SlopeDown");
 	}
 }
 #pragma endregion

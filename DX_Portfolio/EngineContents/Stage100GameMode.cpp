@@ -51,6 +51,7 @@ void AStage100GameMode::Tick(float _DeltaTime)
 
 	ScaleBlock->ScaleUp(ScaleBlock->GetActorLocation(), _DeltaTime);
 
+
 	if (UEngineInput::IsDown('P'))
 	{
 		Stage->SwitchColImage();
@@ -107,12 +108,17 @@ void AStage100GameMode::InitActors()
 
 	CrazyDayzee1 = GetWorld()->SpawnActor<ACrazyDayzee>();
 	CrazyDayzee1->SetActorLocation({ 880.0f, -2687.0f, static_cast<int>(EOrderNum::PLAYER) });
+
 	CrazyDayzee2 = GetWorld()->SpawnActor<ACrazyDayzee>();
 	CrazyDayzee2->SetActorLocation({ 1080.0f, -2687.0f, static_cast<int>(EOrderNum::PLAYER) });
+	CrazyDayzee2->SetActorRelativeScale3D({ -1.0f, 1.0f, 1.0f });
+
 	CrazyDayzee3 = GetWorld()->SpawnActor<ACrazyDayzee>();
-	CrazyDayzee3->SetActorLocation({ 4516.2f, -900.0f, static_cast<int>(EOrderNum::PLAYER) });
+	CrazyDayzee3->SetActorLocation({ 4516.2f, -908.0f, static_cast<int>(EOrderNum::PLAYER) });
+
 	CrazyDayzee4 = GetWorld()->SpawnActor<ACrazyDayzee>();
-	CrazyDayzee4->SetActorLocation({ 4378.4f, -909.0f, static_cast<int>(EOrderNum::PLAYER) });
+	CrazyDayzee4->SetActorLocation({ 4378.4f, -908.0f, static_cast<int>(EOrderNum::PLAYER) });
+	CrazyDayzee4->SetActorRelativeScale3D({ -1.0f, 1.0f, 1.0f });
 
 	JumpBall = GetWorld()->SpawnActor<AJumpBall>();
 	JumpBall->SetActorLocation({ 3305.0f, -2115.0f, static_cast<int>(EOrderNum::OBJECT) });

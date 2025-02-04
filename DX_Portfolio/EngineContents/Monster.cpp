@@ -26,6 +26,39 @@ void AMonster::Tick(float _DeltaTime)
 	Gravity(_DeltaTime);
 }
 
+bool AMonster::CheckPointColor(ECheckDir _CheckDir, UColor _Color)
+{
+	FVector NextPos = FVector::ZERO;
+	FVector Scale = MonsterScale;
+	UColor Color = UColor::WHITE;
+
+	switch (_CheckDir)
+	{
+	case ECheckDir::LEFT:
+		NextPos = GetActorLocation() + FVector::LEFT + FVector{ -Scale.X * 0.5f, 0.0f };
+		Color = GetWorld()->GetMainPawn<AYoshi>()->GetColor(NextPos);
+		break;
+	case ECheckDir::RIGHT:
+		NextPos = GetActorLocation() + FVector::RIGHT + FVector{ Scale.X * 0.5f, 0.0f };
+		Color = GetWorld()->GetMainPawn<AYoshi>()->GetColor(NextPos);
+		break;
+	case ECheckDir::UP:
+		NextPos = GetActorLocation() + FVector::UP + FVector{ 0.0f, Scale.Y * 1.0f };
+		Color = GetWorld()->GetMainPawn<AYoshi>()->GetColor(NextPos);
+		break;
+	case ECheckDir::DOWN:
+		NextPos = GetActorLocation() + FVector::DOWN;
+		Color = GetWorld()->GetMainPawn<AYoshi>()->GetColor(NextPos);
+		break;
+	case ECheckDir::NONE:
+		Color = GetWorld()->GetMainPawn<AYoshi>()->GetColor(GetActorLocation());
+		break;
+	}
+
+	bool Result = (_Color.operator==(Color)) ? true : false;
+	return Result;
+}
+
 bool AMonster::CheckForceColor(FVector _Force, UColor _Color)
 {
 	FVector NextPos = GetActorLocation() + _Force;
