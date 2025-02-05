@@ -34,5 +34,7 @@ private:
 
 	bool IsBigger = false;
 	bool IsScaleMove = false;
+
+	void SetCollisionLink();
 };
 

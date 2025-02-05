@@ -37,13 +37,16 @@ void AScaleBlock::InitScaleBlock()
 
 void AScaleBlock::ScaleUp(FVector _Pos, float _DeltaTime)
 {
-	/*if (IsScaleMove)
+	if (IsScaleMove)
 	{
 		ScaleBlockRenderer->SetScale3D(CurScale);
-		ScaleBlockCollision->SetScale3D(CurScale);
+		ScaleBlockDownCollision->SetScale3D({ CurScale.X, 10.0f, 1.0f });
+		
 		CurScale += FVector{ 50.0f, 50.0f } * _DeltaTime;
 		SetActorLocation(_Pos);
-		AddActorLocation(FVector::UP * 72.0f * _DeltaTime);
+		AddActorLocation(FVector::UP * 75.0f * _DeltaTime);
+
+		ScaleBlockDownCollision->SetWorldLocation(_Pos - FVector{0.0f, CurScale.Y * 0.4f});
 
 		if (CurScale.X > 96.0f)
 		{
@@ -52,12 +55,27 @@ void AScaleBlock::ScaleUp(FVector _Pos, float _DeltaTime)
 			IsScaleMove = false;
 			IsBigger = true;
 		}
-	}*/
+	}
 }
 
 void AScaleBlock::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
+	
+	SetCollisionLink();
+}
 
+void AScaleBlock::SetCollisionLink()
+{
+	std::vector<UCollision*> Yoshi;
+	if (ScaleBlockDownCollision->CollisionCheck("HeadCollision", Yoshi))
+	{
+		if (!IsBigger)
+		{
+			IsScaleMove = true;
+		}
+
+		Yoshi[0]->GetActor<AYoshi>()->ChangeState(EPlayerState::FALL);
+	}
 }
 

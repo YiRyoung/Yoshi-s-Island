@@ -638,6 +638,7 @@ void AYoshi::SetCollisionsCheck()
 		std::vector<UCollision*> MonsterBodys;
 		if (!IsDefence && BodyCollision->CollisionCheck("MonsterBodyCollision", MonsterBodys))
 		{
+			UEngineDebug::OutPutString("BodyCheck");
 			MonsterBodys[0]->GetActor<AMonster>()->Destroy();
 			IsDefence = true;
 			State->ChangeFSM(EPlayerState::HURT);
