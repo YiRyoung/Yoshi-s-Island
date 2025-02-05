@@ -86,7 +86,10 @@ void AStage100GameMode::SetCollisionLink()
 	GetWorld()->CreateCollisionProfile("PlatformCollision");
 	GetWorld()->CreateCollisionProfile("JumpBallCollision");
 	GetWorld()->CreateCollisionProfile("BigJumpBallCollision");
+
 	GetWorld()->CreateCollisionProfile("ScaleBlockDownCollision");
+	GetWorld()->CreateCollisionProfile("ScaleBlockUpCollision");
+	GetWorld()->CreateCollisionProfile("ScaleBlockLeftCollision");
 	
 	GetWorld()->CreateCollisionProfile("YellowCoinCollision");
 

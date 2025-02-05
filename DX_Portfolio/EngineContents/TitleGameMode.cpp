@@ -3,9 +3,15 @@
 
 #include <EnginePlatform/EngineInput.h>
 
+#include <EngineCore/EngineGUIWindow.h>
+#include <EngineCore/EngineGUI.h>
+#include <EngineCore/imgui.h>
 #include <EngineCore/SpriteRenderer.h>
 
 #include "Title.h"
+#include "YoshiGameInstance.h"
+#include "ContentsEnum.h"
+#include "KeyNoticeGUI.h"
 
 ATitleGameMode::ATitleGameMode()
 {
@@ -40,6 +46,19 @@ void ATitleGameMode::Tick(float _DeltaTime)
 void ATitleGameMode::LevelChangeStart()
 {
 	AActor::LevelChangeStart();
+
+#ifdef _DEBUG
+
+#else
+	std::shared_ptr<UKeyNoticeGUI> KeyWindow = UEngineGUI::FindGUIWindow<UKeyNoticeGUI>("KeyNoticeGUI");
+
+	if (nullptr == KeyWindow)
+	{
+		KeyWindow = UEngineGUI::CreateGUIWindow<UKeyNoticeGUI>("KeyNoticeGUI");
+	}
+
+	KeyWindow->SetActive(true);
+#endif
 }
 
 void ATitleGameMode::LevelChangeEnd()

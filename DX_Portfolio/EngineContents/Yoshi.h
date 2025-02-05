@@ -205,6 +205,9 @@ private:
 	// JumpBall
 	int JumpBallType = -1;
 	
+	// ScaleBlock
+	class AScaleBlock* ScaleBlock = nullptr;
+
 	// Status
 	int StickDir = 0;
 	int EggCount = 0;

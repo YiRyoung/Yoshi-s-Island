@@ -20,5 +20,7 @@ protected:
 
 private:
 	void PrintGameGuide();
+	void PrintEggCount();
+	void PrintYellowCoinCount();
 };
 

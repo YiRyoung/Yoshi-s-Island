@@ -49,7 +49,7 @@ void YoshiState::Gravity(float _DeltaTime)
 {
 	FVector GravityValue = Yoshi->GravityForce * _DeltaTime;
 
-	if (Yoshi->CheckForceColor(GravityValue, UColor::BLACK))
+	if (Yoshi->ScaleBlock == nullptr && Yoshi->CheckForceColor(GravityValue, UColor::BLACK))
 	{
 		Yoshi->AddActorLocation(GravityValue);
 		Yoshi->GravityForce += FVector::DOWN * Yoshi->GravityPower * _DeltaTime;
@@ -80,7 +80,7 @@ void YoshiState::CreateFSM()
 			}
 
 			// Fall
-			if (nullptr == Yoshi->Platform && Yoshi->CheckForceColor(FVector::DOWN * 10.0f, UColor::BLACK) && !Yoshi->IsSlope())
+			if (nullptr == Yoshi->Platform && nullptr == Yoshi->ScaleBlock && Yoshi->CheckForceColor(FVector::DOWN * 10.0f, UColor::BLACK) && !Yoshi->IsSlope())
 			{
 				FSM.ChangeState(EPlayerState::FALL);
 				return;

@@ -18,6 +18,7 @@
 #include "Platforms.h"
 #include "ThrowEgg.h"
 #include "JumpBall.h"
+#include "ScaleBlock.h"
 
 AYoshi::AYoshi()
 {
@@ -661,17 +662,33 @@ void AYoshi::SetCollisionsCheck()
 		}
 
 		{
-			std::vector<UCollision*> JumpBall;
-			if (FootCollision->CollisionCheck("JumpBallCollision", JumpBall))
+			std::vector<UCollision*> JumpBalls;
+			if (FootCollision->CollisionCheck("JumpBallCollision", JumpBalls))
 			{
 				JumpPower = 550.0f * 1.4f;
 			}
 
-			std::vector<UCollision*> BigJumpBall;
-			if (FootCollision->CollisionCheck("BigJumpBallCollision", BigJumpBall))
+			std::vector<UCollision*> BigJumpBalls;
+			if (FootCollision->CollisionCheck("BigJumpBallCollision", BigJumpBalls))
 			{
 				JumpPower = 550.0f * 2.4f;
 			}
+		}
+	}
+
+	{
+		std::vector<UCollision*> ScaleUpCols;
+		if (FootCollision->CollisionCheck("ScaleBlockUpCollision", ScaleUpCols))
+		{
+			if (ScaleBlock == nullptr)
+			{
+				ScaleBlock = ScaleUpCols[0]->GetActor<AScaleBlock>();
+				State->ChangeFSM(EPlayerState::IDLE);
+			}
+		}
+		else
+		{
+			ScaleBlock = nullptr;
 		}
 	}
 }
