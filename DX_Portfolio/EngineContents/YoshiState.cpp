@@ -566,6 +566,7 @@ void YoshiState::CreateFSM()
 		},
 		[this]()
 		{
+			SoundPlayer = UEngineSound::Play("Jump.wav");
 			Yoshi->CurState = EPlayerState::JUMP;
 			Yoshi->HeadCollision->SetActive(true);
 
@@ -1017,6 +1018,8 @@ void YoshiState::CreateFSM()
 		},
 		[this]()
 		{
+			SoundPlayer = UEngineSound::Play("Slurp.wav");
+
 			if (Yoshi->StickDir == 1)
 			{
 				Yoshi->HeadCollision->SetActive(false);

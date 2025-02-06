@@ -54,6 +54,7 @@ void AYellowCoin::Tick(float _DeltaTime)
 	std::vector<UCollision*> Yoshi;
 	if(Collision->CollisionCheck("BodyCollision", Yoshi))
 	{
+		SoundPlayer = UEngineSound::Play("Coin.wav");
 		GetWorld()->GetMainPawn<AYoshi>()->GetGameInstance<AYoshiGameInstance>()->YellowCoin += 1;
 		this->Destroy();
 	}

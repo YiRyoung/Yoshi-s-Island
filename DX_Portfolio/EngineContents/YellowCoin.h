@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/Actor.h>
+#include <EnginePlatform/EngineSound.h>
 
 // Ό³Έν :
 class AYellowCoin : public AActor
@@ -27,6 +28,7 @@ protected:
 	void Tick(float _DeltaTime);
 
 private:
+	USoundPlayer SoundPlayer;
 	std::shared_ptr<class USpriteRenderer> Renderer;
 	std::shared_ptr<class UCollision> Collision;
 };

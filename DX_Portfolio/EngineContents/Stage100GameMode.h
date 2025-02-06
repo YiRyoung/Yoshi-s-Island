@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+#include <EnginePlatform/EngineSound.h>
 
 // Ό³Έν :
 class AStage100GameMode : public AGameMode
@@ -23,6 +24,7 @@ protected:
 	void LevelChangeEnd() override;
 
 private:
+	USoundPlayer SoundPlayer;
 	std::shared_ptr<class AStage100> Stage;
 
 	std::shared_ptr<class ACrazyDayzee> CrazyDayzee1;
@@ -30,7 +32,8 @@ private:
 	std::shared_ptr<class ACrazyDayzee> CrazyDayzee3;
 	std::shared_ptr<class ACrazyDayzee> CrazyDayzee4;
 
-	std::shared_ptr<class AScaleBlock> ScaleBlock;
+	std::shared_ptr<class AScaleBlock> ScaleBlock1;
+	std::shared_ptr<class AScaleBlock> ScaleBlock2;
 	std::shared_ptr<class ARotatePlatform> RotatePlatform;
 	std::shared_ptr<class APlatforms> Platform;
 	std::shared_ptr<class AJumpBall> JumpBall;

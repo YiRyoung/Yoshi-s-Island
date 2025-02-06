@@ -48,6 +48,7 @@ void ATitleGameMode::LevelChangeStart()
 	AActor::LevelChangeStart();
 
 	SoundPlayer = UEngineSound::Play("Yoshi's Island.mp3");
+	SoundPlayer.Loop(-1);
 
 #ifdef _DEBUG
 

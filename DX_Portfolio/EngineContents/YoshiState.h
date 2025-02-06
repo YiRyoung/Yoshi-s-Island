@@ -2,6 +2,7 @@
 
 #include <EngineBase/FSMStateManager.h>
 #include <EngineCore/TimeEventComponent.h>
+#include <EnginePlatform/EngineSound.h>
 
 #include "ContentsEnum.h"
 
@@ -37,6 +38,7 @@ protected:
 private:
 	class AYoshi* Yoshi;
 	UFSMStateManager FSM;
+	USoundPlayer SoundPlayer;
 
 #pragma region Wrapping Functions
 	bool IsPress(int _KeyCode);

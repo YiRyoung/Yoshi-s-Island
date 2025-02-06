@@ -108,14 +108,14 @@ void ACrazyDayzee::SetCollision()
 	HeadCollision = CreateDefaultSubObject<UCollision>();
 	HeadCollision->SetupAttachment(RootComponent);
 	HeadCollision->SetCollisionProfileName("MonsterHeadCollision");
-	HeadCollision->SetScale3D({ 63.0f , 75.0f * 0.3f });
-	HeadCollision->SetRelativeLocation({ 0.0f, 75.0f * 0.8f });
+	HeadCollision->SetScale3D({ 63.0f , 10.0f });
+	HeadCollision->SetRelativeLocation({ 0.0f, 75.0f });
 
 	BodyCollision = CreateDefaultSubObject<UCollision>();
 	BodyCollision->SetupAttachment(RootComponent);
 	BodyCollision->SetCollisionProfileName("MonsterBodyCollision");
-	BodyCollision->SetScale3D({ 63.0f , 75.0f * 0.7f });
-	BodyCollision->SetRelativeLocation({ 0.0f, 75.0f * 0.3f });
+	BodyCollision->SetScale3D({ 63.0f , 75.0f * 0.9f });
+	BodyCollision->SetRelativeLocation({ 0.0f, 75.0f * 0.5f });
 }
 
 void ACrazyDayzee::SetCollisionLink(float _DeltaTime)

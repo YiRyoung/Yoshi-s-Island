@@ -1,6 +1,5 @@
 #pragma once
 #include <EnginePlatform/EngineWinImage.h>
-#include <EnginePlatform/EngineSound.h>
 
 #include <EngineCore/Pawn.h>
 #include <EngineCore/CameraActor.h>
@@ -138,7 +137,6 @@ protected:
 
 private:
 	UEngineWinImage* ColImage;
-	USoundPlayer SoundPlayer;
 
 	class YoshiState* State = nullptr;
 

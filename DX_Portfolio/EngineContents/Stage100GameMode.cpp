@@ -49,9 +49,11 @@ void AStage100GameMode::Tick(float _DeltaTime)
 
 	GetWorld()->GetMainPawn<AYoshi>()->CameraBoundary(Stage->GetStageScale());
 
-	ScaleBlock->ScaleUp(ScaleBlock->GetActorLocation(), _DeltaTime);
-	ScaleBlock->ScaleDown(ScaleBlock->GetActorLocation(), _DeltaTime);
+	ScaleBlock1->ScaleUp(ScaleBlock1->GetActorLocation(), _DeltaTime);
+	ScaleBlock1->ScaleDown(ScaleBlock1->GetActorLocation(), _DeltaTime);
 
+	ScaleBlock2->ScaleUp(ScaleBlock2->GetActorLocation(), _DeltaTime);
+	ScaleBlock2->ScaleDown(ScaleBlock2->GetActorLocation(), _DeltaTime);
 
 	if (UEngineInput::IsDown('P'))
 	{
@@ -62,7 +64,8 @@ void AStage100GameMode::Tick(float _DeltaTime)
 void AStage100GameMode::LevelChangeStart()
 {
 	AGameMode::LevelChangeStart();
-	
+	SoundPlayer = UEngineSound::Play("Training Course.mp3");
+	SoundPlayer.Loop(-1);
 	SetGUI();
 	LoadMap();
 }
@@ -136,8 +139,11 @@ void AStage100GameMode::InitActors()
 	BigJumpBall = GetWorld()->SpawnActor<ABigJumpBall>();
 	BigJumpBall->SetActorLocation({ 3770.6f, -1778.0f, static_cast<int>(EOrderNum::OBJECT) });
 
-	ScaleBlock = GetWorld()->SpawnActor<AScaleBlock>();
-	ScaleBlock->SetActorLocation({ 1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBJECT) });
+	ScaleBlock1 = GetWorld()->SpawnActor<AScaleBlock>();
+	ScaleBlock1->SetActorLocation({ 1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBJECT) });
+
+	ScaleBlock2 = GetWorld()->SpawnActor<AScaleBlock>();
+	ScaleBlock2->SetActorLocation({2711.6f, -2518.1f, static_cast<int>(EOrderNum::OBJECT) });
 }
 
 void AStage100GameMode::SetGUI()
