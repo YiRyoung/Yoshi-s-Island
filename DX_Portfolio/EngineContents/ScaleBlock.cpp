@@ -14,6 +14,7 @@ AScaleBlock::AScaleBlock()
 	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
 	RootComponent = Default;
 
+	TimeEvent = CreateDefaultSubObject<UTimeEventComponent>();
 	InitScaleBlock();
 }
 
@@ -38,7 +39,7 @@ void AScaleBlock::InitScaleBlock()
 	ScaleBlockUpCollision->SetupAttachment(RootComponent);
 	ScaleBlockUpCollision->SetCollisionProfileName("ScaleBlockUpCollision");
 	ScaleBlockUpCollision->SetScale3D({ 48.0f, 10.0f });
-	ScaleBlockUpCollision->SetWorldLocation(FVector{ 0.0f, 24.0f - 5.0f });
+	ScaleBlockUpCollision->SetWorldLocation(FVector{ 0.0f, 24.0f});
 
 	ScaleBlockLeftCollision = CreateDefaultSubObject<UCollision>();
 	ScaleBlockLeftCollision->SetupAttachment(RootComponent);
@@ -56,7 +57,7 @@ void AScaleBlock::InitScaleBlock()
 
 void AScaleBlock::ScaleUp(FVector _Pos, float _DeltaTime)
 {
-	if (IsScaleMove)
+	if (IsScaleMove && !IsBigger)
 	{
 		ScaleBlockRenderer->SetScale3D(CurScale);
 
@@ -80,6 +81,37 @@ void AScaleBlock::ScaleUp(FVector _Pos, float _DeltaTime)
 			CurScale.Y = 96.0f;
 			IsScaleMove = false;
 			IsBigger = true;
+			TimeEvent->AddEvent(5.0f, nullptr, std::bind(&AScaleBlock::OnScaleMove, this), false);
+		}
+	}
+}
+
+void AScaleBlock::ScaleDown(FVector _Pos, float _DeltaTime)
+{
+	if (IsScaleMove && IsBigger)
+	{
+		ScaleBlockRenderer->SetScale3D(CurScale);
+
+		ScaleBlockDownCollision->SetScale3D({ CurScale.X * 0.8f, 10.0f, 1.0f });
+		ScaleBlockUpCollision->SetScale3D({ CurScale.X * 0.8f, 10.0f, 1.0f });
+		ScaleBlockLeftCollision->SetScale3D({ 10.0f, CurScale.Y, 1.0f });
+		ScaleBlockRightCollision->SetScale3D({ 10.0f, CurScale.Y, 1.0f });
+
+		CurScale -= FVector{ 50.0f, 50.0f } *_DeltaTime;
+		SetActorLocation(_Pos);
+		AddActorLocation(FVector::DOWN * 75.0f * _DeltaTime);
+
+		ScaleBlockDownCollision->SetWorldLocation(_Pos + FVector{ 0.0f, -24.0f + 5.0f });
+		ScaleBlockUpCollision->SetWorldLocation(_Pos + FVector{ 0.0f, 24.0f});
+		ScaleBlockLeftCollision->SetWorldLocation(_Pos + FVector{ -24.0f + 5.0f, 0.0f });
+		ScaleBlockRightCollision->SetWorldLocation(_Pos + FVector{ 24.0f, 0.0f });
+
+		if (CurScale.X < 48.0f)
+		{
+			CurScale.X = 48.0f;
+			CurScale.Y = 48.0f;
+			IsScaleMove = false;
+			IsBigger = false;
 		}
 	}
 }

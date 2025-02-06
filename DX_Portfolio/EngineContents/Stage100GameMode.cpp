@@ -50,6 +50,7 @@ void AStage100GameMode::Tick(float _DeltaTime)
 	GetWorld()->GetMainPawn<AYoshi>()->CameraBoundary(Stage->GetStageScale());
 
 	ScaleBlock->ScaleUp(ScaleBlock->GetActorLocation(), _DeltaTime);
+	ScaleBlock->ScaleDown(ScaleBlock->GetActorLocation(), _DeltaTime);
 
 
 	if (UEngineInput::IsDown('P'))
@@ -137,7 +138,6 @@ void AStage100GameMode::InitActors()
 
 	ScaleBlock = GetWorld()->SpawnActor<AScaleBlock>();
 	ScaleBlock->SetActorLocation({ 1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBJECT) });
-	//1560.0f, -2472.7f
 }
 
 void AStage100GameMode::SetGUI()

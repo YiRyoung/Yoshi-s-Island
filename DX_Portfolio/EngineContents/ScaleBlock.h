@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
+#include <EngineCore/TimeEventComponent.h>
+
 // Ό³Έν :
 class AScaleBlock : public AActor
 {
@@ -17,11 +19,14 @@ public:
 
 	void InitScaleBlock();
 	void ScaleUp(FVector _Pos, float _DeltaTime);
+	void ScaleDown(FVector _Pos, float _DeltaTime);
 
 protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	std::shared_ptr<class UTimeEventComponent> TimeEvent;
+
 	std::shared_ptr<class USpriteRenderer> ScaleBlockRenderer;
 	std::shared_ptr<class UCollision> ScaleBlockUpCollision;
 	std::shared_ptr<class UCollision> ScaleBlockDownCollision;
@@ -36,5 +41,10 @@ private:
 	bool IsScaleMove = false;
 
 	void SetCollisionLink();
+
+	void OnScaleMove()
+	{
+		IsScaleMove = true;
+	}
 };
 
