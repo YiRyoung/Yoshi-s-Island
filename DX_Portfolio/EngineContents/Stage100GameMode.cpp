@@ -90,6 +90,7 @@ void AStage100GameMode::SetCollisionLink()
 	GetWorld()->CreateCollisionProfile("ScaleBlockDownCollision");
 	GetWorld()->CreateCollisionProfile("ScaleBlockUpCollision");
 	GetWorld()->CreateCollisionProfile("ScaleBlockLeftCollision");
+	GetWorld()->CreateCollisionProfile("ScaleBlockRightCollision");
 	
 	GetWorld()->CreateCollisionProfile("YellowCoinCollision");
 
@@ -98,10 +99,15 @@ void AStage100GameMode::SetCollisionLink()
 	GetWorld()->LinkCollisionProfile("MonsterBodyCollision", "StickCollision");
 
 	GetWorld()->LinkCollisionProfile("HeadCollision", "ScaleBlockDownCollision");
+	
+	GetWorld()->LinkCollisionProfile("BodyCollision", "ScaleBlockLeftCollision");
+	GetWorld()->LinkCollisionProfile("BodyCollision", "ScaleBlockRightCollision");
 	GetWorld()->LinkCollisionProfile("BodyCollision", "YellowCoinCollision");
+	
 	GetWorld()->LinkCollisionProfile("FootCollision", "PlatformCollision");
 	GetWorld()->LinkCollisionProfile("FootCollision", "JumpBallCollision");
 	GetWorld()->LinkCollisionProfile("FootCollision", "BigJumpBallCollision");
+	GetWorld()->LinkCollisionProfile("FootCollision", "ScaleBlockUpCollision");
 }
 
 void AStage100GameMode::InitActors()
@@ -131,6 +137,7 @@ void AStage100GameMode::InitActors()
 
 	ScaleBlock = GetWorld()->SpawnActor<AScaleBlock>();
 	ScaleBlock->SetActorLocation({ 1560.0f, -2472.7f, static_cast<int>(EOrderNum::OBJECT) });
+	//1560.0f, -2472.7f
 }
 
 void AStage100GameMode::SetGUI()

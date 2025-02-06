@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/GameMode.h>
 
+#include <EnginePlatform/EngineSound.h>
+
 // Ό³Έν :
 class ATitleGameMode : public AGameMode
 {
@@ -23,6 +25,8 @@ protected:
 	void LevelChangeEnd() override;
 
 private:
+	USoundPlayer SoundPlayer;
+
 	std::shared_ptr<class ATitle> Title;
 };
 

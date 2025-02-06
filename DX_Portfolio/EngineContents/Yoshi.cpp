@@ -691,6 +691,25 @@ void AYoshi::SetCollisionsCheck()
 			ScaleBlock = nullptr;
 		}
 	}
+
+	{
+		std::vector<UCollision*> ScaleLeftCols;
+		if (FootCollision->CollisionCheck("ScaleBlockLeftCollision", ScaleLeftCols))
+		{
+			ScaleCollisionType = 2;
+		}
+
+		std::vector<UCollision*> ScaleRightCols;
+		if (FootCollision->CollisionCheck("ScaleBlockRightCollision", ScaleRightCols))
+		{
+			ScaleCollisionType = 1;
+		}
+
+		if (!FootCollision->CollisionCheck("ScaleBlockLeftCollision", ScaleLeftCols) && !FootCollision->CollisionCheck("ScaleBlockRightCollision", ScaleRightCols))
+		{
+			ScaleCollisionType = -1;
+		}
+	}
 }
 #pragma endregion
 

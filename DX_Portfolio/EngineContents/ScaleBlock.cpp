@@ -45,6 +45,12 @@ void AScaleBlock::InitScaleBlock()
 	ScaleBlockLeftCollision->SetCollisionProfileName("ScaleBlockLeftCollision");
 	ScaleBlockLeftCollision->SetScale3D({ 10.0f, 48.0f });
 	ScaleBlockLeftCollision->SetWorldLocation(FVector{ -24.0f + 5.0f, 0.0f });
+
+	ScaleBlockRightCollision = CreateDefaultSubObject<UCollision>();
+	ScaleBlockRightCollision->SetupAttachment(RootComponent);
+	ScaleBlockRightCollision->SetCollisionProfileName("ScaleBlockRightCollision");
+	ScaleBlockRightCollision->SetScale3D({ 10.0f, 48.0f });
+	ScaleBlockRightCollision->SetWorldLocation(FVector{ 24.0f, 0.0f });
 }
 
 
@@ -53,9 +59,11 @@ void AScaleBlock::ScaleUp(FVector _Pos, float _DeltaTime)
 	if (IsScaleMove)
 	{
 		ScaleBlockRenderer->SetScale3D(CurScale);
-		ScaleBlockDownCollision->SetScale3D({ CurScale.X, 10.0f, 1.0f });
-		ScaleBlockUpCollision->SetScale3D({ CurScale.X, 10.0f, 1.0f });
+
+		ScaleBlockDownCollision->SetScale3D({ CurScale.X * 0.8f, 10.0f, 1.0f });
+		ScaleBlockUpCollision->SetScale3D({ CurScale.X * 0.8f, 10.0f, 1.0f });
 		ScaleBlockLeftCollision->SetScale3D({ 10.0f, CurScale.Y, 1.0f });
+		ScaleBlockRightCollision->SetScale3D({ 10.0f, CurScale.Y, 1.0f });
 		
 		CurScale += FVector{ 50.0f, 50.0f } * _DeltaTime;
 		SetActorLocation(_Pos);
@@ -63,7 +71,8 @@ void AScaleBlock::ScaleUp(FVector _Pos, float _DeltaTime)
 
 		ScaleBlockDownCollision->SetWorldLocation(_Pos - FVector{0.0f, CurScale.Y * 0.4f});
 		ScaleBlockUpCollision->SetWorldLocation(_Pos + FVector{0.0f, CurScale.Y * 0.5f});
-		ScaleBlockLeftCollision->SetWorldLocation(_Pos - FVector{ CurScale.X * 0.41f, 0.0f});
+		ScaleBlockLeftCollision->SetWorldLocation(_Pos + FVector{ CurScale.X * 0.48f, 0.0f});
+		ScaleBlockRightCollision->SetWorldLocation(_Pos + FVector{ -CurScale.X * 0.48f, 0.0f});
 
 		if (CurScale.X > 96.0f)
 		{

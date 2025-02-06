@@ -41,9 +41,9 @@ void YoshiState::ChangeAnimation(std::string _AnimName)
 }
 void YoshiState::ChangeDefence()
 {
-		Yoshi->IsDefence = false;
-		Yoshi->BodyCollision->SetActive(true);
-		Yoshi->FootCollision->SetActive(true);
+	Yoshi->IsDefence = false;
+	Yoshi->BodyCollision->SetActive(true);
+	Yoshi->FootCollision->SetActive(true);
 }
 void YoshiState::Gravity(float _DeltaTime)
 {
@@ -150,10 +150,8 @@ void YoshiState::CreateFSM()
 			}
 
 			// DeAccel
-			if ((Yoshi->DirForce.X < 0.0f && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::WHITE) &&
-				!Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
-				|| (Yoshi->DirForce.X > 0.0f && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::WHITE) &&
-					!Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::GREEN)))
+			if ((Yoshi->ScaleCollisionType != 2 && Yoshi->DirForce.X < 0.0f && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::WHITE) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
+				|| (Yoshi->ScaleCollisionType != 1 && Yoshi->DirForce.X > 0.0f && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::WHITE) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::GREEN)))
 			{
 				Yoshi->DirForce.X += -Yoshi->DirForce.X * Yoshi->DeAccSpeed * _DeltaTime;
 				if (Yoshi->DirForce.Length() < 0.01f)
@@ -266,19 +264,19 @@ void YoshiState::CreateFSM()
 			}
 
 			// Walk
-			if (IsPress(VK_LEFT) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::WHITE) &&
+			if (Yoshi->ScaleCollisionType != 2 && IsPress(VK_LEFT) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::WHITE) &&
 				!Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::LEFT, UColor::GREEN))
 			{
 				if (nullptr == Yoshi->Platform)
 				{
 					Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
 				}
-				else 
+				else
 				{
 					Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
 				}
 			}
-			if (IsPress(VK_RIGHT) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::WHITE) &&
+			if (Yoshi->ScaleCollisionType != 1 && IsPress(VK_RIGHT) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::WHITE) &&
 				!Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckPointColor(ECheckDir::RIGHT, UColor::GREEN))
 			{
 				if (nullptr == Yoshi->Platform)
@@ -381,7 +379,7 @@ void YoshiState::CreateFSM()
 			// Run
 			FVector Force = Yoshi->DirForce * _DeltaTime;
 
-			if (IsPress(VK_LEFT) && !Yoshi->CheckForceColor(Force, UColor::WHITE)
+			if (Yoshi->ScaleCollisionType != 2 && IsPress(VK_LEFT) && !Yoshi->CheckForceColor(Force, UColor::WHITE)
 				&& !Yoshi->CheckForceColor(Force, UColor::MAGENTA) && !Yoshi->CheckForceColor(Force, UColor::GREEN))
 			{
 				if (nullptr == Yoshi->Platform)
@@ -407,7 +405,7 @@ void YoshiState::CreateFSM()
 				Yoshi->DirForce.X = 0.0f;
 			}
 
-			if (IsPress(VK_RIGHT) && !Yoshi->CheckForceColor(Force, UColor::WHITE)
+			if (Yoshi->ScaleCollisionType != 1 && IsPress(VK_RIGHT) && !Yoshi->CheckForceColor(Force, UColor::WHITE)
 				&& !Yoshi->CheckForceColor(Force, UColor::MAGENTA) && !Yoshi->CheckForceColor(Force, UColor::GREEN))
 			{
 				if (nullptr == Yoshi->Platform)
@@ -541,7 +539,7 @@ void YoshiState::CreateFSM()
 				return;
 			}
 
-			if (IsPress(VK_LEFT) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::WHITE)
+			if (Yoshi->ScaleCollisionType != 2 && IsPress(VK_LEFT) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::WHITE)
 				&& !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
 			{
 				if (nullptr == Yoshi->Platform)
@@ -553,7 +551,7 @@ void YoshiState::CreateFSM()
 					Yoshi->PlatformPos += FVector::LEFT * Yoshi->Speed * _DeltaTime;
 				}
 			}
-			if (IsPress(VK_RIGHT) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::WHITE)
+			if (Yoshi->ScaleCollisionType != 1 && IsPress(VK_RIGHT) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::WHITE)
 				&& !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
 			{
 				if (nullptr == Yoshi->Platform)
@@ -569,7 +567,7 @@ void YoshiState::CreateFSM()
 		[this]()
 		{
 			Yoshi->CurState = EPlayerState::JUMP;
-			Yoshi->HeadCollision->SetActive(true);			
+			Yoshi->HeadCollision->SetActive(true);
 
 			if (Yoshi->IsWithBaby)	// M
 			{
@@ -967,7 +965,7 @@ void YoshiState::CreateFSM()
 			Yoshi->CurState = EPlayerState::STICK;
 			Yoshi->SetStickCollision();
 
-			if (Yoshi->StickDir == 1 &&	Yoshi->YoshiRenderer->IsCurAnimationEnd())
+			if (Yoshi->StickDir == 1 && Yoshi->YoshiRenderer->IsCurAnimationEnd())
 			{
 				ChangeAnimation("MNH_Stick_UpEnd");
 
@@ -992,7 +990,7 @@ void YoshiState::CreateFSM()
 
 					Yoshi->StickBodyCollision->SetActive(false);
 					Yoshi->StickCollision->SetActive(false);
-					
+
 					Yoshi->StickDir = 0;
 					FSM.ChangeState(EPlayerState::IDLE);
 					return;
@@ -1152,7 +1150,7 @@ void YoshiState::CreateFSM()
 					ChangeAnimation("YNH_Hurt");
 				}
 			}
-			
+
 			if (Yoshi->IsWithBaby)
 			{
 				Yoshi->IsWithBaby = false;

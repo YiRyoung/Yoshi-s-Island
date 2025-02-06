@@ -207,6 +207,7 @@ private:
 	
 	// ScaleBlock
 	class AScaleBlock* ScaleBlock = nullptr;
+	int ScaleCollisionType = -1;
 
 	// Status
 	int StickDir = 0;

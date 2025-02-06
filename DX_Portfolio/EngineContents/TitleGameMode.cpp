@@ -47,6 +47,8 @@ void ATitleGameMode::LevelChangeStart()
 {
 	AActor::LevelChangeStart();
 
+	SoundPlayer = UEngineSound::Play("Yoshi's Island.mp3");
+
 #ifdef _DEBUG
 
 #else
@@ -65,6 +67,7 @@ void ATitleGameMode::LevelChangeEnd()
 {
 	AActor::LevelChangeEnd();
 
+	UEngineSound::AllSoundStop();
 	UEngineCore::OpenLevel("Stage100");
 }
 
