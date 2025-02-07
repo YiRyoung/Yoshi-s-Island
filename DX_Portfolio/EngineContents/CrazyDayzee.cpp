@@ -128,6 +128,7 @@ void ACrazyDayzee::SetCollisionLink(float _DeltaTime)
 
 	if (IsStepped)
 	{
+		BodyCollision->SetActive(false);
 		AMonster::FallDown(_DeltaTime);
 	}
 }

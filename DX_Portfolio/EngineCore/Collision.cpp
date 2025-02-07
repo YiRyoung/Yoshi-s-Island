@@ -62,7 +62,6 @@ bool UCollision::CollisionCheck(std::string_view _OtherName, std::vector<UCollis
 	return 0 != _Vector.size();
 }
 
-
 bool UCollision::CollisionCheck(std::string_view _OtherName, FVector _NextPos, std::vector<UCollision*>& _Vector)
 {
 	std::string UpperName = UEngineString::ToUpper(_OtherName);
@@ -71,7 +70,7 @@ bool UCollision::CollisionCheck(std::string_view _OtherName, FVector _NextPos, s
 
 	if (false == Collision.contains(UpperName))
 	{
-		MSGASSERT("존재하지 않는 그룹과 충돌할 수 없습니다" + std::string(UpperName));
+		MSGASSERT("존재하지 않는 그룹과 충돌할수 없습니다" + std::string(UpperName));
 		return false;
 	}
 
@@ -221,6 +220,7 @@ void UCollision::DebugRender(UEngineCamera* _Camera, float _DeltaTime)
 
 	FTransform& CameraTrans = _Camera->GetTransformRef();
 	FTransform& RendererTrans = GetTransformRef();
+
 	RendererTrans.View = CameraTrans.View;
 	RendererTrans.Projection = CameraTrans.Projection;
 	RendererTrans.WVP = RendererTrans.World * RendererTrans.View * RendererTrans.Projection;
@@ -230,8 +230,9 @@ void UCollision::DebugRender(UEngineCamera* _Camera, float _DeltaTime)
 
 
 	Unit.ConstantBufferLinkData("FTransform", GetTransformRef());
-	FVector Color = { 1.0f, 0.0f, 0.0f };
+	FVector Color = { 0.0f, 1.0f, 0.0f };
 	Unit.ConstantBufferLinkData("OutColor", Color);
 
 	Unit.Render(_Camera, _DeltaTime);
+
 }

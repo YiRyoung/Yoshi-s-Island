@@ -581,9 +581,10 @@ void AYoshi::SetStickCollision()
 void AYoshi::SetCollisionsCheck()
 {
 	std::vector<UCollision*> MonsterBodys;
-	if (StickCollision->CollisionCheck("MonsterBodyCollision", MonsterBodys))
+	if (CurState == EPlayerState::STICK && StickCollision->CollisionCheck("MonsterBodyCollision", MonsterBodys))
 	{
 		IsHolding = true;
+		MonsterBodys[0]->GetActor<AMonster>()->Destroy();
 
 		if (StickDir == 1)
 		{
@@ -632,7 +633,6 @@ void AYoshi::SetCollisionsCheck()
 			ChangeState(EPlayerState::IDLE);
 			return;
 		}
-		MonsterBodys[0]->GetActor<AMonster>()->Destroy();
 	}
 
 	{
