@@ -194,6 +194,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ItemTail.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="JumpBall.h" />
     <ClInclude Include="KeyNoticeGUI.h">
       <SubType>
@@ -275,6 +283,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DebugGUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ItemTail.cpp">
       <SubType>
       </SubType>
     </ClCompile>
