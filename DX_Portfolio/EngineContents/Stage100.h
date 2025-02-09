@@ -21,11 +21,17 @@ public:
 
 	void SwitchColImage();
 
+	bool GetIsFin() const
+	{
+		return IsFin;
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 private:
 	UEngineWinImage ColImage;
+
 
 	std::shared_ptr<class USpriteRenderer> BackgroundRenderer;
 	std::shared_ptr<class USpriteRenderer> ForeBackgroundRenderer;
@@ -33,8 +39,13 @@ private:
 	std::shared_ptr<class USpriteRenderer> ColStageRenderer;
 	std::shared_ptr<class USpriteRenderer> FrontBackgroundRenderer;
 
+	std::shared_ptr<class UCollision> EndCollision;
+
+	bool IsFin = false;
+
 	void Stage100Res();
 	void Stage100ColRes();
 	void Stage100Init();
+	void EndCollisionLink();
 };
 

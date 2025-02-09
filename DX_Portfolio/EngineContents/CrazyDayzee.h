@@ -2,6 +2,9 @@
 #include "Monster.h"
 
 #include <EngineBase/FSMStateManager.h>
+
+#include <EnginePlatform/EngineSound.h>
+
 #include "ContentsEnum.h"
 
 // Ό³Έν :
@@ -22,6 +25,8 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	USoundPlayer SoundPlayer;
+
 	std::shared_ptr<class USpriteRenderer> Renderer;
 	std::shared_ptr<class UCollision> HeadCollision;
 	std::shared_ptr<class UCollision> BodyCollision;

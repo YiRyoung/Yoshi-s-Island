@@ -12,6 +12,7 @@
 #include "Yoshi.h"
 #include "TitleGameMode.h"
 #include "Stage100GameMode.h"
+#include "EndingGameMode.h"
 
 CreateContentsCoreDefine(UContentsCore);
 
@@ -34,6 +35,7 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 
 	UEngineCore::CreateLevel<ATitleGameMode, APawn, AHUD>("Title");
 	UEngineCore::CreateLevel<AStage100GameMode, AYoshi, AHUD>("Stage100");
+	UEngineCore::CreateLevel<AEndingGameMode, APawn, AHUD>("Ending");
 
 	UEngineCore::OpenLevel("Title");
 
@@ -102,4 +104,6 @@ void UContentsCore::LoadSprites()
 	UEngineSprite::CreateSpriteToMeta("JumpBalls.png", ".sdata");
 
 	UEngineSprite::CreateSpriteToMeta("Coins.png", ".sdata");
+
+	UEngineSprite::CreateSpriteToMeta("Goal.png", ".sdata");
 }

@@ -3,6 +3,7 @@
 
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/SpriteRenderer.h>
+#include <EngineCore/Collision.h>
 #include <EngineCore/CameraActor.h>
 #include <EngineCore/EngineCamera.h>
 
@@ -34,6 +35,7 @@ void AStage100::BeginPlay()
 	AActor::BeginPlay();
 
 	Stage100ColRes();
+	EndCollisionLink();
 }
 
 void AStage100::Tick(float _DeltaTime)
@@ -121,5 +123,19 @@ void AStage100::Stage100Init()
 	ColStageRenderer->SetSprite("Stage100", 0);
 	ColStageRenderer->SetRelativeLocation({ 0.0f, (BackgroundScale.Y * -0.5f), 0.0f });
 	ColStageRenderer->SetupAttachment(RootComponent);
+
+	EndCollision = CreateDefaultSubObject<UCollision>();
+	EndCollision->SetupAttachment(RootComponent);
+	EndCollision->SetCollisionProfileName("EndCollision");
+	EndCollision->SetScale3D({ 100.0f, 800.0f });
+	EndCollision->SetWorldLocation({ (BackgroundScale.X * 0.5f), (BackgroundScale.Y * 0.33f), 0.0f });
+}
+
+void AStage100::EndCollisionLink()
+{
+	EndCollision->SetCollisionEnter([this](UCollision* _This, UCollision* _Other)
+		{
+			IsFin = true;
+		});
 }
 

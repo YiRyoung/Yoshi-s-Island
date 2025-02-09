@@ -50,7 +50,6 @@ void AThrowEgg::Tick(float _DeltaTime)
 
 	AddActorLocation(ThrowDir * ThrowSpeed * _DeltaTime);
 	ReflectMove(_DeltaTime);
-	CollisionLink();
 }
 
 void AThrowEgg::ReflectMove(float _DeltaTime)
@@ -85,17 +84,6 @@ void AThrowEgg::ReflectMove(float _DeltaTime)
 		SoundPlayer = UEngineSound::Play("Collision.wav");
 		ThrowDir += FVector::LEFT * 2.0f * (-ThrowDir.Dot(FVector::LEFT));
 	}
-}
-
-void AThrowEgg::CollisionLink()
-{
-	std::vector<UCollision*> MonsterBodyCollision;
-	if (Collision->CollisionCheck("MonsterBodyCollision", MonsterBodyCollision))
-	{
-		SoundPlayer = UEngineSound::Play("Collision.wav");
-		TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AThrowEgg::DestroyEgg, this), false);
-	}
-
 }
 
 void AThrowEgg::DestroyEgg()

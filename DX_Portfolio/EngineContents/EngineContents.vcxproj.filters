@@ -11,16 +11,16 @@
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Select.h">
-      <Filter>Contents\Maps\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start&amp;End</Filter>
     </ClInclude>
     <ClInclude Include="Title.h">
-      <Filter>Contents\Maps\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start&amp;End</Filter>
     </ClInclude>
     <ClInclude Include="SelectGameMode.h">
-      <Filter>Contents\Maps\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start&amp;End</Filter>
     </ClInclude>
     <ClInclude Include="TitleGameMode.h">
-      <Filter>Contents\Maps\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start&amp;End</Filter>
     </ClInclude>
     <ClInclude Include="Stage100.h">
       <Filter>Contents\Maps\Level\Stage100</Filter>
@@ -88,6 +88,12 @@
     <ClInclude Include="MarioBubble.h">
       <Filter>Contents\Yoshi\BabyBubble</Filter>
     </ClInclude>
+    <ClInclude Include="Ending.h">
+      <Filter>Contents\Maps\Level\Start&amp;End</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingGameMode.h">
+      <Filter>Contents\Maps\GameMode\Start&amp;End</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -100,16 +106,16 @@
       <Filter>Contents\Yoshi</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp">
-      <Filter>Contents\Maps\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start&amp;End</Filter>
     </ClCompile>
     <ClCompile Include="Select.cpp">
-      <Filter>Contents\Maps\Level\Start</Filter>
+      <Filter>Contents\Maps\Level\Start&amp;End</Filter>
     </ClCompile>
     <ClCompile Include="SelectGameMode.cpp">
-      <Filter>Contents\Maps\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start&amp;End</Filter>
     </ClCompile>
     <ClCompile Include="TitleGameMode.cpp">
-      <Filter>Contents\Maps\GameMode\Start</Filter>
+      <Filter>Contents\Maps\GameMode\Start&amp;End</Filter>
     </ClCompile>
     <ClCompile Include="Stage100.cpp">
       <Filter>Contents\Maps\Level\Stage100</Filter>
@@ -174,6 +180,12 @@
     <ClCompile Include="MarioBubble.cpp">
       <Filter>Contents\Yoshi\BabyBubble</Filter>
     </ClCompile>
+    <ClCompile Include="Ending.cpp">
+      <Filter>Contents\Maps\Level\Start&amp;End</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingGameMode.cpp">
+      <Filter>Contents\Maps\GameMode\Start&amp;End</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -197,14 +209,8 @@
     <Filter Include="Contents\Maps\GameMode">
       <UniqueIdentifier>{89d8afdb-c516-454e-b69a-e5619ca2e598}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Maps\GameMode\Start">
-      <UniqueIdentifier>{0a9936b2-9d24-4a94-96e2-38ebd3156e99}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Maps\Level">
       <UniqueIdentifier>{143e156c-ef76-4b89-a788-24bcd2e1cfcd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Maps\Level\Start">
-      <UniqueIdentifier>{ad98abe0-1be5-4ab6-a249-9a2379c66340}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Maps\Level\Stage100">
       <UniqueIdentifier>{1f322783-62b0-43cd-acf5-95468faf91db}</UniqueIdentifier>
@@ -232,6 +238,12 @@
     </Filter>
     <Filter Include="Contents\Yoshi\BabyBubble">
       <UniqueIdentifier>{d9f416f2-b2d8-435b-8207-602586c1181d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Maps\Level\Start&amp;End">
+      <UniqueIdentifier>{ad98abe0-1be5-4ab6-a249-9a2379c66340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Maps\GameMode\Start&amp;End">
+      <UniqueIdentifier>{0a9936b2-9d24-4a94-96e2-38ebd3156e99}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

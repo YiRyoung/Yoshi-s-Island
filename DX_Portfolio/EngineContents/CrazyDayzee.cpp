@@ -7,6 +7,8 @@
 #include <EngineCore/SpriteRenderer.h>
 #include <EngineCore/Collision.h>
 
+#include "ThrowEgg.h"
+
 ACrazyDayzee::ACrazyDayzee()
 {
 	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
@@ -138,6 +140,8 @@ void ACrazyDayzee::SetCollisionLink(float _DeltaTime)
 		std::vector<UCollision*> EggCollisions;
 		if (HeadCollision->CollisionCheck("EggCollision", EggCollisions))
 		{
+			SoundPlayer = UEngineSound::Play("Collision.wav");
+			EggCollisions[0]->GetActor<AThrowEgg>()->Destroy();
 			Destroy();
 		}
 	}

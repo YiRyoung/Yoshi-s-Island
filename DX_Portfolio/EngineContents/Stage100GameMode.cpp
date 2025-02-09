@@ -59,6 +59,12 @@ void AStage100GameMode::Tick(float _DeltaTime)
 	{
 		Stage->SwitchColImage();
 	}
+
+	if (Stage->GetIsFin())
+	{
+		SoundPlayer.Stop();
+		UEngineCore::OpenLevel("Ending");
+	}
 }
 
 void AStage100GameMode::LevelChangeStart()
@@ -77,6 +83,8 @@ void AStage100GameMode::LevelChangeEnd()
 
 void AStage100GameMode::SetCollisionLink()
 {
+	GetWorld()->CreateCollisionProfile("EndCollision");
+
 	GetWorld()->CreateCollisionProfile("HeadCollision");
 	GetWorld()->CreateCollisionProfile("BodyCollision");
 	GetWorld()->CreateCollisionProfile("FootCollision");
@@ -120,8 +128,9 @@ void AStage100GameMode::SetCollisionLink()
 	GetWorld()->LinkCollisionProfile("BubbleCollision", "StickBodyCollision");
 	GetWorld()->LinkCollisionProfile("BubbleCollision", "StickCollision");
 
-
 	GetWorld()->LinkCollisionProfile("EggCollision", "MonsterBodyCollision");
+
+	GetWorld()->LinkCollisionProfile("EndCollision", "BodyCollision");
 }
 
 void AStage100GameMode::InitActors()

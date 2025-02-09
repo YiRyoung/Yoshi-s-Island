@@ -39,7 +39,6 @@ private:
 	float ThrowSpeed = 480.0f;
 
 	void ReflectMove(float _DeltaTime);
-	void CollisionLink();
 	void DestroyEgg();
 };
 
