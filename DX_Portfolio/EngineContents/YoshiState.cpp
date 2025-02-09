@@ -115,7 +115,7 @@ void YoshiState::CreateFSM()
 			}
 
 			// Stick
-			if (IsDown('X'))
+			if (IsDown('X') && !Yoshi->IsHold)
 			{
 				Yoshi->StickDir = 2;
 				FSM.ChangeState(EPlayerState::STICK);
@@ -240,7 +240,7 @@ void YoshiState::CreateFSM()
 			}
 
 			// Stick
-			if (IsDown('X'))
+			if (IsDown('X') && !Yoshi->IsHold)
 			{
 				Yoshi->StickDir = 2;
 				FSM.ChangeState(EPlayerState::STICK);
@@ -353,7 +353,7 @@ void YoshiState::CreateFSM()
 			}
 
 			// Stick
-			if (IsDown('X'))
+			if (IsDown('X') && !Yoshi->IsHold)
 			{
 				Yoshi->StickDir = 2;
 				FSM.ChangeState(EPlayerState::STICK);
@@ -485,7 +485,7 @@ void YoshiState::CreateFSM()
 			}
 
 			// Stick
-			if (IsDown('X'))
+			if (IsDown('X') && !Yoshi->IsHold)
 			{
 				if (IsPress(VK_UP))
 				{
@@ -626,7 +626,7 @@ void YoshiState::CreateFSM()
 			}
 
 			// Stick
-			if (IsDown('X'))
+			if (IsDown('X') && !Yoshi->IsHold)
 			{
 				if (IsPress(VK_UP))
 				{
@@ -805,7 +805,7 @@ void YoshiState::CreateFSM()
 		[this](float _DeltaTime)
 		{
 			// Stick
-			if (IsDown('X'))
+			if (IsDown('X') && !Yoshi->IsHold)
 			{
 				Yoshi->StickDir = 1;
 				FSM.ChangeState(EPlayerState::STICK);
@@ -881,7 +881,7 @@ void YoshiState::CreateFSM()
 		[this](float _DeltaTime)
 		{
 			// Stick
-			if (IsDown('X'))
+			if (IsDown('X') && !Yoshi->IsHold)
 			{
 				Yoshi->StickDir = 2;
 				FSM.ChangeState(EPlayerState::STICK);

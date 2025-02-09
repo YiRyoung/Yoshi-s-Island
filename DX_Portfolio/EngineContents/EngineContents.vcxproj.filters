@@ -85,6 +85,9 @@
     <ClInclude Include="Item.h">
       <Filter>Contents\Yoshi\Items</Filter>
     </ClInclude>
+    <ClInclude Include="MarioBubble.h">
+      <Filter>Contents\Yoshi\BabyBubble</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -168,6 +171,9 @@
     <ClCompile Include="Item.cpp">
       <Filter>Contents\Yoshi\Items</Filter>
     </ClCompile>
+    <ClCompile Include="MarioBubble.cpp">
+      <Filter>Contents\Yoshi\BabyBubble</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -223,6 +229,9 @@
     </Filter>
     <Filter Include="Contents\Yoshi\Items">
       <UniqueIdentifier>{942c0035-1326-4c5d-b5a1-c0cdf105aae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Yoshi\BabyBubble">
+      <UniqueIdentifier>{d9f416f2-b2d8-435b-8207-602586c1181d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
