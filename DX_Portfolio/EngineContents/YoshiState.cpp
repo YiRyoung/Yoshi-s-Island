@@ -1142,6 +1142,8 @@ void YoshiState::CreateFSM()
 		},
 		[this]()
 		{
+			SoundPlayer = UEngineSound::Play("Whsiup.wav");
+
 			if (Yoshi->IsWithBaby)
 			{
 				ChangeAnimation("MNH_Hurt");

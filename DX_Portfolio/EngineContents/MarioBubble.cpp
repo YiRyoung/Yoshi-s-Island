@@ -6,6 +6,7 @@
 #include <EngineCore/Collision.h>
 
 #include "Yoshi.h"
+#include "YoshiState.h"
 #include "YoshiGameInstance.h"
 
 AMarioBubble::AMarioBubble()
@@ -29,6 +30,8 @@ AMarioBubble::AMarioBubble()
 	Collision->SetCollisionEnter([](UCollision* _This, UCollision* _Other)
 		{
 			_Other->GetActor<AYoshi>()->SetIsWithBaby(true);
+			_This->GetActor<AMarioBubble>()->SoundPlayer.Off();
+			_This->GetActor<AMarioBubble>()->SoundPlayer = UEngineSound::Play("Zipzoo.wav");
 			_This->GetActor<AMarioBubble>()->Destroy();
 		});
 }
@@ -37,3 +40,9 @@ AMarioBubble::~AMarioBubble()
 {
 }
 
+void AMarioBubble::BeginPlay()
+{
+	AActor::BeginPlay();
+	SoundPlayer = UEngineSound::Play("Crying.wav");
+	SoundPlayer.Loop(-1);
+}

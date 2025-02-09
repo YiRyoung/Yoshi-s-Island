@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
+#include <EnginePlatform/EngineSound.h>
+
 // Ό³Έν :
 class AMarioBubble : public AActor
 {
@@ -16,8 +18,11 @@ public:
 	AMarioBubble& operator=(AMarioBubble&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
 
 private:
+	USoundPlayer SoundPlayer;
+
 	std::shared_ptr<class USpriteRenderer> Renderer;
 	std::shared_ptr<class UCollision> Collision;
 };
