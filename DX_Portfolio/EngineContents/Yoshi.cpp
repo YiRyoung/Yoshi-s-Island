@@ -13,6 +13,7 @@
 
 #include "YoshiState.h"
 #include "CrossHair.h"
+#include "ItemTail.h"
 #include "Monster.h"
 
 #include "Platforms.h"
@@ -45,6 +46,8 @@ void AYoshi::BeginPlay()
 
 	CrossHair = GetWorld()->SpawnActor<ACrossHair>();
 	CrossHair->InitCrossHair(this);
+
+	ItemTail = GetWorld()->SpawnActor<AItemTail>();
 }
 
 void AYoshi::Tick(float _DeltaTime)

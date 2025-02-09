@@ -120,15 +120,25 @@ void ACrazyDayzee::SetCollision()
 
 void ACrazyDayzee::SetCollisionLink(float _DeltaTime)
 {
-	std::vector<UCollision*> FootCollisions;
-	if (HeadCollision->CollisionCheck("FootCollision", FootCollisions))
 	{
-		IsStepped = true;
+		std::vector<UCollision*> FootCollisions;
+		if (HeadCollision->CollisionCheck("FootCollision", FootCollisions))
+		{
+			IsStepped = true;
+		}
+
+		if (IsStepped)
+		{
+			BodyCollision->SetActive(false);
+			AMonster::FallDown(_DeltaTime);
+		}
 	}
 
-	if (IsStepped)
 	{
-		BodyCollision->SetActive(false);
-		AMonster::FallDown(_DeltaTime);
+		std::vector<UCollision*> EggCollisions;
+		if (HeadCollision->CollisionCheck("EggCollision", EggCollisions))
+		{
+			Destroy();
+		}
 	}
 }

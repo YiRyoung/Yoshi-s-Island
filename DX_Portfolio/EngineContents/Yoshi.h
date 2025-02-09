@@ -190,6 +190,9 @@ private:
 
 	void SetCollisionsCheck();
 
+	// ItemTail
+	std::shared_ptr<class AItemTail> ItemTail;
+
 	// CrossHair
 	void SetCrossHair();
 

@@ -28,6 +28,12 @@ void AThrowEgg::Init()
 	Renderer->SetSprite("Eggs.png", 6);
 	Renderer->SetAutoScaleRatio(3.0f);
 
+	Collision = CreateDefaultSubObject<UCollision>();
+	Collision->SetupAttachment(RootComponent);
+	Collision->SetCollisionProfileName("EggCollision");
+	Collision->SetScale3D({ 42.0f , 45.0f, 1.0f });
+	Collision->SetWorldLocation({ 21.0f, 22.5f });
+
 	TimeEvent = CreateDefaultSubObject<UTimeEventComponent>();
 }
 
@@ -44,6 +50,7 @@ void AThrowEgg::Tick(float _DeltaTime)
 
 	AddActorLocation(ThrowDir * ThrowSpeed * _DeltaTime);
 	ReflectMove(_DeltaTime);
+	CollisionLink();
 }
 
 void AThrowEgg::ReflectMove(float _DeltaTime)
@@ -60,20 +67,35 @@ void AThrowEgg::ReflectMove(float _DeltaTime)
 
 	if (UpColor == UColor::MAGENTA || UpColor == UColor::CYAN || UpColor == UColor::GREEN)
 	{
+		SoundPlayer = UEngineSound::Play("Collision.wav");
 		ThrowDir += FVector::DOWN * 2.0f * (-ThrowDir.Dot(FVector::DOWN));
 	}
 	else if (DownColor == UColor::MAGENTA || DownColor == UColor::CYAN || DownColor == UColor::GREEN)
 	{
+		SoundPlayer = UEngineSound::Play("Collision.wav");
 		ThrowDir += FVector::UP * 2.0f * (-ThrowDir.Dot(FVector::UP));
 	}
 	else if (LeftColor == UColor::MAGENTA || LeftColor == UColor::CYAN || LeftColor == UColor::GREEN)
 	{
+		SoundPlayer = UEngineSound::Play("Collision.wav");
 		ThrowDir += FVector::RIGHT * 2.0f * (-ThrowDir.Dot(FVector::RIGHT));
 	}
 	else if (RightColor == UColor::MAGENTA || RightColor == UColor::CYAN || RightColor == UColor::GREEN)
 	{
+		SoundPlayer = UEngineSound::Play("Collision.wav");
 		ThrowDir += FVector::LEFT * 2.0f * (-ThrowDir.Dot(FVector::LEFT));
 	}
+}
+
+void AThrowEgg::CollisionLink()
+{
+	std::vector<UCollision*> MonsterBodyCollision;
+	if (Collision->CollisionCheck("MonsterBodyCollision", MonsterBodyCollision))
+	{
+		SoundPlayer = UEngineSound::Play("Collision.wav");
+		TimeEvent->AddEvent(1.0f, nullptr, std::bind(&AThrowEgg::DestroyEgg, this), false);
+	}
+
 }
 
 void AThrowEgg::DestroyEgg()

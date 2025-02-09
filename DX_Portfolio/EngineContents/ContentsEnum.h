@@ -63,10 +63,3 @@ enum class EShyGuyTypes
 	RED,
 	NONE
 };
-
-enum class EItemType
-{
-	NONE,
-	EGG,
-	KEY
-};

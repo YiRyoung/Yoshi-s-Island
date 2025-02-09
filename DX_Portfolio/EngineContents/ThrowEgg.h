@@ -1,6 +1,8 @@
 #pragma once
 #include <EngineCore/Actor.h>
 
+#include <EnginePlatform/EngineSound.h>
+
 // Ό³Έν :
 class AThrowEgg : public AActor
 {
@@ -27,14 +29,17 @@ protected:
 	void Tick(float _DeltaTime) override;
 
 private:
+	USoundPlayer SoundPlayer;
+
 	std::shared_ptr<class USpriteRenderer> Renderer;
 	std::shared_ptr<class UCollision> Collision;
 	std::shared_ptr<class UTimeEventComponent> TimeEvent;
 
 	FVector ThrowDir = FVector::ZERO;
-	float ThrowSpeed = 400.0f;
+	float ThrowSpeed = 480.0f;
 
 	void ReflectMove(float _DeltaTime);
+	void CollisionLink();
 	void DestroyEgg();
 };
 

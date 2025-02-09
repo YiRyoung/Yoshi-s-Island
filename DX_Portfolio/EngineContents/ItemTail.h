@@ -16,8 +16,10 @@ public:
 	AItemTail& operator=(AItemTail&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
 private:
-	std::vector<AActor> Item;
+	std::vector<std::shared_ptr<class AItem>> ItemList;
 };
 

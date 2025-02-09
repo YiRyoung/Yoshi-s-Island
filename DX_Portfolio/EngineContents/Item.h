@@ -17,10 +17,14 @@ public:
 	AItem& operator=(const AItem& _Other) = delete;
 	AItem& operator=(AItem&& _Other) noexcept = delete;
 
+	std::shared_ptr<class USpriteRenderer> GetItemRenderer() const
+	{
+		return Renderer;
+	}
+
 protected:
 
 private:
-	EItemType CurItemType = EItemType::NONE;
 	std::shared_ptr<class USpriteRenderer> Renderer;
 };
 

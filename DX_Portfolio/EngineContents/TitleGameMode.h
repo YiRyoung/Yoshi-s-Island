@@ -28,5 +28,6 @@ private:
 	USoundPlayer SoundPlayer;
 
 	std::shared_ptr<class ATitle> Title;
+	std::shared_ptr<class UTimeEventComponent> TimeEvent;
 };
 

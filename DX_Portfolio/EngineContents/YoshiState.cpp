@@ -136,6 +136,7 @@ void YoshiState::CreateFSM()
 					else  // Throw
 					{
 						Yoshi->IsAim = false;
+						SoundPlayer.Off();
 						FSM.ChangeState(EPlayerState::THROW);
 						return;
 					}
@@ -663,12 +664,12 @@ void YoshiState::CreateFSM()
 				return;
 			}
 
-			if (IsPress(VK_LEFT) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::WHITE)
+			if (Yoshi->ScaleCollisionType != 2 && IsPress(VK_LEFT) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::WHITE)
 				&& !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::LEFT, UColor::GREEN))
 			{
 				Yoshi->AddActorLocation(FVector::LEFT * Yoshi->Speed * _DeltaTime);
 			}
-			if (IsPress(VK_RIGHT) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::WHITE)
+			if (Yoshi->ScaleCollisionType != 1 && IsPress(VK_RIGHT) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::WHITE)
 				&& !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::MAGENTA) && !Yoshi->CheckLineColor(ECheckDir::RIGHT, UColor::GREEN))
 			{
 				Yoshi->AddActorLocation(FVector::RIGHT * Yoshi->Speed * _DeltaTime);
@@ -811,11 +812,6 @@ void YoshiState::CreateFSM()
 				return;
 			}
 
-			if (IsPress(VK_UP) && Yoshi->IsAim)
-			{
-				// CrossHair Look Up
-			}
-
 			// Idle
 			if (!IsPress(VK_UP))
 			{
@@ -926,7 +922,11 @@ void YoshiState::CreateFSM()
 			}
 
 			// Bend
-			if (Yoshi->IsAim) { Yoshi->IsAim = false; }
+			if (Yoshi->IsAim) 
+			{ 
+				Yoshi->IsAim = false;
+				SoundPlayer.Off();
+			}
 		},
 		[this]()
 		{
@@ -1063,6 +1063,7 @@ void YoshiState::CreateFSM()
 			{
 				Yoshi->IsAim = false;
 				Yoshi->IsHold = false;
+				SoundPlayer = UEngineSound::Play("CreateEgg.wav");
 				Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount += 1;
 
 				FSM.ChangeState(EPlayerState::IDLE);
@@ -1071,6 +1072,8 @@ void YoshiState::CreateFSM()
 		},
 		[this]()
 		{
+			SoundPlayer = UEngineSound::Play("Eat.wav");
+
 			if (Yoshi->IsWithBaby)	// M
 			{
 				if ((Yoshi->IsHold && Yoshi->IsAim) || (Yoshi->IsHold && !Yoshi->IsAim))
@@ -1099,6 +1102,7 @@ void YoshiState::CreateFSM()
 		[this]()
 		{
 			Yoshi->IsAim = false;
+			SoundPlayer = UEngineSound::Play("Throw.wav");
 			Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount -= 1;
 			Yoshi->SpawnThrowEgg();
 

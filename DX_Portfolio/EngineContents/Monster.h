@@ -29,7 +29,6 @@ protected:
 
 	bool IsStepped = false;
 	void Gravity(float _DeltaTime);
-	void MoveSlope(float _DeltaTime);
 	void FallDown(float _DeltaTime);
 	void Off();
 

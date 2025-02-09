@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "TitleGameMode.h"
 
+#include <EngineCore/TimeEventComponent.h>
+
 #include <EnginePlatform/EngineInput.h>
 
 #include <EngineCore/EngineGUIWindow.h>
@@ -16,6 +18,7 @@
 ATitleGameMode::ATitleGameMode()
 {
 	Title = GetWorld()->SpawnActor<ATitle>();
+	TimeEvent = CreateDefaultSubObject<UTimeEventComponent>();
 }
 
 ATitleGameMode::~ATitleGameMode()
@@ -31,14 +34,15 @@ void ATitleGameMode::Tick(float _DeltaTime)
 {
 	AActor::Tick(_DeltaTime);
 
-	if (UEngineInput::IsPress(VK_SPACE))
+	if (UEngineInput::IsDown(VK_SPACE))
 	{
+		SoundPlayer = UEngineSound::Play("Coin.wav");
 		int Index = Title->GetRenderer()->GetCurIndex();
 		Title->EndAnimation(Index);
 	}
 
 	if (Title->IsEnd() && Title->GetRenderer()->GetCurIndex() == 0)
-	{
+	{	
 		LevelChangeEnd();
 	}
 }
@@ -71,4 +75,3 @@ void ATitleGameMode::LevelChangeEnd()
 	UEngineSound::AllSoundStop();
 	UEngineCore::OpenLevel("Stage100");
 }
-

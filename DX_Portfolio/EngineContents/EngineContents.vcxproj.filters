@@ -74,16 +74,16 @@
       <Filter>Contents\Monster\Normal</Filter>
     </ClInclude>
     <ClInclude Include="CrossHair.h">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClInclude>
     <ClInclude Include="ThrowEgg.h">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClInclude>
     <ClInclude Include="ItemTail.h">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,16 +157,16 @@
       <Filter>Contents\Monster\Normal</Filter>
     </ClCompile>
     <ClCompile Include="CrossHair.cpp">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClCompile>
     <ClCompile Include="ThrowEgg.cpp">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClCompile>
     <ClCompile Include="ItemTail.cpp">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>Contents\Yoshi\Eggs</Filter>
+      <Filter>Contents\Yoshi\Items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -221,7 +221,7 @@
     <Filter Include="Contents\Monster\Normal">
       <UniqueIdentifier>{1154a4eb-3675-4574-a077-fec6576df3db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Yoshi\Eggs">
+    <Filter Include="Contents\Yoshi\Items">
       <UniqueIdentifier>{942c0035-1326-4c5d-b5a1-c0cdf105aae3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
