@@ -98,6 +98,11 @@ public:
 		return IsWithBaby;
 	}
 
+	void SetIsWithBaby(bool _IsTrue)
+	{
+		IsWithBaby = _IsTrue;
+	}
+
 	void SwitchIsWithBaby()
 	{
 		IsWithBaby = !IsWithBaby;
@@ -198,6 +203,9 @@ private:
 
 	// ThrowEgg
 	void SpawnThrowEgg();
+
+	// MarioBubble
+	void SpawnMarioBubble();
 
 	// Platform
 	class APlatforms* Platform = nullptr;

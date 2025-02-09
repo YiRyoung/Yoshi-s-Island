@@ -1161,6 +1161,7 @@ void YoshiState::CreateFSM()
 			if (Yoshi->IsWithBaby)
 			{
 				Yoshi->IsWithBaby = false;
+				Yoshi->SpawnMarioBubble();
 				Yoshi->BodyCollision->SetActive(false);
 				Yoshi->FootCollision->SetActive(false);
 			}

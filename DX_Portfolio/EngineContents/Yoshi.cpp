@@ -14,6 +14,8 @@
 #include "YoshiState.h"
 #include "CrossHair.h"
 #include "ItemTail.h"
+#include "MarioBubble.h"
+
 #include "Monster.h"
 
 #include "Platforms.h"
@@ -742,4 +744,10 @@ void AYoshi::SpawnThrowEgg()
 	Egg->SetActorLocation(GetActorLocation());
 	Egg->AddActorLocation({ 0.0f, YoshiScale.Y * 0.5f, -12.0f });
 	Egg->SetThrowDir(CrossHair->GetCurAngle());
+}
+
+void AYoshi::SpawnMarioBubble()
+{
+	std::shared_ptr<AMarioBubble> MarioBubble = GetWorld()->SpawnActor<AMarioBubble>();
+	MarioBubble->SetActorLocation({ GetActorLocation() + FVector{0.0f, 280.0f} });
 }
