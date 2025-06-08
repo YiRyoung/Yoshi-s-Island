@@ -26,6 +26,7 @@ private:
 	void SwitchFreeCamera();
 	void PrintPixelCollisionKey();
 	void PrintEggCount();
+	void PlusEggCount();
 	void PrintYellowCoinCount();
 	void PrintCurState();
 	void ChangeAnimationButtons();

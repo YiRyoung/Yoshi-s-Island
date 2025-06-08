@@ -1064,7 +1064,11 @@ void YoshiState::CreateFSM()
 				Yoshi->IsAim = false;
 				Yoshi->IsHold = false;
 				SoundPlayer = UEngineSound::Play("CreateEgg.wav");
-				Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount += 1;
+
+				if (Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount < 6)
+				{
+					Yoshi->GetGameInstance<AYoshiGameInstance>()->EggCount += 1;
+				}
 
 				FSM.ChangeState(EPlayerState::IDLE);
 				return;

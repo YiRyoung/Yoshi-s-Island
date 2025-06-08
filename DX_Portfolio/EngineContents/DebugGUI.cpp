@@ -50,6 +50,17 @@ void UDebugGUI::PrintEggCount()
 	ImGui::Text(EggCount.c_str());
 }
 
+void UDebugGUI::PlusEggCount()
+{
+	if (ImGui::Button("PlusEgg"))
+	{
+		if (GetWorld()->GetMainPawn<AYoshi>()->GetGameInstance<AYoshiGameInstance>()->EggCount < 6)
+		{
+			GetWorld()->GetMainPawn<AYoshi>()->GetGameInstance<AYoshiGameInstance>()->EggCount += 1;
+		}
+	}
+}
+
 void UDebugGUI::PrintYellowCoinCount()
 {
 	std::string YellowCoinCount = "YellowCoin : " + std::to_string(GetWorld()->GetMainPawn<AYoshi>()->GetGameInstance<AYoshiGameInstance>()->YellowCoin);

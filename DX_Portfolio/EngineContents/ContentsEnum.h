@@ -3,13 +3,13 @@
 enum class EOrderNum
 {
 
-	HUD = -15,
-	PLAYER = -12,
-	FRONTBACKGROUND = -10,
-	OBJECT = -1,
-	COLSTAGE = 1,
-	STAGE,
-	FOREBACKGROUND,
+	HUD = -150,
+	PLAYER = -120,
+	FRONTBACKGROUND = -100,
+	OBJECT = -10,
+	COLSTAGE = 10,
+	STAGE = 50,
+	FOREBACKGROUND = 150,
 	BACKGROUND,
 };
 
@@ -24,19 +24,18 @@ enum class ECheckDir
 
 enum class EPlayerState
 {
-	IDLE,
-	LOOKUP,
-	BEND,
-	WALK,
-	RUN,
-	JUMP,
-	STAYUP,
-	FALL,
-	STICK,
-	EAT,
-	SPIT,
-	THROW,
-	HURT
+	IDLE,        // 대기
+	LOOKUP,      // 위를 쳐다보기
+	BEND,        // 숙이기
+	WALK,        // 걷기
+	RUN,         // 뛰기
+	JUMP,        // 점프
+	STAYUP,      // 체공
+	FALL,        // 낙하
+	STICK,       // 혀 내밀기
+	EAT,         // 삼키기
+	THROW,       // 던지기
+	HURT         // 피격
 };
 
 enum class EColorType

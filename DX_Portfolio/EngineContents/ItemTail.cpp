@@ -50,17 +50,15 @@ void AItemTail::Tick(float _DeltaTime)
 	if (ItemList.empty()) return;
 
 	AYoshi* Yoshi = GetWorld()->GetMainPawn<AYoshi>();
-	FVector PrevPos = Yoshi->GetActorLocation();
-	FVector Offset = FVector(-30.0f, 0.0f, 0.0f);
+	FVector TargetPos = Yoshi->GetActorLocation();
 
 	for (size_t i = 0; i < ItemList.size(); i++)
 	{
 		if (ItemList[i] && ItemList[i]->IsActive())
 		{
-			FVector TargetPos = PrevPos + Offset;
 			FVector NewPos = UEngineMath::Lerp(ItemList[i]->GetActorLocation(), TargetPos, 0.1f);
 			ItemList[i]->SetActorLocation({ NewPos.X, NewPos.Y, static_cast<float>(EOrderNum::PLAYER) + i + 1});
-			PrevPos = NewPos;
+			TargetPos = NewPos;
 		}
 	}
 }
