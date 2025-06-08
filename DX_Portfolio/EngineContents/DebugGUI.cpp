@@ -24,6 +24,7 @@ void UDebugGUI::OnGUI()
 	PrintYellowCoinCount();
 	PrintCurState();
 	PrintPixelCollisionKey();
+	PlusEggCount();
 	SwitchFreeCamera();
 	ChangeAnimationButtons();
 }
